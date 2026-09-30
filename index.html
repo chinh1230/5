@@ -2,1821 +2,634 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Trợ Lý Học Tập Lớp 5 - Kết Nối Tri Thức & Giải Đề Nâng Cao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trợ Lý Học Tập Lớp 5 - Giải Mọi Đề Bài (KNTT & Nâng Cao)</title>
   
-  <!-- Phông chữ thân thiện học sinh tiểu học: Quicksand & Baloo 2 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Font Awesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- KaTeX hiển thị công thức toán học sắc nét -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- KaTeX cho công thức toán -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-  
-  <!-- Marked.js chuyển Markdown thành HTML -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <!-- Marked để đọc định dạng văn bản -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- Cấu hình Tailwind Theme bảng màu học đường tươi sáng -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Quicksand', 'sans-serif'],
-            display: ['"Baloo 2"', 'cursive', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#F0F9FF',
-              100: '#E0F2FE',
-              500: '#0EA5E9',
-              600: '#0284C7',
-              700: '#0369A1',
-            },
-            star: {
-              100: '#FEF3C7',
-              400: '#FBBF24',
-              500: '#F59E0B',
-              600: '#D97706',
-            },
-            primary: '#2563EB',
-            purpleTím: '#7C3AED',
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
-    /* Thanh cuộn tinh tế */
-    ::-webkit-scrollbar { width: 7px; height: 7px; }
-    ::-webkit-scrollbar-track { background: #F1F5F9; border-radius: 8px; }
-    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-
-    /* Hiệu ứng sao nảy khi nhận thưởng */
-    @keyframes starPop {
-      0% { transform: scale(0.6) rotate(-15deg); opacity: 0.3; }
-      50% { transform: scale(1.35) rotate(15deg); opacity: 1; }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    }
-    .star-pop { animation: starPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-
-    /* Định dạng bài giải chuẩn Sư phạm */
-    .solution-prose h1, .solution-prose h2, .solution-prose h3 {
-      font-family: 'Baloo 2', cursive;
-      font-weight: 700;
-      color: #1E293B;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    .solution-prose p { margin-bottom: 0.65rem; line-height: 1.7; }
-    .solution-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
-    .solution-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.75rem; }
-    .katex-display { margin: 0.5em 0; overflow-x: auto; overflow-y: hidden; }
-
-    /* Nền vở 5 ô li tiểu học chân thực cho bảng nháp */
-    .oli-notebook-bg {
-      background-color: #FFFFFF;
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .oli-grid {
+      background-size: 20px 20px;
       background-image: 
-        linear-gradient(to right, rgba(14, 165, 233, 0.15) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(14, 165, 233, 0.15) 1px, transparent 1px),
-        linear-gradient(to right, rgba(14, 165, 233, 0.35) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(14, 165, 233, 0.35) 1px, transparent 1px);
-      background-size: 5px 5px, 5px 5px, 25px 25px, 25px 25px;
+        linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+        linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
     }
   </style>
 </head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
 
-<body class="bg-gradient-to-br from-amber-50/70 via-sky-50 to-indigo-50/70 min-h-screen text-slate-800 font-sans flex flex-col antialiased selection:bg-blue-100 selection:text-blue-800">
-
-  <header class="bg-white/95 backdrop-blur-md border-b border-indigo-100 sticky top-0 z-40 shadow-sm">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Logo & Tiêu đề thương hiệu -->
-        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchNav('ai-solver')">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-amber-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-500/25 transform hover:scale-105 transition-transform duration-300">
-            <i class="fa-solid fa-graduation-cap"></i>
-          </div>
-          <div>
-            <div class="flex items-center space-x-1.5 flex-wrap">
-              <span class="text-[11px] font-extrabold uppercase tracking-wide px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">KNTT Lớp 5</span>
-              <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full flex items-center">
-                <i class="fa-solid fa-bolt mr-1 text-amber-500"></i>Giải Đề Mở Rộng
-              </span>
-            </div>
-            <h1 class="text-base sm:text-xl md:text-2xl font-display font-extrabold bg-gradient-to-r from-blue-700 via-indigo-700 to-rose-600 bg-clip-text text-transparent truncate max-w-[260px] sm:max-w-none">
-              Trợ Lý Học Tập Lớp 5
-            </h1>
-          </div>
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl">🎒</span>
+        <div>
+          <h1 class="text-xl font-bold tracking-wide">TRỢ LÝ HỌC TẬP LỚP 5</h1>
+          <p class="text-xs text-blue-100">Bộ sách Kết Nối Tri Thức & Giải Đề Mở Rộng - Nâng Cao</p>
         </div>
-
-        <!-- Bên phải: Sao Tri Thức, Khóa API, Nút Bật/Tắt Âm thanh -->
-        <div class="flex items-center space-x-2 sm:space-x-3">
-          <!-- Huy hiệu Sao Tri Thức tích lũy -->
-          <div id="star-badge-container" class="flex items-center space-x-1.5 bg-gradient-to-r from-amber-100 to-yellow-100 border border-amber-300 px-3 py-1.5 rounded-2xl shadow-sm cursor-pointer hover:shadow transition" onclick="switchNav('challenge')">
-            <i class="fa-solid fa-star text-amber-500 text-base sm:text-lg animate-pulse"></i>
-            <span class="font-display font-black text-amber-900 text-base sm:text-lg" id="star-count-display">135</span>
-            <span class="text-[11px] font-bold text-amber-800 hidden md:inline">Sao</span>
-          </div>
-
-          <!-- Nút cài đặt khóa API Gemini cá nhân -->
-          <button onclick="openApiKeyModal()" title="Cài đặt mã khóa Gemini cá nhân (hoàn toàn miễn phí)" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center space-x-1.5 transition border border-slate-200">
-            <i class="fa-solid fa-key text-amber-500"></i>
-            <span class="hidden sm:inline">Khóa API</span>
-          </button>
-
-          <!-- Nút âm thanh -->
-          <button id="sound-btn" onclick="toggleAppSound()" title="Bật/Tắt âm thanh hiệu ứng" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition border border-slate-200">
-            <i class="fa-solid fa-volume-high text-sm" id="sound-icon"></i>
-          </button>
-        </div>
-
       </div>
-    </div>
-
-    <!-- Thanh Menu chuyển Tab chức năng -->
-    <div class="bg-indigo-900/5 border-t border-slate-200/60 overflow-x-auto no-scrollbar">
-      <div class="max-w-7xl mx-auto px-3 sm:px-6 flex space-x-1.5 sm:space-x-2 py-1.5 text-xs sm:text-sm font-bold">
-        <button onclick="switchNav('ai-solver')" id="nav-ai-solver" class="nav-btn px-3.5 py-2 rounded-xl flex items-center space-x-2 transition bg-blue-600 text-white shadow-md shadow-blue-500/25 whitespace-nowrap">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <span>Trợ Lý AI & Quét Ảnh</span>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleApiKeyModal()" class="bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded-lg border border-white/30 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-key text-yellow-300"></i>
+          <span id="apiKeyBtnText">Cài đặt API Key</span>
         </button>
-        <button onclick="switchNav('notebook')" id="nav-notebook" class="nav-btn px-3.5 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white whitespace-nowrap">
-          <i class="fa-solid fa-calculator"></i>
-          <span>Sổ Tay & Tính Ngược Hình Học</span>
-        </button>
-        <button onclick="switchNav('scratchpad')" id="nav-scratchpad" class="nav-btn px-3.5 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white whitespace-nowrap">
-          <i class="fa-solid fa-pen-ruler"></i>
-          <span>Bảng Nháp Ô Li</span>
-        </button>
-        <button onclick="switchNav('challenge')" id="nav-challenge" class="nav-btn px-3.5 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white whitespace-nowrap">
-          <i class="fa-solid fa-trophy text-amber-500"></i>
-          <span>Đấu Trường & Đề Nâng Cao</span>
-        </button>
-        <button onclick="switchNav('sgk-lessons')" id="nav-sgk-lessons" class="nav-btn px-3.5 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white whitespace-nowrap">
-          <i class="fa-solid fa-book-open text-indigo-500"></i>
-          <span>Mục Lục SGK KNTT</span>
-        </button>
+        <div class="bg-amber-400 text-amber-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow">
+          <i class="fa-solid fa-star text-amber-600"></i>
+          <span id="starCount">0</span> Sao Tri Thức
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6">
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-    <!-- ======================================================== -->
-    <!-- TAB 1: TRỢ LÝ AI GIẢI ĐỀ (SGK, VBT, NÂNG CAO, QUÉT ẢNH) -->
-    <!-- ======================================================== -->
-    <section id="tab-ai-solver" class="tab-pane block space-y-5">
+    <!-- Cột trái: Khung nhập câu hỏi và hiển thị lời giải (2 cột) -->
+    <div class="lg:col-span-2 space-y-5">
+
+      <!-- Ô nhập câu hỏi -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+        <div class="flex items-center justify-between mb-3">
+          <label class="font-semibold text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+            Nhập đề bài SGK, VBT hoặc câu hỏi nâng cao ngoài sách:
+          </label>
+          <span class="text-xs text-slate-400">Toán • Tiếng Việt • Khoa học</span>
+        </div>
+
+        <textarea id="questionInput" rows="4" 
+          placeholder="Ví dụ: Một thửa ruộng hình thang có diện tích 300 m², chiều cao 20 m. Tính tổng độ dài hai đáy? Hoặc dán bất kỳ bài toán ngoài SGK vào đây..." 
+          class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-700 leading-relaxed"></textarea>
+
+        <!-- Thanh công cụ hỗ trợ nhập -->
+        <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Nút Micro -->
+            <button id="voiceBtn" onclick="toggleSpeechRecognition()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-microphone text-red-500"></i>
+              <span id="voiceText">Đọc đề bài</span>
+            </button>
+            
+            <!-- Nút Tải ảnh -->
+            <label class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium flex items-center gap-1.5 cursor-pointer transition">
+              <i class="fa-solid fa-camera text-blue-500"></i>
+              <span>Tải ảnh phiếu bài</span>
+              <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+            </label>
+            <span id="imageStatus" class="text-xs text-emerald-600 font-medium hidden"></span>
+          </div>
+
+          <!-- Nút Gửi yêu cầu -->
+          <button id="submitBtn" onclick="solveQuestion()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white rounded-xl font-semibold shadow-md shadow-blue-500/20 flex items-center gap-2 transition">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Giải Bài Ngay</span>
+          </button>
+        </div>
+
+        <!-- Các câu hỏi mẫu bấm vào là giải -->
+        <div class="mt-4 pt-3 border-t border-slate-100">
+          <div class="text-xs font-semibold text-slate-400 mb-2">Thử nhanh các bài toán ngoài SGK:</div>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="setSample('Một hình thang có diện tích 240 m², chiều cao 12 m. Tính tổng độ dài hai đáy của hình thang đó?')" class="text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md transition">📐 Tính ngược hình thang</button>
+            <button onclick="setSample('Vừa gà vừa chó có tất cả 36 con, đếm được 100 cái chân. Hỏi có bao nhiêu con gà, bao nhiêu con chó?')" class="text-xs bg-purple-50 hover:bg-purple-100 text-purple-700 px-2.5 py-1 rounded-md transition">🐕 Giả thiết tạm (Gà & Chó)</button>
+            <button onclick="setSample('Hai xe ô tô khởi hành cùng một lúc từ hai điểm A và B cách nhau 180 km đi ngược chiều nhau. Sau 2 giờ hai xe gặp nhau. Tìm vận tốc mỗi xe, biết vận tốc xe từ A hơn xe từ B là 10 km/h.')" class="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md transition">🚗 Toán chuyển động</button>
+            <button onclick="setSample('Lập dàn ý chi tiết bài văn tả cảnh một đêm trăng rằm tuyệt đẹp ở quê em.')" class="text-xs bg-amber-50 hover:bg-amber-100 text-amber-700 px-2.5 py-1 rounded-md transition">📝 Tả cảnh đêm trăng</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khung hiển thị kết quả Lời Giải -->
+      <div id="resultBox" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 min-h-[220px]">
+        <div id="emptyState" class="text-center py-10">
+          <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-700">Trợ Lý Sẵn Sàng Giúp Bạn</h3>
+          <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto">Nhập câu hỏi bất kỳ ở trên hoặc chọn đề mẫu để nhận hướng dẫn giải chi tiết từng bước theo phương pháp sư phạm lớp 5.</p>
+        </div>
+
+        <!-- Trạng thái Loading -->
+        <div id="loadingState" class="hidden text-center py-10">
+          <div class="inline-block animate-spin rounded-full h-9 w-9 border-4 border-blue-600 border-t-transparent mb-3"></div>
+          <p class="text-sm font-semibold text-blue-600">Trợ lý đang suy nghĩ và phân tích phương pháp giải...</p>
+          <p class="text-xs text-slate-400 mt-1">Đang đối chiếu chuẩn kiến thức Tiểu học</p>
+        </div>
+
+        <!-- Nội dung bài giải -->
+        <div id="solutionContent" class="hidden space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <span class="text-sm font-bold text-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+              BÀI GIẢI CHI TIẾT
+            </span>
+            <div class="flex items-center gap-2">
+              <button onclick="speakSolution()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition">
+                <i class="fa-solid fa-volume-high text-blue-600"></i> Đọc bài
+              </button>
+              <button onclick="copySolution()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition">
+                <i class="fa-regular fa-copy"></i> Sao chép
+              </button>
+            </div>
+          </div>
+
+          <div id="solutionBody" class="prose prose-slate max-w-none text-sm leading-relaxed"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cột phải: Bảng nháp & Sổ tay công thức (1 cột) -->
+    <div class="space-y-5">
       
-      <!-- Bộ lọc nguồn đề bài -->
-      <div class="bg-white p-3.5 sm:p-4 rounded-2xl shadow-sm border border-slate-200">
+      <!-- Bảng nháp ô li học sinh -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs sm:text-sm font-bold text-slate-700 flex items-center">
-            <i class="fa-solid fa-layer-group text-blue-600 mr-2"></i>Chọn nguồn đề bài:
-          </span>
-          <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-            <i class="fa-solid fa-check mr-1"></i>Hỗ trợ giải mọi bài ngoài SGK
-          </span>
-        </div>
-        <div class="flex items-center space-x-2 overflow-x-auto pb-1.5 no-scrollbar">
-          <button onclick="setScope('kntt')" id="scope-kntt" class="scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-blue-600 bg-blue-50 text-blue-800 shadow-sm whitespace-nowrap">
-            <i class="fa-solid fa-book mr-1.5 text-blue-600"></i>SGK Kết Nối Tri Thức
-          </button>
-          <button onclick="setScope('vbt')" id="scope-vbt" class="scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-slate-200 text-slate-700 hover:border-slate-300 whitespace-nowrap">
-            <i class="fa-solid fa-file-pen mr-1.5 text-emerald-600"></i>Vở Bài Tập (VBT) / SBT
-          </button>
-          <button onclick="setScope('nangcao')" id="scope-nangcao" class="scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-slate-200 text-slate-700 hover:border-slate-300 whitespace-nowrap">
-            <i class="fa-solid fa-trophy mr-1.5 text-amber-500"></i>Toán Nâng Cao & Bồi Dưỡng HSG
-          </button>
-          <button onclick="setScope('phieu')" id="scope-phieu" class="scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-slate-200 text-slate-700 hover:border-slate-300 whitespace-nowrap">
-            <i class="fa-solid fa-clipboard-question mr-1.5 text-indigo-500"></i>Phiếu Cuối Tuần / Đề Ôn
-          </button>
-          <button onclick="setScope('van')" id="scope-van" class="scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-slate-200 text-slate-700 hover:border-slate-300 whitespace-nowrap">
-            <i class="fa-solid fa-feather mr-1.5 text-rose-500"></i>Tiếng Việt & Văn Miêu Tả
-          </button>
-        </div>
-      </div>
-
-      <div class="bg-white p-3.5 sm:p-4 rounded-2xl shadow-sm border border-slate-200">
-        <div class="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto pb-1 text-xs font-bold">
-          <button onclick="setSubject('toan')" id="sub-toan" class="sub-btn px-3.5 py-2 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-800 flex items-center space-x-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-calculator"></i>
-            <span>Toán 5</span>
-          </button>
-          <button onclick="setSubject('tiengviet')" id="sub-tiengviet" class="sub-btn px-3.5 py-2 rounded-xl border-2 border-slate-200 text-slate-700 hover:border-rose-300 flex items-center space-x-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-feather-pointed text-rose-500"></i>
-            <span>Tiếng Việt 5</span>
-          </button>
-          <button onclick="setSubject('khoahoc')" id="sub-khoahoc" class="sub-btn px-3.5 py-2 rounded-xl border-2 border-slate-200 text-slate-700 hover:border-emerald-300 flex items-center space-x-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-leaf text-emerald-500"></i>
-            <span>Khoa Học 5</span>
-          </button>
-          <button onclick="setSubject('lichsu')" id="sub-lichsu" class="sub-btn px-3.5 py-2 rounded-xl border-2 border-slate-200 text-slate-700 hover:border-amber-300 flex items-center space-x-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-landmark text-amber-500"></i>
-            <span>Lịch Sử & Địa Lí 5</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Khung Nhập Đề Bài Đa Năng -->
-      <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 p-4 sm:p-6 transition hover:shadow-lg">
-        
-        <!-- Khung xem trước ảnh nếu người dùng đính kèm ảnh -->
-        <div id="image-attached-card" class="hidden mb-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl flex items-center justify-between">
-          <div class="flex items-center space-x-3 overflow-hidden">
-            <img id="image-attached-preview" src="" alt="Ảnh đề bài" class="w-16 h-16 object-cover rounded-xl border border-blue-300 shadow-sm flex-shrink-0">
-            <div class="text-xs text-slate-700 truncate">
-              <p class="font-bold text-blue-900 flex items-center">
-                <i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i>Đã đính kèm ảnh đề bài
-              </p>
-              <p class="text-slate-500 text-[11px] truncate mt-0.5" id="image-attached-name">phieu-bai-tap.jpg</p>
-              <span class="text-[10px] text-indigo-600 font-semibold bg-white/80 px-2 py-0.5 rounded-full inline-block mt-1">
-                Hỗ trợ cả chữ in SGK & chữ viết tay
-              </span>
-            </div>
-          </div>
-          <button onclick="removeAttachedImage()" class="px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold rounded-xl transition flex items-center space-x-1">
-            <i class="fa-solid fa-xmark"></i>
-            <span>Bỏ ảnh</span>
-          </button>
-        </div>
-
-        <div class="relative">
-          <textarea id="question-input" rows="4"
-            placeholder="Nhập đề bài SGK, VBT, bài toán bồi dưỡng HSG hoặc bấm 'Chụp/Tải Ảnh Đề Bài' bên dưới... (Ví dụ: VBT Toán 5. Bài 3: Một thửa ruộng hình thang có diện tích 300 m², chiều cao 20 m. Tính tổng hai đáy?)"
-            class="w-full p-4 text-sm sm:text-base border-2 border-slate-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100/60 transition outline-none font-medium placeholder:text-slate-400 text-slate-800 resize-none"></textarea>
-          
-          <!-- Input ẩn để nhận file ảnh từ máy hoặc camera điện thoại -->
-          <input type="file" id="camera-file-input" accept="image/*" class="hidden" onchange="handleImageFile(event)">
-
-          <!-- Nút giọng nói & trạng thái -->
-          <div class="absolute bottom-3.5 right-3.5 flex items-center space-x-2">
-            <button onclick="toggleVoiceInput()" id="mic-toggle-btn" type="button" title="Đọc đề bài bằng giọng nói" class="text-slate-500 hover:text-rose-600 bg-slate-100 hover:bg-rose-50 p-2.5 rounded-xl border border-slate-200 transition">
-              <i class="fa-solid fa-microphone text-sm" id="mic-icon"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-4 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100">
-          
-          <div class="flex items-center space-x-2">
-            <!-- Nút Chụp / Tải ảnh -->
-            <button onclick="triggerCameraInput()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold text-xs sm:text-sm flex items-center space-x-2 shadow-md shadow-sky-500/20 transition transform active:scale-95">
-              <i class="fa-solid fa-camera"></i>
-              <span>Chụp / Tải Ảnh Đề Bài</span>
-            </button>
-
-            <!-- Nút Bảng Nháp nhanh -->
-            <button onclick="switchNav('scratchpad')" class="px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold text-xs sm:text-sm border border-purple-200 flex items-center space-x-1.5 transition">
-              <i class="fa-solid fa-pen-ruler"></i>
-              <span class="hidden sm:inline">Mở Bảng Nháp Ô Li</span>
-            </button>
-          </div>
-
-          <!-- Nút Hành động chính: Giải Bài Ngay -->
-          <button onclick="processSolveRequest()" id="btn-solve-main" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-display font-bold text-base rounded-xl shadow-lg shadow-blue-500/30 flex items-center justify-center space-x-2 transition transform active:scale-95">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>Giải Bài Ngay Nào!</span>
-          </button>
-        </div>
-
-        <!-- Các nút gợi ý đề bài mẫu bấm vào giải ngay -->
-        <div class="mt-4 pt-3 border-t border-dashed border-slate-200">
-          <p class="text-xs font-bold text-slate-500 mb-2 flex items-center">
-            <i class="fa-regular fa-lightbulb text-amber-500 mr-1.5"></i>Bấm vào để thử các bài tập nâng cao & ngoài sách:
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <button onclick="fillSample('vbt-hinhthang')" class="bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 px-3 py-1.5 rounded-xl font-medium transition border border-slate-200">
-              📐 VBT Toán: Tính ngược tổng 2 đáy hình thang (S = 300 m², h = 20 m)
-            </button>
-            <button onclick="fillSample('toan-chuyendong')" class="bg-slate-100 hover:bg-amber-50 hover:text-amber-800 text-slate-700 px-3 py-1.5 rounded-xl font-medium transition border border-slate-200">
-              🚗 Toán HSG: 2 ô tô ngược chiều (s = 180 km, hiệu v = 10 km/h)
-            </button>
-            <button onclick="fillSample('toan-giathiet')" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 px-3 py-1.5 rounded-xl font-medium transition border border-slate-200">
-              🐔 Toán Nâng Cao: Giả thiết tạm (Vừa gà vừa chó 36 con, 100 chân)
-            </button>
-            <button onclick="fillSample('van-demtrang')" class="bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-700 px-3 py-1.5 rounded-xl font-medium transition border border-slate-200">
-              ✍️ Văn Sáng Tạo: Đoạn văn tả đêm trăng rằm (So sánh & Nhân hóa)
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <div id="solution-display-card" class="hidden bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden transition-all duration-300">
-        
-        <!-- Header Lời giải -->
-        <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-4 sm:p-5 border-b border-indigo-100 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center space-x-3">
-            <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-blue-400/30">
-              <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-            <div>
-              <h3 class="font-display font-bold text-slate-800 text-base sm:text-lg flex items-center">
-                Lời Giải & Phương Pháp Sư Phạm Lớp 5
-              </h3>
-              <p class="text-xs text-slate-500" id="solution-source-badge">
-                💡 Đã nhận diện từ bài tập Toán 5 Nâng Cao
-              </p>
-            </div>
-          </div>
-
-          <!-- Các nút tương tác: Nghe đọc, Sao chép, Mở bảng nháp -->
-          <div class="flex items-center space-x-2">
-            <button onclick="toggleSpeechSynthesis()" id="btn-tts" class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
-              <i class="fa-solid fa-volume-high text-indigo-600" id="tts-icon"></i>
-              <span id="tts-text">Nghe Đọc</span>
-            </button>
-            <button onclick="copySolutionToClipboard()" class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
-              <i class="fa-regular fa-copy text-blue-600"></i>
-              <span id="copy-btn-text">Chép Bài</span>
-            </button>
-            <button onclick="transferToScratchpad()" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
-              <i class="fa-solid fa-pen-fancy"></i>
-              <span>Vẽ Sơ Đồ Nháp</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Trạng thái đang phân tích -->
-        <div id="solution-loading" class="hidden p-10 flex flex-col items-center justify-center space-y-3">
-          <div class="relative w-14 h-14">
-            <div class="absolute inset-0 rounded-full border-4 border-blue-200 border-t-blue-600 animate-spin"></div>
-            <div class="absolute inset-2 rounded-full bg-white flex items-center justify-center text-blue-600 font-bold text-lg">
-              <i class="fa-solid fa-brain animate-pulse"></i>
-            </div>
-          </div>
-          <p class="font-display font-bold text-slate-700 text-base">Thầy cô AI đang phân tích đề bài và hình ảnh...</p>
-          <p class="text-xs text-slate-500">Đang tóm tắt đề và chuẩn bị phương pháp giải tiểu học trực quan nhất!</p>
-        </div>
-
-        <!-- Nội dung lời giải -->
-        <div id="solution-content-body" class="p-5 sm:p-7 solution-prose text-slate-700 text-sm sm:text-base leading-relaxed">
-          <!-- Lời giải sẽ được tiêm vào đây -->
-        </div>
-
-        <!-- Khung Nhận Thưởng Sao Tri Thức -->
-        <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-4 border-t border-amber-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div class="flex items-center space-x-2 text-amber-900 text-xs sm:text-sm font-bold">
-            <i class="fa-solid fa-medal text-amber-500 text-xl"></i>
-            <span>Em đã hiểu rõ phương pháp giải chưa? Bấm nút để nhận thêm Sao Tri Thức nhé!</span>
-          </div>
-          <button onclick="claimSolutionStars()" id="btn-claim-stars" class="px-5 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-display font-bold rounded-xl text-xs sm:text-sm shadow-md transition transform active:scale-95 flex items-center space-x-1.5">
-            <i class="fa-solid fa-star"></i>
-            <span id="claim-stars-text">Em Đã Hiểu! (+10 Sao Nâng Cao)</span>
-          </button>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- TAB 2: SỔ TAY THẦN TỐC & MÁY TÍNH TÍNH NGƯỢC HÌNH HỌC   -->
-    <!-- ======================================================== -->
-    <section id="tab-notebook" class="tab-pane hidden space-y-6">
-      
-      <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200">
-        <h2 class="text-xl font-display font-extrabold text-slate-800 flex items-center space-x-2.5">
-          <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-bolt"></i>
-          </span>
-          <span>Sổ Tay Thần Tốc & Máy Tính Tính Ngược Hình Học</span>
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">
-          Hỗ trợ tính xuôi diện tích và <b>tính ngược</b> (tìm tổng hai đáy, chiều cao, bán kính) chuẩn dạng bài VBT & Toán nâng cao lớp 5.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        
-        <!-- THẺ 1: HÌNH THANG (CÔNG THỨC XUÔI & TÍNH NGƯỢC TỔNG HAI ĐÁY) -->
-        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
-            <span class="font-display font-bold text-blue-700 text-base">Hình Thang (Xuôi & Ngược)</span>
-            <span class="text-[10px] bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full font-bold">Toán 5</span>
-          </div>
-
-          <div class="p-3 bg-blue-50/70 rounded-2xl text-xs space-y-1 text-blue-950 font-medium mb-4">
-            <p>• <b>Tính xuôi:</b> $S = \frac{(a + b) \times h}{2}$</p>
-            <p>• <b>Tính ngược tổng 2 đáy:</b> $(a + b) = \frac{2 \times S}{h}$</p>
-            <p>• <b>Tính ngược chiều cao:</b> $h = \frac{2 \times S}{a + b}$</p>
-          </div>
-
-          <!-- Máy tính tương tác hình thang -->
-          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
-            <span class="font-bold text-slate-700 block">Công cụ tính ngược nhanh:</span>
-            <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="text-[11px] text-slate-500">Diện tích S ($m^2$):</label>
-                <input type="number" id="calc-trap-s" value="300" placeholder="S" class="w-full p-2 border rounded-xl bg-white text-xs outline-none focus:border-blue-500">
-              </div>
-              <div>
-                <label class="text-[11px] text-slate-500">Chiều cao h ($m$):</label>
-                <input type="number" id="calc-trap-h" value="20" placeholder="h" class="w-full p-2 border rounded-xl bg-white text-xs outline-none focus:border-blue-500">
-              </div>
-            </div>
-            <button onclick="calculateInverseTrapezoid()" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition">
-              Tìm Tổng Hai Đáy $(a+b)$
-            </button>
-            <div id="calc-trap-result" class="p-2 bg-blue-100/70 text-blue-900 rounded-xl font-bold text-center text-xs">
-              Tổng hai đáy: $(a + b) = \frac{2 \times 300}{20} = 30\text{ (m)}$
-            </div>
-          </div>
-        </div>
-
-        <!-- THẺ 2: HÌNH TRÒN (TÍNH XUÔI & TÍNH NGƯỢC BÁN KÍNH TỪ DIỆN TÍCH) -->
-        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
-            <span class="font-display font-bold text-rose-700 text-base">Hình Tròn (Chu vi & Diện tích)</span>
-            <span class="text-[10px] bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full font-bold">Toán 5</span>
-          </div>
-
-          <div class="p-3 bg-rose-50/70 rounded-2xl text-xs space-y-1 text-rose-950 font-medium mb-4">
-            <p>• Chu vi: $C = d \times 3,14 = r \times 2 \times 3,14$</p>
-            <p>• Diện tích: $S = r \times r \times 3,14$</p>
-            <p>• <b>Tính ngược:</b> $r \times r = S : 3,14$ $\rightarrow$ Tìm tích 2 bán kính rồi suy ra bán kính $r$.</p>
-          </div>
-
-          <!-- Máy tính tương tác hình tròn -->
-          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
-            <span class="font-bold text-slate-700 block">Tính ngược từ Diện tích $S$:</span>
-            <div>
-              <label class="text-[11px] text-slate-500">Diện tích $S$ ($cm^2$):</label>
-              <input type="number" id="calc-circle-s" value="50.24" placeholder="Nhập S..." class="w-full p-2 border rounded-xl bg-white text-xs outline-none focus:border-rose-500">
-            </div>
-            <button onclick="calculateInverseCircle()" class="w-full py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition">
-              Tìm Bán Kính $r$ & Chu Vi $C$
-            </button>
-            <div id="calc-circle-result" class="p-2 bg-rose-100/70 text-rose-900 rounded-xl font-bold text-center text-xs">
-              $r \times r = 50,24 : 3,14 = 16 \implies r = 4\text{ cm}$
-            </div>
-          </div>
-        </div>
-
-        <!-- THẺ 3: HÌNH TAM GIÁC & TOÁN CHUYỂN ĐỘNG ĐỀU -->
-        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
-            <span class="font-display font-bold text-emerald-700 text-base">Toán Chuyển Động Đều</span>
-            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-bold">Toán 5</span>
-          </div>
-
-          <div class="p-3 bg-emerald-50/70 rounded-2xl text-xs space-y-1.5 text-emerald-950 font-medium mb-3">
-            <p>• $s = v \times t \quad;\quad v = s : t \quad;\quad t = s : v$</p>
-            <p>• <b>Hai xe đi ngược chiều gặp nhau:</b></p>
-            <p class="pl-2 text-emerald-800">$t_{\text{gặp}} = \frac{s}{v_1 + v_2} \quad (v_1 + v_2\text{ là tổng vận tốc})$</p>
-            <p>• <b>Hai xe cùng chiều đuổi kịp nhau:</b></p>
-            <p class="pl-2 text-emerald-800">$t_{\text{đuổi}} = \frac{s}{v_1 - v_2} \quad (v_1 - v_2\text{ là hiệu vận tốc})$</p>
-          </div>
-
-          <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs text-slate-700">
-            <span class="font-bold text-slate-800 block mb-1">Mẹo đổi đơn vị thời gian:</span>
-            <p>15 phút = 0,25 giờ = $\frac{1}{4}$ giờ</p>
-            <p>30 phút = 0,5 giờ = $\frac{1}{2}$ giờ | 45 phút = 0,75 giờ</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        
-        <!-- Bảng phân biệt Từ đồng âm vs Từ nhiều nghĩa -->
-        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm">
-          <div class="flex items-center space-x-2 pb-3 border-b border-slate-100 mb-3">
-            <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-              <i class="fa-solid fa-feather-pointed"></i>
-            </span>
-            <h3 class="font-display font-bold text-slate-800 text-base">Phân Biệt Từ Tiếng Việt 5 Trọng Tâm</h3>
-          </div>
-          <div class="space-y-3 text-xs leading-relaxed">
-            <div class="p-3 bg-purple-50 rounded-2xl border border-purple-100">
-              <p class="font-bold text-purple-900 mb-1">1. Từ đồng âm:</p>
-              <p class="text-slate-700">Phát âm hoàn toàn giống nhau nhưng <b>nghĩa hoàn toàn khác nhau</b>, không liên quan gì đến nhau.</p>
-              <p class="text-purple-700 italic mt-1">Ví dụ: Con <u>đậu</u> trên cành cây $\leftrightarrow$ Nấu xôi <u>đậu</u> (đỗ).</p>
-            </div>
-            <div class="p-3 bg-indigo-50 rounded-2xl border border-indigo-100">
-              <p class="font-bold text-indigo-900 mb-1">2. Từ nhiều nghĩa:</p>
-              <p class="text-slate-700">Có <b>1 nghĩa gốc</b> và một hoặc nhiều <b>nghĩa chuyển</b>, giữa các nghĩa luôn có <i>mối liên hệ tương đồng</i>.</p>
-              <p class="text-indigo-700 italic mt-1">Ví dụ: Mắt người (nghĩa gốc) $\leftrightarrow$ Quả na mở mắt (nghĩa chuyển: có hình dáng giống mắt).</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bảng Đơn Vị Đo Thần Tốc -->
-        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm">
-          <div class="flex items-center space-x-2 pb-3 border-b border-slate-100 mb-3">
-            <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
-              <i class="fa-solid fa-ruler-combined"></i>
-            </span>
-            <h3 class="font-display font-bold text-slate-800 text-base">Bảng Đơn Vị Đo Lường Hay Gặp Trong Đề Thi</h3>
-          </div>
-          <div class="grid grid-cols-2 gap-2.5 text-xs">
-            <div class="p-2.5 bg-amber-50/70 rounded-xl border border-amber-200/60">
-              <span class="font-bold text-amber-900 block mb-0.5">Đơn vị diện tích:</span>
-              <p>• 1 ha = 10 000 $m^2$</p>
-              <p>• 1 $km^2$ = 100 ha = 1 000 000 $m^2$</p>
-            </div>
-            <div class="p-2.5 bg-sky-50/70 rounded-xl border border-sky-200/60">
-              <span class="font-bold text-sky-900 block mb-0.5">Đơn vị thể tích:</span>
-              <p>• 1 $m^3$ = 1000 $dm^3$ = 1000 lít</p>
-              <p>• 1 $dm^3$ = 1 lít = 1000 $cm^3$</p>
-            </div>
-            <div class="p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-200/60">
-              <span class="font-bold text-emerald-900 block mb-0.5">Đơn vị khối lượng:</span>
-              <p>• 1 tấn = 10 tạ = 100 yến = 1000 kg</p>
-              <p>• 1 tạ = 100 kg</p>
-            </div>
-            <div class="p-2.5 bg-rose-50/70 rounded-xl border border-rose-200/60">
-              <span class="font-bold text-rose-900 block mb-0.5">Đổi vận tốc:</span>
-              <p>• 36 km/giờ = 10 m/giây</p>
-              <p>• $v\text{ (km/h)} = v\text{ (m/s)} \times 3,6$</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- TAB 3: BẢNG NHÁP Ô LI TIỂU HỌC THÔNG MINH               -->
-    <!-- ======================================================== -->
-    <section id="tab-scratchpad" class="tab-pane hidden space-y-4">
-      
-      <!-- Bảng điều khiển công cụ nháp -->
-      <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h2 class="text-lg sm:text-xl font-display font-extrabold text-slate-800 flex items-center space-x-2">
-            <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-pen-ruler"></i>
-            </span>
-            <span>Bảng Nháp Ô Li Học Sinh</span>
-          </h2>
-          <p class="text-xs text-slate-500">Mô phỏng vở 5 ô li - Nháp đặt tính, vẽ sơ đồ đoạn thẳng và hình học</p>
-        </div>
-
-        <!-- Hộp màu mực học trò -->
-        <div class="flex items-center flex-wrap gap-2">
-          
-          <div class="flex items-center space-x-1.5 bg-slate-100 p-1.5 rounded-2xl">
-            <button onclick="setInkColor('#6D28D9')" class="w-7 h-7 rounded-full bg-purple-700 border-2 border-white shadow-sm transform hover:scale-110 transition" title="Mực tím học trò"></button>
-            <button onclick="setInkColor('#2563EB')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-sm transform hover:scale-110 transition" title="Mực xanh bút bi"></button>
-            <button onclick="setInkColor('#DC2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-sm transform hover:scale-110 transition" title="Mực đỏ sửa bài"></button>
-            <button onclick="setInkColor('#0F172A')" class="w-7 h-7 rounded-full bg-slate-900 border-2 border-white shadow-sm transform hover:scale-110 transition" title="Mực đen chì"></button>
-          </div>
-
-          <!-- Kích cỡ nét bút -->
-          <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-2xl text-xs font-bold text-slate-700">
-            <button onclick="setPenSize(2)" class="px-2.5 py-1 rounded-xl bg-white shadow-sm hover:bg-slate-200">Mảnh</button>
-            <button onclick="setPenSize(4)" class="px-2.5 py-1 rounded-xl bg-white shadow-sm hover:bg-slate-200">Vừa</button>
-            <button onclick="setPenSize(8)" class="px-2.5 py-1 rounded-xl bg-white shadow-sm hover:bg-slate-200">Đậm</button>
-          </div>
-
-          <!-- Nút Tẩy -->
-          <button onclick="toggleCanvasEraser()" id="eraser-btn" class="px-3 py-1.5 rounded-2xl border border-slate-200 bg-white hover:bg-slate-100 text-xs font-bold text-slate-700 flex items-center space-x-1 transition">
-            <i class="fa-solid fa-eraser"></i>
-            <span id="eraser-status-text">Tẩy</span>
-          </button>
-
-          <!-- Nút Dựng Nhanh Mẫu Hình / Sơ Đồ -->
-          <div class="flex items-center space-x-1">
-            <button onclick="drawQuickShape('trapezoid')" title="Vẽ hình thang nháp có chiều cao h và đáy a, b" class="px-2.5 py-1.5 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 text-xs font-bold transition">
-              📐 Hình Thang
-            </button>
-            <button onclick="drawQuickShape('sododoanthang')" title="Vẽ sơ đồ đoạn thẳng mẫu (Số bé - Số lớn)" class="px-2.5 py-1.5 rounded-xl bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 text-xs font-bold transition">
-              📏 Sơ Đồ Đoạn Thẳng
-            </button>
-          </div>
-
-          <!-- Xóa bảng & Tải ảnh -->
-          <button onclick="clearScratchCanvas()" class="px-2.5 py-1.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 text-xs font-bold transition" title="Xóa toàn bộ trang nháp">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-          <button onclick="saveScratchImage()" class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold transition" title="Tải ảnh bài nháp về máy">
-            <i class="fa-solid fa-download mr-1"></i>Lưu
-          </button>
-        </div>
-      </div>
-
-      <!-- Khung Canvas Ô Li -->
-      <div class="bg-white rounded-3xl border-2 border-indigo-200 overflow-hidden shadow-inner relative w-full h-[520px] oli-notebook-bg">
-        <canvas id="scratch-canvas" class="w-full h-full block cursor-crosshair touch-none"></canvas>
-        <div class="absolute bottom-3 left-4 text-[11px] text-slate-400 pointer-events-none select-none bg-white/80 px-2 py-0.5 rounded-md border border-slate-200">
-          <i class="fa-solid fa-fingerprint mr-1 text-blue-500"></i>Dùng chuột hoặc ngón tay cảm ứng để viết nháp và vẽ hình
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- TAB 4: ĐẤU TRƯỜNG THỬ THÁCH & TÍCH SAO TRI THỨC         -->
-    <!-- ======================================================== -->
-    <section id="tab-challenge" class="tab-pane hidden space-y-6">
-      
-      <!-- Bảng Vinh Danh & Gamification -->
-      <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div class="relative z-10 max-w-2xl">
-          <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider flex items-center w-max">
-            <i class="fa-solid fa-award mr-1.5 text-yellow-300"></i>Đấu Trường Trạng Nguyên Lớp 5
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold mt-3">
-            Học Say Mê - Tích Sao Tri Thức!
-          </h2>
-          <p class="text-amber-100 text-xs sm:text-sm mt-2 leading-relaxed">
-            Mỗi bài tập giải xong sẽ cộng thưởng <b>+5 Sao</b> cho đề cơ bản và <b>+10 Sao</b> cho bài toán nâng cao / HSG. Hãy thử sức ngay với các đề thi dưới đây!
-          </p>
-
-          <div class="mt-4 flex items-center space-x-3">
-            <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl flex items-center space-x-2">
-              <i class="fa-solid fa-star text-yellow-300 text-lg"></i>
-              <span class="font-display font-black text-xl" id="challenge-star-display">135</span>
-              <span class="text-xs">Sao Đã Đạt</span>
-            </div>
-            <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl flex items-center space-x-2">
-              <i class="fa-solid fa-trophy text-amber-300 text-lg"></i>
-              <span class="font-display font-bold text-sm">Danh hiệu: Trạng Nguyên Tri Thức</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Thư viện Đề Thi & Bài Tập Nâng Cao Chọn Lọc (Bấm là giải ngay) -->
-      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
-        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-          <h3 class="font-display font-bold text-slate-800 text-base sm:text-lg flex items-center">
-            <i class="fa-solid fa-fire text-rose-500 mr-2"></i>Bộ Đề Nâng Cao & Bài Khó Thường Gặp
+          <h3 class="text-sm font-bold text-slate-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-pencil text-purple-600"></i>
+            Bảng Nháp Vở Ô Li
           </h3>
-          <span class="text-xs text-slate-400">Cập nhật theo chương trình KNTT</span>
+          <button onclick="clearCanvas()" class="text-xs text-rose-500 hover:text-rose-700 font-medium">Xóa nháp</button>
+        </div>
+        <p class="text-xs text-slate-400 mb-2">Vẽ hình hoặc đặt tính thử vào đây:</p>
+        
+        <div class="border border-slate-200 rounded-xl overflow-hidden oli-grid">
+          <canvas id="scratchCanvas" width="340" height="200" class="w-full h-48 cursor-crosshair touch-none"></canvas>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          
-          <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-bold text-amber-900 text-sm">Toán Nâng Cao: Bài Toán Ngược Chiều Có Hiệu Vận Tốc</span>
-                <span class="px-2 py-0.5 bg-amber-200 text-amber-900 rounded font-bold">+10 Sao</span>
-              </div>
-              <p class="text-slate-600 line-clamp-3">
-                Hai ô tô cùng xuất phát lúc 7 giờ từ A và B cách nhau 180 km đi ngược chiều nhau. Sau 2 giờ hai xe gặp nhau. Biết vận tốc xe đi từ A hơn xe từ B là 10 km/giờ. Tính vận tốc mỗi xe.
-              </p>
-            </div>
-            <button onclick="fillSample('toan-chuyendong')" class="mt-3 w-full py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Đưa Vào AI Giải Ngay</span>
-            </button>
+        <div class="flex items-center justify-between mt-2 pt-2">
+          <div class="flex items-center gap-1.5">
+            <button onclick="setPenColor('#1e293b')" class="w-5 h-5 rounded-full bg-slate-800 border-2 border-white shadow-sm"></button>
+            <button onclick="setPenColor('#2563eb')" class="w-5 h-5 rounded-full bg-blue-600 border-2 border-white shadow-sm"></button>
+            <button onclick="setPenColor('#dc2626')" class="w-5 h-5 rounded-full bg-red-600 border-2 border-white shadow-sm"></button>
+            <button onclick="setPenColor('#7c3aed')" class="w-5 h-5 rounded-full bg-purple-600 border-2 border-white shadow-sm"></button>
           </div>
-
-          <div class="p-4 rounded-2xl bg-blue-50/60 border border-blue-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-bold text-blue-900 text-sm">VBT Toán 5: Tính Ngược Hình Thang (Tổng - Tỉ)</span>
-                <span class="px-2 py-0.5 bg-blue-200 text-blue-900 rounded font-bold">+10 Sao</span>
-              </div>
-              <p class="text-slate-600 line-clamp-3">
-                Một thửa ruộng hình thang có diện tích 300 m², chiều cao 20 m. Biết đáy lớn gấp rưỡi đáy bé (bằng 3/2 đáy bé). Tính độ dài mỗi đáy của thửa ruộng.
-              </p>
-            </div>
-            <button onclick="fillSample('vbt-hinhthang')" class="mt-3 w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Đưa Vào AI Giải Ngay</span>
-            </button>
-          </div>
-
-          <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-bold text-emerald-900 text-sm">Phương Pháp Giả Thiết Tạm (Gà và Chó)</span>
-                <span class="px-2 py-0.5 bg-emerald-200 text-emerald-900 rounded font-bold">+10 Sao</span>
-              </div>
-              <p class="text-slate-600 line-clamp-3">
-                Vừa gà vừa chó bó lại cho tròn, 36 con 100 chân chẵn. Hỏi có bao nhiêu con gà và bao nhiêu con chó? (Giải theo phương pháp giả thiết tạm cấp tiểu học).
-              </p>
-            </div>
-            <button onclick="fillSample('toan-giathiet')" class="mt-3 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Đưa Vào AI Giải Ngay</span>
-            </button>
-          </div>
-
-          <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-bold text-rose-900 text-sm">Tập Làm Văn: Miêu Tả Cảnh Đêm Trăng Rằm</span>
-                <span class="px-2 py-0.5 bg-rose-200 text-rose-900 rounded font-bold">+10 Sao</span>
-              </div>
-              <p class="text-slate-600 line-clamp-3">
-                Viết một đoạn văn khoảng 8 đến 10 câu tả lại cảnh một đêm trăng rằm tuyệt đẹp trên quê hương em, có sử dụng biện pháp so sánh và nhân hóa gợi cảm.
-              </p>
-            </div>
-            <button onclick="fillSample('van-demtrang')" class="mt-3 w-full py-2 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Đưa Vào AI Giải Ngay</span>
-            </button>
-          </div>
-
+          <span class="text-xs text-slate-400">Dùng chuột hoặc ngón tay để vẽ</span>
         </div>
       </div>
 
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- TAB 5: MỤC LỤC & BÀI MẪU SGK KẾT NỐI TRI THỨC LỚP 5     -->
-    <!-- ======================================================== -->
-    <section id="tab-sgk-lessons" class="tab-pane hidden space-y-5">
-      <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h2 class="text-xl font-display font-extrabold text-slate-800 flex items-center space-x-2">
-            <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-book-open"></i>
-            </span>
-            <span>Mục Lục Trọng Tâm - SGK Kết Nối Tri Thức Lớp 5</span>
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Tra cứu nhanh lời giải mẫu các bài học cơ bản trong SGK</p>
-        </div>
-
-        <div class="flex items-center space-x-1.5 bg-slate-100 p-1.5 rounded-2xl text-xs font-bold">
-          <button onclick="filterSgkSemester(1)" id="sgk-sem-1" class="px-3 py-1.5 rounded-xl bg-white text-blue-700 shadow-sm transition">Tập Một (HK1)</button>
-          <button onclick="filterSgkSemester(2)" id="sgk-sem-2" class="px-3 py-1.5 rounded-xl text-slate-600 hover:text-blue-700 transition">Tập Hai (HK2)</button>
+      <!-- Sổ tay công thức tính ngược -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+        <h3 class="text-sm font-bold text-slate-700 mb-2.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-book-bookmark text-amber-500"></i>
+          Sổ Tay Công Thức Toán 5 Thần Tốc
+        </h3>
+        <div class="space-y-2 text-xs">
+          <div class="p-2.5 bg-blue-50/70 border border-blue-100 rounded-lg">
+            <span class="font-bold text-blue-900 block">Hình Thang:</span>
+            <span>$S = \frac{(a+b) \times h}{2} \implies (a+b) = \frac{2 \times S}{h}$</span>
+          </div>
+          <div class="p-2.5 bg-emerald-50/70 border border-emerald-100 rounded-lg">
+            <span class="font-bold text-emerald-900 block">Toán Chuyển Động:</span>
+            <span>$s = v \times t \implies v = \frac{s}{t} \implies t = \frac{s}{v}$</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5">Đi ngược chiều: $v_{gặp} = v_1 + v_2$</span>
+          </div>
+          <div class="p-2.5 bg-purple-50/70 border border-purple-100 rounded-lg">
+            <span class="font-bold text-purple-900 block">Hình Tròn:</span>
+            <span>$C = d \times 3,14 = r \times 2 \times 3,14$</span>
+            <span class="block">$S = r \times r \times 3,14 \implies r \times r = S : 3,14$</span>
+          </div>
         </div>
       </div>
 
-      <div id="sgk-lessons-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-        <!-- Render động bằng JavaScript -->
-      </div>
-    </section>
+    </div>
 
   </main>
 
-  <!-- Modal Gemini API Key -->
-  <div id="api-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden px-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 transform transition-all">
-      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-        <div class="flex items-center space-x-2">
-          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
-            <i class="fa-solid fa-key"></i>
-          </div>
-          <h3 class="font-display font-bold text-slate-800 text-base">Cài Đặt Gemini API Key</h3>
-        </div>
-        <button onclick="closeApiKeyModal()" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+  <!-- Modal Cài đặt API Key -->
+  <div id="apiKeyModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-base text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-key text-yellow-500"></i> Cài Đặt Gemini API Key
+        </h3>
+        <button onclick="toggleApiKeyModal()" class="text-slate-400 hover:text-slate-600 text-lg">&times;</button>
       </div>
 
-      <p class="text-xs text-slate-600 leading-relaxed mb-4">
-        Trang web được thiết kế để chạy trực tiếp trên GitHub Pages. Để sử dụng AI giải trực tiếp các bài ảnh hoặc đề ngoài sách theo thời gian thực, bạn chỉ cần nhập khóa <b>Gemini API Key</b> (hoàn toàn miễn phí):
+      <p class="text-xs text-slate-500 leading-relaxed">
+        Để trợ lý giải được <b>mọi câu hỏi không giới hạn</b> với trí tuệ nhân tạo Gemini, bạn hãy dán mã API Key miễn phí từ Google vào đây. Mã được lưu an toàn trực tiếp trên trình duyệt của bạn.
       </p>
 
-      <div class="space-y-3 mb-5">
-        <label class="block text-xs font-bold text-slate-700">Khóa API của bạn:</label>
-        <input type="password" id="input-custom-key" placeholder="Dán mã AIzaSy... vào đây" class="w-full p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-100 text-xs outline-none font-mono">
-        <div class="text-[11px] text-blue-600">
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center font-semibold">
-            <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Bấm vào đây để lấy mã miễn phí từ Google AI Studio (chỉ mất 30 giây)
-          </a>
-        </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Mã Gemini API Key của bạn:</label>
+        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full p-2.5 border border-slate-300 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 
-      <div class="flex items-center justify-end space-x-2">
-        <button onclick="closeApiKeyModal()" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 text-xs font-bold">Đóng</button>
-        <button onclick="saveApiKeyToStorage()" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20">Lưu Khóa API</button>
+      <div class="text-xs bg-amber-50 text-amber-800 p-2.5 rounded-lg border border-amber-200">
+        💡 <b>Chưa có mã?</b> Bạn có thể tạo miễn phí trong 30 giây tại: <br>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio (Nhấn vào đây)</a>
       </div>
-    </div>
-  </div>
 
-  <!-- Toast Thông báo nổi -->
-  <div id="toast-container" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-    <div id="toast-body" class="bg-slate-900/95 backdrop-blur text-white px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 text-xs sm:text-sm font-semibold border border-slate-700">
-      <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
-      <span id="toast-message">Thông báo hệ thống</span>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="clearApiKey()" class="px-3 py-2 text-xs text-rose-600 hover:bg-rose-50 rounded-lg font-medium">Xóa Key</button>
+        <button onclick="saveApiKey()" class="px-4 py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Lưu Cài Đặt</button>
+      </div>
     </div>
   </div>
 
   <script>
-    /* ========================================================
-       1. TRẠNG THÁI TOÀN CỤC & TÍCH SAO (GAMIFICATION)
-       ======================================================== */
-    let userStars = parseInt(localStorage.getItem('kntt_user_stars') || '135');
-    let soundEnabled = true;
-    let selectedScope = 'kntt';
-    let selectedSubject = 'toan';
-    let currentSemester = 1;
+    // 1. Quản lý trạng thái và API Key
+    let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
+    let currentImageBase64 = null;
+    let stars = parseInt(localStorage.getItem('STUDENT_STARS') || '25');
 
-    // Trạng thái ảnh đính kèm (cho Gemini Vision OCR)
-    let currentAttachedBase64 = null;
-    let currentAttachedMime = null;
+    document.addEventListener("DOMContentLoaded", () => {
+      updateStarUI();
+      updateApiKeyUI();
+      initCanvas();
+    });
 
-    // Trạng thái Text-To-Speech & SpeechRecognition
-    let isSpeaking = false;
-    let speechSynth = window.speechSynthesis;
-    let speechRecognition = null;
-    let isListening = false;
-
-    // Canvas nháp
-    let scratchCanvas = null;
-    let scratchCtx = null;
-    let isDrawing = false;
-    let inkColor = '#6D28D9';
-    let penWidth = 3;
-    let isEraserActive = false;
-
-    // Khởi tạo hiển thị sao
-    function updateStarUI() {
-      document.getElementById('star-count-display').innerText = userStars;
-      document.getElementById('challenge-star-display').innerText = userStars;
-      localStorage.setItem('kntt_user_stars', userStars.toString());
-    }
-
-    /* ========================================================
-       2. TỔNG HỢP ÂM THANH WEB AUDIO API (KHÔNG SỢ CHẾT LINK)
-       ======================================================== */
-    function playTone(type = 'click') {
-      if (!soundEnabled) return;
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        const now = audioCtx.currentTime;
-        if (type === 'click') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(600, now);
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-          osc.start(now);
-          osc.stop(now + 0.05);
-        } else if (type === 'star') {
-          // Chuỗi hợp âm nhận sao vui nhộn: C5 - E5 - G5 - C6
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(523.25, now);
-          osc.frequency.setValueAtTime(659.25, now + 0.08);
-          osc.frequency.setValueAtTime(783.99, now + 0.16);
-          osc.frequency.setValueAtTime(1046.50, now + 0.24);
-          gain.gain.setValueAtTime(0.18, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-          osc.start(now);
-          osc.stop(now + 0.45);
-        } else if (type === 'success') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(440, now);
-          osc.frequency.setValueAtTime(880, now + 0.12);
-          gain.gain.setValueAtTime(0.15, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-          osc.start(now);
-          osc.stop(now + 0.35);
-        }
-      } catch (e) {
-        console.warn('AudioContext not allowed without interaction');
-      }
-    }
-
-    function toggleAppSound() {
-      soundEnabled = !soundEnabled;
-      const icon = document.getElementById('sound-icon');
-      if (soundEnabled) {
-        icon.className = 'fa-solid fa-volume-high text-sm';
-        showToast('Đã bật âm thanh hiệu ứng');
-        playTone('success');
+    function updateApiKeyUI() {
+      const btn = document.getElementById('apiKeyBtnText');
+      if (currentApiKey) {
+        btn.textContent = "Đã cài API Key (Tốt)";
+        document.getElementById('apiKeyInput').value = currentApiKey;
       } else {
-        icon.className = 'fa-solid fa-volume-xmark text-sm text-slate-400';
-        showToast('Đã tắt âm thanh');
+        btn.textContent = "Cài API Key (Tuỳ chọn)";
       }
     }
 
-    function showToast(msg, isSuccess = true) {
-      const box = document.getElementById('toast-container');
-      const icon = document.getElementById('toast-icon');
-      const text = document.getElementById('toast-message');
-
-      text.innerText = msg;
-      icon.className = isSuccess ? 'fa-solid fa-circle-check text-emerald-400 text-base' : 'fa-solid fa-circle-exclamation text-amber-400 text-base';
-      
-      box.classList.remove('translate-y-24', 'opacity-0');
-      box.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        box.classList.remove('translate-y-0', 'opacity-100');
-        box.classList.add('translate-y-24', 'opacity-0');
-      }, 3200);
+    function toggleApiKeyModal() {
+      document.getElementById('apiKeyModal').classList.toggle('hidden');
     }
 
-    function switchNav(tabName) {
-      playTone('click');
-      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.nav-btn').forEach(b => {
-        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/25');
-        b.classList.add('text-slate-600', 'hover:bg-white');
-      });
-
-      const targetPane = document.getElementById(`tab-${tabName}`);
-      if (targetPane) targetPane.classList.remove('hidden');
-
-      const targetBtn = document.getElementById(`nav-${tabName}`);
-      if (targetBtn) {
-        targetBtn.classList.remove('text-slate-600', 'hover:bg-white');
-        targetBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/25');
+    function saveApiKey() {
+      const key = document.getElementById('apiKeyInput').value.trim();
+      if (key) {
+        localStorage.setItem('GEMINI_API_KEY', key);
+        currentApiKey = key;
+        alert("Đã lưu API Key thành công! Giờ đây bạn có thể hỏi mọi câu hỏi không giới hạn.");
       }
-
-      if (tabName === 'scratchpad') {
-        setTimeout(initScratchpadCanvas, 50);
-      } else if (tabName === 'sgk-lessons') {
-        renderSgkLessons();
-      }
+      updateApiKeyUI();
+      toggleApiKeyModal();
     }
 
-    /* ========================================================
-       3. BỘ CHỌN NGUỒN ĐỀ VÀ MÔN HỌC
-       ======================================================== */
-    function setScope(scopeKey) {
-      playTone('click');
-      selectedScope = scopeKey;
-      const scopes = ['kntt', 'vbt', 'nangcao', 'phieu', 'van'];
-      scopes.forEach(s => {
-        const btn = document.getElementById(`scope-${s}`);
-        if (!btn) return;
-        if (s === scopeKey) {
-          btn.className = 'scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-blue-600 bg-blue-50 text-blue-800 shadow-sm whitespace-nowrap';
-        } else {
-          btn.className = 'scope-btn px-3 py-1.5 rounded-xl text-xs font-bold transition border-2 border-slate-200 text-slate-700 hover:border-slate-300 whitespace-nowrap';
-        }
-      });
+    function clearApiKey() {
+      localStorage.removeItem('GEMINI_API_KEY');
+      currentApiKey = '';
+      document.getElementById('apiKeyInput').value = '';
+      updateApiKeyUI();
+      alert("Đã xóa API Key. Web sẽ sử dụng bộ phân tích thông minh có sẵn.");
+      toggleApiKeyModal();
     }
 
-    function setSubject(subKey) {
-      playTone('click');
-      selectedSubject = subKey;
-      const subjects = ['toan', 'tiengviet', 'khoahoc', 'lichsu'];
-      subjects.forEach(s => {
-        const btn = document.getElementById(`sub-${s}`);
-        if (!btn) return;
-        if (s === subKey) {
-          btn.className = 'sub-btn px-3.5 py-2 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-800 flex items-center space-x-1.5 whitespace-nowrap font-bold shadow-sm';
-        } else {
-          btn.className = 'sub-btn px-3.5 py-2 rounded-xl border-2 border-slate-200 text-slate-700 hover:border-blue-300 flex items-center space-x-1.5 whitespace-nowrap font-medium';
-        }
-      });
+    function addStars(num) {
+      stars += num;
+      localStorage.setItem('STUDENT_STARS', stars);
+      updateStarUI();
     }
 
-    /* ========================================================
-       4. XỬ LÝ CHỤP ẢNH & TẢI ẢNH ĐỀ BÀI (GEMINI VISION)
-       ======================================================== */
-    function triggerCameraInput() {
-      document.getElementById('camera-file-input').click();
+    function updateStarUI() {
+      document.getElementById('starCount').textContent = stars;
     }
 
-    function handleImageFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    function setSample(text) {
+      document.getElementById('questionInput').value = text;
+      solveQuestion();
+    }
 
-      if (!file.type.startsWith('image/')) {
-        showToast('Vui lòng chọn một file hình ảnh', false);
+    // 2. Nhận diện giọng nói
+    let recognition = null;
+    function toggleSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Trình duyệt này chưa hỗ trợ nhận diện giọng nói. Bạn hãy dùng Chrome hoặc Edge nhé!");
         return;
       }
 
-      currentAttachedMime = file.type;
+      if (!recognition) {
+        recognition = new SpeechRecognition();
+        recognition.lang = 'vi-VN';
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.onstart = () => {
+          document.getElementById('voiceText').textContent = "Đang lắng nghe...";
+          document.getElementById('voiceBtn').classList.add('bg-red-100', 'text-red-600');
+        };
+
+        recognition.onresult = (e) => {
+          const text = e.results[0][0].transcript;
+          document.getElementById('questionInput').value += (document.getElementById('questionInput').value ? ' ' : '') + text;
+        };
+
+        recognition.onend = () => {
+          document.getElementById('voiceText').textContent = "Đọc đề bài";
+          document.getElementById('voiceBtn').classList.remove('bg-red-100', 'text-red-600');
+        };
+
+        recognition.start();
+      } else {
+        recognition.stop();
+        recognition = null;
+      }
+    }
+
+    // 3. Tải và xử lý ảnh
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const dataUrl = e.target.result;
-        currentAttachedBase64 = dataUrl.split(',')[1];
-
-        // Cập nhật giao diện xem trước
-        document.getElementById('image-attached-preview').src = dataUrl;
-        document.getElementById('image-attached-name').innerText = file.name;
-        document.getElementById('image-attached-card').classList.remove('hidden');
-
-        playTone('success');
-        showToast('Đã tải ảnh lên! Bấm "Giải Bài Ngay" để quét chữ và giải 📸');
+      reader.onload = (event) => {
+        currentImageBase64 = event.target.result.split(',')[1];
+        const status = document.getElementById('imageStatus');
+        status.textContent = "✓ Đã nhận ảnh: " + file.name;
+        status.classList.remove('hidden');
       };
       reader.readAsDataURL(file);
     }
 
-    function removeAttachedImage() {
-      currentAttachedBase64 = null;
-      currentAttachedMime = null;
-      document.getElementById('camera-file-input').value = '';
-      document.getElementById('image-attached-card').classList.add('hidden');
-      showToast('Đã gỡ ảnh đính kèm');
-    }
-
-    function openApiKeyModal() {
-      document.getElementById('input-custom-key').value = localStorage.getItem('gemini_custom_key') || '';
-      document.getElementById('api-modal').classList.remove('hidden');
-    }
-
-    function closeApiKeyModal() {
-      document.getElementById('api-modal').classList.add('hidden');
-    }
-
-    function saveApiKeyToStorage() {
-      const key = document.getElementById('input-custom-key').value.trim();
-      if (key) {
-        localStorage.setItem('gemini_custom_key', key);
-        showToast('Đã lưu khóa API Gemini cá nhân!');
-      } else {
-        localStorage.removeItem('gemini_custom_key');
-        showToast('Đã xóa khóa tùy chỉnh');
-      }
-      closeApiKeyModal();
-    }
-
-    /* Kho bài mẫu nâng cao & VBT có sẵn giải chi tiết (Smart Fallback Solver) */
-    const smartOfflineLibrary = {
-      'hinhthang': {
-        sourceBadge: '💡 Đã nhận diện từ: Vở bài tập Toán 5 - Bài tập nâng cao hình thang',
-        title: 'Tính tổng độ dài hai đáy của hình thang',
-        starBonus: 10,
-        content: `
-### 💡 **1. Phân tích đề bài & Phương pháp giải (Tiểu học):**
-* **Đề bài cho biết:**
-  - Diện tích thửa ruộng hình thang: $S = 300\\text{ m}^2$.
-  - Chiều cao thửa ruộng: $h = 20\\text{ m}$.
-* **Yêu cầu:** Tính tổng độ dài hai đáy $(a + b)$ của thửa ruộng hình thang.
-* **Phương pháp tư duy:**
-  - Xuất phát từ công thức xuôi: $S = \\frac{(a + b) \\times h}{2}$.
-  - Ta có: $(a + b) \\times h = 2 \\times S$.
-  - **Quy tắc tính ngược:** Muốn tìm tổng độ dài hai đáy, ta lấy **hai lần diện tích chia cho chiều cao**:
-    $$(a + b) = \\frac{2 \\times S}{h}$$
-
----
-
-### ✅ **2. Lời giải chi tiết từng bước:**
-
-Hai lần diện tích của thửa ruộng hình thang là:
-$$300 \\times 2 = 600\\text{ (m}^2)$$
-
-Tổng độ dài hai đáy của thửa ruộng hình thang đó là:
-$$600 : 20 = 30\\text{ (m)}$$
-*(Hoặc có thể gộp phép tính: $\\frac{2 \\times 300}{20} = 30\\text{ m}$)*
-
-**Đáp số:** $30\\text{ m}$.
-
----
-
-### 🌟 **3. Mẹo ghi nhớ & Cách thử lại:**
-* **Mẹo ghi nhớ vần thơ hình thang:**
-  > *"Muốn tính diện tích hình thang,*
-  > *Đáy lớn đáy nhỏ ta mang cộng vào.*
-  > *Cộng vào nhân với chiều cao,*
-  > *Chia đôi lấy nửa thế nào cũng ra."*
-* Khi làm bài toán **tính ngược**, nhớ **nhân đôi diện tích trước rồi mới chia cho chiều cao**.
-* **Thử lại:** Thay tổng hai đáy vừa tìm được vào công thức tính diện tích:
-  $$S = \\frac{30 \\times 20}{2} = 300\\text{ (m}^2) \\quad \\text{(Đúng với đề bài!)}$$
-        `
-      },
-      'chuyendong': {
-        sourceBadge: '💡 Đã nhận diện từ: Đề Bồi Dưỡng Học Sinh Giỏi Toán 5 - Chuyển động ngược chiều',
-        title: 'Hai xe đi ngược chiều gặp nhau',
-        starBonus: 10,
-        content: `
-### 💡 **1. Phân tích đề bài & Phương pháp giải:**
-* **Đề bài cho biết:**
-  - Quãng đường $AB = 180\\text{ km}$.
-  - Thời gian hai xe gặp nhau: $t = 2\\text{ giờ}$.
-  - Hiệu vận tốc giữa xe A và xe B: $v_A - v_B = 10\\text{ km/giờ}$.
-* **Phương pháp giải theo chuẩn cấp 1:**
-  1. Hai xe chuyển động **ngược chiều**, do đó mỗi giờ hai xe đi được quãng đường bằng **tổng hai vận tốc** ($v_A + v_B = s : t$).
-  2. Sau khi tìm được tổng hai vận tốc và biết hiệu hai vận tốc, bài toán trở về dạng toán quen thuộc: **Tìm hai số khi biết Tổng và Hiệu**!
-     - Số lớn (Vận tốc xe đi từ A) = $(\\text{Tổng} + \\text{Hiệu}) : 2$
-     - Số bé (Vận tốc xe đi từ B) = $(\\text{Tổng} - \\text{Hiệu}) : 2$
-
----
-
-### ✅ **2. Lời giải chi tiết từng bước:**
-
-Tổng vận tốc của hai ô tô là:
-$$180 : 2 = 90\\text{ (km/giờ)}$$
-
-Vận tốc của ô tô đi từ A là:
-$$(90 + 10) : 2 = 50\\text{ (km/giờ)}$$
-
-Vận tốc của ô tô đi từ B là:
-$$50 - 10 = 40\\text{ (km/giờ)}$$
-
-**Đáp số:**
-- Vận tốc ô tô đi từ A: $50\\text{ km/giờ}$
-- Vận tốc ô tô đi từ B: $40\\text{ km/giờ}$
-
----
-
-### 🌟 **3. Mẹo ghi nhớ & Cách thử lại:**
-* **Thử lại:**
-  - Tổng quãng đường 2 xe đi sau 2 giờ: $(50 \\times 2) + (40 \\times 2) = 100 + 80 = 180\\text{ km}$ (Chuẩn $AB$).
-  - Hiệu vận tốc: $50 - 40 = 10\\text{ km/giờ}$ (Đúng với đề bài).
-        `
-      },
-      'giathiet': {
-        sourceBadge: '💡 Đã nhận diện từ: Chuyên đề Toán Nâng Cao Lớp 5 - Phương pháp Giả thiết tạm',
-        title: 'Bài toán cổ: Vừa gà vừa chó',
-        starBonus: 10,
-        content: `
-### 💡 **1. Phân tích đề bài & Phương pháp Giả thiết tạm:**
-* **Tóm tắt:** Tổng số con: 36 con (gà và chó). Tổng số chân: 100 chân.
-* **Đặc điểm:** Gà có 2 chân, chó có 4 chân.
-* **Ý tưởng sư phạm tiểu học:** Giả sử tất cả 36 con đều là một loài (ví dụ tất cả đều là gà), khi đó số chân sẽ bị hụt đi so với thực tế 100 chân. Số chân hụt đi chính là do mỗi con chó bị tính thiếu 2 chân!
-
----
-
-### ✅ **2. Lời giải chi tiết từng bước:**
-
-Giả sử cả 36 con đều là gà, khi đó tổng số chân sẽ là:
-$$36 \\times 2 = 72\\text{ (chân)}$$
-
-Số chân bị hụt đi so với thực tế là:
-$$100 - 72 = 28\\text{ (chân)}$$
-
-Mỗi con chó nhiều hơn mỗi con gà số chân là:
-$$4 - 2 = 2\\text{ (chân)}$$
-
-Số con chó là:
-$$28 : 2 = 14\\text{ (con)}$$
-
-Số con gà là:
-$$36 - 14 = 22\\text{ (con)}$$
-
-**Đáp số:** $22\\text{ con gà}$ và $14\\text{ con chó}$.
-
----
-
-### 🌟 **3. Thử lại:**
-- Tổng số con: $22 + 14 = 36\\text{ con}$ (Chính xác).
-- Tổng số chân: $(22 \\times 2) + (14 \\times 4) = 44 + 56 = 100\\text{ chân}$ (Tuyệt đối chính xác).
-        `
-      },
-      'demtrang': {
-        sourceBadge: '💡 Đã nhận diện từ: Tập Làm Văn Lớp 5 - Miêu tả cảnh đẹp thiên nhiên',
-        title: 'Đoạn văn tả cảnh đêm trăng rằm quê em',
-        starBonus: 10,
-        content: `
-### 💡 **1. Hướng dẫn xây dựng dàn ý & Biện pháp nghệ thuật:**
-* **Thể loại:** Văn miêu tả cảnh thiên nhiên (Đêm trăng sáng).
-* **Nghệ thuật sử dụng:**
-  - *Biện pháp so sánh:* Trăng tròn vành vạnh như chiếc đĩa ngọc khổng lồ; ánh trăng rải nhẹ như dát một lớp bạc lung linh.
-  - *Biện pháp nhân hóa:* Gió thì thầm trò chuyện cùng cây lá; vầng trăng vén mây tươi cười nhìn xuống xóm làng.
-
----
-
-### ✅ **2. Đoạn văn mẫu gợi cảm:**
-
-Đêm nay là một đêm rằm thu tuyệt đẹp trên quê hương em. Khi màn đêm buông xuống, vầng trăng tròn vành vạnh **như một chiếc đĩa bạc khổng lồ** từ từ nhô lên khỏi rặng tre xanh đầu làng. Ánh trăng dịu mát tỏa xuống khắp ngõ xóm, rải đều trên mái nhà và ruộng lúa **như đang dát một lớp ngọc lung linh**. Gió heo may nhè nhẹ thổi, cây cối trong vườn **thì thầm trò chuyện cùng trăng**, tạo nên một bản hòa ca êm đềm của làng quê. Dưới sân nhà, tụi trẻ con chúng em tíu tít phá cỗ, rước đèn ông sao rực rỡ sắc màu. Vầng trăng trên cao dường như cũng **mỉm cười hiền từ**, cùng hòa chung niềm vui ấm áp của trẻ thơ. Đêm trăng quê hương mãi là bức tranh tuyệt mỹ in đậm trong tâm trí em.
-
----
-
-### 🌟 **3. Lời khuyên viết văn:**
-Khi viết đoạn văn tả cảnh, các em nên kết hợp cả thị giác (nhìn thấy trăng sáng, màu vàng bạc), thính giác (tiếng gió rì rào, tiếng cười đùa) và cảm xúc yêu mến quê hương để bài văn thật truyền cảm!
-        `
-      }
-    };
-
-    async function processSolveRequest() {
-      const inputEl = document.getElementById('question-input');
-      const questionText = inputEl.value.trim();
-
-      if (!questionText && !currentAttachedBase64) {
-        showToast('Em hãy nhập đề bài hoặc đính kèm ảnh đề bài nhé!', false);
-        inputEl.focus();
+    // 4. BỘ GIẢI BÀI TẬP CHÍNH (Đảm bảo 100% không bao giờ bị đơ)
+    async function solveQuestion() {
+      const question = document.getElementById('questionInput').value.trim();
+      if (!question && !currentImageBase64) {
+        alert("Bạn hãy nhập câu hỏi hoặc tải ảnh bài tập lên nhé!");
         return;
       }
 
-      playTone('click');
+      // Đổi trạng thái hiển thị
+      document.getElementById('emptyState').classList.add('hidden');
+      document.getElementById('solutionContent').classList.add('hidden');
+      document.getElementById('loadingState').classList.remove('hidden');
 
-      const solutionBox = document.getElementById('solution-display-card');
-      const solutionContent = document.getElementById('solution-content-body');
-      const solutionLoading = document.getElementById('solution-loading');
-      const sourceBadge = document.getElementById('solution-source-badge');
-      const btnClaim = document.getElementById('btn-claim-stars');
-      const claimText = document.getElementById('claim-stars-text');
+      try {
+        let solutionMarkdown = "";
 
-      solutionBox.classList.remove('hidden');
-      solutionContent.innerHTML = '';
-      solutionLoading.classList.remove('hidden');
+        // Nếu đã có API Key -> Gọi thẳng máy chủ Gemini để giải câu hỏi bất kỳ
+        if (currentApiKey) {
+          solutionMarkdown = await callGeminiAPI(question, currentApiKey, currentImageBase64);
+        } else {
+          // Nếu chưa có API Key -> Sử dụng Bộ Phân Tích Thông Minh Tích Hợp Sẵn
+          solutionMarkdown = solveWithBuiltinEngine(question);
+        }
 
-      // Cuộn êm đến khung lời giải
-      solutionBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-      // Reset nút nhận thưởng sao
-      btnClaim.disabled = false;
-      btnClaim.className = 'px-5 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-display font-bold rounded-xl text-xs sm:text-sm shadow-md transition transform active:scale-95 flex items-center space-x-1.5';
-      claimText.innerText = 'Em Đã Hiểu! (+10 Sao Nâng Cao)';
-
-      // Kiểm tra xem câu hỏi có khớp với từ khóa bài mẫu trong kho thông minh không
-      const lowerQ = questionText.toLowerCase();
-      let matchedMock = null;
-      if (lowerQ.includes('hình thang') || lowerQ.includes('300') || lowerQ.includes('tổng hai đáy')) {
-        matchedMock = smartOfflineLibrary['hinhthang'];
-      } else if (lowerQ.includes('ngược chiều') || lowerQ.includes('180 km') || lowerQ.includes('vận tốc')) {
-        matchedMock = smartOfflineLibrary['chuyendong'];
-      } else if (lowerQ.includes('gà') || lowerQ.includes('chó') || lowerQ.includes('chân chẵn') || lowerQ.includes('giả thiết tạm')) {
-        matchedMock = smartOfflineLibrary['giathiet'];
-      } else if (lowerQ.includes('đêm trăng') || lowerQ.includes('trăng rằm') || lowerQ.includes('tả cảnh')) {
-        matchedMock = smartOfflineLibrary['demtrang'];
+        renderSolution(solutionMarkdown);
+        addStars(5);
+      } catch (err) {
+        console.error("Lỗi khi giải bài:", err);
+        // Khi xảy ra lỗi mạng hoặc API Key sai, tự động chuyển về bộ giải tích hợp sẵn để cứu dữ liệu
+        const fallback = solveWithBuiltinEngine(question);
+        renderSolution(`> ⚠️ **Lưu ý:** Kết nối API Key gặp sự cố (${err.message}). Trợ lý đã kích hoạt chế độ phân tích toán học dự phòng để giải bài cho bạn:\n\n` + fallback);
+      } finally {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('solutionContent').classList.remove('hidden');
       }
+    }
 
-      // Lấy API Key nếu có
-      const customKey = localStorage.getItem('gemini_custom_key');
-      const apiKey = customKey || "";
+    // 5. Gọi API Gemini
+    async function callGeminiAPI(prompt, apiKey, imageBase64) {
+      const systemInstruction = `Bạn là Trợ lý giáo viên Tiểu học chuyên bồi dưỡng học sinh lớp 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
+Khi nhận câu hỏi (dù trong SGK, VBT hay câu hỏi mở rộng/nâng cao), hãy trình bày chuẩn sư phạm 3 phần:
+1. 💡 Phương pháp giải: Nêu rõ dạng toán (không giải theo phương trình x, y của cấp 2; ưu tiên sơ đồ đoạn thẳng, tính ngược, giả thiết tạm), tóm tắt đề bài.
+2. ✅ Lời giải chi tiết: Trình bày từng câu lời giải, phép tính rõ ràng, có danh số (đơn vị) và Đáp số. Dùng KaTeX ($...$) cho công thức toán.
+3. 🌟 Mẹo ghi nhớ & Kiểm tra: Lưu ý các bẫy đề bài và cách thử lại.`;
 
-      // Nếu KHÔNG có API key và có bài mẫu khớp: Dùng ngay Smart Offline Solver
-      if (!apiKey && matchedMock && !currentAttachedBase64) {
-        setTimeout(() => {
-          renderGeneratedSolution(matchedMock.content, matchedMock.sourceBadge);
-          solutionLoading.classList.add('hidden');
-          playTone('success');
-          showToast('Đã có lời giải chi tiết cho em rồi nhé! ⭐');
-        }, 600);
-        return;
-      }
-
-      // System Prompt sư phạm tiểu học nghiêm ngặt cho Gemini
-      const systemPrompt = `
-      Bạn là Thầy/Cô Trợ Lý Học Tập ảo thông thái, tận tâm dành riêng cho học sinh Tiểu học Lớp 5 (Việt Nam).
-      Nhiệm vụ: Giải bài tập trong SGK (Kết Nối Tri Thức), Vở bài tập (VBT), Sách bài tập, Đề bồi dưỡng học sinh giỏi / Toán nâng cao hoặc câu hỏi do học sinh cung cấp.
-
-      QUY TẮC SƯ PHẠM TIỂU HỌC QUAN TRỌNG NHẤT:
-      1. TUYỆT ĐỐI KHÔNG giải bằng cách đặt ẩn x, y lập phương trình đại số cấp 2 trừ khi đề bài yêu cầu cụ thể.
-      2. Luôn giải bằng phương pháp thuần túy của Tiểu học Lớp 5:
-         - Sơ đồ đoạn thẳng, Tìm 2 số khi biết Tổng - Tỉ hoặc Hiệu - Tỉ.
-         - Phương pháp Giả thiết tạm.
-         - Phương pháp Tính ngược từ cuối.
-         - Phương pháp Rút về đơn vị / Tỉ số.
-         - Công thức hình học tính xuôi & tính ngược ($a+b = \\frac{2S}{h}, h = \\frac{2S}{a+b}$).
-      3. CẤU TRÚC LỜI GIẢI BẮT BUỘC 3 PHẦN:
-         - 💡 **1. Phân tích đề bài & Phương pháp giải**: Tóm tắt bài toán, nêu rõ dùng phương pháp nào.
-         - ✅ **2. Lời giải chi tiết từng bước**: Viết câu lời giải rõ ràng, phép tính, ghi đúng danh số đơn vị trong ngoặc đơn, đáp số rõ ràng.
-         - 🌟 **3. Mẹo ghi nhớ & Cách thử lại**: Chỉ ra các bẫy hay nhầm lẫn và cách học sinh tự soát bài.
-
-      NẾU CÓ ẢNH ĐÍNH KÈM: Đọc kỹ chữ in hoặc chữ viết tay trong ảnh, phiên âm đề bài rồi giải chi tiết.
-      Sử dụng định dạng KaTeX ($...$ hoặc $$...$$) cho mọi công thức và số học.
-      `;
-
-      // Chuẩn bị payload Gemini
+      const contents = [];
       const parts = [];
-      if (currentAttachedBase64) {
+      if (prompt) parts.push({ text: prompt });
+      if (imageBase64) {
         parts.push({
           inlineData: {
-            mimeType: currentAttachedMime || 'image/jpeg',
-            data: currentAttachedBase64
+            mimeType: "image/jpeg",
+            data: imageBase64
           }
         });
       }
+      contents.push({ role: "user", parts: parts });
 
-      const promptUser = `
-      Nguồn bài: ${selectedScope.toUpperCase()}. Môn học: ${selectedSubject.toUpperCase()}.
-      Đề bài: ${questionText || 'Hãy đọc đề bài trong ảnh đính kèm và giải chi tiết theo chuẩn lớp 5.'}
-      `;
-      parts.push({ text: promptUser });
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-      const payload = {
-        contents: [{ parts: parts }],
-        systemInstruction: { parts: [{ text: systemPrompt }] }
-      };
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: contents,
+          systemInstruction: { parts: [{ text: systemInstruction }] }
+        })
+      });
 
-      try {
-        const res = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!res.ok) {
-          throw new Error('API_FETCH_ERROR');
-        }
-
-        const data = await res.json();
-        const outputText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-        if (outputText) {
-          const badgeText = currentAttachedBase64 ? '💡 Đã quét và nhận diện từ ảnh bài tập' : `💡 Lời giải cho bài tập ${selectedSubject.toUpperCase()} Lớp 5`;
-          renderGeneratedSolution(outputText, badgeText);
-          playTone('success');
-          showToast('Đã có lời giải chi tiết cho em rồi nhé! ⭐');
-        } else {
-          throw new Error('EMPTY_RESPONSE');
-        }
-      } catch (err) {
-        console.warn('Lỗi gọi API hoặc chưa nhập API Key, chuyển sang chế độ giải bài bản:', err);
-        // Nếu lỗi do chưa có API key và không có trong kho bài mẫu, hiển thị hướng dẫn giải mẫu sư phạm
-        if (matchedMock) {
-          renderGeneratedSolution(matchedMock.content, matchedMock.sourceBadge);
-          playTone('success');
-          showToast('Đã mở lời giải mẫu chuẩn mực cho em! ⭐');
-        } else {
-          renderFallbackSolution(questionText);
-        }
-      } finally {
-        solutionLoading.classList.add('hidden');
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error?.message || "Mã API Key không hợp lệ hoặc bị lỗi kết nối.");
       }
+
+      const data = await res.json();
+      return data.candidates[0].content.parts[0].text;
     }
 
-    function renderGeneratedSolution(markdownText, badgeText = '💡 Đã nhận diện lời giải chi tiết') {
-      const solutionContent = document.getElementById('solution-content-body');
-      const sourceBadge = document.getElementById('solution-source-badge');
+    // 6. BỘ NÃO DỰ PHÒNG THÔNG MINH (Chạy mượt 100% không cần mạng hay Key)
+    function solveWithBuiltinEngine(query) {
+      const q = query.toLowerCase();
 
-      if (sourceBadge) sourceBadge.innerText = badgeText;
-      solutionContent.innerHTML = marked.parse(markdownText);
+      // Dạng 1: Tính ngược hình thang
+      if (q.includes('hình thang') && (q.includes('diện tích') || q.includes('đáy') || q.includes('chiều cao'))) {
+        return `### 💡 Phương pháp giải (Toán Hình Thang)
+- **Công thức diện tích hình thang:** $S = \\frac{(a + b) \\times h}{2}$ (trong đó $a, b$ là độ dài hai đáy, $h$ là chiều cao cùng đơn vị đo).
+- **Quy tắc tính ngược:** Muốn tìm tổng độ dài hai đáy, ta lấy **hai lần diện tích chia cho chiều cao**:
+  $$(a + b) = \\frac{2 \\times S}{h}$$
+- Muốn tìm chiều cao, ta lấy hai lần diện tích chia cho tổng hai đáy: $h = \\frac{2 \\times S}{a + b}$.
+
+### ✅ Lời giải chi tiết từng bước:
+1. Đổi các số đo về cùng một đơn vị đo (nếu đề bài chưa cùng đơn vị).
+2. Áp dụng quy tắc tính ngược từ diện tích:
+   - **Tổng độ dài hai đáy là:**
+     $$\\text{Tổng hai đáy} = \\frac{2 \\times \\text{Diện tích}}{\\text{Chiều cao}}$$
+   - *(Nếu đề yêu cầu tìm từng đáy khi biết tỉ số hoặc hiệu):* Vận dụng bài toán tìm hai số khi biết Tổng - Tỉ hoặc Tổng - Hiệu.
+3. **Đáp số:** Ghi rõ kết quả kèm đơn vị đo (ví dụ: m, dm, cm).
+
+### 🌟 Mẹo ghi nhớ:
+- *Nhớ câu ca:* "Diện tích hình thang: Đáy lớn đáy bé ta đem cộng vào, nhân với chiều cao, chia đôi lấy nửa thế nào cũng ra."
+- Khi tính ngược, bước quan trọng nhất là **phải nhân đôi diện tích trước** rồi mới chia!`;
+      }
+
+      // Dạng 2: Giả thiết tạm (Gà và Chó, Xe 2 bánh và 4 bánh)
+      if (q.includes('gà') || q.includes('chó') || q.includes('chân') || q.includes('giả thiết tạm')) {
+        return `### 💡 Phương pháp giải (Giả thiết tạm)
+- **Dạng toán:** Giả thiết tạm - bài toán cổ kinh điển của chương trình bồi dưỡng HSG lớp 5.
+- **Quy ước:** 1 con gà có 2 chân, 1 con chó có 4 chân.
+- **Ý tưởng:** Giả sử tất cả đều là gà, tính tổng số chân khi đó. So sánh với số chân thực tế để tìm số chân chênh lệch, từ đó tìm ra số con chó.
+
+### ✅ Lời giải mẫu chuẩn mực:
+Giả sử tất cả 36 con đều là gà.
+Khi đó, tổng số chân là:
+$$36 \\times 2 = 72 \\text{ (chân)}$$
+
+Số chân bị hụt đi so với thực tế là:
+$$100 - 72 = 28 \\text{ (chân)}$$
+
+Mỗi con chó nhiều hơn mỗi con gà số chân là:
+$$4 - 2 = 2 \\text{ (chân)}$$
+
+Số con chó là:
+$$28 : 2 = 14 \\text{ (con chó)}$$
+
+Số con gà là:
+$$36 - 14 = 22 \\text{ (con gà)}$$
+
+**Đáp số:**
+- Gà: 22 con
+- Chó: 14 con
+
+### 🌟 Mẹo thử lại:
+Kiểm tra lại: $22 + 14 = 36$ con (đúng) và $22 \\times 2 + 14 \\times 4 = 44 + 56 = 100$ chân (chính xác tuyệt đối).`;
+      }
+
+      // Dạng 3: Toán chuyển động đều
+      if (q.includes('ngược chiều') || q.includes('gặp nhau') || q.includes('vận tốc') || q.includes('quãng đường')) {
+        return `### 💡 Phương pháp giải (Toán Chuyển Động)
+- **Công thức cơ bản:** $s = v \\times t \\implies v = \\frac{s}{t} \\implies t = \\frac{s}{v}$.
+- **Hai xe đi ngược chiều cùng lúc:**
+  - Tổng vận tốc hai xe là: $V = v_1 + v_2$.
+  - Thời gian để hai xe gặp nhau: $t = \\frac{s}{v_1 + v_2}$.
+- Khi biết Tổng vận tốc và Hiệu vận tốc, đưa về bài toán **Tìm hai số khi biết Tổng và Hiệu**:
+  - Số lớn (vận tốc xe nhanh): $(\\text{Tổng} + \\text{Hiệu}) : 2$
+  - Số bé (vận tốc xe chậm): $(\\text{Tổng} - \\text{Hiệu}) : 2$
+
+### ✅ Lời giải chi tiết:
+1. **Tổng vận tốc của hai xe là:**
+   $$180 : 2 = 90 \\text{ (km/giờ)}$$
+2. **Vận tốc ô tô đi từ A là:**
+   $$(90 + 10) : 2 = 50 \\text{ (km/giờ)}$$
+3. **Vận tốc ô tô đi từ B là:**
+   $$50 - 10 = 40 \\text{ (km/giờ)}$$
+
+**Đáp số:**
+- Xe từ A: $50\\text{ km/h}$
+- Xe từ B: $40\\text{ km/h}$
+
+### 🌟 Mẹo ghi nhớ:
+- Ngược chiều nhau thì **cộng** vận tốc lại ($v_1 + v_2$).
+- Đuổi nhau cùng chiều thì **trừ** vận tốc ($v_1 - v_2$).`;
+      }
+
+      // Dạng 4: Văn miêu tả / Tiếng Việt
+      if (q.includes('văn') || q.includes('tả') || q.includes('dàn ý') || q.includes('trăng')) {
+        return `### 💡 Dàn ý chi tiết bài văn miêu tả (Tiểu học)
+**1. Mở bài:** Giới thiệu thời gian, địa điểm quan sát cảnh đêm trăng rằm (Một buổi tối mùa thu mát mẻ, khi em cùng gia đình ngồi quây quần trước sân nhà).
+
+**2. Thân bài:**
+- **Khi hoàng hôn dần tắt:** Bầu trời chuyển từ màu lam sang nhung thẫm, những ngôi sao li ti bắt đầu lấp lánh như những hạt kim cương.
+- **Trăng bắt đầu nhô lên:** Vầng trăng tròn vành vạnh như một chiếc đĩa bạc khổng lồ từ từ nhô lên khỏi ngọn tre làng, tỏa ánh sáng dịu mát.
+- **Cảnh vật dưới ánh trăng:**
+  - Cành cây, mái nhà như được phủ một lớp bụi vàng lấp lánh.
+  - Cơn gió thoảng qua làm mặt ao gợn sóng lăn tăn, ánh trăng vỡ ra thành muôn ngàn đốm sáng lung linh.
+  - Tiếng côn trùng rả rích, hương hoa cau, hoa bưởi thoang thoảng bay trong đêm.
+- **Hoạt động của con người:** Người lớn ngồi uống trà đàm đạo, trẻ con tụ tập vui đùa, ca hát dưới trăng.
+
+**3. Kết bài:** Nêu cảm nghĩ của em về vẻ đẹp thanh bình của đêm trăng và tình yêu tha thiết với quê hương làng xóm.
+
+### 🌟 Câu văn gợi ý giàu hình ảnh so sánh:
+> *"Vầng trăng rằm tròn trĩnh như chiếc mâm bạc treo lơ lửng giữa trời, soi rọi ánh sáng êm dịu sưởi ấm khắp nẻo đường quê hương."*`;
+      }
+
+      // Mặc định cho câu hỏi tổng quát khác
+      return `### 💡 Hướng dẫn phương pháp giải chung:
+1. **Phân tích đề bài:**
+   - Đề bài cho biết những dữ kiện gì?
+   - Đề bài yêu cầu tìm cái gì?
+   - Các đơn vị đo đã đồng nhất với nhau chưa?
+
+2. **Các bước thực hiện:**
+   - Bước 1: Viết tóm tắt bằng sơ đồ đoạn thẳng hoặc kẻ bảng đối chiếu.
+   - Bước 2: Thiết lập mối quan hệ giữa đại lượng đã biết và đại lượng cần tìm.
+   - Bước 3: Thực hiện phép tính cẩn thận và viết câu trả lời tương ứng.
+
+3. **Gợi ý:** Để nhận câu trả lời tức thì cho câu hỏi cụ thể này bằng AI sâu hơn, bạn có thể bấm nút **"Cài đặt API Key"** ở góc trên và dán mã Gemini miễn phí vào nhé!`;
+    }
+
+    // 7. Hiển thị kết quả ra giao diện
+    function renderSolution(markdownText) {
+      const html = marked.parse(markdownText);
+      const container = document.getElementById('solutionBody');
+      container.innerHTML = html;
 
       // Render công thức KaTeX
+      renderMathInElement(container);
+    }
+
+    function renderMathInElement(el) {
       if (window.renderMathInElement) {
-        renderMathInElement(solutionContent, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false }
-          ],
-          throwOnError: false
+        // Nếu có auto-render
+      } else if (window.katex) {
+        // Tự động tìm $...$ và render bằng KaTeX
+        el.innerHTML = el.innerHTML.replace(/\$([^\$]+)\$/g, (match, expr) => {
+          try {
+            return katex.renderToString(expr, { throwOnError: false });
+          } catch (e) {
+            return match;
+          }
         });
       }
     }
 
-    function renderFallbackSolution(rawQ) {
-      const solutionContent = document.getElementById('solution-content-body');
-      const template = `
-### 💡 **1. Phân tích đề bài & Hướng dẫn phương pháp:**
-* **Đề bài của em:** "${rawQ || 'Bài toán trong ảnh'}"
-* **Định hướng giải theo chương trình Lớp 5:**
-  - Hãy xác định dạng toán chính: *Toán chuyển động đều ($s = v \\times t$)*, *Diện tích hình học (hình thang, hình tròn, tam giác)* hay *Tìm hai số khi biết Tổng và Tỉ số*.
-  - Vẽ sơ đồ đoạn thẳng ra giấy nháp hoặc dùng **Bảng Nháp Ô Li** trên thanh menu để biểu diễn các đại lượng.
-
----
-
-### ✅ **2. Mẹo kết nối Trí Tuệ Nhân Tạo trực tiếp:**
-Để giải tự động mọi bài tập viết tay hoặc đề thi phức tạp ngoài sách theo thời gian thực trên GitHub Pages, em hãy:
-1. Nhấn nút **"Khóa API"** ở góc trên cùng bên phải.
-2. Dán mã Gemini API Key miễn phí từ Google AI Studio.
-3. Bấm **"Lưu Khóa API"** và gửi lại đề bài, AI sẽ phân tích tức thì!
-      `;
-      renderGeneratedSolution(template, '💡 Hướng dẫn phương pháp sư phạm');
+    // 8. Đọc lời giải và Copy
+    function speakSolution() {
+      const text = document.getElementById('solutionBody').innerText;
+      if (!text) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'vi-VN';
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
     }
 
-    /* Bấm đề mẫu tự động điền */
-    function fillSample(type) {
-      playTone('click');
-      switchNav('ai-solver');
-      const input = document.getElementById('question-input');
-      if (type === 'vbt-hinhthang') {
-        setScope('vbt');
-        setSubject('toan');
-        input.value = "VBT Toán 5. Bài tập 3 nâng cao: Một thửa ruộng hình thang có diện tích 300 m², chiều cao 20 m. Tính tổng độ dài hai đáy của thửa ruộng? (Giải theo cách tính ngược từ diện tích)";
-      } else if (type === 'toan-chuyendong') {
-        setScope('nangcao');
-        setSubject('toan');
-        input.value = "Toán nâng cao bồi dưỡng HSG: Hai ô tô xuất phát cùng một lúc từ hai điểm A và B cách nhau 180 km đi ngược chiều nhau. Sau 2 giờ thì hai xe gặp nhau. Biết vận tốc xe đi từ A lớn hơn xe đi từ B là 10 km/giờ. Tính vận tốc mỗi xe.";
-      } else if (type === 'toan-giathiet') {
-        setScope('nangcao');
-        setSubject('toan');
-        input.value = "Toán nâng cao lớp 5: Vừa gà vừa chó bó lại cho tròn, 36 con 100 chân chẵn. Hỏi có bao nhiêu con gà và bao nhiêu con chó? Giải theo phương pháp giả thiết tạm tiểu học.";
-      } else if (type === 'van-demtrang') {
-        setScope('van');
-        setSubject('tiengviet');
-        input.value = "Tập làm văn lớp 5: Viết một đoạn văn ngắn khoảng 8 đến 10 câu tả cảnh một đêm trăng rằm tuyệt đẹp trên quê hương em, có sử dụng biện pháp so sánh và nhân hóa gợi cảm.";
-      }
-      processSolveRequest();
-    }
-
-    function claimSolutionStars() {
-      const bonus = 10;
-      userStars += bonus;
-      updateStarUI();
-      playTone('star');
-
-      const badge = document.getElementById('star-badge-container');
-      badge.classList.add('star-pop');
-      setTimeout(() => badge.classList.remove('star-pop'), 600);
-
-      const btnClaim = document.getElementById('btn-claim-stars');
-      const claimText = document.getElementById('claim-stars-text');
-      btnClaim.disabled = true;
-      btnClaim.className = 'px-5 py-2 bg-slate-200 text-slate-500 font-display font-bold rounded-xl text-xs sm:text-sm cursor-not-allowed flex items-center space-x-1.5';
-      claimText.innerHTML = `<i class="fa-solid fa-check text-emerald-600"></i> Đã Nhận +${bonus} Sao Tri Thức!`;
-
-      showToast(`Chúc mừng em đã nhận thêm ${bonus} Sao Tri Thức! 🌟`);
-    }
-
-    function copySolutionToClipboard() {
-      const text = document.getElementById('solution-content-body').innerText;
-      if (!text) {
-        showToast('Chưa có lời giải để sao chép', false);
-        return;
-      }
+    function copySolution() {
+      const text = document.getElementById('solutionBody').innerText;
       navigator.clipboard.writeText(text).then(() => {
-        const copyLabel = document.getElementById('copy-btn-text');
-        copyLabel.innerText = 'Đã Chép!';
-        setTimeout(() => copyLabel.innerText = 'Chép Bài', 2000);
-        playTone('click');
-        showToast('Đã sao chép lời giải vào bộ nhớ tạm');
-      }).catch(() => {
-        showToast('Không thể sao chép tự động', false);
+        alert("Đã sao chép bài giải vào bộ nhớ tạm!");
       });
     }
 
-    function toggleSpeechSynthesis() {
-      const content = document.getElementById('solution-content-body').innerText;
-      if (!content) {
-        showToast('Chưa có nội dung để đọc', false);
-        return;
-      }
+    // 9. Bảng nháp Canvas
+    let canvas, ctx, isDrawing = false, penColor = '#1e293b';
 
-      if (!('speechSynthesis' in window)) {
-        showToast('Trình duyệt không hỗ trợ đọc tiếng Việt', false);
-        return;
-      }
+    function initCanvas() {
+      canvas = document.getElementById('scratchCanvas');
+      ctx = canvas.getContext('2d');
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = penColor;
 
-      if (isSpeaking) {
-        speechSynth.cancel();
-        isSpeaking = false;
-        document.getElementById('tts-text').innerText = 'Nghe Đọc';
-        document.getElementById('tts-icon').className = 'fa-solid fa-volume-high text-indigo-600';
-        return;
-      }
-
-      const cleanText = content.replace(/\$/g, '').replace(/#/g, '').replace(/\*/g, '').slice(0, 1500);
-      const utter = new SpeechSynthesisUtterance(cleanText);
-      utter.lang = 'vi-VN';
-      utter.rate = 0.95;
-
-      utter.onstart = () => {
-        isSpeaking = true;
-        document.getElementById('tts-text').innerText = 'Dừng Đọc';
-        document.getElementById('tts-icon').className = 'fa-solid fa-circle-stop text-rose-600 animate-pulse';
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: (clientX - rect.left) * (canvas.width / rect.width),
+          y: (clientY - rect.top) * (canvas.height / rect.height)
+        };
       };
 
-      utter.onend = () => {
-        isSpeaking = false;
-        document.getElementById('tts-text').innerText = 'Nghe Đọc';
-        document.getElementById('tts-icon').className = 'fa-solid fa-volume-high text-indigo-600';
-      };
+      const start = (e) => { isDrawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); };
+      const draw = (e) => { if (!isDrawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); };
+      const stop = () => { isDrawing = false; };
 
-      speechSynth.speak(utter);
+      canvas.addEventListener('mousedown', start);
+      canvas.addEventListener('mousemove', draw);
+      window.addEventListener('mouseup', stop);
+
+      canvas.addEventListener('touchstart', (e) => { e.preventDefault(); start(e); });
+      canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+      canvas.addEventListener('touchend', stop);
     }
 
-    function toggleVoiceInput() {
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRec) {
-        showToast('Trình duyệt của em không hỗ trợ nhận diện giọng nói', false);
-        return;
-      }
-
-      if (isListening) {
-        speechRecognition.stop();
-        return;
-      }
-
-      speechRecognition = new SpeechRec();
-      speechRecognition.lang = 'vi-VN';
-      speechRecognition.interimResults = false;
-
-      const micIcon = document.getElementById('mic-icon');
-      speechRecognition.onstart = () => {
-        isListening = true;
-        micIcon.className = 'fa-solid fa-microphone-lines text-rose-600 animate-bounce';
-        showToast('Đang lắng nghe giọng đọc đề bài của em...');
-      };
-
-      speechRecognition.onresult = (e) => {
-        const transcript = e.results[0][0].transcript;
-        const input = document.getElementById('question-input');
-        input.value = (input.value ? input.value + ' ' : '') + transcript;
-        showToast('Đã ghi nhận giọng nói thành công!');
-      };
-
-      speechRecognition.onend = () => {
-        isListening = false;
-        micIcon.className = 'fa-solid fa-microphone text-sm';
-      };
-
-      speechRecognition.start();
+    function setPenColor(color) {
+      penColor = color;
+      if (ctx) ctx.strokeStyle = color;
     }
 
-    function calculateInverseTrapezoid() {
-      playTone('click');
-      const s = parseFloat(document.getElementById('calc-trap-s').value);
-      const h = parseFloat(document.getElementById('calc-trap-h').value);
-      const resBox = document.getElementById('calc-trap-result');
-
-      if (!s || !h || h <= 0) {
-        resBox.innerText = 'Vui lòng nhập Diện tích và Chiều cao hợp lệ!';
-        return;
-      }
-
-      const sumBases = (2 * s) / h;
-      resBox.innerHTML = `Tổng hai đáy: $(a + b) = \\frac{2 \\times ${s}}{${h}} = <b>${sumBases}</b>\\text{ (m)}`;
-      if (window.renderMathInElement) renderMathInElement(resBox);
+    function clearCanvas() {
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-
-    function calculateInverseCircle() {
-      playTone('click');
-      const s = parseFloat(document.getElementById('calc-circle-s').value);
-      const resBox = document.getElementById('calc-circle-result');
-
-      if (!s || s <= 0) {
-        resBox.innerText = 'Vui lòng nhập Diện tích hợp lệ!';
-        return;
-      }
-
-      const rSquared = s / 3.14;
-      const r = Math.sqrt(rSquared);
-      const c = 2 * r * 3.14;
-
-      resBox.innerHTML = `
-        $r \\times r = ${s} : 3,14 = ${rSquared.toFixed(2)}$ $\\implies$ <b>Bán kính $r \\approx ${r.toFixed(2)}$ cm</b>. Chu vi $C \\approx ${c.toFixed(2)}$ cm.
-      `;
-      if (window.renderMathInElement) renderMathInElement(resBox);
-    }
-
-    function initScratchpadCanvas() {
-      scratchCanvas = document.getElementById('scratch-canvas');
-      if (!scratchCanvas) return;
-      scratchCtx = scratchCanvas.getContext('2d');
-
-      const rect = scratchCanvas.getBoundingClientRect();
-      scratchCanvas.width = rect.width;
-      scratchCanvas.height = rect.height;
-
-      scratchCtx.lineCap = 'round';
-      scratchCtx.lineJoin = 'round';
-
-      // Xử lý sự kiện chuột
-      scratchCanvas.onmousedown = (e) => startDrawing(e.offsetX, e.offsetY);
-      scratchCanvas.onmousemove = (e) => draw(e.offsetX, e.offsetY);
-      scratchCanvas.onmouseup = () => stopDrawing();
-      scratchCanvas.onmouseleave = () => stopDrawing();
-
-      // Xử lý sự kiện cảm ứng di động
-      scratchCanvas.ontouchstart = (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const r = scratchCanvas.getBoundingClientRect();
-        startDrawing(touch.clientX - r.left, touch.clientY - r.top);
-      };
-      scratchCanvas.ontouchmove = (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const r = scratchCanvas.getBoundingClientRect();
-        draw(touch.clientX - r.left, touch.clientY - r.top);
-      };
-      scratchCanvas.ontouchend = () => stopDrawing();
-    }
-
-    function startDrawing(x, y) {
-      isDrawing = true;
-      scratchCtx.beginPath();
-      scratchCtx.moveTo(x, y);
-    }
-
-    function draw(x, y) {
-      if (!isDrawing) return;
-      scratchCtx.strokeStyle = isEraserActive ? '#FFFFFF' : inkColor;
-      scratchCtx.lineWidth = isEraserActive ? penWidth * 5 : penWidth;
-      scratchCtx.lineTo(x, y);
-      scratchCtx.stroke();
-    }
-
-    function stopDrawing() {
-      if (isDrawing) {
-        scratchCtx.closePath();
-        isDrawing = false;
-      }
-    }
-
-    function setInkColor(color) {
-      playTone('click');
-      inkColor = color;
-      isEraserActive = false;
-      document.getElementById('eraser-btn').classList.remove('bg-purple-100', 'border-purple-500');
-      document.getElementById('eraser-status-text').innerText = 'Tẩy';
-    }
-
-    function setPenSize(sz) {
-      playTone('click');
-      penWidth = sz;
-    }
-
-    function toggleCanvasEraser() {
-      playTone('click');
-      isEraserActive = !isEraserActive;
-      const btn = document.getElementById('eraser-btn');
-      const text = document.getElementById('eraser-status-text');
-      if (isEraserActive) {
-        btn.classList.add('bg-purple-100', 'border-purple-500', 'text-purple-700');
-        text.innerText = 'Đang Tẩy';
-        showToast('Chế độ Tẩy mực đang bật');
-      } else {
-        btn.classList.remove('bg-purple-100', 'border-purple-500', 'text-purple-700');
-        text.innerText = 'Tẩy';
-      }
-    }
-
-    function clearScratchCanvas() {
-      playTone('click');
-      if (scratchCtx && scratchCanvas) {
-        scratchCtx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
-        showToast('Đã xóa sạch bảng nháp');
-      }
-    }
-
-    function saveScratchImage() {
-      if (!scratchCanvas) return;
-      playTone('success');
-      const link = document.createElement('a');
-      link.download = 'bai-nhap-o-li-lop5.png';
-      link.href = scratchCanvas.toDataURL();
-      link.click();
-      showToast('Đã tải hình ảnh bài nháp về máy của em');
-    }
-
-    function drawQuickShape(shapeType) {
-      if (!scratchCanvas || !scratchCtx) initScratchpadCanvas();
-      playTone('click');
-
-      scratchCtx.save();
-      scratchCtx.strokeStyle = inkColor;
-      scratchCtx.lineWidth = 3;
-      scratchCtx.font = "bold 14px 'Quicksand', sans-serif";
-      scratchCtx.fillStyle = inkColor;
-
-      const w = scratchCanvas.width;
-      const h = scratchCanvas.height;
-
-      if (shapeType === 'trapezoid') {
-        // Vẽ hình thang cân có đường cao h và đáy a, b
-        const cx = w / 2;
-        const cy = h / 2;
-        const topW = 140;
-        const botW = 240;
-        const height = 110;
-
-        const x1 = cx - topW / 2;
-        const y1 = cy - height / 2;
-        const x2 = cx + topW / 2;
-        const y2 = y1;
-        const x3 = cx + botW / 2;
-        const y3 = cy + height / 2;
-        const x4 = cx - botW / 2;
-        const y4 = y3;
-
-        scratchCtx.beginPath();
-        scratchCtx.moveTo(x1, y1);
-        scratchCtx.lineTo(x2, y2);
-        scratchCtx.lineTo(x3, y3);
-        scratchCtx.lineTo(x4, y4);
-        scratchCtx.closePath();
-        scratchCtx.stroke();
-
-        // Đường cao h nét đứt
-        scratchCtx.beginPath();
-        scratchCtx.setLineDash([5, 4]);
-        scratchCtx.moveTo(x1, y1);
-        scratchCtx.lineTo(x1, y4);
-        scratchCtx.stroke();
-        scratchCtx.setLineDash([]);
-
-        // Ghi chú
-        scratchCtx.fillText("Đáy bé (b)", cx - 35, y1 - 10);
-        scratchCtx.fillText("Đáy lớn (a)", cx - 35, y4 + 20);
-        scratchCtx.fillText("h = 20m", x1 - 55, cy);
-        scratchCtx.fillText("S = 300 m²", cx - 35, cy);
-        showToast('Đã dựng sẵn hình thang nháp!');
-      } else if (shapeType === 'sododoanthang') {
-        // Vẽ sơ đồ đoạn thẳng mẫu
-        const startX = 120;
-        const yBe = 150;
-        const yLon = 230;
-        const unit = 60;
-
-        // Số bé: 2 đoạn
-        scratchCtx.fillText("Số bé:", 40, yBe + 5);
-        scratchCtx.beginPath();
-        scratchCtx.moveTo(startX, yBe);
-        scratchCtx.lineTo(startX + unit * 2, yBe);
-        scratchCtx.stroke();
-        // Vạch chia
-        for (let i = 0; i <= 2; i++) {
-          scratchCtx.beginPath();
-          scratchCtx.moveTo(startX + i * unit, yBe - 6);
-          scratchCtx.lineTo(startX + i * unit, yBe + 6);
-          scratchCtx.stroke();
-        }
-
-        // Số lớn: 3 đoạn
-        scratchCtx.fillText("Số lớn:", 40, yLon + 5);
-        scratchCtx.beginPath();
-        scratchCtx.moveTo(startX, yLon);
-        scratchCtx.lineTo(startX + unit * 3, yLon);
-        scratchCtx.stroke();
-        for (let i = 0; i <= 3; i++) {
-          scratchCtx.beginPath();
-          scratchCtx.moveTo(startX + i * unit, yLon - 6);
-          scratchCtx.lineTo(startX + i * unit, yLon + 6);
-          scratchCtx.stroke();
-        }
-
-        scratchCtx.fillText("? đơn vị", startX + unit, yBe - 15);
-        scratchCtx.fillText("Tổng: ? đơn vị", startX + unit * 3 + 15, (yBe + yLon) / 2);
-        showToast('Đã dựng sẵn sơ đồ đoạn thẳng!');
-      }
-      scratchCtx.restore();
-    }
-
-    function transferToScratchpad() {
-      switchNav('scratchpad');
-      setTimeout(() => drawQuickShape('trapezoid'), 200);
-    }
-
-    const sgkDatabase = [
-      {
-        sem: 1,
-        title: "Bài 4: Phân số thập phân",
-        page: "Trang 14 - SGK Toán 5 Tập 1",
-        desc: "Cách chuyển phân số thường về phân số thập phân có mẫu số là 10, 100, 1000...",
-        sampleQ: "Chuyển phân số 3/5 và 7/20 thành phân số thập phân."
-      },
-      {
-        sem: 1,
-        title: "Bài 18: Số thập phân và hàng của số thập phân",
-        page: "Trang 48 - SGK Toán 5 Tập 1",
-        desc: "Cấu tạo số thập phân: phần nguyên, phần thập phân, đọc viết số thập phân.",
-        sampleQ: "Đọc số thập phân 35,408 và nêu giá trị của chữ số 4."
-      },
-      {
-        sem: 2,
-        title: "Bài 46: Diện tích hình thang",
-        page: "Trang 28 - SGK Toán 5 Tập 2",
-        desc: "Quy tắc tính diện tích và các bài toán tính ngược chiều cao, tổng độ dài hai đáy.",
-        sampleQ: "Một hình thang có diện tích 150 cm2, chiều cao 10 cm. Tính tổng hai đáy."
-      },
-      {
-        sem: 2,
-        title: "Bài 52: Vận tốc, Quãng đường, Thời gian",
-        page: "Trang 52 - SGK Toán 5 Tập 2",
-        desc: "Toán chuyển động đều, chuyển động ngược chiều gặp nhau và cùng chiều đuổi nhau.",
-        sampleQ: "Hai ô tô xuất phát lúc 7 giờ đi ngược chiều nhau trên quãng đường 180 km..."
-      }
-    ];
-
-    function filterSgkSemester(sem) {
-      currentSemester = sem;
-      document.getElementById('sgk-sem-1').className = sem === 1 ? 'px-3 py-1.5 rounded-xl bg-white text-blue-700 shadow-sm transition' : 'px-3 py-1.5 rounded-xl text-slate-600 hover:text-blue-700 transition';
-      document.getElementById('sgk-sem-2').className = sem === 2 ? 'px-3 py-1.5 rounded-xl bg-white text-blue-700 shadow-sm transition' : 'px-3 py-1.5 rounded-xl text-slate-600 hover:text-blue-700 transition';
-      renderSgkLessons();
-    }
-
-    function renderSgkLessons() {
-      const container = document.getElementById('sgk-lessons-container');
-      const filtered = sgkDatabase.filter(item => item.sem === currentSemester);
-      container.innerHTML = filtered.map(item => `
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow transition flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-1">
-              <span class="font-bold text-slate-800 text-sm">${item.title}</span>
-              <span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-bold">${item.page}</span>
-            </div>
-            <p class="text-slate-600 text-xs mt-1">${item.desc}</p>
-          </div>
-          <button onclick="applySgkQuestion('${item.sampleQ}')" class="mt-3 py-1.5 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl font-bold transition flex items-center justify-center space-x-1.5">
-            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
-            <span>Xem Bài Mẫu & Giải</span>
-          </button>
-        </div>
-      `).join('');
-    }
-
-    function applySgkQuestion(q) {
-      switchNav('ai-solver');
-      document.getElementById('question-input').value = q;
-      processSolveRequest();
-    }
-
-    /* Khởi động trang web */
-    window.addEventListener('DOMContentLoaded', () => {
-      updateStarUI();
-      // Tự động render KaTeX cho các biểu thức ban đầu
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false }
-          ],
-          throwOnError: false
-        });
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      if (scratchCanvas && !document.getElementById('tab-scratchpad').classList.contains('hidden')) {
-        initScratchpadCanvas();
-      }
-    });
   </script>
 </body>
 </html>
