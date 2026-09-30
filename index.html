@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trợ Lý Học Tập Lớp 5 - Kết Nối Tri Thức Với Cuộc Sống</title>
+  
+  <!-- Google Fonts: Quicksand (Thân thiện, tròn trịa cho tiểu học) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- KaTeX for beautiful math formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Marked.js for markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            toan: { DEFAULT: '#2563EB', light: '#EFF6FF', dark: '#1D4ED8' },
+            tiengviet: { DEFAULT: '#E11D48', light: '#FFF1F2', dark: '#BE123C' },
+            khoahoc: { DEFAULT: '#059669', light: '#ECFDF5', dark: '#047857' },
+            lichsu: { DEFAULT: '#D97706', light: '#FFFBEB', dark: '#B45309' },
+            tinhoc: { DEFAULT: '#7C3AED', light: '#F5F3FF', dark: '#6D28D9' },
+          },
+          animation: {
+            'bounce-slow': 'bounce 2.5s infinite',
+            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 8s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* Markdown Styling in AI Answer */
+    .prose-answer h1, .prose-answer h2, .prose-answer h3 {
+      font-weight: 700;
+      color: #1E293B;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-answer h2 {
+      font-size: 1.25rem;
+      border-bottom: 2px dashed #E2E8F0;
+      padding-bottom: 0.25rem;
+    }
+    .prose-answer p {
+      margin-bottom: 0.75rem;
+      line-height: 1.65;
+    }
+    .prose-answer ul, .prose-answer ol {
+      margin-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-answer ul { list-style-type: disc; }
+    .prose-answer ol { list-style-type: decimal; }
+    .prose-answer blockquote {
+      border-left: 4px solid #3B82F6;
+      background: #F8FAFC;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    .prose-answer strong {
+      color: #0F172A;
+    }
+
+    /* Star celebration animation */
+    @keyframes starPop {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .star-pop {
+      animation: starPop 0.5s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 min-h-screen text-slate-800 font-sans flex flex-col">
+
+  <!-- Header Bar -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-indigo-100 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('ai-helper')">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-orange-300/50 transform hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">Lớp 5 - KNTT</span>
+              <span class="text-xs font-semibold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Chuẩn 2018</span>
+            </div>
+            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-700 via-indigo-700 to-rose-600 bg-clip-text text-transparent">
+              Trợ Lý Học Tập Lớp 5
+            </h1>
+          </div>
+        </div>
+
+        <!-- Right Side: Star Counter & Quick Actions -->
+        <div class="flex items-center space-x-3 sm:space-x-5">
+          <!-- Star Gamification Badge -->
+          <div id="star-badge" class="flex items-center space-x-2 bg-gradient-to-r from-amber-100 to-yellow-100 border border-amber-300 px-3.5 py-1.5 rounded-full shadow-sm">
+            <i class="fa-solid fa-star text-amber-500 text-lg animate-bounce-slow"></i>
+            <span class="font-bold text-amber-800 text-sm sm:text-base" id="star-count">0</span>
+            <span class="text-xs text-amber-700 font-medium hidden sm:inline">Sao Tri Thức</span>
+          </div>
+
+          <!-- Sound Toggle -->
+          <button id="sound-btn" onclick="toggleSound()" title="Bật/Tắt âm thanh thông báo" class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+            <i class="fa-solid fa-volume-high" id="sound-icon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="bg-indigo-900/5 border-t border-slate-200/60 overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto px-4 flex space-x-2 sm:space-x-3 py-2 text-sm font-semibold">
+        <button onclick="switchTab('ai-helper')" id="nav-ai-helper" class="nav-btn px-4 py-2 rounded-xl flex items-center space-x-2 transition bg-blue-600 text-white shadow-md shadow-blue-500/30">
+          <i class="fa-solid fa-robot"></i>
+          <span class="whitespace-nowrap">Trợ Lý AI Giải Bài</span>
+        </button>
+        <button onclick="switchTab('sgk-index')" id="nav-sgk-index" class="nav-btn px-4 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white hover:shadow-sm">
+          <i class="fa-solid fa-book-open"></i>
+          <span class="whitespace-nowrap">Mục Lục & Bài Mẫu SGK</span>
+        </button>
+        <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn px-4 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white hover:shadow-sm">
+          <i class="fa-solid fa-bullseye"></i>
+          <span class="whitespace-nowrap">Luyện Bài Tương Tự</span>
+        </button>
+        <button onclick="switchTab('cheat-sheet')" id="nav-cheat-sheet" class="nav-btn px-4 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white hover:shadow-sm">
+          <i class="fa-solid fa-lightbulb"></i>
+          <span class="whitespace-nowrap">Sổ Tay Ghi Nhớ</span>
+        </button>
+        <button onclick="switchTab('scratchpad')" id="nav-scratchpad" class="nav-btn px-4 py-2 rounded-xl flex items-center space-x-2 transition text-slate-600 hover:bg-white hover:shadow-sm">
+          <i class="fa-solid fa-pen-fancy"></i>
+          <span class="whitespace-nowrap">Bảng Nháp Tính Toán</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: TRỢ LÝ AI GIẢI BÀI TẬP SGK -->
+    <!-- ========================================== -->
+    <section id="tab-ai-helper" class="tab-content block space-y-6">
+      
+      <!-- Subject Selection Badges -->
+      <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200">
+        <label class="block text-sm font-bold text-slate-700 mb-3">
+          <i class="fa-solid fa-filter mr-1.5 text-blue-500"></i>Chọn môn học để nhận lời giải chuẩn SGK Kết Nối Tri Thức:
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+          <button onclick="selectSubject('toan')" id="btn-sub-toan" class="sub-btn p-3 rounded-xl border-2 flex items-center space-x-2.5 text-left transition border-blue-600 bg-blue-50 text-blue-800 shadow-sm font-bold">
+            <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-calculator"></i></span>
+            <div>
+              <div class="text-sm font-bold">Toán 5</div>
+              <div class="text-[10px] text-blue-600 hidden sm:block">Số thập phân, Hình học, $s = v \times t$</div>
+            </div>
+          </button>
+          
+          <button onclick="selectSubject('tiengviet')" id="btn-sub-tiengviet" class="sub-btn p-3 rounded-xl border-2 flex items-center space-x-2.5 text-left transition border-slate-200 hover:border-rose-300 text-slate-700 font-semibold">
+            <span class="w-8 h-8 rounded-lg bg-rose-500 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-feather-pointed"></i></span>
+            <div>
+              <div class="text-sm font-bold">Tiếng Việt 5</div>
+              <div class="text-[10px] text-slate-500 hidden sm:block">Luyện từ và câu, Tập làm văn</div>
+            </div>
+          </button>
+
+          <button onclick="selectSubject('khoahoc')" id="btn-sub-khoahoc" class="sub-btn p-3 rounded-xl border-2 flex items-center space-x-2.5 text-left transition border-slate-200 hover:border-emerald-300 text-slate-700 font-semibold">
+            <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-leaf"></i></span>
+            <div>
+              <div class="text-sm font-bold">Khoa học 5</div>
+              <div class="text-[10px] text-slate-500 hidden sm:block">Năng lượng, Sinh vật & Môi trường</div>
+            </div>
+          </button>
+
+          <button onclick="selectSubject('lichsu')" id="btn-sub-lichsu" class="sub-btn p-3 rounded-xl border-2 flex items-center space-x-2.5 text-left transition border-slate-200 hover:border-amber-300 text-slate-700 font-semibold">
+            <span class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-landmark"></i></span>
+            <div>
+              <div class="text-sm font-bold">LS & ĐL 5</div>
+              <div class="text-[10px] text-slate-500 hidden sm:block">Địa lí VN, Các mốc lịch sử hào hùng</div>
+            </div>
+          </button>
+
+          <button onclick="selectSubject('tinhoc')" id="btn-sub-tinhoc" class="sub-btn p-3 rounded-xl border-2 flex items-center space-x-2.5 text-left transition border-slate-200 hover:border-purple-300 text-slate-700 font-semibold">
+            <span class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-laptop-code"></i></span>
+            <div>
+              <div class="text-sm font-bold">Tin học 5</div>
+              <div class="text-[10px] text-slate-500 hidden sm:block">Lập trình cơ bản, An toàn số</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Question Input Box -->
+      <div class="bg-white rounded-2xl shadow-md border border-slate-200/80 p-5 sm:p-6 transition hover:shadow-lg">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="text-sm font-bold text-slate-700">Trợ Lý AI Thân Thiện đang sẵn sàng</span>
+          </div>
+          <span class="text-xs text-slate-500 font-medium bg-slate-100 px-2.5 py-1 rounded-full">
+            <i class="fa-solid fa-shield-halved mr-1 text-blue-500"></i>Định hướng sư phạm tiểu học
+          </span>
+        </div>
+
+        <div class="relative">
+          <textarea id="ai-query-input" rows="4" 
+            placeholder="Nhập câu hỏi, số trang SGK hoặc đề bài của em... (Ví dụ: 'Giải bài 2 trang 35 SGK Toán 5 tập 1 Kết nối tri thức', hoặc 'Lập dàn ý bài văn tả cô giáo đang say sưa giảng bài')" 
+            class="w-full p-4 text-base border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition resize-none outline-none font-medium placeholder:text-slate-400 text-slate-800"></textarea>
+          
+          <!-- Quick Speech Input button (Web Speech API) -->
+          <button onclick="startVoiceInput()" id="mic-btn" type="button" title="Đọc đề bài bằng giọng nói" class="absolute bottom-3 right-3 text-slate-400 hover:text-rose-500 bg-slate-50 hover:bg-rose-50 p-2.5 rounded-xl border border-slate-200 transition">
+            <i class="fa-solid fa-microphone text-base" id="mic-icon"></i>
+          </button>
+        </div>
+
+        <!-- Quick Question Chips -->
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold text-slate-500"><i class="fa-regular fa-lightbulb text-amber-500 mr-1"></i>Câu hỏi gợi ý:</span>
+          <button onclick="setQuery('Giải bài 3 trang 24 SGK Toán 5 tập 1 Kết nối tri thức: Tìm hai số khi biết hiệu và tỉ số của hai số đó.')" class="text-xs bg-slate-100 hover:bg-blue-100 hover:text-blue-700 text-slate-700 px-3 py-1.5 rounded-lg transition font-medium">
+            📐 Toán: Bài 3 trang 24 (Hiệu - Tỉ số)
+          </button>
+          <button onclick="setQuery('Lập dàn ý chi tiết bài văn miêu tả cảnh một buổi sáng đẹp trời trên quê hương em (SGK Tiếng Việt 5 KNTT).')" class="text-xs bg-slate-100 hover:bg-rose-100 hover:text-rose-700 text-slate-700 px-3 py-1.5 rounded-lg transition font-medium">
+            ✍️ Tiếng Việt: Dàn ý tả cảnh quê hương
+          </button>
+          <button onclick="setQuery('Một người đi xe đạp với vận tốc 12 km/giờ trong 2 giờ 30 phút. Tính quãng đường người đó đã đi được.')" class="text-xs bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-700 px-3 py-1.5 rounded-lg transition font-medium">
+            🚴 Toán: Vận tốc - Quãng đường
+          </button>
+          <button onclick="setQuery('Giải thích vì sao nước lại có thể tồn tại ở 3 thể: rắn, lỏng, khí? Nêu vòng tuần hoàn của nước trong tự nhiên.')" class="text-xs bg-slate-100 hover:bg-teal-100 hover:text-teal-700 text-slate-700 px-3 py-1.5 rounded-lg transition font-medium">
+            💧 Khoa học: Vòng tuần hoàn của nước
+          </button>
+        </div>
+
+        <!-- Submit Button Row -->
+        <div class="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-slate-100">
+          <div class="text-xs text-slate-500 flex items-center space-x-2">
+            <i class="fa-solid fa-circle-info text-blue-500"></i>
+            <span>AI sẽ giải thích 3 phần: <b>Phương pháp giải</b> ➔ <b>Lời giải chi tiết</b> ➔ <b>Mẹo ghi nhớ</b></span>
+          </div>
+          <button onclick="askAI()" id="btn-submit-ai" class="px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition transform active:scale-95">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Giải Bài Ngay Nào!</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Solution Display Box (Hidden by default) -->
+      <div id="ai-solution-box" class="hidden bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden transition-all">
+        <!-- Solution Header -->
+        <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-4 sm:p-5 border-b border-indigo-100 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-400/40">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-800 text-base sm:text-lg flex items-center">
+                Lời Giải & Hướng Dẫn Của Thầy Cô AI
+              </h3>
+              <p class="text-xs text-slate-500">Phương pháp sư phạm chuẩn sách Kết Nối Tri Thức Lớp 5</p>
+            </div>
+          </div>
+          <!-- Action Buttons for Output -->
+          <div class="flex items-center space-x-2">
+            <button onclick="readAloudSolution()" id="tts-btn" title="Nghe đọc bài giải" class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 rounded-lg border border-slate-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
+              <i class="fa-solid fa-bullhorn text-indigo-600" id="tts-icon"></i>
+              <span id="tts-label">Nghe Đọc</span>
+            </button>
+            <button onclick="copySolution()" title="Sao chép lời giải" class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 rounded-lg border border-slate-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
+              <i class="fa-regular fa-copy text-blue-600"></i>
+              <span id="copy-label">Chép Bài</span>
+            </button>
+            <button onclick="generateSimilarFromCurrent()" title="Tạo bài tập tự luyện tương tự" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold flex items-center space-x-1.5 shadow-sm transition">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Luyện Bài Tương Tự</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Solution Content Area -->
+        <div class="p-6 sm:p-8">
+          <div id="ai-loading-state" class="hidden py-12 flex flex-col items-center justify-center space-y-4">
+            <div class="relative w-16 h-16">
+              <div class="absolute inset-0 rounded-full border-4 border-blue-200 border-t-blue-600 animate-spin"></div>
+              <div class="absolute inset-2 rounded-full bg-white flex items-center justify-center text-blue-600 font-bold text-xl">
+                <i class="fa-solid fa-brain animate-pulse"></i>
+              </div>
+            </div>
+            <p class="font-bold text-slate-700 text-base animate-pulse">Thầy cô AI đang suy nghĩ và tra cứu SGK Kết Nối Tri Thức 5...</p>
+            <p class="text-xs text-slate-400">Đang chuẩn bị phương pháp giải bước-bước dễ hiểu nhất cho em!</p>
+          </div>
+
+          <div id="ai-solution-text" class="prose-answer text-slate-700 text-base leading-relaxed">
+            <!-- Dynamic Content Injected here -->
+          </div>
+        </div>
+
+        <!-- Reward Banner at Bottom -->
+        <div class="bg-amber-50 p-4 border-t border-amber-200/80 flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-amber-800 text-xs sm:text-sm font-semibold">
+            <i class="fa-solid fa-award text-amber-500 text-lg"></i>
+            <span>Em đã hiểu bài chưa? Bấm "Đã hiểu" để nhận ngay 1 Sao Tri Thức nhé!</span>
+          </div>
+          <button onclick="awardStarForLearning()" id="btn-understood" class="px-4 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold shadow-sm transition transform active:scale-95 flex items-center space-x-1">
+            <i class="fa-solid fa-star"></i>
+            <span>Em Đã Hiểu! (+1 Sao)</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: MỤC LỤC & BÀI GIẢI MẪU SGK LỚP 5 -->
+    <!-- ========================================== -->
+    <section id="tab-sgk-index" class="tab-content hidden space-y-6">
+      
+      <!-- Sub-tab Navigation (Tập 1 / Tập 2 & Môn) -->
+      <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+            <span class="p-2 bg-indigo-100 text-indigo-700 rounded-xl"><i class="fa-solid fa-book-bookmark"></i></span>
+            <span>Mục Lục Bài Học Trọng Tâm - SGK Lớp 5</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Trọn bộ bài giảng và lời giải mẫu chuẩn chương trình Kết Nối Tri Thức Với Cuộc Sống</p>
+        </div>
+
+        <!-- Semester Filter -->
+        <div class="flex items-center space-x-2 bg-slate-100 p-1.5 rounded-xl text-xs font-bold self-start md:self-auto">
+          <button onclick="filterSemester(1)" id="sem-1-btn" class="px-4 py-2 rounded-lg bg-white text-indigo-700 shadow-sm transition">
+            Học Kì 1 (Tập Một)
+          </button>
+          <button onclick="filterSemester(2)" id="sem-2-btn" class="px-4 py-2 rounded-lg text-slate-600 hover:text-indigo-600 transition">
+            Học Kì 2 (Tập Hai)
+          </button>
+        </div>
+      </div>
+
+      <!-- Subject Filter Buttons -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-2">
+        <button onclick="filterDirectory('toan')" id="dir-filter-toan" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs sm:text-sm font-bold shadow-sm whitespace-nowrap">
+          <i class="fa-solid fa-calculator mr-1.5"></i>Toán 5
+        </button>
+        <button onclick="filterDirectory('tiengviet')" id="dir-filter-tiengviet" class="px-4 py-2 bg-white text-slate-700 hover:bg-rose-50 hover:text-rose-600 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 whitespace-nowrap">
+          <i class="fa-solid fa-feather-pointed mr-1.5"></i>Tiếng Việt 5
+        </button>
+        <button onclick="filterDirectory('khoahoc')" id="dir-filter-khoahoc" class="px-4 py-2 bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 whitespace-nowrap">
+          <i class="fa-solid fa-leaf mr-1.5"></i>Khoa Học 5
+        </button>
+        <button onclick="filterDirectory('lichsu')" id="dir-filter-lichsu" class="px-4 py-2 bg-white text-slate-700 hover:bg-amber-50 hover:text-amber-600 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 whitespace-nowrap">
+          <i class="fa-solid fa-landmark mr-1.5"></i>Lịch Sử & Địa Lí 5
+        </button>
+      </div>
+
+      <!-- Curated Lessons Grid Container -->
+      <div id="sgk-lessons-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Lessons will be dynamically rendered via JS based on subject & semester -->
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: GÓC LUYỆN TẬP & TẠO ĐỀ TƯƠNG TỰ -->
+    <!-- ========================================== -->
+    <section id="tab-practice" class="tab-content hidden space-y-6">
+      
+      <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-trophy mr-1 text-yellow-300"></i>Đấu Trường Tri Thức
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold mt-3">Luyện Tập Tự Động & Tích Sao Đổi Thưởng</h2>
+          <p class="text-amber-100 text-sm sm:text-base mt-2">
+            Hệ thống AI sẽ tạo ngẫu nhiên các bài tập tương tự SGK lớp 5 bám sát năng lực của em. Trả lời đúng nhận ngay Sao Tri Thức!
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <button onclick="requestNewPractice('toan')" class="px-5 py-2.5 bg-white text-orange-600 hover:bg-amber-50 font-bold rounded-xl shadow-md transition text-sm flex items-center space-x-2">
+              <i class="fa-solid fa-dice text-amber-500"></i>
+              <span>Tạo Bài Toán Mới</span>
+            </button>
+            <button onclick="requestNewPractice('tiengviet')" class="px-5 py-2.5 bg-amber-900/30 hover:bg-amber-900/40 text-white font-bold rounded-xl transition text-sm flex items-center space-x-2 border border-white/30">
+              <i class="fa-solid fa-pen-nib"></i>
+              <span>Tạo Câu Hỏi Tiếng Việt</span>
+            </button>
+          </div>
+        </div>
+        <div class="absolute -right-8 -bottom-8 opacity-20 text-white text-[180px] pointer-events-none">
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+
+      <!-- Practice Arena Card -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center space-x-3">
+            <span id="quiz-sub-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Toán 5</span>
+            <span class="text-xs text-slate-500 font-medium" id="quiz-topic">Chủ đề: Số thập phân & Phân số</span>
+          </div>
+          <span class="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            <i class="fa-solid fa-star mr-1"></i>+2 Sao khi hoàn thành
+          </span>
+        </div>
+
+        <!-- Question Prompt Area -->
+        <div class="my-6">
+          <h3 class="text-lg font-bold text-slate-800 mb-2">Đề bài:</h3>
+          <div id="practice-question" class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-slate-800 text-base leading-relaxed font-medium">
+            Một người đi bộ trong 1,2 giờ được 4,8 km. Hỏi nếu người đó đi với vận tốc như vậy trong 2,5 giờ thì đi được bao nhiêu ki-lô-mét?
+          </div>
+        </div>
+
+        <!-- Student Answer Input Form -->
+        <div class="space-y-4">
+          <label class="block text-sm font-bold text-slate-700">Câu trả lời hoặc phép tính của em:</label>
+          <textarea id="practice-answer-input" rows="3" placeholder="Nhập đáp số hoặc viết cách giải ngắn gọn của em vào đây..." class="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition outline-none font-medium"></textarea>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <button onclick="revealHint()" class="text-xs text-slate-500 hover:text-amber-600 font-bold flex items-center space-x-1 py-2">
+              <i class="fa-regular fa-lightbulb"></i>
+              <span>Xem gợi ý phương pháp giải</span>
+            </button>
+            <button onclick="submitPracticeAnswer()" id="btn-submit-practice" class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Gửi Bài Chấm Điểm</span>
+            </button>
+          </div>
+
+          <!-- Hint collapse -->
+          <div id="practice-hint-box" class="hidden p-3.5 bg-yellow-50 border border-yellow-200 rounded-xl text-xs text-yellow-900 leading-relaxed">
+            💡 <b>Gợi ý:</b> Bước 1: Tính vận tốc người đi bộ (lấy quãng đường chia thời gian: 4,8 : 1,2 = ? km/giờ). Bước 2: Lấy vận tốc vừa tìm được nhân với 2,5 giờ để ra quãng đường mới.
+          </div>
+
+          <!-- Feedback Result Box -->
+          <div id="practice-feedback-box" class="hidden p-5 rounded-2xl border transition-all mt-4">
+            <!-- Dynamic feedback injected -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: SỔ TAY GHI NHỚ KIẾN THỨC TRỌNG TÂM -->
+    <!-- ========================================== -->
+    <section id="tab-cheat-sheet" class="tab-content hidden space-y-6">
+      
+      <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        <h2 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+          <span class="p-2 bg-amber-100 text-amber-700 rounded-xl"><i class="fa-solid fa-bookmark"></i></span>
+          <span>Sổ Tay Công Thức & Ghi Nhớ Toàn Diện Lớp 5</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Tra cứu nhanh công thức hình học, bảng đơn vị đo, quy tắc tiếng Việt và khoa học</p>
+      </div>
+
+      <!-- Quick Interactive Formula Calculators & Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- Card 1: Hình Tam Giác -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-blue-700 text-base">Diện tích Hình Tam Giác</span>
+            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-bold">Toán 5</span>
+          </div>
+          <div class="p-3 bg-blue-50 rounded-xl text-center font-mono font-bold text-blue-900 text-sm mb-3">
+            S = (a &times; h) : 2
+          </div>
+          <p class="text-xs text-slate-600 mb-3">Trong đó: <b>a</b> là độ dài đáy, <b>h</b> là chiều cao (cùng đơn vị đo).</p>
+          
+          <!-- Mini Calculator -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs">
+            <div class="font-bold text-slate-700">Máy tính nhanh:</div>
+            <div class="grid grid-cols-2 gap-2">
+              <input type="number" id="calc-tri-a" placeholder="Đáy a (cm)" class="p-1.5 border rounded bg-white text-xs outline-none">
+              <input type="number" id="calc-tri-h" placeholder="Cao h (cm)" class="p-1.5 border rounded bg-white text-xs outline-none">
+            </div>
+            <button onclick="calcTriangle()" class="w-full py-1.5 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 transition">Tính diện tích</button>
+            <div id="calc-tri-res" class="font-bold text-blue-700 text-center"></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Hình Thang -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-indigo-700 text-base">Diện tích Hình Thang</span>
+            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-bold">Toán 5</span>
+          </div>
+          <div class="p-3 bg-indigo-50 rounded-xl text-center font-mono font-bold text-indigo-900 text-sm mb-3">
+            S = (a + b) &times; h : 2
+          </div>
+          <p class="text-xs text-slate-600 mb-3"><i>"Muốn tính diện tích hình thang, đáy lớn đáy bé ta mang cộng vào, thế rồi nhân với chiều cao, chia đôi lấy nửa thế nào cũng ra."</i></p>
+          
+          <!-- Mini Calculator -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs">
+            <div class="font-bold text-slate-700">Máy tính nhanh:</div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <input type="number" id="calc-trap-a" placeholder="Đáy a" class="p-1.5 border rounded bg-white text-xs outline-none">
+              <input type="number" id="calc-trap-b" placeholder="Đáy b" class="p-1.5 border rounded bg-white text-xs outline-none">
+              <input type="number" id="calc-trap-h" placeholder="Cao h" class="p-1.5 border rounded bg-white text-xs outline-none">
+            </div>
+            <button onclick="calcTrapezoid()" class="w-full py-1.5 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 transition">Tính diện tích</button>
+            <div id="calc-trap-res" class="font-bold text-indigo-700 text-center"></div>
+          </div>
+        </div>
+
+        <!-- Card 3: Hình Tròn -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-rose-700 text-base">Chu vi & Diện tích Hình Tròn</span>
+            <span class="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full font-bold">Toán 5</span>
+          </div>
+          <div class="p-3 bg-rose-50 rounded-xl text-center font-mono font-bold text-rose-900 text-xs mb-3 space-y-1">
+            <div>Chu vi: C = d &times; 3,14 = r &times; 2 &times; 3,14</div>
+            <div>Diện tích: S = r &times; r &times; 3,14</div>
+          </div>
+          <p class="text-xs text-slate-600 mb-3">Trong đó <b>r</b> là bán kính, <b>d</b> là đường kính ($d = 2 \times r$).</p>
+          
+          <!-- Mini Calculator -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs">
+            <div class="font-bold text-slate-700">Máy tính nhanh (nhập bán kính r):</div>
+            <input type="number" id="calc-circle-r" placeholder="Bán kính r (cm)" class="w-full p-1.5 border rounded bg-white text-xs outline-none">
+            <button onclick="calcCircle()" class="w-full py-1.5 bg-rose-600 text-white rounded font-bold hover:bg-rose-700 transition">Tính C và S</button>
+            <div id="calc-circle-res" class="font-bold text-rose-700 text-center"></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Toán Chuyển Động -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-emerald-700 text-base">Toán Chuyển Động Đều</span>
+            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">Toán 5</span>
+          </div>
+          <div class="p-3 bg-emerald-50 rounded-xl font-mono text-xs font-bold text-emerald-900 space-y-1 mb-3">
+            <div>Quãng đường: s = v &times; t</div>
+            <div>Vận tốc: v = s : t</div>
+            <div>Thời gian: t = s : v</div>
+          </div>
+          <p class="text-xs text-slate-600">Chú ý: Đổi đơn vị thời gian phù hợp (ví dụ: 1 giờ 30 phút = 1,5 giờ) trước khi nhân chia.</p>
+        </div>
+
+        <!-- Card 5: Tiếng Việt 5 - Từ Đồng Âm & Từ Nhiều Nghĩa -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-pink-700 text-base">Phân Biệt Từ Lớp 5</span>
+            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-bold">Tiếng Việt 5</span>
+          </div>
+          <div class="space-y-2 text-xs text-slate-700">
+            <div class="p-2 bg-pink-50 rounded-lg">
+              <b>1. Từ nhiều nghĩa:</b> Có 1 nghĩa gốc và 1 hoặc nhiều nghĩa chuyển (có mối liên hệ tương đồng). <i>Ví dụ: mắt người - mắt na; chân bàn - chân người.</i>
+            </div>
+            <div class="p-2 bg-slate-100 rounded-lg">
+              <b>2. Từ đồng âm:</b> Phát âm giống hệt nhau nhưng nghĩa hoàn toàn khác biệt không liên quan. <i>Ví dụ: con ruồi đậu (động từ) - xôi đậu (danh từ).</i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Bảng Đổi Đơn Vị Đo Lớp 5 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <span class="font-bold text-amber-700 text-base">Bảng Đơn Vị Đo Cần Nhớ</span>
+            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-bold">Toán 5</span>
+          </div>
+          <div class="space-y-2 text-xs text-slate-700">
+            <div class="p-2 bg-amber-50 rounded-lg font-mono">
+              <b>Diện tích:</b> 1 ha = 10 000 m²; 1 km² = 100 ha = 1 000 000 m²
+            </div>
+            <div class="p-2 bg-slate-100 rounded-lg font-mono">
+              <b>Khối lượng:</b> 1 tấn = 10 tạ = 100 yến = 1000 kg
+            </div>
+            <div class="p-2 bg-amber-50 rounded-lg font-mono">
+              <b>Thể tích:</b> 1 m³ = 1000 dm³ = 1 000 000 cm³ = 1000 lít
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: BẢNG NHÁP TÍNH TOÁN VẼ TAY -->
+    <!-- ========================================== -->
+    <section id="tab-scratchpad" class="tab-content hidden space-y-4">
+      
+      <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold text-slate-800 flex items-center space-x-2">
+            <span class="p-2 bg-purple-100 text-purple-700 rounded-xl"><i class="fa-solid fa-paintbrush"></i></span>
+            <span>Bảng Nháp Thông Minh</span>
+          </h2>
+          <p class="text-xs text-slate-500">Thao tác đặt tính rồi tính, vẽ sơ đồ đoạn thẳng, vẽ hình hình học trực tiếp</p>
+        </div>
+
+        <!-- Toolbars -->
+        <div class="flex items-center flex-wrap gap-2">
+          <!-- Color picker -->
+          <div class="flex items-center space-x-1 bg-slate-100 p-1.5 rounded-xl">
+            <button onclick="setPenColor('#1E293B')" class="w-6 h-6 rounded-full bg-slate-800 border-2 border-white shadow-sm" title="Mực đen"></button>
+            <button onclick="setPenColor('#2563EB')" class="w-6 h-6 rounded-full bg-blue-600 border-2 border-white shadow-sm" title="Mực xanh"></button>
+            <button onclick="setPenColor('#DC2626')" class="w-6 h-6 rounded-full bg-red-600 border-2 border-white shadow-sm" title="Mực đỏ"></button>
+            <button onclick="setPenColor('#059669')" class="w-6 h-6 rounded-full bg-emerald-600 border-2 border-white shadow-sm" title="Mực xanh lá"></button>
+          </div>
+
+          <!-- Size buttons -->
+          <div class="flex items-center space-x-1 bg-slate-100 p-1.5 rounded-xl text-xs font-bold text-slate-700">
+            <button onclick="setPenWidth(2)" class="px-2 py-1 rounded bg-white shadow-sm hover:bg-slate-200">Mảnh</button>
+            <button onclick="setPenWidth(5)" class="px-2 py-1 rounded bg-white shadow-sm hover:bg-slate-200">Vừa</button>
+            <button onclick="setPenWidth(12)" class="px-2 py-1 rounded bg-white shadow-sm hover:bg-slate-200">Đậm</button>
+          </div>
+
+          <!-- Eraser & Clear -->
+          <button onclick="toggleEraser()" id="btn-eraser" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-xs font-bold text-slate-700 flex items-center space-x-1">
+            <i class="fa-solid fa-eraser"></i>
+            <span id="eraser-label">Tẩy</span>
+          </button>
+          <button onclick="clearCanvas()" class="px-3 py-1.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 text-xs font-bold flex items-center space-x-1">
+            <i class="fa-solid fa-trash-can"></i>
+            <span>Xoá Bảng</span>
+          </button>
+          <button onclick="downloadCanvas()" class="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 text-xs font-bold flex items-center space-x-1">
+            <i class="fa-solid fa-download"></i>
+            <span>Lưu Ảnh</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scratch Canvas Container -->
+      <div class="bg-white rounded-2xl border-2 border-dashed border-indigo-200 overflow-hidden shadow-inner relative w-full h-[520px]">
+        <canvas id="scratch-canvas" class="w-full h-full block cursor-crosshair touch-none"></canvas>
+        <div class="absolute bottom-3 left-4 text-[11px] text-slate-400 pointer-events-none select-none">
+          <i class="fa-solid fa-hand-pointer mr-1"></i>Dùng chuột hoặc ngón tay để nháp, tính toán hoặc vẽ hình
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200/80 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+        <span class="font-bold text-slate-700">Trợ Lý Học Tập Lớp 5</span>
+        <span>• Dành riêng cho học sinh & giáo viên bộ sách "Kết Nối Tri Thức Với Cuộc Sống"</span>
+      </div>
+      <div class="text-slate-400">
+        Khuyến khích học sinh tự suy nghĩ và dùng AI làm bạn đồng hành hướng dẫn phương pháp giải.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal / Toast Alert Container -->
+  <div id="toast-box" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toast-inner" class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 text-sm font-semibold">
+      <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+      <span id="toast-msg">Thông báo</span>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================================
+       APPLICATION STATE & CURATED KNTT GRADE 5 DATABASE
+       ======================================================== */
+    let currentSubject = 'toan';
+    let currentSemester = 1;
+    let starCount = parseInt(localStorage.getItem('kntt_stars') || '5');
+    let soundEnabled = true;
+    let lastGeneratedQuestion = '';
+    let lastGeneratedAnswer = '';
+    let speechSynth = window.speechSynthesis;
+    let isSpeaking = false;
+
+    // Curated Textbook Content for SGK Kết Nối Tri Thức Lớp 5
+    const curatedDatabase = {
+      toan: [
+        {
+          semester: 1,
+          lesson: "Bài 4: Phân số thập phân (Trang 14)",
+          topic: "Ôn tập & Bổ sung phân số",
+          page: "Trang 14 - SGK Toán 5 Tập 1",
+          exercise: "Chuyển các phân số sau thành phân số thập phân: \\frac{3}{5}; \\frac{7}{20}; \\frac{11}{25}; \\frac{9}{4}.",
+          method: "Tìm một số nhân với mẫu số để được 10; 100; 1000,... rồi nhân cả tử số và mẫu số với số đó.",
+          solution: `
+          **Lời giải chi tiết:**
+          - $\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$
+          - $\\frac{7}{20} = \\frac{7 \\times 5}{20 \\times 5} = \\frac{35}{100}$
+          - $\\frac{11}{25} = \\frac{11 \\times 4}{25 \\times 4} = \\frac{44}{100}$
+          - $\\frac{9}{4} = \\frac{9 \\times 25}{4 \\times 25} = \\frac{225}{100}$
+          `,
+          note: "Mẫu số của phân số thập phân luôn là các số tròn: 10, 100, 1000..."
+        },
+        {
+          semester: 1,
+          lesson: "Bài 18: Số thập phân. Hàng của số thập phân (Trang 52)",
+          topic: "Số thập phân",
+          page: "Trang 52 - SGK Toán 5 Tập 1",
+          exercise: "Nêu phần nguyên, phần thập phân và giá trị theo vị trí của chữ số 5 trong số 384,52.",
+          method: "Số thập phân gồm hai phần: bên trái dấu phẩy là phần nguyên, bên phải là phần thập phân.",
+          solution: `
+          **Lời giải chi tiết:**
+          - Trong số **384,52**:
+            + Phần nguyên gồm có: 3 trăm, 8 chục, 4 đơn vị (viết là 384).
+            + Phần thập phân gồm có: 5 phần mười, 2 phần trăm (viết là 52).
+            + Chữ số 5 nằm ngay sau dấu phẩy ở hàng phần mười, có giá trị là $\\frac{5}{10}$ (hoặc 0,5).
+          `,
+          note: "Nhớ thứ tự các hàng sau dấu phẩy: Hàng phần mười ➔ Hàng phần trăm ➔ Hàng phần nghìn."
+        },
+        {
+          semester: 1,
+          lesson: "Bài 27: Diện tích hình tam giác (Trang 87)",
+          topic: "Hình học",
+          page: "Trang 87 - SGK Toán 5 Tập 1",
+          exercise: "Tính diện tích hình tam giác có độ dài đáy $a = 15\\text{ cm}$ và chiều cao $h = 8\\text{ cm}$.",
+          method: "Áp dụng công thức $S = \\frac{a \\times h}{2}$ (Độ dài đáy nhân với chiều cao rồi chia cho 2).",
+          solution: `
+          **Lời giải chi tiết:**
+          Diện tích của hình tam giác đó là:
+          $$S = \\frac{15 \\times 8}{2} = \\frac{120}{2} = 60\\text{ (cm}^2\\text{)}$$
+          *Đáp số:* $60\\text{ cm}^2$.
+          `,
+          note: "Đáy và chiều cao phải cùng một đơn vị đo mới được tính nhé!"
+        },
+        {
+          semester: 2,
+          lesson: "Bài 38: Diện tích hình thang (Trang 22)",
+          topic: "Hình phẳng",
+          page: "Trang 22 - SGK Toán 5 Tập 2",
+          exercise: "Một thửa ruộng hình thang có đáy lớn 120m, đáy bé bằng 2/3 đáy lớn, chiều cao 40m. Tính diện tích thửa ruộng đó theo mét vuông và héc-ta.",
+          method: "Bước 1: Tính đáy bé = 120 * (2/3). Bước 2: Tính diện tích hình thang $S = (a + b) \\times h : 2$. Bước 3: Đổi m² sang ha ($1\\text{ ha} = 10 000\\text{ m}^2$).",
+          solution: `
+          **Lời giải chi tiết:**
+          Đáy bé của thửa ruộng hình thang là:
+          $120 \\times \\frac{2}{3} = 80\\text{ (m)}$
+
+          Diện tích của thửa ruộng hình thang là:
+          $\\frac{(120 + 80) \\times 40}{2} = \\frac{200 \\times 40}{2} = 4000\\text{ (m}^2\\text{)}$
+
+          Đổi đơn vị đo:
+          $4000\\text{ m}^2 = 0,4\\text{ ha}$
+
+          *Đáp số:* $4000\\text{ m}^2$ (hoặc $0,4\\text{ ha}$).
+          `,
+          note: "Ghi nhớ mẹo đổi: 1 ha = 10 000 m², nên lấy số m² chia cho 10 000 là ra ha."
+        },
+        {
+          semester: 2,
+          lesson: "Bài 46: Vận tốc, Quãng đường, Thời gian (Trang 58)",
+          topic: "Toán chuyển động đều",
+          page: "Trang 58 - SGK Toán 5 Tập 2",
+          exercise: "Một ô tô khởi hành từ Hà Nội lúc 7 giờ 30 phút và đến Hải Phòng lúc 9 giờ 45 phút. Biết quãng đường dài 108 km. Tính vận tốc của ô tô với đơn vị km/giờ.",
+          method: "Bước 1: Tính thời gian đi = Thời điểm đến - Thời điểm khởi hành. Bước 2: Đổi thời gian ra số thập phân theo giờ. Bước 3: $v = s : t$.",
+          solution: `
+          **Lời giải chi tiết:**
+          Thời gian ô tô đi từ Hà Nội đến Hải Phòng là:
+          $9\\text{ giờ } 45\\text{ phút} - 7\\text{ giờ } 30\\text{ phút} = 2\\text{ giờ } 15\\text{ phút}$
+
+          Đổi: $2\\text{ giờ } 15\\text{ phút} = 2,25\\text{ giờ}$ (vì $15 : 60 = 0,25$)
+
+          Vận tốc của ô tô đó là:
+          $v = 108 : 2,25 = 48\\text{ (km/giờ)}$
+
+          *Đáp số:* $48\\text{ km/giờ}$.
+          `,
+          note: "Nhớ kỹ: 15 phút = 0,25 giờ; 30 phút = 0,5 giờ; 45 phút = 0,75 giờ."
+        }
+      ],
+      tiengviet: [
+        {
+          semester: 1,
+          lesson: "Luyện từ và câu: Từ đồng nghĩa & Từ trái nghĩa",
+          topic: "Mở rộng vốn từ",
+          page: "Trang 18 - SGK Tiếng Việt 5 Tập 1",
+          exercise: "Tìm từ đồng nghĩa và trái nghĩa với các từ sau: 'chăm chỉ', 'dũng cảm', 'bao la'.",
+          method: "Từ đồng nghĩa là các từ có nghĩa giống hoặc gần giống nhau. Từ trái nghĩa là các từ có nghĩa trái ngược nhau hoàn toàn.",
+          solution: `
+          **Lời giải gợi ý chuẩn mực:**
+          1. **Chăm chỉ:**
+             - *Từ đồng nghĩa:* cần cù, siêng năng, chuyên cần, chịu khó.
+             - *Từ trái nghĩa:* lười biếng, lười nhác, trây ỳ.
+          2. **Dũng cảm:**
+             - *Từ đồng nghĩa:* gan dạ, can đảm, quả cảm, anh dũng.
+             - *Từ trái nghĩa:* hèn nhát, nhút nhát, sợ sệt.
+          3. **Bao la:**
+             - *Từ đồng nghĩa:* mênh mông, bát ngát, thênh thang, rộng lớn.
+             - *Từ trái nghĩa:* chật hẹp, nhỏ bé, hẹp hòi.
+          `,
+          note: "Khi làm văn miêu tả, hãy linh hoạt thay thế các từ đồng nghĩa để câu văn không bị lặp từ nhé!"
+        },
+        {
+          semester: 1,
+          lesson: "Tập làm văn: Lập dàn ý bài văn tả cảnh sông nước quê hương",
+          topic: "Văn miêu tả",
+          page: "Trang 62 - SGK Tiếng Việt 5 Tập 1",
+          exercise: "Lập dàn ý chi tiết miêu tả một dòng sông (hoặc hồ nước) gắn bó thân thương với tuổi thơ em.",
+          method: "Bố cục 3 phần: Mở bài (giới thiệu dòng sông) ➔ Thân bài (tả bao quát rồi tả chi tiết theo thời gian/hoạt động con người) ➔ Kết bài (tình cảm, sự gắn bó).",
+          solution: `
+          **Dàn ý chi tiết gợi ý:**
+          **1. Mở bài:**
+          - Giới thiệu dòng sông quê hương (Dòng sông Đáy hiền hòa chảy qua làng em).
+          **2. Thân bài:**
+          - *Tả bao quát:* Nhìn từ xa, dòng sông như dải lụa xanh uốn lượn quanh lũy tre làng.
+          - *Tả chi tiết theo thời gian trong ngày:*
+            + *Buổi sáng:* Mặt nước êm ả, sương giăng nhẹ; ánh nắng sớm rọi xuống lấp lánh như dát bạc.
+            + *Buổi trưa:* Mặt nước xanh biếc phản chiếu mây trời; bóng râm rợp mát dưới rặng tre.
+            + *Buổi chiều:* Tiếng cười ríu rít của lũ trẻ tắm mát, tiếng khua chèo của bác chài quăng lưới.
+          - *Cảnh vật ven sông:* Bãi ngô xanh mướt, đàn trâu thung thăng gặm cỏ.
+          **3. Kết bài:**
+          - Khẳng định tình cảm yêu quý, dòng sông gắn liền với kí ức êm đềm; tự nhủ cùng mọi người giữ gìn dòng nước luôn trong sạch.
+          `,
+          note: "Hãy đưa vào các biện pháp so sánh ('như dải lụa') và nhân hóa để bài văn thêm truyền cảm!"
+        }
+      ],
+      khoahoc: [
+        {
+          semester: 1,
+          lesson: "Bài 6: Năng lượng mặt trời, gió và nước chảy (Trang 28)",
+          topic: "Năng lượng",
+          page: "Trang 28 - SGK Khoa học 5",
+          exercise: "Con người sử dụng năng lượng gió và năng lượng nước chảy vào những việc gì trong đời sống và sản xuất?",
+          method: "Liên hệ thực tế từ các cối xay gió, thuyền buồm, nhà máy thủy điện...",
+          solution: `
+          **Lời giải chi tiết:**
+          1. **Ứng dụng của năng lượng gió:**
+             - Làm quay cánh quạt tua-bin để sản xuất điện năng (điện gió).
+             - Đẩy thuyền buồm di chuyển trên sông, biển.
+             - Giúp rê thóc, làm quay cối xay gió để nghiền ngũ cốc hoặc bơm nước.
+          2. **Ứng dụng của năng lượng nước chảy:**
+             - Làm quay tu-bin của các nhà máy thủy điện (như Thủy điện Sơn La, Hòa Bình) tạo ra dòng điện sinh hoạt.
+             - Đẩy thuyền bè, xuôi bè gỗ trôi theo dòng nước.
+             - Dùng sức nước giã gạo, kéo bánh xe nước (cọn nước) đưa nước lên ruộng bậc thang ở vùng cao.
+          `,
+          note: "Năng lượng gió và nước chảy là nguồn năng lượng sạch, tái tạo và thân thiện với môi trường."
+        }
+      ],
+      lichsu: [
+        {
+          semester: 2,
+          lesson: "Bài 19: Chiến thắng lịch sử Điện Biên Phủ năm 1954 (Trang 36)",
+          topic: "Lịch sử Việt Nam hào hùng",
+          page: "Trang 36 - SGK Lịch sử & Địa lí 5",
+          exercise: "Chiến dịch Điện Biên Phủ diễn ra trong bao nhiêu ngày đêm? Nêu ý nghĩa lịch sử to lớn của chiến thắng Điện Biên Phủ.",
+          method: "Dựa vào tư liệu lịch sử từ ngày 13/3/1954 đến ngày 7/5/1954.",
+          solution: `
+          **Lời giải chuẩn SGK:**
+          - **Thời gian:** Chiến dịch Điện Biên Phủ diễn ra trong **56 ngày đêm** 'khoét núi, ngủ hầm, mưa dầm, cơm vắt' (từ ngày 13/3/1954 đến ngày 7/5/1954).
+          - **Kết quả:** Tướng Đờ Cát-xtơ-ri cùng toàn bộ bộ tham mưu tập đoàn cứ điểm Điện Biên Phủ bị bắt sống.
+          - **Ý nghĩa lịch sử:**
+            + Là mốc son chói lọi bằng vàng, 'lừng lẫy năm châu, chấn động địa cầu'.
+            + Đập tan âm mưu xâm lược của thực dân Pháp, buộc Pháp phải ký Hiệp định Giơ-ne-vơ lập lại hòa bình ở miền Bắc Việt Nam.
+          `,
+          note: "Ghi nhớ mốc son: Chiều ngày 7 tháng 5 năm 1954, lá cờ Quyết chiến Quyết thắng tung bay trên nóc hầm Đờ Cát."
+        }
+      ]
+    };
+
+    // Simple Web Audio API Synthesizer for friendly sound effects
+    function playBeep(type = 'success') {
+      if (!soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        if (type === 'success') {
+          // Cheerful chime (arpeggio)
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+          osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+          gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.4);
+        } else if (type === 'star') {
+          // Bright star chime
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+          osc.frequency.setValueAtTime(880.00, audioCtx.currentTime + 0.1);
+          osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.2);
+          gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.5);
+        } else if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        }
+      } catch (e) {
+        console.warn('AudioContext unavailable');
+      }
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const icon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        icon.className = 'fa-solid fa-volume-high text-slate-700';
+        showToast('Đã bật âm thanh hiệu ứng');
+        playBeep('success');
+      } else {
+        icon.className = 'fa-solid fa-volume-xmark text-slate-400';
+        showToast('Đã tắt âm thanh');
+      }
+    }
+
+    function showToast(msg, isSuccess = true) {
+      const box = document.getElementById('toast-box');
+      const inner = document.getElementById('toast-inner');
+      const icon = document.getElementById('toast-icon');
+      const text = document.getElementById('toast-msg');
+
+      text.innerText = msg;
+      icon.className = isSuccess ? 'fa-solid fa-circle-check text-emerald-400 text-lg' : 'fa-solid fa-circle-exclamation text-amber-400 text-lg';
+      
+      box.classList.remove('translate-y-20', 'opacity-0');
+      box.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        box.classList.remove('translate-y-0', 'opacity-100');
+        box.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    function updateStarDisplay() {
+      document.getElementById('star-count').innerText = starCount;
+      localStorage.setItem('kntt_stars', starCount.toString());
+    }
+
+    function awardStarForLearning() {
+      starCount += 1;
+      updateStarDisplay();
+      playBeep('star');
+      const badge = document.getElementById('star-badge');
+      badge.classList.add('star-pop');
+      setTimeout(() => badge.classList.remove('star-pop'), 600);
+      showToast('Chúc mừng em đã nhận thêm 1 Sao Tri Thức! ⭐');
+      const btn = document.getElementById('btn-understood');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã nhận sao!';
+    }
+
+    function switchTab(tabId) {
+      playBeep('click');
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      // Remove active class from buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/30');
+        btn.classList.add('text-slate-600', 'hover:bg-white');
+      });
+
+      // Show target tab
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) target.classList.remove('hidden');
+
+      // Highlight active nav button
+      const activeBtn = document.getElementById(`nav-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-600', 'hover:bg-white');
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/30');
+      }
+
+      // Initialize specific views
+      if (tabId === 'sgk-index') {
+        renderCuratedDirectory();
+      } else if (tabId === 'scratchpad') {
+        resizeCanvas();
+      }
+    }
+
+    function selectSubject(sub) {
+      playBeep('click');
+      currentSubject = sub;
+      const subjects = ['toan', 'tiengviet', 'khoahoc', 'lichsu', 'tinhoc'];
+      
+      subjects.forEach(s => {
+        const btn = document.getElementById(`btn-sub-${s}`);
+        if (!btn) return;
+        if (s === sub) {
+          btn.classList.remove('border-slate-200', 'text-slate-700');
+          btn.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-800', 'shadow-sm', 'font-bold');
+        } else {
+          btn.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-800', 'shadow-sm', 'font-bold');
+          btn.classList.add('border-slate-200', 'text-slate-700', 'font-semibold');
+        }
+      });
+    }
+
+    function setQuery(text) {
+      document.getElementById('ai-query-input').value = text;
+      playBeep('click');
+    }
+
+    // Helper function with exponential backoff for Gemini API requests
+    async function fetchGeminiWithBackoff(apiUrl, payload, retries = 3, delay = 1000) {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (response.ok) {
+            return await response.json();
+          }
+          if (response.status === 429) {
+            // Throttled: wait and retry
+            await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
+            continue;
+          }
+          throw new Error(`Lỗi kết nối máy chủ (${response.status})`);
+        } catch (err) {
+          if (i === retries - 1) throw err;
+          await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
+        }
+      }
+    }
+
+    async function askAI() {
+      const inputEl = document.getElementById('ai-query-input');
+      const query = inputEl.value.trim();
+
+      if (!query) {
+        showToast('Vui lòng nhập câu hỏi hoặc bài tập cần giải em nhé!', false);
+        inputEl.focus();
+        return;
+      }
+
+      playBeep('click');
+
+      const solutionBox = document.getElementById('ai-solution-box');
+      const solutionText = document.getElementById('ai-solution-text');
+      const loadingState = document.getElementById('ai-loading-state');
+      const submitBtn = document.getElementById('btn-submit-ai');
+      const btnUnderstood = document.getElementById('btn-understood');
+
+      // Reset award button state
+      btnUnderstood.disabled = false;
+      btnUnderstood.classList.remove('opacity-50', 'cursor-not-allowed');
+      btnUnderstood.innerHTML = '<i class="fa-solid fa-star"></i> <span>Em Đã Hiểu! (+1 Sao)</span>';
+
+      solutionBox.classList.remove('hidden');
+      solutionText.innerHTML = '';
+      loadingState.classList.remove('hidden');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+      // Pedagogical system instruction for Grade 5 (Connecting Knowledge to Life)
+      const systemInstruction = `
+      Bạn là Thầy/Cô Trợ Lý Học Tập ảo thông thái, tận tâm, dịu dàng dành cho học sinh Lớp 5 theo chương trình SGK "Kết Nối Tri Thức Với Cuộc Sống".
+      Nhiệm vụ: Giải bài tập, hướng dẫn học sinh phương pháp học tập chuẩn mực sư phạm tiểu học.
+      Yêu cầu cấu trúc câu trả lời luôn bao gồm 3 phần rõ ràng, dễ hiểu:
+      1. 🎯 **Phương pháp giải**: Gợi ý hướng tư duy, công thức áp dụng hoặc cách tiếp cận (đặt tính, tóm tắt, vẽ sơ đồ đoạn thẳng).
+      2. 📝 **Lời giải chi tiết từng bước**: Trình bày mẫu mực như bài làm trong vở học sinh Lớp 5 (lời giải, phép tính, đáp số rõ ràng).
+      3. 💡 **Lời khuyên & Mẹo ghi nhớ**: Cảnh báo các lỗi học sinh tiểu học hay nhầm lẫn (đổi đơn vị đo, dấu phẩy số thập phân, dùng từ đồng nghĩa, đặt dấu câu).
+
+      Ngôn từ: Thân thiện, khích lệ ("Em làm rất tốt!", "Chúc mừng em!"), trong sáng.
+      Với Toán: Trình bày công thức bằng định dạng chuẩn KaTeX (ví dụ: $S = \\frac{a \\times h}{2}$).
+      Với Tiếng Việt: Giàu hình ảnh, gợi ý từ ngữ sinh động.
+      `;
+
+      const subjectNames = {
+        toan: 'Toán 5 (Bộ sách Kết Nối Tri Thức)',
+        tiengviet: 'Tiếng Việt 5 (Bộ sách Kết Nối Tri Thức)',
+        khoahoc: 'Khoa học 5 (Bộ sách Kết Nối Tri Thức)',
+        lichsu: 'Lịch sử và Địa lí 5 (Bộ sách Kết Nối Tri Thức)',
+        tinhoc: 'Tin học 5 (Bộ sách Kết Nối Tri Thức)'
+      };
+
+      const userPrompt = `Môn học: ${subjectNames[currentSubject]}. Đề bài hoặc yêu cầu: ${query}`;
+
+      const apiKey = ""; // Canvas runtime provides this key automatically
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+      const payload = {
+        contents: [{ parts: [{ text: userPrompt }] }],
+        systemInstruction: { parts: [{ text: systemInstruction }] }
+      };
+
+      try {
+        const result = await fetchGeminiWithBackoff(apiUrl, payload);
+        const candidate = result.candidates?.[0];
+
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          const generatedText = candidate.content.parts[0].text;
+          lastGeneratedQuestion = query;
+          lastGeneratedAnswer = generatedText;
+
+          // Render Markdown using marked.js
+          const rawHtml = marked.parse(generatedText);
+          solutionText.innerHTML = rawHtml;
+
+          // Render Math with KaTeX
+          if (window.renderMathInElement) {
+            renderMathInElement(solutionText, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false }
+              ],
+              throwOnError: false
+            });
+          }
+
+          playBeep('success');
+          showToast('Đã có lời giải chi tiết cho em rồi nhé! 🎉');
+        } else {
+          solutionText.innerHTML = `
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800">
+            <p class="font-bold">Chưa tìm thấy lời giải phù hợp.</p>
+            <p class="text-sm mt-1">Em hãy kiểm tra lại câu hỏi hoặc nêu rõ số trang và tên bài trong SGK nhé!</p>
+          </div>`;
+        }
+      } catch (err) {
+        console.error(err);
+        solutionText.innerHTML = `
+        <div class="p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-800">
+          <p class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i>Không thể kết nối đến Trợ lý AI lúc này</p>
+          <p class="text-sm mt-1">Đường truyền mạng đang chậm hoặc có sự cố. Em hãy thử lại sau ít giây hoặc xem các bài giải mẫu trong tab "Mục Lục SGK" nhé!</p>
+        </div>`;
+      } finally {
+        loadingState.classList.add('hidden');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+      }
+    }
+
+    function readAloudSolution() {
+      const solutionText = document.getElementById('ai-solution-text').innerText;
+      if (!solutionText) {
+        showToast('Chưa có nội dung bài giải để đọc', false);
+        return;
+      }
+
+      if (!('speechSynthesis' in window)) {
+        showToast('Trình duyệt của em không hỗ trợ đọc giọng nói', false);
+        return;
+      }
+
+      if (isSpeaking) {
+        speechSynth.cancel();
+        isSpeaking = false;
+        document.getElementById('tts-label').innerText = 'Nghe Đọc';
+        document.getElementById('tts-icon').className = 'fa-solid fa-bullhorn text-indigo-600';
+        return;
+      }
+
+      // Filter text to keep it kid-friendly and strip markdown symbols
+      const cleanText = solutionText
+        .replace(/\$\$/g, '')
+        .replace(/\$/g, '')
+        .replace(/#/g, '')
+        .replace(/\*/g, '')
+        .slice(0, 1500); // Read first portion
+
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = 'vi-VN';
+      utterance.rate = 0.95; // Slightly slower for elementary kids
+
+      // Try selecting Vietnamese voice if available
+      const voices = speechSynth.getVoices();
+      const viVoice = voices.find(v => v.lang.includes('vi') || v.lang.includes('VN'));
+      if (viVoice) utterance.voice = viVoice;
+
+      utterance.onstart = () => {
+        isSpeaking = true;
+        document.getElementById('tts-label').innerText = 'Dừng Đọc';
+        document.getElementById('tts-icon').className = 'fa-solid fa-circle-stop text-rose-600 animate-pulse';
+      };
+
+      utterance.onend = utterance.onerror = () => {
+        isSpeaking = false;
+        document.getElementById('tts-label').innerText = 'Nghe Đọc';
+        document.getElementById('tts-icon').className = 'fa-solid fa-bullhorn text-indigo-600';
+      };
+
+      speechSynth.speak(utterance);
+    }
+
+    function copySolution() {
+      const solutionText = document.getElementById('ai-solution-text').innerText;
+      if (!solutionText) return;
+
+      const dummy = document.createElement('textarea');
+      dummy.value = solutionText;
+      document.body.appendChild(dummy);
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+
+      const label = document.getElementById('copy-label');
+      label.innerText = 'Đã chép!';
+      playBeep('success');
+      showToast('Đã sao chép lời giải vào bộ nhớ tạm');
+      setTimeout(() => label.innerText = 'Chép Bài', 2000);
+    }
+
+    function startVoiceInput() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        showToast('Thiết bị hoặc trình duyệt không hỗ trợ nhận diện giọng nói', false);
+        return;
+      }
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'vi-VN';
+      recognition.interimResults = false;
+
+      const micIcon = document.getElementById('mic-icon');
+      micIcon.className = 'fa-solid fa-spinner fa-spin text-rose-500';
+
+      recognition.onstart = () => {
+        showToast('Đang lắng nghe giọng nói của em... Hãy đọc to câu hỏi nhé! 🎙️');
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('ai-query-input').value = transcript;
+        playBeep('success');
+        showToast('Đã nhận diện xong đề bài!');
+      };
+
+      recognition.onerror = () => {
+        showToast('Không nhận diện được giọng nói, vui lòng thử lại', false);
+      };
+
+      recognition.onend = () => {
+        micIcon.className = 'fa-solid fa-microphone text-base';
+      };
+
+      recognition.start();
+    }
+
+    function filterSemester(sem) {
+      playBeep('click');
+      currentSemester = sem;
+      const sem1Btn = document.getElementById('sem-1-btn');
+      const sem2Btn = document.getElementById('sem-2-btn');
+
+      if (sem === 1) {
+        sem1Btn.className = 'px-4 py-2 rounded-lg bg-white text-indigo-700 shadow-sm transition';
+        sem2Btn.className = 'px-4 py-2 rounded-lg text-slate-600 hover:text-indigo-600 transition';
+      } else {
+        sem2Btn.className = 'px-4 py-2 rounded-lg bg-white text-indigo-700 shadow-sm transition';
+        sem1Btn.className = 'px-4 py-2 rounded-lg text-slate-600 hover:text-indigo-600 transition';
+      }
+      renderCuratedDirectory();
+    }
+
+    function filterDirectory(sub) {
+      playBeep('click');
+      currentSubject = sub;
+      const buttons = ['toan', 'tiengviet', 'khoahoc', 'lichsu'];
+      buttons.forEach(s => {
+        const btn = document.getElementById(`dir-filter-${s}`);
+        if (!btn) return;
+        if (s === sub) {
+          btn.className = 'px-4 py-2 bg-blue-600 text-white rounded-xl text-xs sm:text-sm font-bold shadow-sm whitespace-nowrap';
+        } else {
+          btn.className = 'px-4 py-2 bg-white text-slate-700 hover:bg-slate-50 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 whitespace-nowrap';
+        }
+      });
+      renderCuratedDirectory();
+    }
+
+    function renderCuratedDirectory() {
+      const container = document.getElementById('sgk-lessons-grid');
+      const list = (curatedDatabase[currentSubject] || []).filter(item => item.semester === currentSemester);
+
+      if (list.length === 0) {
+        container.innerHTML = `
+        <div class="col-span-full py-12 text-center text-slate-400">
+          <i class="fa-solid fa-box-open text-4xl mb-3"></i>
+          <p class="font-bold">Đang cập nhật thêm bài học của học kì này...</p>
+          <p class="text-xs mt-1">Em có thể dùng tab "Trợ Lý AI Giải Bài" để giải bất kì bài nào trong SGK nhé!</p>
+        </div>`;
+        return;
+      }
+
+      container.innerHTML = list.map((item, idx) => `
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 hover:border-blue-300 hover:shadow-md transition">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <span class="text-xs font-bold px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg">
+              ${item.page}
+            </span>
+            <span class="text-xs text-slate-500 font-medium">${item.topic}</span>
+          </div>
+
+          <h3 class="font-bold text-slate-800 text-base mb-2">${item.lesson}</h3>
+          
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 mb-3 text-xs sm:text-sm text-slate-700">
+            <b class="text-slate-900">Đề bài:</b> ${item.exercise}
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="text-indigo-700 font-semibold">
+              <i class="fa-solid fa-compass mr-1"></i><b>Phương pháp:</b> ${item.method}
+            </div>
+            
+            <details class="group mt-2 border border-slate-200 rounded-xl overflow-hidden">
+              <summary class="p-3 bg-slate-50 hover:bg-blue-50 cursor-pointer font-bold text-blue-600 flex items-center justify-between text-xs transition">
+                <span><i class="fa-regular fa-eye mr-1.5"></i>Xem Lời Giải Mẫu Chi Tiết</span>
+                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="p-4 bg-white text-slate-700 leading-relaxed border-t border-slate-100 prose-answer">
+                ${marked.parse(item.solution)}
+                <div class="mt-3 p-2 bg-amber-50 rounded-lg text-amber-800 text-[11px] font-medium border border-amber-200/60">
+                  💡 <b>Mẹo nhớ:</b> ${item.note}
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      `).join('');
+
+      // Auto-render math in directory
+      if (window.renderMathInElement) {
+        renderMathInElement(container, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function generateSimilarFromCurrent() {
+      switchTab('practice');
+      if (lastGeneratedQuestion) {
+        document.getElementById('practice-question').innerText = `Đang tạo bài toán có dạng tương tự: "${lastGeneratedQuestion.slice(0, 80)}..."`;
+        requestNewPractice(currentSubject, lastGeneratedQuestion);
+      }
+    }
+
+    async function requestNewPractice(subject, baseQuestion = '') {
+      playBeep('click');
+      const questionEl = document.getElementById('practice-question');
+      const subBadge = document.getElementById('quiz-sub-badge');
+      const feedbackBox = document.getElementById('practice-feedback-box');
+      const inputEl = document.getElementById('practice-answer-input');
+
+      feedbackBox.classList.add('hidden');
+      inputEl.value = '';
+      questionEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-amber-500 mr-2"></i>Đang nhờ AI ra một đề bài mới cho em...';
+
+      subBadge.innerText = subject === 'toan' ? 'Toán 5' : 'Tiếng Việt 5';
+      subBadge.className = subject === 'toan' ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700' : 'px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700';
+
+      const prompt = `Hãy đóng vai giáo viên Lớp 5 bộ sách Kết Nối Tri Thức. Hãy tạo DUY NHẤT 01 câu hỏi hoặc bài tập mới dành cho học sinh Lớp 5 môn ${subject}. 
+      ${baseQuestion ? `Bài tập này có dạng tương tự bài sau: "${baseQuestion}" nhưng thay đổi số liệu hoặc ngữ cảnh.` : 'Chủ đề: Tính diện tích hình hoặc toán chuyển động đều hoặc phân biệt từ đồng âm/từ nhiều nghĩa.'}
+      Chỉ xuất ra nội dung đề bài ngắn gọn, rõ ràng, không kèm lời giải.`;
+
+      const apiKey = "";
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+      try {
+        const result = await fetchGeminiWithBackoff(apiUrl, {
+          contents: [{ parts: [{ text: prompt }] }]
+        });
+        const candidate = result.candidates?.[0];
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          const generatedQuiz = candidate.content.parts[0].text.trim();
+          questionEl.innerText = generatedQuiz;
+          playBeep('success');
+        } else {
+          questionEl.innerText = 'Một mảnh đất hình chữ nhật có chiều dài 24m, chiều rộng bằng 3/4 chiều dài. Tính diện tích mảnh đất đó theo mét vuông và héc-ta.';
+        }
+      } catch (e) {
+        questionEl.innerText = 'Một ô tô chạy từ tỉnh A đến tỉnh B hết 3 giờ 15 phút với vận tốc 48 km/giờ. Tính quãng đường từ tỉnh A đến tỉnh B.';
+      }
+    }
+
+    function revealHint() {
+      playBeep('click');
+      const hint = document.getElementById('practice-hint-box');
+      hint.classList.toggle('hidden');
+    }
+
+    async function submitPracticeAnswer() {
+      const studentAnswer = document.getElementById('practice-answer-input').value.trim();
+      const question = document.getElementById('practice-question').innerText;
+      const feedbackBox = document.getElementById('practice-feedback-box');
+      const submitBtn = document.getElementById('btn-submit-practice');
+
+      if (!studentAnswer) {
+        showToast('Em chưa nhập câu trả lời kìa!', false);
+        return;
+      }
+
+      playBeep('click');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70');
+      feedbackBox.classList.remove('hidden');
+      feedbackBox.className = 'p-5 rounded-2xl border border-blue-200 bg-blue-50 text-blue-900 transition-all mt-4';
+      feedbackBox.innerHTML = '<div class="flex items-center space-x-2 font-bold"><i class="fa-solid fa-spinner fa-spin"></i><span>Thầy cô AI đang chấm bài cho em...</span></div>';
+
+      const prompt = `Bạn là giáo viên tiểu học chấm bài cho học sinh Lớp 5.
+      Đề bài: "${question}"
+      Bài làm của học sinh: "${studentAnswer}"
+
+      Hãy nhận xét:
+      1. Kết quả và cách làm có đúng không?
+      2. Nếu đúng: Khen ngợi nhiệt liệt!
+      3. Nếu sai: Chỉ ra lỗi sai nhẹ nhàng, hướng dẫn cách tính đúng từng bước để bé sửa.
+      Hãy giữ giọng văn thân thiện, động viên trẻ nhỏ.`;
+
+      const apiKey = "";
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+      try {
+        const result = await fetchGeminiWithBackoff(apiUrl, {
+          contents: [{ parts: [{ text: prompt }] }]
+        });
+        const candidate = result.candidates?.[0];
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          const comment = candidate.content.parts[0].text;
+          feedbackBox.className = 'p-5 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-950 transition-all mt-4';
+          feedbackBox.innerHTML = `
+            <div class="flex items-center space-x-2 font-bold text-emerald-800 text-base mb-2">
+              <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+              <span>Nhận Xét Của Thầy Cô AI:</span>
+            </div>
+            <div class="text-sm leading-relaxed prose-answer">${marked.parse(comment)}</div>
+          `;
+
+          // Award 2 stars for attempting the practice!
+          starCount += 2;
+          updateStarDisplay();
+          playBeep('star');
+          showToast('Em đã hoàn thành bài tập và nhận +2 Sao Tri Thức! 🌟');
+        }
+      } catch (err) {
+        feedbackBox.className = 'p-5 rounded-2xl border border-slate-200 bg-slate-50 text-slate-800';
+        feedbackBox.innerHTML = 'Thầy cô đã nhận được bài làm của em! Hãy đối chiếu lại với công thức ở tab "Sổ Tay Ghi Nhớ" nhé!';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-70');
+      }
+    }
+
+    function calcTriangle() {
+      playBeep('click');
+      const a = parseFloat(document.getElementById('calc-tri-a').value);
+      const h = parseFloat(document.getElementById('calc-tri-h').value);
+      const res = document.getElementById('calc-tri-res');
+      if (isNaN(a) || isNaN(h)) {
+        res.innerText = 'Vui lòng nhập cả độ dài đáy và chiều cao!';
+        return;
+      }
+      const s = (a * h) / 2;
+      res.innerText = `Diện tích S = (${a} × ${h}) : 2 = ${s}`;
+    }
+
+    function calcTrapezoid() {
+      playBeep('click');
+      const a = parseFloat(document.getElementById('calc-trap-a').value);
+      const b = parseFloat(document.getElementById('calc-trap-b').value);
+      const h = parseFloat(document.getElementById('calc-trap-h').value);
+      const res = document.getElementById('calc-trap-res');
+      if (isNaN(a) || isNaN(b) || isNaN(h)) {
+        res.innerText = 'Vui lòng nhập đủ đáy lớn, đáy bé và chiều cao!';
+        return;
+      }
+      const s = ((a + b) * h) / 2;
+      res.innerText = `Diện tích S = (${a} + ${b}) × ${h} : 2 = ${s}`;
+    }
+
+    function calcCircle() {
+      playBeep('click');
+      const r = parseFloat(document.getElementById('calc-circle-r').value);
+      const res = document.getElementById('calc-circle-res');
+      if (isNaN(r)) {
+        res.innerText = 'Vui lòng nhập bán kính r!';
+        return;
+      }
+      const c = (r * 2 * 3.14).toFixed(2);
+      const s = (r * r * 3.14).toFixed(2);
+      res.innerText = `Chu vi C = ${c} | Diện tích S = ${s}`;
+    }
+
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let penColor = '#1E293B';
+    let penWidth = 4;
+    let isEraser = false;
+
+    function resizeCanvas() {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      // Save existing image before resize
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = canvas.width;
+      tempCanvas.height = canvas.height;
+      const tempCtx = tempCanvas.getContext('2d');
+      if (canvas.width > 0 && canvas.height > 0) {
+        tempCtx.drawImage(canvas, 0, 0);
+      }
+
+      canvas.width = parent.clientWidth;
+      canvas.height = parent.clientHeight;
+
+      // Fill light background grid pattern for math practice
+      drawGrid();
+      if (tempCanvas.width > 0) {
+        ctx.drawImage(tempCanvas, 0, 0);
+      }
+    }
+
+    function drawGrid() {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = '#F1F5F9';
+      ctx.lineWidth = 1;
+
+      // Draw faint 25px grid (như vở ô li)
+      for (let x = 0; x < canvas.width; x += 28) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += 28) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+
+    function setPenColor(color) {
+      penColor = color;
+      isEraser = false;
+      document.getElementById('eraser-label').innerText = 'Tẩy';
+    }
+
+    function setPenWidth(width) {
+      penWidth = width;
+    }
+
+    function toggleEraser() {
+      isEraser = !isEraser;
+      document.getElementById('eraser-label').innerText = isEraser ? 'Đang Tẩy' : 'Tẩy';
+    }
+
+    function clearCanvas() {
+      if (confirm) {
+        drawGrid();
+        showToast('Đã làm sạch bảng nháp!');
+      }
+    }
+
+    function downloadCanvas() {
+      const link = document.createElement('a');
+      link.download = 'bang-nhap-toan-lop-5.png';
+      link.href = canvas.toDataURL();
+      link.click();
+      showToast('Đã tải hình ảnh bài nháp về máy!');
+    }
+
+    // Touch and Mouse listeners for Scratchpad
+    function getCanvasCoordinates(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function startDraw(e) {
+      isDrawing = true;
+      const pos = getCanvasCoordinates(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getCanvasCoordinates(e);
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = isEraser ? penWidth * 4 : penWidth;
+      ctx.strokeStyle = isEraser ? '#FFFFFF' : penColor;
+
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function stopDraw() {
+      isDrawing = false;
+      ctx.closePath();
+    }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    window.addEventListener('mouseup', stopDraw);
+
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    window.addEventListener('touchend', stopDraw);
+
+    // Window load initialization
+    window.onload = function() {
+      updateStarDisplay();
+      renderCuratedDirectory();
+      window.addEventListener('resize', resizeCanvas);
+    };
+  </script>
+</body>
+</html>
