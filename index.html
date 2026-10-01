@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trợ Giảng Trực Quan Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
+  <title>Trợ Giảng Trực Quan 3D Đa Góc & Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,6 +14,10 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <!-- Marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Thư viện Đồ họa 3D Three.js & Bộ điều khiển xoay đa góc OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -33,13 +37,13 @@
   <header class="bg-gradient-to-r from-blue-700 via-indigo-700 to-teal-600 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-white/20 p-2 rounded-xl">🎒</span>
+        <span class="text-3xl bg-white/20 p-2 rounded-xl">🎲</span>
         <div>
           <h1 class="text-lg md:text-xl font-black tracking-wide flex items-center gap-2">
-            TRỢ GIẢNG TRỰC QUAN ĐA MÔN LỚP 5
-            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">KNTT Toàn Diện</span>
+            HỆ THỐNG TRỰC QUAN 3D ĐA GÓC & ĐA MÔN LỚP 5
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">3D WebGL</span>
           </h1>
-          <p class="text-xs text-blue-100">Toán 5 • Tiếng Việt 5 • Khoa Học 5 • Lịch Sử & Địa Lí 5 | Trọn bộ mô hình hình học 2D & 3D</p>
+          <p class="text-xs text-blue-100">Xoay 360° đa góc nhìn • Tách khối cm³ • Toán 5, Văn 5, Khoa học 5, Lịch sử & Địa lí 5</p>
         </div>
       </div>
 
@@ -55,13 +59,13 @@
     <div class="bg-black/15 border-t border-white/10 px-4">
       <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto py-2">
         <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
-          <i class="fa-solid fa-shapes text-teal-600"></i> 1. Mô Hình Hình Học 2D, 3D & Chuyển Động
+          <i class="fa-solid fa-cube text-teal-600"></i> 1. Mô Hình 3D Xoay Đa Góc (Toán 5)
         </button>
         <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-book-open text-blue-300"></i> 2. Thư Viện SGK Đa Môn (Toán, Văn, Khoa, Sử-Địa)
+          <i class="fa-solid fa-book-open text-blue-300"></i> 2. Thư Viện SGK 4 Môn (KNTT)
         </button>
         <button onclick="switchTab('solve-tab')" id="btn-solve-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý Giải Bài Mọi Môn
+          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý AI Giải Bài Mọi Môn
         </button>
         <button onclick="switchTab('class-tab')" id="btn-class-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học
@@ -76,36 +80,119 @@
   <!-- Thân trang -->
   <main class="max-w-7xl mx-auto p-3 md:p-6 w-full flex-1">
 
-    <!-- ================= TAB 1: PHÒNG THÍ NGHIỆM TRỰC QUAN (TOÀN BỘ CÁC HÌNH 2D & 3D) ================= -->
+    <!-- ================= TAB 1: PHÒNG THÍ NGHIỆM 3D XOAY ĐA GÓC & HÌNH HỌC ================= -->
     <section id="lab-tab" class="tab-content space-y-6">
       
-      <!-- Bộ nút chọn từng hình học -->
+      <!-- Nút chọn các thí nghiệm -->
       <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-200">
-        <button onclick="switchLab('triangle')" id="lab-btn-triangle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
-          🔺 Hình Tam Giác
+        <button onclick="switchLab('box3d')" id="lab-btn-box3d" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
+          🎲 Hình Hộp CN & Lập Phương 3D (Xoay 360°)
+        </button>
+        <button onclick="switchLab('triangle')" id="lab-btn-triangle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          🔺 Hình Tam Giác (Ghép Đôi Động)
         </button>
         <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          📐 Hình Thang
+          📐 Hình Thang (Ghép Hình Bình Hành)
         </button>
         <button onclick="switchLab('circle')" id="lab-btn-circle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          ⭕ Hình Tròn & Nan Quạt
-        </button>
-        <button onclick="switchLab('box3d')" id="lab-btn-box3d" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          📦 Hình Hộp CN & Lập Phương (3D)
+          ⭕ Hình Tròn & Cắt Nan Quạt
         </button>
         <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          🚗 Toán Chuyển Động (2 Xe)
-        </button>
-        <button onclick="switchLab('tape')" id="lab-btn-tape" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          📏 Sơ Đồ Đoạn Thẳng
+          🚗 Toán Chuyển Động (2 Xe Gặp Nhau)
         </button>
       </div>
 
-      <!-- 1. HÌNH TAM GIÁC -->
-      <div id="lab-triangle" class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+      <!-- 1. HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D XOAY ĐA GÓC -->
+      <div id="lab-box3d" class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        
+        <!-- Cột điều khiển kích thước & chế độ hiển thị (4/12 cột) -->
+        <div class="lg:col-span-4 space-y-4 text-xs">
+          <div class="border-b border-slate-100 pb-2">
+            <h3 class="text-sm font-bold text-teal-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-cube text-teal-600"></i> Khám Phá Khối Không Gian 3D
+            </h3>
+            <p class="text-slate-500 mt-0.5">Dùng chuột hoặc ngón tay giữ để <b>xoay 360° mọi góc</b>. Cuộn chuột để phóng to/thu nhỏ.</p>
+          </div>
+
+          <!-- Thanh kéo kích thước chiều dài, rộng, cao -->
+          <div class="space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold">
+                <span>Chiều dài ($a$):</span>
+                <span id="box3d-val-a" class="text-teal-600 font-bold">4 cm</span>
+              </div>
+              <input type="range" id="box3d-slider-a" min="1" max="6" value="4" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold">
+                <span>Chiều rộng ($b$):</span>
+                <span id="box3d-val-b" class="text-teal-600 font-bold">3 cm</span>
+              </div>
+              <input type="range" id="box3d-slider-b" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold">
+                <span>Chiều cao ($c$):</span>
+                <span id="box3d-val-c" class="text-teal-600 font-bold">3 cm</span>
+              </div>
+              <input type="range" id="box3d-slider-c" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold">
+                <span class="text-amber-700">Tách rời các khối $1\text{ cm}^3$:</span>
+                <span id="box3d-val-explode" class="text-amber-700 font-bold">0.0</span>
+              </div>
+              <input type="range" id="box3d-slider-explode" min="0" max="0.5" step="0.05" value="0.0" class="w-full cursor-pointer" oninput="update3DExplode()">
+            </div>
+          </div>
+
+          <!-- Các nút chế độ nhìn nhanh -->
+          <div class="space-y-2">
+            <span class="font-bold text-slate-700 block">Đổi góc nhìn nhanh:</span>
+            <div class="grid grid-cols-3 gap-1.5">
+              <button onclick="set3DCameraView('front')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Trực diện</button>
+              <button onclick="set3DCameraView('top')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Từ trên (Top)</button>
+              <button onclick="set3DCameraView('iso')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Phối cảnh 3D</button>
+            </div>
+            <div class="flex gap-2 pt-1">
+              <button onclick="toggleWireframe()" id="wireframeBtn" class="flex-1 py-2 bg-slate-200 hover:bg-slate-300 rounded-lg font-semibold text-slate-700">
+                <i class="fa-solid fa-border-none mr-1"></i> Nhìn xuyên thấu
+              </button>
+              <button onclick="setCubePreset()" class="flex-1 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold">
+                Hình lập phương ($a=b=c=3$)
+              </button>
+            </div>
+          </div>
+
+          <!-- Kết quả tính toán sư phạm -->
+          <div id="box3DResultBox" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900">
+            <!-- Render công thức diện tích xung quanh, toàn phần và thể tích -->
+          </div>
+        </div>
+
+        <!-- Màn hình 3D Three.js tương tác đa góc (8/12 cột) -->
+        <div class="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-2 relative overflow-hidden h-[480px]">
+          <div id="threejsContainer" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+          
+          <div class="absolute bottom-3 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-[11px] flex items-center gap-2 pointer-events-none">
+            <i class="fa-solid fa-hand-pointer text-amber-300 animate-pulse"></i>
+            <span>Giữ chuột / ngón tay để <b>xoay tự do 360° mọi góc</b></span>
+          </div>
+
+          <div class="absolute top-3 right-4 flex gap-2">
+            <span id="cubeCounterBadge" class="bg-teal-500 text-slate-900 text-xs font-black px-2.5 py-1 rounded-md shadow">
+              Tổng số khối: 36 cm³
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2. HÌNH TAM GIÁC (GHÉP ĐÔI) -->
+      <div id="lab-triangle" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-blue-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-blue-600"></i> Diện Tích Hình Tam Giác</h3>
-          <p class="text-slate-500">Kéo đáy $a$ và chiều cao $h$. Bấm ghép đôi để học sinh nhìn thấy hai tam giác bằng nhau ghép thành hình chữ nhật / hình bình hành có diện tích $a \times h$.</p>
+          <p class="text-slate-500">Kéo đáy $a$ và chiều cao $h$. Bấm ghép đôi để học sinh nhìn thấy hai tam giác bằng nhau ghép thành hình bình hành có diện tích $a \times h$.</p>
           <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Độ dài đáy ($a$):</span><span id="tri-val-a" class="text-blue-600 font-bold">12 cm</span></div>
@@ -126,7 +213,7 @@
         </div>
       </div>
 
-      <!-- 2. HÌNH THANG -->
+      <!-- 3. HÌNH THANG (GHÉP ĐÔI) -->
       <div id="lab-trapezoid" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-amber-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-amber-600"></i> Diện Tích Hình Thang</h3>
@@ -155,11 +242,11 @@
         </div>
       </div>
 
-      <!-- 3. HÌNH TRÒN & NAN QUẠT -->
+      <!-- 4. HÌNH TRÒN & CẮT NAN QUẠT -->
       <div id="lab-circle" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-rose-900 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch text-rose-600"></i> Chu Vi & Diện Tích Hình Tròn</h3>
-          <p class="text-slate-500">Mô phỏng cắt hình tròn thành 16 nan quạt rồi ghép so le tạo thành hình chữ nhật xấp xỉ có chiều rộng là $r$ và chiều dài là nửa chu vi ($r \times 3,14$).</p>
+          <p class="text-slate-500">Cắt hình tròn thành 16 nan quạt rồi ghép so le tạo thành hình chữ nhật xấp xỉ có chiều rộng $r$ và chiều dài $r \times 3,14$.</p>
           <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Bán kính ($r$):</span><span id="cir-val-r" class="text-rose-600 font-bold">5 cm</span></div>
@@ -173,35 +260,6 @@
         </div>
         <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
           <canvas id="circleCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
-        </div>
-      </div>
-
-      <!-- 4. HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D -->
-      <div id="lab-box3d" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-teal-900 flex items-center gap-1.5"><i class="fa-solid fa-cube text-teal-600"></i> Hình Học Không Gian 3D</h3>
-          <p class="text-slate-500">Mô phỏng khối hộp không gian 3 chiều (Isometric). Giúp học sinh đếm số khối lập phương $1\text{ cm}^3$ bên trong và hiểu công thức thể tích $V = a \times b \times c$.</p>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div>
-              <div class="flex justify-between font-semibold"><span>Chiều dài ($a$):</span><span id="box-val-a" class="text-teal-600 font-bold">5 cm</span></div>
-              <input type="range" id="box-slider-a" min="2" max="8" value="5" class="w-full cursor-pointer" oninput="drawBox3DLab()">
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><span>Chiều rộng ($b$):</span><span id="box-val-b" class="text-teal-600 font-bold">4 cm</span></div>
-              <input type="range" id="box-slider-b" min="2" max="7" value="4" class="w-full cursor-pointer" oninput="drawBox3DLab()">
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><span>Chiều cao ($c$):</span><span id="box-val-c" class="text-teal-600 font-bold">3 cm</span></div>
-              <input type="range" id="box-slider-c" min="2" max="6" value="3" class="w-full cursor-pointer" oninput="drawBox3DLab()">
-            </div>
-          </div>
-          <button onclick="setCubePreset()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition">
-            Chuyển thành Hình Lập Phương ($a=b=c=4$)
-          </button>
-          <div id="box3DResult" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900"></div>
-        </div>
-        <div class="lg:col-span-2 flex items-center justify-center bg-slate-900 rounded-2xl p-4">
-          <canvas id="box3DCanvas" width="600" height="340" class="w-full max-w-[600px]"></canvas>
         </div>
       </div>
 
@@ -238,60 +296,24 @@
         </div>
       </div>
 
-      <!-- 6. SƠ ĐỒ ĐOẠN THẲNG -->
-      <div id="lab-tape" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-purple-900">Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)</h3>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div><label class="block font-semibold">Tổng hai số:</label><input type="number" id="tape-sum" value="45" class="w-full p-2 border rounded-lg font-bold text-purple-700" onchange="drawTapeDiagram()"></div>
-            <div class="grid grid-cols-2 gap-2">
-              <div><label class="block font-semibold">Phần số bé:</label><input type="number" id="tape-p1" value="2" min="1" max="10" class="w-full p-2 border rounded-lg font-bold" onchange="drawTapeDiagram()"></div>
-              <div><label class="block font-semibold">Phần số lớn:</label><input type="number" id="tape-p2" value="3" min="1" max="10" class="w-full p-2 border rounded-lg font-bold" onchange="drawTapeDiagram()"></div>
-            </div>
-          </div>
-          <div id="tapeMathResult" class="p-3 bg-purple-50 border border-purple-200 rounded-xl space-y-1 text-purple-900"></div>
-        </div>
-        <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center justify-center">
-          <canvas id="tapeCanvas" width="600" height="280" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
-        </div>
-      </div>
-
     </section>
 
-    <!-- ================= TAB 2: THƯ VIỆN SGK ĐA MÔN (TOÁN, VĂN, KHOA, SỬ ĐỊA) ================= -->
+    <!-- ================= TAB 2: THƯ VIỆN SGK ĐA MÔN ================= -->
     <section id="sgk-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
-      
-      <!-- Cột trái: Bộ chọn Môn & Danh sách bài học (4 cột) -->
       <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
-        <!-- 4 Nút chọn Môn học -->
         <div class="grid grid-cols-2 gap-1.5 mb-3">
-          <button onclick="setSubject('toan')" id="sub-btn-toan" class="py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow">
-            📐 Toán 5
-          </button>
-          <button onclick="setSubject('tiengviet')" id="sub-btn-tiengviet" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
-            📖 Tiếng Việt 5
-          </button>
-          <button onclick="setSubject('khoahoc')" id="sub-btn-khoahoc" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
-            🔬 Khoa Học 5
-          </button>
-          <button onclick="setSubject('sudia')" id="sub-btn-sudia" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
-            🌏 Lịch Sử & Địa Lí 5
-          </button>
+          <button onclick="setSubject('toan')" id="sub-btn-toan" class="py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow">📐 Toán 5</button>
+          <button onclick="setSubject('tiengviet')" id="sub-btn-tiengviet" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">📖 Tiếng Việt 5</button>
+          <button onclick="setSubject('khoahoc')" id="sub-btn-khoahoc" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">🔬 Khoa Học 5</button>
+          <button onclick="setSubject('sudia')" id="sub-btn-sudia" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">🌏 Lịch Sử & Địa Lí 5</button>
         </div>
-
-        <!-- Ô tìm kiếm bài -->
         <div class="relative mb-3">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
-          <input type="text" id="multiLessonSearch" oninput="renderMultiLessons()" placeholder="Tìm bài: Tả người, năng lượng, bài 45..." class="w-full pl-8 pr-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="text" id="multiLessonSearch" oninput="renderMultiLessons()" placeholder="Tìm nhanh bài học..." class="w-full pl-8 pr-3 py-2 text-xs border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-
-        <!-- Danh sách bài học cuộn -->
-        <div id="multiLessonScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1">
-          <!-- Render tự động bài theo môn -->
-        </div>
+        <div id="multiLessonScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1"></div>
       </div>
 
-      <!-- Cột phải: Chi tiết nội dung bài học & Phương pháp giải (8 cột) -->
       <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[750px] flex flex-col justify-between">
         <div>
           <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
@@ -300,38 +322,25 @@
               <h2 id="multiLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học từ danh mục</h2>
               <p id="multiLessonDesc" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Kết Nối Tri Thức Với Cuộc Sống Lớp 5</p>
             </div>
-            
             <button onclick="triggerSolveMultiLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>AI Hướng Dẫn Soạn & Giải Tiết Này</span>
+              <i class="fa-solid fa-wand-magic-sparkles"></i> AI Soạn & Giải Tiết Này
             </button>
           </div>
-
-          <div id="multiLessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4">
-            <!-- Nội dung bài học -->
-          </div>
+          <div id="multiLessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4"></div>
         </div>
-
         <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
-          <button onclick="prevMultiLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
-            <i class="fa-solid fa-chevron-left"></i> Bài trước
-          </button>
+          <button onclick="prevMultiLesson()" class="hover:text-blue-600 font-semibold"><i class="fa-solid fa-chevron-left mr-1"></i> Bài trước</button>
           <span id="multiLessonIndexText" class="font-bold text-blue-700">Bài 1</span>
-          <button onclick="nextMultiLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
-            Bài sau <i class="fa-solid fa-chevron-right"></i>
-          </button>
+          <button onclick="nextMultiLesson()" class="hover:text-blue-600 font-semibold">Bài sau <i class="fa-solid fa-chevron-right ml-1"></i></button>
         </div>
       </div>
-
     </section>
 
     <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI TẬP MỌI MÔN & AI ================= -->
     <section id="solve-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div class="space-y-4">
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
-          <h2 class="text-sm font-bold text-slate-700 flex items-center gap-2">
-            <i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Đề Bài Bất Kỳ (Mọi Môn):
-          </h2>
+          <h2 class="text-sm font-bold text-slate-700 flex items-center gap-2"><i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Đề Bài Bất Kỳ (Mọi Môn):</h2>
           <textarea id="aiInput" rows="5" placeholder="Gõ câu hỏi Toán, dàn ý văn Tiếng Việt, câu hỏi Khoa học hoặc Lịch sử - Địa lí vào đây..." class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"></textarea>
           <button onclick="executeSolve()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center justify-center gap-2">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Giải Chi Tiết Chuẩn Sư Phạm
@@ -411,10 +420,10 @@
   <div id="apiModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
       <h3 class="font-bold text-base text-slate-800 flex items-center gap-2"><i class="fa-solid fa-key text-yellow-500"></i> Cài Đặt Gemini API Key</h3>
-      <p class="text-xs text-slate-500 leading-relaxed">Dán mã API Key miễn phí từ Google để mở khóa AI giải toàn bộ các bài tập SGK và đề nâng cao mọi môn:</p>
+      <p class="text-xs text-slate-500 leading-relaxed">Dán mã API Key miễn phí từ Google để mở khóa AI giải toàn bộ các bài tập SGK và đề nâng cao:</p>
       <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full p-2.5 border rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-500">
       <div class="text-[11px] bg-amber-50 text-amber-900 p-2.5 rounded-lg border border-amber-200">
-        👉 Lấy mã miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio</a>
+        👉 Tạo mã miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio</a>
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="clearApiKey()" class="px-3 py-2 text-xs text-rose-600 font-semibold">Xóa Mã</button>
@@ -423,10 +432,198 @@
     </div>
   </div>
 
+  <!-- JAVASCRIPT: THREE.JS 3D XOAY ĐA GÓC & ĐA MÔN HỌC -->
   <script>
-    // ==========================================
-    // 1. CƠ SỞ DỮ LIỆU ĐA MÔN HỌC LỚP 5 (KNTT)
-    // ==========================================
+    // ========================================================
+    // 1. MÔ PHỎNG 3D THREE.JS ĐA GÓC NHÌN (360 ORBIT CONTROLS)
+    // ========================================================
+    let scene, camera, renderer, controls;
+    let cubeGroup = null;
+    let isWireframe = false;
+    let currentDim = { a: 4, b: 3, c: 3 };
+    let explodeDistance = 0.0;
+
+    function initThreeJS() {
+      const container = document.getElementById('threejsContainer');
+      if (!container) return;
+
+      // 1. Scene
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0f172a); // Slate-900
+
+      // 2. Camera
+      camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(10, 8, 12);
+
+      // 3. Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.shadowMap.enabled = true;
+      container.appendChild(renderer.domElement);
+
+      // 4. OrbitControls: Cho phép học sinh kéo chuột/ngón tay xoay 360 độ tự do
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.maxDistance = 35;
+      controls.minDistance = 3;
+
+      // 5. Ánh sáng chiếu đa góc (Lighting)
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.85);
+      dirLight.position.set(15, 20, 15);
+      scene.add(dirLight);
+
+      const backLight = new THREE.DirectionalLight(0x38bdf8, 0.4);
+      backLight.position.set(-15, -10, -15);
+      scene.add(backLight);
+
+      // Lưới mặt phẳng tọa độ bên dưới (Grid)
+      const gridHelper = new THREE.GridHelper(16, 16, 0x38bdf8, 0x1e293b);
+      gridHelper.position.y = -0.01;
+      scene.add(gridHelper);
+
+      // Xây dựng hình khối lập phương con ban đầu
+      build3DModularBox();
+
+      // Render Loop
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', onWindowResize);
+    }
+
+    function onWindowResize() {
+      const container = document.getElementById('threejsContainer');
+      if (!container || !renderer || !camera) return;
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+
+    // Xây dựng khối chữ nhật từ từng khối lập phương 1 cm3 có thể tách rời
+    function build3DModularBox() {
+      if (cubeGroup) scene.remove(cubeGroup);
+      cubeGroup = new THREE.Group();
+
+      const { a, b, c } = currentDim;
+      const unitSize = 1.0;
+      const gap = explodeDistance;
+
+      // Căn giữa hình học
+      const offsetX = ((a - 1) * (unitSize + gap)) / 2;
+      const offsetY = ((c - 1) * (unitSize + gap)) / 2;
+      const offsetZ = ((b - 1) * (unitSize + gap)) / 2;
+
+      // Tạo các khối nhỏ 1 cm3
+      const geom = new THREE.BoxGeometry(unitSize, unitSize, unitSize);
+
+      for (let x = 0; x < a; x++) {
+        for (let y = 0; y < c; y++) {
+          for (let z = 0; z < b; z++) {
+            // Đổi màu nhẹ giữa các mặt để phân biệt rõ từng khối
+            const mat = new THREE.MeshStandardMaterial({
+              color: isWireframe ? 0x38bdf8 : 0x0ea5e9,
+              roughness: 0.2,
+              metalness: 0.1,
+              wireframe: isWireframe,
+              transparent: isWireframe,
+              opacity: isWireframe ? 0.35 : 0.92
+            });
+
+            const mesh = new THREE.Mesh(geom, mat);
+            mesh.position.set(
+              x * (unitSize + gap) - offsetX,
+              y * (unitSize + gap) - offsetY + (c * (unitSize + gap)) / 2,
+              z * (unitSize + gap) - offsetZ
+            );
+
+            // Viền cạnh nổi bật cho từng khối
+            const edges = new THREE.EdgesGeometry(geom);
+            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
+            mesh.add(line);
+
+            cubeGroup.add(mesh);
+          }
+        }
+      }
+
+      scene.add(cubeGroup);
+      updateMathResultBox();
+    }
+
+    function update3DBoxDimensions() {
+      currentDim.a = parseInt(document.getElementById('box3d-slider-a').value);
+      currentDim.b = parseInt(document.getElementById('box3d-slider-b').value);
+      currentDim.c = parseInt(document.getElementById('box3d-slider-c').value);
+
+      document.getElementById('box3d-val-a').textContent = currentDim.a + ' cm';
+      document.getElementById('box3d-val-b').textContent = currentDim.b + ' cm';
+      document.getElementById('box3d-val-c').textContent = currentDim.c + ' cm';
+
+      build3DModularBox();
+    }
+
+    function update3DExplode() {
+      explodeDistance = parseFloat(document.getElementById('box3d-slider-explode').value);
+      document.getElementById('box3d-val-explode').textContent = explodeDistance.toFixed(2);
+      build3DModularBox();
+    }
+
+    function toggleWireframe() {
+      isWireframe = !isWireframe;
+      document.getElementById('wireframeBtn').classList.toggle('bg-teal-200');
+      build3DModularBox();
+    }
+
+    function setCubePreset() {
+      document.getElementById('box3d-slider-a').value = 3;
+      document.getElementById('box3d-slider-b').value = 3;
+      document.getElementById('box3d-slider-c').value = 3;
+      update3DBoxDimensions();
+    }
+
+    // Các góc nhìn camera định sẵn
+    function set3DCameraView(view) {
+      if (!camera || !controls) return;
+      if (view === 'front') {
+        camera.position.set(0, currentDim.c / 2 + 1, 14);
+      } else if (view === 'top') {
+        camera.position.set(0, 16, 0.01);
+      } else if (view === 'iso') {
+        camera.position.set(10, 8, 12);
+      }
+      controls.target.set(0, currentDim.c / 2, 0);
+      controls.update();
+    }
+
+    function updateMathResultBox() {
+      const { a, b, c } = currentDim;
+      const S_xq = (a + b) * 2 * c;
+      const S_tp = S_xq + 2 * (a * b);
+      const V = a * b * c;
+      const isCube = (a === b && b === c);
+
+      document.getElementById('cubeCounterBadge').textContent = `Tổng số khối: ${V} cm³`;
+
+      document.getElementById('box3DResultBox').innerHTML = `
+        <div class="font-bold text-teal-950">${isCube ? `Khối Lập Phương (Cạnh a = ${a} cm):` : `Khối Hộp Chữ Nhật (${a} x ${b} x ${c} cm):`}</div>
+        <div>1. Diện tích xung quanh: $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
+        <div>2. Diện tích toàn phần: $S_{tp} = ${S_xq} + 2 \\times (${a} \\times ${b}) = ${S_tp}\\text{ cm}^2$</div>
+        <div class="text-teal-800 font-bold">3. Thể tích: $V = ${a} \\times ${b} \\times ${c} = ${V}\\text{ cm}^3$ (Gồm đúng ${V} khối $1\\text{ cm}^3$)</div>
+      `;
+    }
+
+    // ========================================================
+    // 2. CƠ SỞ DỮ LIỆU ĐA MÔN HỌC & LOGIC CHUYỂN MÔN
+    // ========================================================
     const multiSubjectData = {
       toan: [
         { id: 1, title: "Bài 44: Diện tích hình tam giác", desc: "Công thức: $S = \\frac{a \\times h}{2}$. Tính ngược: $a = \\frac{2S}{h}, h = \\frac{2S}{a}$." },
@@ -466,371 +663,16 @@
     let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
 
     document.addEventListener("DOMContentLoaded", () => {
+      initThreeJS();
       setSubject('toan');
       updateApiKeyUI();
       initTriangleLab();
       initTrapezoidLab();
       initCircleLab();
-      initBox3DLab();
       initWhiteboard();
-      drawTapeDiagram();
       updateMotionMath();
     });
 
-    // ==========================================
-    // 2. MÔ HÌNH HÌNH HỌC TRỰC QUAN ĐẦY ĐỦ
-    // ==========================================
-    function switchLab(name) {
-      ['triangle', 'trapezoid', 'circle', 'box3d', 'motion', 'tape'].forEach(id => {
-        document.getElementById('lab-' + id).classList.add('hidden');
-      });
-      document.querySelectorAll('.lab-sub-btn').forEach(b => {
-        b.classList.remove('bg-blue-600', 'text-white', 'shadow');
-        b.classList.add('bg-white', 'text-slate-700');
-      });
-
-      document.getElementById('lab-' + name).classList.remove('hidden');
-      const activeBtn = document.getElementById('lab-btn-' + name);
-      activeBtn.classList.remove('bg-white', 'text-slate-700');
-      activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
-
-      if (name === 'triangle') drawTriangleLab();
-      if (name === 'trapezoid') drawTrapezoidLab();
-      if (name === 'circle') drawCircleLab();
-      if (name === 'box3d') drawBox3DLab();
-      if (name === 'tape') drawTapeDiagram();
-    }
-
-    // --- 2.1 HÌNH TAM GIÁC ---
-    let triDoubled = false;
-    function toggleTriangleDouble() {
-      triDoubled = !triDoubled;
-      document.getElementById('triDoubleText').textContent = triDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng";
-      drawTriangleLab();
-    }
-    function initTriangleLab() { drawTriangleLab(); }
-    function drawTriangleLab() {
-      const a = parseInt(document.getElementById('tri-slider-a').value);
-      const h = parseInt(document.getElementById('tri-slider-h').value);
-      document.getElementById('tri-val-a').textContent = a + ' cm';
-      document.getElementById('tri-val-h').textContent = h + ' cm';
-
-      const canvas = document.getElementById('triangleCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const scale = 16, startX = 100, startY = 240;
-      const pA = { x: startX + 50, y: startY - h * scale };
-      const pB = { x: startX + a * scale, y: startY };
-      const pC = { x: startX, y: startY };
-
-      // Tam giác chính
-      ctx.fillStyle = "rgba(59, 130, 246, 0.4)";
-      ctx.strokeStyle = "#2563eb";
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.moveTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      // Đường cao h
-      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
-      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, startY); ctx.stroke();
-      ctx.setLineDash([]);
-
-      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText(`Đáy a = ${a} cm`, (pC.x + pB.x)/2 - 30, startY + 20);
-      ctx.fillStyle = "#dc2626";
-      ctx.fillText(`h = ${h} cm`, pA.x + 8, (pA.y + startY)/2);
-
-      // Ghép đối xứng
-      if (triDoubled) {
-        const pTop = { x: pB.x + (pC.x - pA.x) + 50, y: pA.y };
-        ctx.fillStyle = "rgba(245, 158, 11, 0.3)"; ctx.strokeStyle = "#d97706";
-        ctx.setLineDash([6, 4]);
-        ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x - (pC.x - pA.x), pA.y); ctx.closePath();
-        ctx.fill(); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = "#d97706";
-        ctx.fillText("Ghép thành hình bình hành có S = a x h", pA.x + 40, pA.y - 15);
-      }
-
-      const S = (a * h) / 2;
-      document.getElementById('triangleResult').innerHTML = `
-        <b>Diện tích hình tam giác:</b> $S = \\frac{${a} \\times ${h}}{2} = ${S}\\text{ cm}^2$<br>
-        ${triDoubled ? `<span class="text-amber-800 font-bold">Hình bình hành ghép lại có diện tích: $S_{hbh} = ${a} \\times${h} = ${a * h}\\text{ cm}^2$</span>` : ''}
-      `;
-    }
-
-    // --- 2.2 HÌNH THANG ---
-    let isDoubled = false;
-    function toggleTrapezoidDouble() {
-      isDoubled = !isDoubled;
-      document.getElementById('doubleBtnText').textContent = isDoubled ? "Thu về 1 hình thang" : "Ghép thêm 1 hình (Tạo hình bình hành)";
-      drawTrapezoidLab();
-    }
-    function initTrapezoidLab() { drawTrapezoidLab(); }
-    function drawTrapezoidLab() {
-      const a = parseInt(document.getElementById('slider-a').value);
-      const b = parseInt(document.getElementById('slider-b').value);
-      const h = parseInt(document.getElementById('slider-h').value);
-
-      document.getElementById('val-a').textContent = a + ' cm';
-      document.getElementById('val-b').textContent = b + ' cm';
-      document.getElementById('val-h').textContent = h + ' cm';
-
-      const canvas = document.getElementById('trapezoidCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const scale = 14, startX = 60, startY = 240;
-      const pA = { x: startX + 30, y: startY - h * scale };
-      const pB = { x: startX + 30 + a * scale, y: startY - h * scale };
-      const pC = { x: startX + b * scale, y: startY };
-      const pD = { x: startX, y: startY };
-
-      ctx.fillStyle = "rgba(251, 191, 36, 0.4)"; ctx.strokeStyle = "#d97706"; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
-      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke(); ctx.setLineDash([]);
-
-      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText(`a = ${a} cm`, (pA.x + pB.x)/2 - 25, pA.y - 8);
-      ctx.fillText(`b = ${b} cm`, (pD.x + pC.x)/2 - 25, pD.y + 20);
-
-      if (isDoubled) {
-        const pC2 = { x: pC.x + a * scale, y: pD.y };
-        const pB2 = { x: pB.x + b * scale, y: pA.y };
-        ctx.fillStyle = "rgba(59, 130, 246, 0.25)"; ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 2.5;
-        ctx.setLineDash([6, 4]);
-        ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pC2.x, pC2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(pC2.x, pC2.y); ctx.lineTo(pB2.x, pB2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.setLineDash([]);
-      }
-
-      const S = ((a + b) * h) / 2;
-      document.getElementById('trapezoidResult').innerHTML = `<b>Diện tích hình thang:</b> $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$`;
-    }
-
-    // --- 2.3 HÌNH TRÒN & NAN QUẠT ---
-    let cirSliced = false;
-    function toggleCircleSlices() {
-      cirSliced = !cirSliced;
-      document.getElementById('cirSliceText').textContent = cirSliced ? "Xem hình tròn nguyên bản" : "Cắt nan quạt ghép hình chữ nhật";
-      drawCircleLab();
-    }
-    function initCircleLab() { drawCircleLab(); }
-    function drawCircleLab() {
-      const r = parseInt(document.getElementById('cir-slider-r').value);
-      document.getElementById('cir-val-r').textContent = r + ' cm';
-      const canvas = document.getElementById('circleCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const C = (2 * r * 3.14).toFixed(2);
-      const S = (r * r * 3.14).toFixed(2);
-
-      if (!cirSliced) {
-        // Vẽ hình tròn nguyên vẹn
-        const centerX = 200, centerY = 160, radiusPx = r * 14;
-        ctx.fillStyle = "rgba(244, 63, 94, 0.25)"; ctx.strokeStyle = "#e11d48"; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.arc(centerX, centerY, radiusPx, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-        // Tâm và Bán kính r
-        ctx.fillStyle = "#e11d48"; ctx.beginPath(); ctx.arc(centerX, centerY, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + radiusPx, centerY); ctx.stroke(); ctx.setLineDash([]);
-
-        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-        ctx.fillText(`r = ${r} cm`, centerX + radiusPx/2 - 15, centerY - 8);
-        ctx.fillText(`Đường kính d = 2r = ${2 * r} cm`, centerX - 60, centerY + radiusPx + 25);
-      } else {
-        // Vẽ nan quạt duỗi thẳng thành hình chữ nhật xấp xỉ
-        const numSlices = 16;
-        const rectW = 280, rectH = r * 12;
-        const sliceW = rectW / numSlices;
-        const startX = 60, startY = 160;
-
-        for (let i = 0; i < numSlices; i++) {
-          ctx.fillStyle = i % 2 === 0 ? "rgba(244, 63, 94, 0.4)" : "rgba(59, 130, 246, 0.4)";
-          ctx.strokeStyle = "#475569"; ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          if (i % 2 === 0) {
-            ctx.moveTo(startX + i * sliceW, startY + rectH);
-            ctx.lineTo(startX + (i + 1) * sliceW, startY + rectH);
-            ctx.lineTo(startX + (i + 0.5) * sliceW, startY);
-          } else {
-            ctx.moveTo(startX + i * sliceW, startY);
-            ctx.lineTo(startX + (i + 1) * sliceW, startY);
-            ctx.lineTo(startX + (i + 0.5) * sliceW, startY + rectH);
-          }
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-        }
-
-        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-        ctx.fillText(`Chiều dài = Nửa chu vi = r x 3,14`, startX + 50, startY - 15);
-        ctx.fillText(`Chiều rộng = r`, startX + rectW + 15, startY + rectH/2);
-      }
-
-      document.getElementById('circleResult').innerHTML = `
-        <b>Chu vi hình tròn:</b> $C = ${r} \\times 2 \\times 3,14 = ${C}\\text{ cm}$<br>
-        <b>Diện tích hình tròn:</b> $S = ${r} \\times ${r} \\times 3,14 = ${S}\\text{ cm}^2$
-      `;
-    }
-
-    // --- 2.4 HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D ---
-    function setCubePreset() {
-      document.getElementById('box-slider-a').value = 4;
-      document.getElementById('box-slider-b').value = 4;
-      document.getElementById('box-slider-c').value = 4;
-      drawBox3DLab();
-    }
-    function initBox3DLab() { drawBox3DLab(); }
-    function drawBox3DLab() {
-      const a = parseInt(document.getElementById('box-slider-a').value);
-      const b = parseInt(document.getElementById('box-slider-b').value);
-      const c = parseInt(document.getElementById('box-slider-c').value);
-
-      document.getElementById('box-val-a').textContent = a + ' cm';
-      document.getElementById('box-val-b').textContent = b + ' cm';
-      document.getElementById('box-val-c').textContent = c + ' cm';
-
-      const canvas = document.getElementById('box3DCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Phép chiếu trục đo Isometric 3D
-      const originX = 260, originY = 220;
-      const uX = 22, uY = 13, uZ = 24; // vector trục
-
-      const toIso = (x, y, z) => ({
-        px: originX + (x * uX) - (y * uX),
-        py: originY + (x * uY) + (y * uY) - (z * uZ)
-      });
-
-      // Vẽ mặt đáy dưới
-      // Vẽ các khối lập phương con 1cm3 xếp tầng
-      for (let z = 0; z < c; z++) {
-        for (let y = b - 1; y >= 0; y--) {
-          for (let x = 0; x < a; x++) {
-            drawUnitCube(ctx, toIso, x, y, z);
-          }
-        }
-      }
-
-      // Tính diện tích và thể tích
-      const S_xq = (a + b) * 2 * c;
-      const S_tp = S_xq + 2 * (a * b);
-      const V = a * b * c;
-      const isCube = (a === b && b === c);
-
-      document.getElementById('box3DResult').innerHTML = `
-        <div class="font-bold text-teal-950">${isCube ? 'Khối Lập Phương (a = ' + a + ' cm):' : 'Khối Hộp Chữ Nhật:'}</div>
-        <div>1. $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
-        <div>2. $S_{tp} = ${S_xq} + 2 \\times (${a} \\times ${b}) = ${S_tp}\\text{ cm}^2$</div>
-        <div class="text-teal-800 font-bold">3. Thể tích: $V = ${a} \\times ${b} \\times ${c} = ${V}\\text{ cm}^3$ (${V} khối $1\\text{ cm}^3$)</div>
-      `;
-    }
-
-    function drawUnitCube(ctx, toIso, x, y, z) {
-      const p0 = toIso(x, y, z);
-      const pX = toIso(x + 1, y, z);
-      const pXY = toIso(x + 1, y + 1, z);
-      const pY = toIso(x, y + 1, z);
-
-      const p0_top = toIso(x, y, z + 1);
-      const pX_top = toIso(x + 1, y, z + 1);
-      const pXY_top = toIso(x + 1, y + 1, z + 1);
-      const pY_top = toIso(x, y + 1, z + 1);
-
-      // Mặt trên (Top)
-      ctx.fillStyle = "#38bdf8"; ctx.strokeStyle = "#0284c7"; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(p0_top.px, p0_top.py); ctx.lineTo(pX_top.px, pX_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pY_top.px, pY_top.py); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      // Mặt phải (Right)
-      ctx.fillStyle = "#0284c7";
-      ctx.beginPath(); ctx.moveTo(pX_top.px, pX_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pXY.px, pXY.py); ctx.lineTo(pX.px, pX.py); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      // Mặt trước (Left)
-      ctx.fillStyle = "#0369a1";
-      ctx.beginPath(); ctx.moveTo(pY_top.px, pY_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pXY.px, pXY.py); ctx.lineTo(pY.px, pY.py); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-    }
-
-    // --- 2.5 TOÁN CHUYỂN ĐỘNG & SƠ ĐỒ ĐOẠN THẲNG ---
-    let motionTimer = null, motionProgress = 0;
-    function updateMotionMath() {
-      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
-      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
-      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
-      const sumV = v1 + v2;
-      const t = (dist / sumV).toFixed(2);
-      document.getElementById('motionMathBox').innerHTML = `Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$<br>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$`;
-    }
-    function resetMotion() {
-      if (motionTimer) clearInterval(motionTimer);
-      motionTimer = null; motionProgress = 0;
-      document.getElementById('carA').style.transform = `translateX(0px)`;
-      document.getElementById('carB').style.transform = `translateX(0px)`;
-      document.getElementById('meetFlag').classList.add('hidden');
-      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng";
-      updateMotionMath();
-    }
-    function startMotion() {
-      resetMotion();
-      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
-      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
-      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
-      const trackWidth = 500;
-      const meetX = (v1 / (v1 + v2)) * trackWidth;
-      const flag = document.getElementById('meetFlag');
-      flag.style.left = meetX + 'px';
-      document.getElementById('motionStatusBadge').textContent = "Đang chạy...";
-
-      motionTimer = setInterval(() => {
-        motionProgress += 0.01;
-        if (motionProgress >= 1) {
-          motionProgress = 1; clearInterval(motionTimer);
-          document.getElementById('motionStatusBadge').textContent = "Đã gặp nhau!";
-          flag.classList.remove('hidden');
-        }
-        document.getElementById('carA').style.transform = `translateX(${motionProgress * meetX}px)`;
-        document.getElementById('carB').style.transform = `translateX(-${motionProgress * (trackWidth - meetX)}px)`;
-      }, 30);
-    }
-
-    function drawTapeDiagram() {
-      const sum = parseFloat(document.getElementById('tape-sum').value) || 45;
-      const p1 = parseInt(document.getElementById('tape-p1').value) || 2;
-      const p2 = parseInt(document.getElementById('tape-p2').value) || 3;
-      const total = p1 + p2;
-      const unit = sum / total;
-
-      document.getElementById('tapeMathResult').innerHTML = `Tổng số phần: $${p1} + ${p2} = ${total}\\text{ phần}$<br>Số bé: $${(unit * p1).toFixed(1)}$ | Số lớn: $${(unit * p2).toFixed(1)}$`;
-
-      const canvas = document.getElementById('tapeCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const startX = 70, segW = Math.min(60, 360 / Math.max(p1, p2));
-
-      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText("Số bé:", 20, 65);
-      for(let i=0; i<p1; i++) {
-        ctx.fillStyle = "#e0e7ff"; ctx.strokeStyle = "#4338ca";
-        ctx.fillRect(startX + i*segW, 50, segW, 24); ctx.strokeRect(startX + i*segW, 50, segW, 24);
-      }
-      ctx.fillText("Số lớn:", 20, 135);
-      for(let i=0; i<p2; i++) {
-        ctx.fillStyle = "#fef3c7"; ctx.strokeStyle = "#d97706";
-        ctx.fillRect(startX + i*segW, 120, segW, 24); ctx.strokeRect(startX + i*segW, 120, segW, 24);
-      }
-    }
-
-    // ==========================================
-    // 3. QUẢN LÝ THƯ VIỆN SGK ĐA MÔN HỌC
-    // ==========================================
     function setSubject(sub) {
       currentSub = sub;
       currentMultiIdx = 0;
@@ -884,7 +726,7 @@
         </div>
         <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
           <div class="font-bold text-slate-800">📌 Hướng dẫn tổ chức hoạt động học trên lớp:</div>
-          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình trực quan hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
+          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình 3D trực quan hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
           <p class="text-slate-600">• Luyện tập thực hành từng bước, giải thích rõ lý do và cách tư duy logic.</p>
         </div>
       `;
@@ -907,9 +749,234 @@
       executeSolve();
     }
 
-    // ==========================================
-    // 4. TRỢ LÝ GIẢI BÀI AI & DỰ PHÒNG MỌI MÔN
-    // ==========================================
+    // ========================================================
+    // 3. CÁC HÌNH 2D KHÁC (TAM GIÁC, HÌNH THANG, HÌNH TRÒN)
+    // ========================================================
+    function switchLab(name) {
+      ['box3d', 'triangle', 'trapezoid', 'circle', 'motion'].forEach(id => {
+        document.getElementById('lab-' + id).classList.add('hidden');
+      });
+      document.querySelectorAll('.lab-sub-btn').forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white', 'shadow');
+        b.classList.add('bg-white', 'text-slate-700');
+      });
+
+      document.getElementById('lab-' + name).classList.remove('hidden');
+      const activeBtn = document.getElementById('lab-btn-' + name);
+      activeBtn.classList.remove('bg-white', 'text-slate-700');
+      activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
+
+      if (name === 'box3d') onWindowResize();
+      if (name === 'triangle') drawTriangleLab();
+      if (name === 'trapezoid') drawTrapezoidLab();
+      if (name === 'circle') drawCircleLab();
+    }
+
+    // Tam giác
+    let triDoubled = false;
+    function toggleTriangleDouble() {
+      triDoubled = !triDoubled;
+      document.getElementById('triDoubleText').textContent = triDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng";
+      drawTriangleLab();
+    }
+    function initTriangleLab() { drawTriangleLab(); }
+    function drawTriangleLab() {
+      const a = parseInt(document.getElementById('tri-slider-a').value);
+      const h = parseInt(document.getElementById('tri-slider-h').value);
+      document.getElementById('tri-val-a').textContent = a + ' cm';
+      document.getElementById('tri-val-h').textContent = h + ' cm';
+
+      const canvas = document.getElementById('triangleCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const scale = 16, startX = 100, startY = 240;
+      const pA = { x: startX + 50, y: startY - h * scale };
+      const pB = { x: startX + a * scale, y: startY };
+      const pC = { x: startX, y: startY };
+
+      ctx.fillStyle = "rgba(59, 130, 246, 0.4)"; ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
+      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, startY); ctx.stroke(); ctx.setLineDash([]);
+
+      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+      ctx.fillText(`Đáy a = ${a} cm`, (pC.x + pB.x)/2 - 30, startY + 20);
+      ctx.fillStyle = "#dc2626";
+      ctx.fillText(`h = ${h} cm`, pA.x + 8, (pA.y + startY)/2);
+
+      if (triDoubled) {
+        ctx.fillStyle = "rgba(245, 158, 11, 0.3)"; ctx.strokeStyle = "#d97706";
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x - (pC.x - pA.x), pA.y); ctx.closePath();
+        ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
+      }
+
+      const S = (a * h) / 2;
+      document.getElementById('triangleResult').innerHTML = `
+        <b>Diện tích hình tam giác:</b> $S = \\frac{${a} \\times ${h}}{2} = ${S}\\text{ cm}^2$<br>
+        ${triDoubled ? `<span class="text-amber-800 font-bold">Hình bình hành ghép lại có diện tích: $S_{hbh} = ${a} \\times${h} = ${a * h}\\text{ cm}^2$</span>` : ''}
+      `;
+    }
+
+    // Hình thang
+    let isDoubled = false;
+    function toggleTrapezoidDouble() {
+      isDoubled = !isDoubled;
+      document.getElementById('doubleBtnText').textContent = isDoubled ? "Thu về 1 hình thang" : "Ghép thêm 1 hình (Tạo hình bình hành)";
+      drawTrapezoidLab();
+    }
+    function initTrapezoidLab() { drawTrapezoidLab(); }
+    function drawTrapezoidLab() {
+      const a = parseInt(document.getElementById('slider-a').value);
+      const b = parseInt(document.getElementById('slider-b').value);
+      const h = parseInt(document.getElementById('slider-h').value);
+
+      document.getElementById('val-a').textContent = a + ' cm';
+      document.getElementById('val-b').textContent = b + ' cm';
+      document.getElementById('val-h').textContent = h + ' cm';
+
+      const canvas = document.getElementById('trapezoidCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const scale = 14, startX = 60, startY = 240;
+      const pA = { x: startX + 30, y: startY - h * scale };
+      const pB = { x: startX + 30 + a * scale, y: startY - h * scale };
+      const pC = { x: startX + b * scale, y: startY };
+      const pD = { x: startX, y: startY };
+
+      ctx.fillStyle = "rgba(251, 191, 36, 0.4)"; ctx.strokeStyle = "#d97706"; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
+      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke(); ctx.setLineDash([]);
+
+      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+      ctx.fillText(`a = ${a} cm`, (pA.x + pB.x)/2 - 25, pA.y - 8);
+      ctx.fillText(`b = ${b} cm`, (pD.x + pC.x)/2 - 25, pD.y + 20);
+
+      if (isDoubled) {
+        const pC2 = { x: pC.x + a * scale, y: pD.y };
+        const pB2 = { x: pB.x + b * scale, y: pA.y };
+        ctx.fillStyle = "rgba(59, 130, 246, 0.25)"; ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 2.5;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pC2.x, pC2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pC2.x, pC2.y); ctx.lineTo(pB2.x, pB2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      const S = ((a + b) * h) / 2;
+      document.getElementById('trapezoidResult').innerHTML = `<b>Diện tích hình thang:</b> $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$`;
+    }
+
+    // Hình tròn
+    let cirSliced = false;
+    function toggleCircleSlices() {
+      cirSliced = !cirSliced;
+      document.getElementById('cirSliceText').textContent = cirSliced ? "Xem hình tròn nguyên bản" : "Cắt nan quạt ghép hình chữ nhật";
+      drawCircleLab();
+    }
+    function initCircleLab() { drawCircleLab(); }
+    function drawCircleLab() {
+      const r = parseInt(document.getElementById('cir-slider-r').value);
+      document.getElementById('cir-val-r').textContent = r + ' cm';
+      const canvas = document.getElementById('circleCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const C = (2 * r * 3.14).toFixed(2);
+      const S = (r * r * 3.14).toFixed(2);
+
+      if (!cirSliced) {
+        const centerX = 200, centerY = 160, radiusPx = r * 14;
+        ctx.fillStyle = "rgba(244, 63, 94, 0.25)"; ctx.strokeStyle = "#e11d48"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(centerX, centerY, radiusPx, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = "#e11d48"; ctx.beginPath(); ctx.arc(centerX, centerY, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + radiusPx, centerY); ctx.stroke(); ctx.setLineDash([]);
+
+        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+        ctx.fillText(`r = ${r} cm`, centerX + radiusPx/2 - 15, centerY - 8);
+        ctx.fillText(`Đường kính d = 2r = ${2 * r} cm`, centerX - 60, centerY + radiusPx + 25);
+      } else {
+        const numSlices = 16, rectW = 280, rectH = r * 12;
+        const sliceW = rectW / numSlices, startX = 60, startY = 160;
+
+        for (let i = 0; i < numSlices; i++) {
+          ctx.fillStyle = i % 2 === 0 ? "rgba(244, 63, 94, 0.4)" : "rgba(59, 130, 246, 0.4)";
+          ctx.strokeStyle = "#475569"; ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          if (i % 2 === 0) {
+            ctx.moveTo(startX + i * sliceW, startY + rectH);
+            ctx.lineTo(startX + (i + 1) * sliceW, startY + rectH);
+            ctx.lineTo(startX + (i + 0.5) * sliceW, startY);
+          } else {
+            ctx.moveTo(startX + i * sliceW, startY);
+            ctx.lineTo(startX + (i + 1) * sliceW, startY);
+            ctx.lineTo(startX + (i + 0.5) * sliceW, startY + rectH);
+          }
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+        }
+        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+        ctx.fillText(`Chiều dài = Nửa chu vi = r x 3,14`, startX + 50, startY - 15);
+        ctx.fillText(`Chiều rộng = r`, startX + rectW + 15, startY + rectH/2);
+      }
+
+      document.getElementById('circleResult').innerHTML = `
+        <b>Chu vi hình tròn:</b> $C = ${r} \\times 2 \\times 3,14 = ${C}\\text{ cm}$<br>
+        <b>Diện tích hình tròn:</b> $S = ${r} \\times ${r} \\times 3,14 = ${S}\\text{ cm}^2$
+      `;
+    }
+
+    // Chuyển động
+    let motionTimer = null, motionProgress = 0;
+    function updateMotionMath() {
+      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
+      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
+      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
+      const sumV = v1 + v2;
+      const t = (dist / sumV).toFixed(2);
+      document.getElementById('motionMathBox').innerHTML = `Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$<br>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$`;
+    }
+    function resetMotion() {
+      if (motionTimer) clearInterval(motionTimer);
+      motionTimer = null; motionProgress = 0;
+      document.getElementById('carA').style.transform = `translateX(0px)`;
+      document.getElementById('carB').style.transform = `translateX(0px)`;
+      document.getElementById('meetFlag').classList.add('hidden');
+      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng";
+      updateMotionMath();
+    }
+    function startMotion() {
+      resetMotion();
+      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
+      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
+      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
+      const trackWidth = 500;
+      const meetX = (v1 / (v1 + v2)) * trackWidth;
+      const flag = document.getElementById('meetFlag');
+      flag.style.left = meetX + 'px';
+      document.getElementById('motionStatusBadge').textContent = "Đang chạy...";
+
+      motionTimer = setInterval(() => {
+        motionProgress += 0.01;
+        if (motionProgress >= 1) {
+          motionProgress = 1; clearInterval(motionTimer);
+          document.getElementById('motionStatusBadge').textContent = "Đã gặp nhau!";
+          flag.classList.remove('hidden');
+        }
+        document.getElementById('carA').style.transform = `translateX(${motionProgress * meetX}px)`;
+        document.getElementById('carB').style.transform = `translateX(-${motionProgress * (trackWidth - meetX)}px)`;
+      }, 30);
+    }
+
+    // ========================================================
+    // 4. TRỢ LÝ AI & DỰ PHÒNG OFFLINE
+    // ========================================================
     async function executeSolve() {
       const q = document.getElementById('aiInput').value.trim();
       if (!q) return alert("Vui lòng nhập câu hỏi hoặc đề bài!");
@@ -937,7 +1004,7 @@
     async function requestGemini(prompt, key) {
       const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 (Toán, Tiếng Việt, Khoa học, Lịch sử và Địa lí) theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
 Luôn trả lời theo chuẩn sư phạm 3 phần:
-1. 💡 Tóm tắt kiến thức / Phương pháp tư duy.
+1. 💡 Tóm tắt kiến thức / Phương pháp tư duy trực quan.
 2. ✅ Hướng dẫn giải chi tiết (các bước tính toán hoặc đoạn văn mẫu, phân tích khoa học/lịch sử).
 3. 🌟 Mẹo ghi nhớ và bài học rút ra.`;
 
@@ -958,10 +1025,10 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
       return `### 💡 Hướng dẫn phương pháp sư phạm:
 1. **Phân tích yêu cầu:** Đọc kỹ đề bài để nhận diện môn học và kiến thức trọng tâm (Toán học, Tập làm văn, Khoa học hoặc Lịch sử - Địa lí).
 2. **Các bước tiến hành:**
-   - Đối với Toán: Áp dụng các công thức hình học hoặc vẽ sơ đồ đoạn thẳng trực quan.
-   - Đối với Tiếng Việt: Lập dàn ý 3 phần (Mở bài - Thân bài - Kết bài), dùng biện pháp so sánh và từ ngữ gợi cảm.
-   - Đối với Khoa học / Lịch sử - Địa lí: Nêu rõ nguyên nhân, diễn biến và ý nghĩa thực tiễn.
-*(Thầy cô hãy cài đặt mã Gemini API Key ở góc trên để AI giải chi tiết ngay lập tức cho bất kỳ đề bài nào)*`;
+   - Đối với Toán: Áp dụng các công thức hình học hoặc quan sát mô hình 3D trực quan.
+   - Đối với Tiếng Việt: Lập dàn ý 3 phần, dùng biện pháp so sánh và từ ngữ gợi cảm.
+   - Đối với Khoa học / Lịch sử - Địa lí: Nêu rõ nguyên nhân, hiện tượng và ý nghĩa thực tiễn.
+*(Cài đặt mã Gemini API Key ở góc trên để AI giải chi tiết ngay lập tức)*`;
     }
 
     function renderAnswer(md) {
@@ -972,9 +1039,9 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
       navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => alert("Đã chép nội dung bài giải!"));
     }
 
-    // ==========================================
+    // ========================================================
     // 5. TIỆN ÍCH LỚP HỌC & BẢNG NHÁP Ô LI
-    // ==========================================
+    // ========================================================
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -985,6 +1052,10 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
       const activeBtn = document.getElementById('btn-' + tabId);
       activeBtn.classList.remove('text-white');
       activeBtn.classList.add('bg-white', 'text-blue-800', 'shadow');
+
+      if (tabId === 'lab-tab') {
+        setTimeout(onWindowResize, 50);
+      }
     }
 
     function toggleApiKeyModal() { document.getElementById('apiModal').classList.toggle('hidden'); }
