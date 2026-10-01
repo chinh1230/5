@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trợ Giảng Trực Quan & Trọn Bộ SGK Toán 5 - Kết Nối Tri Thức</title>
+  <title>Trợ Giảng Trực Quan Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -36,10 +36,10 @@
         <span class="text-3xl bg-white/20 p-2 rounded-xl">🎒</span>
         <div>
           <h1 class="text-lg md:text-xl font-black tracking-wide flex items-center gap-2">
-            TOÁN 5 - KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
-            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Đủ 75 Bài Học</span>
+            TRỢ GIẢNG TRỰC QUAN ĐA MÔN LỚP 5
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">KNTT Toàn Diện</span>
           </h1>
-          <p class="text-xs text-blue-100">Tra cứu trọn vẹn SGK Tập 1 & Tập 2, mô phỏng trực quan và trợ giảng AI</p>
+          <p class="text-xs text-blue-100">Toán 5 • Tiếng Việt 5 • Khoa Học 5 • Lịch Sử & Địa Lí 5 | Trọn bộ mô hình hình học 2D & 3D</p>
         </div>
       </div>
 
@@ -54,14 +54,14 @@
     <!-- Thanh Menu Chức Năng (Tabs) -->
     <div class="bg-black/15 border-t border-white/10 px-4">
       <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto py-2">
-        <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
-          <i class="fa-solid fa-book-open text-blue-600"></i> 1. Trọn Bộ 75 Bài SGK
+        <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
+          <i class="fa-solid fa-shapes text-teal-600"></i> 1. Mô Hình Hình Học 2D, 3D & Chuyển Động
         </button>
-        <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-flask-vial text-teal-300"></i> 2. Mô Phỏng Trực Quan
+        <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
+          <i class="fa-solid fa-book-open text-blue-300"></i> 2. Thư Viện SGK Đa Môn (Toán, Văn, Khoa, Sử-Địa)
         </button>
         <button onclick="switchTab('solve-tab')" id="btn-solve-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý Giải Bài Mở Rộng
+          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý Giải Bài Mọi Môn
         </button>
         <button onclick="switchTab('class-tab')" id="btn-class-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học
@@ -76,106 +76,136 @@
   <!-- Thân trang -->
   <main class="max-w-7xl mx-auto p-3 md:p-6 w-full flex-1">
 
-    <!-- ================= TAB 1: TRỌN BỘ 75 BÀI SGK TOÁN 5 ================= -->
-    <section id="sgk-tab" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- ================= TAB 1: PHÒNG THÍ NGHIỆM TRỰC QUAN (TOÀN BỘ CÁC HÌNH 2D & 3D) ================= -->
+    <section id="lab-tab" class="tab-content space-y-6">
       
-      <!-- Cột trái: Tìm kiếm & Cây 75 bài học (Chiếm 4/12 cột) -->
-      <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
-        <!-- Ô tìm kiếm bài -->
-        <div class="relative mb-3">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
-          <input type="text" id="lessonSearchInput" oninput="filterLessons()" placeholder="Tìm nhanh: Bài 45, thể tích, hình thang..." class="w-full pl-8 pr-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <!-- Bộ lọc Tập 1 / Tập 2 -->
-        <div class="flex gap-1 mb-2 pb-2 border-b border-slate-100 text-xs font-semibold">
-          <button onclick="setSemesterFilter('all')" id="filter-all" class="flex-1 py-1 rounded-lg bg-blue-600 text-white">Tất cả (75 bài)</button>
-          <button onclick="setSemesterFilter(1)" id="filter-1" class="flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Tập 1</button>
-          <button onclick="setSemesterFilter(2)" id="filter-2" class="flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Tập 2</button>
-        </div>
-
-        <!-- Danh sách cuộn 75 bài -->
-        <div id="lessonListScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1">
-          <!-- Render tự động 75 bài -->
-        </div>
-      </div>
-
-      <!-- Cột phải: Chi tiết bài học & Lời giải (Chiếm 8/12 cột) -->
-      <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[750px] flex flex-col justify-between">
-        <div>
-          <!-- Header bài học -->
-          <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
-            <div>
-              <span id="activeLessonBadge" class="text-xs font-black text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md uppercase">Chủ đề</span>
-              <h2 id="activeLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học để xem chi tiết</h2>
-              <p id="activeLessonBook" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Toán 5 - Kết Nối Tri Thức Với Cuộc Sống</p>
-            </div>
-            
-            <!-- Nút bấm AI giải trọn bộ bài tập của bài này -->
-            <button onclick="triggerSolveCurrentLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>AI Giải Trọn Bộ Bài Tập Tiết Này</span>
-            </button>
-          </div>
-
-          <!-- Nội dung chi tiết bài học -->
-          <div id="lessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4">
-            <!-- Render nội dung lý thuyết + bài tập -->
-          </div>
-        </div>
-
-        <!-- Thanh điều hướng chân trang -->
-        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
-          <button onclick="prevLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
-            <i class="fa-solid fa-chevron-left"></i> Bài trước
-          </button>
-          <span id="currentLessonIndexText" class="font-bold text-blue-700">Bài 1 / 75</span>
-          <button onclick="nextLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
-            Bài sau <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ================= TAB 2: MÔ PHỎNG TRỰC QUAN ================= -->
-    <section id="lab-tab" class="tab-content hidden space-y-6">
+      <!-- Bộ nút chọn từng hình học -->
       <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-200">
-        <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">1. Cắt Ghép Hình Thang</button>
-        <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">2. Mô Phỏng 2 Xe Chuyển Động</button>
-        <button onclick="switchLab('tape')" id="lab-btn-tape" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">3. Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)</button>
+        <button onclick="switchLab('triangle')" id="lab-btn-triangle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
+          🔺 Hình Tam Giác
+        </button>
+        <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          📐 Hình Thang
+        </button>
+        <button onclick="switchLab('circle')" id="lab-btn-circle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          ⭕ Hình Tròn & Nan Quạt
+        </button>
+        <button onclick="switchLab('box3d')" id="lab-btn-box3d" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          📦 Hình Hộp CN & Lập Phương (3D)
+        </button>
+        <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          🚗 Toán Chuyển Động (2 Xe)
+        </button>
+        <button onclick="switchLab('tape')" id="lab-btn-tape" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          📏 Sơ Đồ Đoạn Thẳng
+        </button>
       </div>
 
-      <!-- Lab Hình Thang -->
-      <div id="lab-trapezoid" class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+      <!-- 1. HÌNH TAM GIÁC -->
+      <div id="lab-triangle" class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-blue-900">Khám Phá Diện Tích Hình Thang</h3>
-          <p class="text-slate-500">Ghép 2 hình thang bằng nhau tạo thành hình bình hành có đáy $(a+b)$ và chiều cao $h$.</p>
+          <h3 class="text-sm font-bold text-blue-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-blue-600"></i> Diện Tích Hình Tam Giác</h3>
+          <p class="text-slate-500">Kéo đáy $a$ và chiều cao $h$. Bấm ghép đôi để học sinh nhìn thấy hai tam giác bằng nhau ghép thành hình chữ nhật / hình bình hành có diện tích $a \times h$.</p>
           <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div>
-              <div class="flex justify-between font-semibold"><span>Đáy bé (a):</span><span id="val-a" class="text-blue-600 font-bold">8 cm</span></div>
+              <div class="flex justify-between font-semibold"><span>Độ dài đáy ($a$):</span><span id="tri-val-a" class="text-blue-600 font-bold">12 cm</span></div>
+              <input type="range" id="tri-slider-a" min="6" max="20" value="12" class="w-full cursor-pointer" oninput="drawTriangleLab()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="tri-val-h" class="text-blue-600 font-bold">8 cm</span></div>
+              <input type="range" id="tri-slider-h" min="4" max="14" value="8" class="w-full cursor-pointer" oninput="drawTriangleLab()">
+            </div>
+          </div>
+          <button onclick="toggleTriangleDouble()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition shadow">
+            <span id="triDoubleText">Ghép thêm 1 tam giác đối xứng</span>
+          </button>
+          <div id="triangleResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-blue-900"></div>
+        </div>
+        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
+          <canvas id="triangleCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
+        </div>
+      </div>
+
+      <!-- 2. HÌNH THANG -->
+      <div id="lab-trapezoid" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-amber-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-amber-600"></i> Diện Tích Hình Thang</h3>
+          <p class="text-slate-500">Ghép 2 hình thang bằng nhau tạo thành hình bình hành có đáy là $(a + b)$ và chiều cao $h$.</p>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Đáy bé ($a$):</span><span id="val-a" class="text-blue-600 font-bold">8 cm</span></div>
               <input type="range" id="slider-a" min="4" max="14" value="8" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold"><span>Đáy lớn (b):</span><span id="val-b" class="text-blue-600 font-bold">14 cm</span></div>
+              <div class="flex justify-between font-semibold"><span>Đáy lớn ($b$):</span><span id="val-b" class="text-blue-600 font-bold">14 cm</span></div>
               <input type="range" id="slider-b" min="10" max="22" value="14" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold"><span>Chiều cao (h):</span><span id="val-h" class="text-blue-600 font-bold">7 cm</span></div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="val-h" class="text-blue-600 font-bold">7 cm</span></div>
               <input type="range" id="slider-h" min="4" max="12" value="7" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
           </div>
-          <button onclick="toggleTrapezoidDouble()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition">
+          <button onclick="toggleTrapezoidDouble()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition shadow">
             <span id="doubleBtnText">Ghép thêm 1 hình (Tạo hình bình hành)</span>
           </button>
           <div id="trapezoidResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-blue-900"></div>
         </div>
         <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
-          <canvas id="trapezoidCanvas" width="600" height="340" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
+          <canvas id="trapezoidCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
         </div>
       </div>
 
-      <!-- Lab Chuyển động -->
+      <!-- 3. HÌNH TRÒN & NAN QUẠT -->
+      <div id="lab-circle" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-rose-900 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch text-rose-600"></i> Chu Vi & Diện Tích Hình Tròn</h3>
+          <p class="text-slate-500">Mô phỏng cắt hình tròn thành 16 nan quạt rồi ghép so le tạo thành hình chữ nhật xấp xỉ có chiều rộng là $r$ và chiều dài là nửa chu vi ($r \times 3,14$).</p>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Bán kính ($r$):</span><span id="cir-val-r" class="text-rose-600 font-bold">5 cm</span></div>
+              <input type="range" id="cir-slider-r" min="3" max="10" value="5" class="w-full cursor-pointer" oninput="drawCircleLab()">
+            </div>
+          </div>
+          <button onclick="toggleCircleSlices()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition shadow">
+            <span id="cirSliceText">Cắt nan quạt ghép hình chữ nhật</span>
+          </button>
+          <div id="circleResult" class="p-3 bg-rose-50 border border-rose-200 rounded-xl space-y-1 text-rose-900"></div>
+        </div>
+        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
+          <canvas id="circleCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
+        </div>
+      </div>
+
+      <!-- 4. HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D -->
+      <div id="lab-box3d" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-teal-900 flex items-center gap-1.5"><i class="fa-solid fa-cube text-teal-600"></i> Hình Học Không Gian 3D</h3>
+          <p class="text-slate-500">Mô phỏng khối hộp không gian 3 chiều (Isometric). Giúp học sinh đếm số khối lập phương $1\text{ cm}^3$ bên trong và hiểu công thức thể tích $V = a \times b \times c$.</p>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều dài ($a$):</span><span id="box-val-a" class="text-teal-600 font-bold">5 cm</span></div>
+              <input type="range" id="box-slider-a" min="2" max="8" value="5" class="w-full cursor-pointer" oninput="drawBox3DLab()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều rộng ($b$):</span><span id="box-val-b" class="text-teal-600 font-bold">4 cm</span></div>
+              <input type="range" id="box-slider-b" min="2" max="7" value="4" class="w-full cursor-pointer" oninput="drawBox3DLab()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($c$):</span><span id="box-val-c" class="text-teal-600 font-bold">3 cm</span></div>
+              <input type="range" id="box-slider-c" min="2" max="6" value="3" class="w-full cursor-pointer" oninput="drawBox3DLab()">
+            </div>
+          </div>
+          <button onclick="setCubePreset()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition">
+            Chuyển thành Hình Lập Phương ($a=b=c=4$)
+          </button>
+          <div id="box3DResult" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900"></div>
+        </div>
+        <div class="lg:col-span-2 flex items-center justify-center bg-slate-900 rounded-2xl p-4">
+          <canvas id="box3DCanvas" width="600" height="340" class="w-full max-w-[600px]"></canvas>
+        </div>
+      </div>
+
+      <!-- 5. TOÁN CHUYỂN ĐỘNG -->
       <div id="lab-motion" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-teal-900">Toán Chuyển Động: Hai Xe Ngược Chiều</h3>
@@ -208,7 +238,7 @@
         </div>
       </div>
 
-      <!-- Lab Sơ đồ đoạn thẳng -->
+      <!-- 6. SƠ ĐỒ ĐOẠN THẲNG -->
       <div id="lab-tape" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-purple-900">Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)</h3>
@@ -225,18 +255,86 @@
           <canvas id="tapeCanvas" width="600" height="280" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
         </div>
       </div>
+
     </section>
 
-    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI TẬP MỞ RỘNG & AI ================= -->
+    <!-- ================= TAB 2: THƯ VIỆN SGK ĐA MÔN (TOÁN, VĂN, KHOA, SỬ ĐỊA) ================= -->
+    <section id="sgk-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Cột trái: Bộ chọn Môn & Danh sách bài học (4 cột) -->
+      <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
+        <!-- 4 Nút chọn Môn học -->
+        <div class="grid grid-cols-2 gap-1.5 mb-3">
+          <button onclick="setSubject('toan')" id="sub-btn-toan" class="py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow">
+            📐 Toán 5
+          </button>
+          <button onclick="setSubject('tiengviet')" id="sub-btn-tiengviet" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            📖 Tiếng Việt 5
+          </button>
+          <button onclick="setSubject('khoahoc')" id="sub-btn-khoahoc" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            🔬 Khoa Học 5
+          </button>
+          <button onclick="setSubject('sudia')" id="sub-btn-sudia" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            🌏 Lịch Sử & Địa Lí 5
+          </button>
+        </div>
+
+        <!-- Ô tìm kiếm bài -->
+        <div class="relative mb-3">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+          <input type="text" id="multiLessonSearch" oninput="renderMultiLessons()" placeholder="Tìm bài: Tả người, năng lượng, bài 45..." class="w-full pl-8 pr-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Danh sách bài học cuộn -->
+        <div id="multiLessonScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1">
+          <!-- Render tự động bài theo môn -->
+        </div>
+      </div>
+
+      <!-- Cột phải: Chi tiết nội dung bài học & Phương pháp giải (8 cột) -->
+      <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[750px] flex flex-col justify-between">
+        <div>
+          <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <span id="multiSubjectBadge" class="text-xs font-black text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md uppercase">Môn học</span>
+              <h2 id="multiLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học từ danh mục</h2>
+              <p id="multiLessonDesc" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Kết Nối Tri Thức Với Cuộc Sống Lớp 5</p>
+            </div>
+            
+            <button onclick="triggerSolveMultiLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>AI Hướng Dẫn Soạn & Giải Tiết Này</span>
+            </button>
+          </div>
+
+          <div id="multiLessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4">
+            <!-- Nội dung bài học -->
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+          <button onclick="prevMultiLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            <i class="fa-solid fa-chevron-left"></i> Bài trước
+          </button>
+          <span id="multiLessonIndexText" class="font-bold text-blue-700">Bài 1</span>
+          <button onclick="nextMultiLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            Bài sau <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI TẬP MỌI MÔN & AI ================= -->
     <section id="solve-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div class="space-y-4">
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
           <h2 class="text-sm font-bold text-slate-700 flex items-center gap-2">
-            <i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Bài Toán Ngoài Sách Hoặc Nâng Cao:
+            <i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Đề Bài Bất Kỳ (Mọi Môn):
           </h2>
-          <textarea id="aiInput" rows="5" placeholder="Gõ đề bài hoặc số bài bất kỳ (Ví dụ: Một thửa ruộng hình thang có diện tích 300 m2, chiều cao 15 m. Đáy lớn hơn đáy bé 4 m. Tính mỗi đáy?)" class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"></textarea>
+          <textarea id="aiInput" rows="5" placeholder="Gõ câu hỏi Toán, dàn ý văn Tiếng Việt, câu hỏi Khoa học hoặc Lịch sử - Địa lí vào đây..." class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"></textarea>
           <button onclick="executeSolve()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Giải Chi Tiết Từng Bước
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Giải Chi Tiết Chuẩn Sư Phạm
           </button>
         </div>
       </div>
@@ -244,12 +342,12 @@
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[400px]">
           <div id="aiEmpty" class="text-center py-16 text-slate-400">
             <i class="fa-solid fa-chalkboard-user text-5xl text-blue-200 mb-3"></i>
-            <h4 class="font-bold text-slate-600 text-sm">Trợ Lý AI Sẵn Sàng Hỗ Trợ</h4>
-            <p class="text-xs mt-1">Nhập bất kỳ câu hỏi nào để nhận lời giải chuẩn sư phạm 3 bước.</p>
+            <h4 class="font-bold text-slate-600 text-sm">Trợ Lý Sư Phạm Sẵn Sàng Trả Lời</h4>
+            <p class="text-xs mt-1">Hỗ trợ đầy đủ cả 4 môn Toán, Tiếng Việt, Khoa học và Lịch sử - Địa lí.</p>
           </div>
           <div id="aiLoading" class="hidden text-center py-16">
             <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-blue-600 border-t-transparent mb-3"></div>
-            <p class="text-sm font-bold text-blue-600">Đang phân tích và trình bày lời giải...</p>
+            <p class="text-sm font-bold text-blue-600">Đang phân tích và xuất lời giải sư phạm...</p>
           </div>
           <div id="aiResult" class="hidden space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
@@ -309,11 +407,11 @@
 
   </main>
 
-  <!-- Modal Cài đặt API Key -->
+  <!-- Modal API Key -->
   <div id="apiModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
       <h3 class="font-bold text-base text-slate-800 flex items-center gap-2"><i class="fa-solid fa-key text-yellow-500"></i> Cài Đặt Gemini API Key</h3>
-      <p class="text-xs text-slate-500 leading-relaxed">Dán mã API Key miễn phí từ Google để mở khóa AI giải toàn bộ các bài tập SGK và đề nâng cao:</p>
+      <p class="text-xs text-slate-500 leading-relaxed">Dán mã API Key miễn phí từ Google để mở khóa AI giải toàn bộ các bài tập SGK và đề nâng cao mọi môn:</p>
       <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full p-2.5 border rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-500">
       <div class="text-[11px] bg-amber-50 text-amber-900 p-2.5 rounded-lg border border-amber-200">
         👉 Lấy mã miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio</a>
@@ -325,343 +423,151 @@
     </div>
   </div>
 
-  <!-- TOÀN BỘ CƠ SỞ DỮ LIỆU 75 BÀI HỌC VÀ LOGIC XỬ LÝ -->
   <script>
-    // --- 1. DANH MỤC TRỌN BỘ 75 BÀI SGK TOÁN 5 KẾT NỐI TRI THỨC ---
-    const all75Lessons = [
-      // === TẬP 1: BÀI 1 ĐẾN BÀI 37 ===
-      { id: 1, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 1: Ôn tập khái niệm về phân số", desc: "Đọc, viết phân số; tử số và mẫu số; biểu diễn thương của phép chia số tự nhiên dưới dạng phân số." },
-      { id: 2, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 2: Ôn tập tính chất cơ bản của phân số", desc: "Rút gọn phân số và quy đồng mẫu số các phân số." },
-      { id: 3, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 3: Ôn tập so sánh hai phân số", desc: "So sánh phân số cùng mẫu, khác mẫu; so sánh với 1." },
-      { id: 4, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 4: Phân số thập phân", desc: "Khái niệm phân số thập phân có mẫu là 10, 100, 1000... và cách chuyển đổi." },
-      { id: 5, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 5: Hỗn số", desc: "Khái niệm hỗn số gồm phần nguyên và phần phân số; chuyển hỗn số thành phân số." },
-      { id: 6, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 6: Luyện tập chung", desc: "Luyện tập các phép tính và bài toán liên quan đến phân số, hỗn số." },
+    // ==========================================
+    // 1. CƠ SỞ DỮ LIỆU ĐA MÔN HỌC LỚP 5 (KNTT)
+    // ==========================================
+    const multiSubjectData = {
+      toan: [
+        { id: 1, title: "Bài 44: Diện tích hình tam giác", desc: "Công thức: $S = \\frac{a \\times h}{2}$. Tính ngược: $a = \\frac{2S}{h}, h = \\frac{2S}{a}$." },
+        { id: 2, title: "Bài 46: Diện tích hình thang", desc: "Công thức: $S = \\frac{(a + b) \\times h}{2}$. Tính ngược: $(a + b) = \\frac{2S}{h}$." },
+        { id: 3, title: "Bài 49: Chu vi hình tròn", desc: "Công thức: $C = d \\times 3,14 = r \\times 2 \\times 3,14$." },
+        { id: 4, title: "Bài 50: Diện tích hình tròn", desc: "Công thức: $S = r \\times r \\times 3,14$." },
+        { id: 5, title: "Bài 53: Diện tích hình hộp chữ nhật", desc: "$S_{xq} = (a+b) \\times 2 \\times c$; $S_{tp} = S_{xq} + 2(a \\times b)$." },
+        { id: 6, title: "Bài 54: Diện tích hình lập phương", desc: "$S_{xq} = a \\times a \\times 4$; $S_{tp} = a \\times a \\times 6$." },
+        { id: 7, title: "Bài 58: Thể tích hình hộp chữ nhật", desc: "Công thức: $V = a \\times b \\times c$ (cùng đơn vị đo)." },
+        { id: 8, title: "Bài 59: Thể tích hình lập phương", desc: "Công thức: $V = a \\times a \\times a$." },
+        { id: 9, title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau: $t = s : (v_1 + v_2)$." },
+        { id: 10, title: "Bài 67: Hai chuyển động cùng chiều", desc: "Hiệu vận tốc $v_1 - v_2$; Thời gian đuổi kịp: $t = s_{cách} : (v_1 - v_2)$." }
+      ],
+      tiengviet: [
+        { id: 1, title: "Chủ điểm: Khám phá thế giới - Tả cảnh đẹp quê hương", desc: "Luyện viết đoạn văn miêu tả cảnh sông nước, cánh đồng, đêm trăng rằm sử dụng biện pháp so sánh, nhân hóa." },
+        { id: 2, title: "Luyện từ và câu: Từ đồng nghĩa & Từ nhiều nghĩa", desc: "Phân biệt nghĩa gốc, nghĩa chuyển của từ nhiều nghĩa (mắt, chân, đầu) và cách dùng từ đồng nghĩa chuẩn xác." },
+        { id: 3, title: "Tập làm văn: Tả người (Tả thầy cô giáo / người thân)", desc: "Dàn ý 3 phần: Ngoại hình (mái tóc, nụ cười, ánh mắt) kết hợp hoạt động, tính tình và kỷ niệm sâu sắc." },
+        { id: 4, title: "Luyện từ và câu: Kết từ & Cặp từ hô ứng", desc: "Sử dụng các cặp kết từ chỉ nguyên nhân - kết quả (Vì... nên...), điều kiện (Nếu... thì...), tương phản (Tuy... nhưng...)." },
+        { id: 5, title: "Đọc mở rộng: Tình yêu biển đảo và quê hương đất nước", desc: "Cảm thụ bài đọc về Trường Sa, Hoàng Sa và lòng tự hào dân tộc qua từng trang viết." }
+      ],
+      khoahoc: [
+        { id: 1, title: "Chủ đề Chất: Sự biến đổi của chất", desc: "Phân biệt biến đổi vật lí (nước đá tan, xé giấy) và biến đổi hóa học (đốt nến, đinh sắt gỉ)." },
+        { id: 2, title: "Chủ đề Năng lượng: Năng lượng Mặt Trời, Gió và Nước chảy", desc: "Ứng dụng năng lượng sạch trong đời sống và cách sử dụng tiết kiệm, hiệu quả điện năng." },
+        { id: 3, title: "Chủ đề Sinh vật: Sự sinh sản của thực vật có hoa", desc: "Cơ quan sinh sản của hoa (nhị và nhụy), quá trình thụ phấn, thụ tinh, hình thành quả và hạt." },
+        { id: 4, title: "Chủ đề Con người: Sự lớn lên và phát triển của cơ thể", desc: "Giai đoạn dậy thì ở nam và nữ, cách vệ sinh thân thể và bảo vệ bản thân an toàn." }
+      ],
+      sudia: [
+        { id: 1, title: "Địa lí: Vị trí địa lí, địa hình và khoáng sản Việt Nam", desc: "Hình chữ S, bờ biển dài 3260 km, đồi núi chiếm 3/4 diện tích, vùng biển giàu tiềm năng dầu khí và thủy sản." },
+        { id: 2, title: "Lịch sử: Phong trào Cần vương và cuộc khởi nghĩa Yên Thế", desc: "Tinh thần bất khuất của nghĩa quân Đề Thám chống thực dân Pháp cuối thế kỉ XIX - đầu thế kỉ XX." },
+        { id: 3, title: "Lịch sử: Bác Hồ ra đi tìm đường cứu nước (1911)", desc: "Người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng ngày 5/6/1911 tìm con đường giải phóng dân tộc." },
+        { id: 4, title: "Lịch sử: Chiến thắng Điện Biên Phủ 'Lừng lẫy năm châu' (1954)", desc: "56 ngày đêm khoét núi ngủ hầm, đập tan tập đoàn cứ điểm Điện Biên Phủ của thực dân Pháp." }
+      ]
+    };
 
-      { id: 7, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 7: Khái niệm số thập phân", desc: "Cấu tạo số thập phân: Phần nguyên, dấu phẩy và phần thập phân." },
-      { id: 8, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 8: Hàng của số thập phân. Đọc, viết số thập phân", desc: "Giá trị của từng chữ số theo hàng (phần mười, phần trăm, phần nghìn...)." },
-      { id: 9, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 9: Số thập phân bằng nhau", desc: "Viết thêm hoặc bớt chữ số 0 ở tận cùng bên phải phần thập phân." },
-      { id: 10, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 10: So sánh hai số thập phân", desc: "Quy tắc so sánh phần nguyên trước, so sánh các hàng phần thập phân tương ứng." },
-      { id: 11, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 11: Làm tròn số thập phân", desc: "Quy tắc làm tròn số thập phân đến hàng đơn vị, hàng phần mười, hàng phần trăm." },
-      { id: 12, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 12: Viết số đo đại lượng dưới dạng số thập phân", desc: "Đổi đơn vị đo độ dài, khối lượng dưới dạng số thập phân." },
-      { id: 13, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 13: Viết số đo diện tích dưới dạng số thập phân", desc: "Bảng đơn vị đo diện tích và cách viết dưới dạng số thập phân." },
-      { id: 14, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 14: Luyện tập chung", desc: "Tổng hợp các kỹ năng đọc, viết, so sánh và đổi đơn vị đo số thập phân." },
-
-      { id: 15, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 15: Phép cộng số thập phân", desc: "Đặt tính thẳng cột các dấu phẩy và thực hiện phép cộng số thập phân." },
-      { id: 16, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 16: Tính chất phép cộng số thập phân", desc: "Tính chất giao hoán và kết hợp của phép cộng số thập phân." },
-      { id: 17, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 17: Phép trừ số thập phân", desc: "Quy tắc đặt tính và thực hiện phép trừ hai số thập phân." },
-      { id: 18, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 18: Luyện tập chung phép cộng, trừ", desc: "Giải toán thực tế liên quan đến phép cộng và phép trừ số thập phân." },
-      { id: 19, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 19: Phép nhân số thập phân với số tự nhiên", desc: "Đặt tính và đếm số chữ số ở phần thập phân để đánh dấu phẩy." },
-      { id: 20, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 20: Nhân số thập phân với 10, 100, 1000...", desc: "Dịch chuyển dấu phẩy sang bên phải 1, 2, 3... chữ số." },
-      { id: 21, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 21: Phép nhân hai số thập phân", desc: "Quy tắc nhân hai số thập phân và đếm tổng số chữ số phần thập phân." },
-      { id: 22, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 22: Tính chất phép nhân số thập phân", desc: "Giao hoán, kết hợp, nhân một số với một tổng." },
-      { id: 23, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 23: Nhân một số thập phân với 0,1; 0,01; 0,001...", desc: "Dịch chuyển dấu phẩy sang bên trái 1, 2, 3... chữ số (tương đương chia cho 10, 100, 1000)." },
-      { id: 24, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 24: Phép chia số thập phân cho số tự nhiên", desc: "Chia phần nguyên trước, đánh dấu phẩy vào thương rồi chia tiếp phần thập phân." },
-      { id: 25, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 25: Chia một số tự nhiên cho một số tự nhiên mà thương là số thập phân", desc: "Viết thêm dấu phẩy và chữ số 0 vào bên phải số dư để chia tiếp." },
-      { id: 26, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 26: Chia số thập phân cho 10, 100, 1000...", desc: "Dịch dấu phẩy sang trái 1, 2, 3 hàng." },
-      { id: 27, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 27: Phép chia một số cho một số thập phân", desc: "Đếm chữ số phần thập phân của số chia để dịch chuyển dấu phẩy ở cả hai số." },
-      { id: 28, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 28: Luyện tập chung 4 phép tính", desc: "Ôn tập cộng, trừ, nhân, chia số thập phân và thứ tự thực hiện phép tính." },
-
-      { id: 29, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 29: Héc-ta (ha)", desc: "Khái niệm đơn vị héc-ta: $1\\text{ ha} = 10 000\\text{ m}^2$ và ứng dụng đo ruộng đất, rừng." },
-      { id: 30, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 30: Ki-lô-mét vuông (km²)", desc: "Mối quan hệ giữa $\\text{km}^2$, $\\text{ha}$ và $\\text{m}^2$ ($1\\text{ km}^2 = 100\\text{ ha} = 1 000 000\\text{ m}^2$)." },
-      { id: 31, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 31: Mi-li-mét vuông (mm²)", desc: "Bảng đơn vị đo diện tích hoàn chỉnh từ lớn đến bé." },
-      { id: 32, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 32: Luyện tập chung đơn vị đo", desc: "Đổi đơn vị đo diện tích và giải toán thực tế." },
-
-      { id: 33, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 33: Tỉ số", desc: "Khái niệm tỉ số của hai số $a$ và $b$ ($a : b$ hay $\\frac{a}{b}$ với $b \\neq 0$)." },
-      { id: 34, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 34: Tìm hai số khi biết tổng và tỉ số", desc: "Phương pháp vẽ sơ đồ đoạn thẳng: Tìm tổng số phần bằng nhau -> Giá trị 1 phần -> Tìm 2 số." },
-      { id: 35, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 35: Tìm hai số khi biết hiệu và tỉ số", desc: "Phương pháp vẽ sơ đồ đoạn thẳng: Tìm hiệu số phần bằng nhau -> Giá trị 1 phần -> Tìm 2 số." },
-      { id: 36, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 36: Tỉ lệ bản đồ và ứng dụng", desc: "Ý nghĩa tỉ lệ bản đồ và tính độ dài thực tế / độ dài thu nhỏ." },
-      { id: 37, sem: 1, topic: "Chủ đề 6: Ôn tập học kì 1", title: "Bài 37: Ôn tập học kì 1", desc: "Hệ thống hóa toàn bộ kiến thức Số học, Đo lường và Giải toán có lời văn HK1." },
-
-      // === TẬP 2: BÀI 38 ĐẾN BÀI 75 ===
-      { id: 38, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 38: Tìm tỉ số phần trăm của hai số", desc: "Tìm thương rồi nhân với 100 kèm ký hiệu %." },
-      { id: 39, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 39: Tìm giá trị phần trăm của một số", desc: "Quy tắc tính $a\\%$ của $B$: Lấy $B : 100 \\times a$." },
-      { id: 40, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 40: Tìm một số khi biết giá trị phần trăm", desc: "Biết $a\\%$ của số đó là $B$, tìm số đó: Lấy $B : a \\times 100$." },
-      { id: 41, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 41: Sử dụng máy tính cầm tay", desc: "Làm quen các phím số, phép tính và tính phần trăm trên máy tính cầm tay." },
-      { id: 42, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 42: Luyện tập chung tỉ số phần trăm", desc: "Giải toán thực tế: Lãi suất, giảm giá, tăng trưởng phần trăm." },
-
-      { id: 43, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 43: Hình tam giác", desc: "Nhận biết đáy và chiều cao tương ứng của các loại hình tam giác (nhọn, vuông, tù)." },
-      { id: 44, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 44: Diện tích hình tam giác", desc: "Công thức: $S = \\frac{a \\times h}{2}$ (cùng đơn vị đo). Tính ngược: $a = \\frac{2S}{h}; h = \\frac{2S}{a}$." },
-      { id: 45, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 45: Hình thang", desc: "Đặc điểm hình thang có 1 cặp cạnh đối diện song song; đáy bé, đáy lớn, chiều cao." },
-      { id: 46, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 46: Diện tích hình thang", desc: "Công thức: $S = \\frac{(a + b) \\times h}{2}$. Tính ngược tổng hai đáy: $(a + b) = \\frac{2S}{h}$." },
-      { id: 47, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 47: Luyện tập diện tích hình tam giác, hình thang", desc: "Tính diện tích các mảnh đất thực tế, cắt ghép hình." },
-      { id: 48, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 48: Hình tròn. Đường tròn", desc: "Tâm, bán kính $r$, đường kính $d$ ($d = 2r$)." },
-      { id: 49, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 49: Chu vi hình tròn", desc: "Công thức: $C = d \\times 3,14 = r \\times 2 \\times 3,14$." },
-      { id: 50, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 50: Diện tích hình tròn", desc: "Công thức: $S = r \\times r \\times 3,14$." },
-      { id: 51, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 51: Luyện tập chung hình phẳng", desc: "Bài toán kết hợp chu vi, diện tích hình tròn và hình vành khăn." },
-
-      { id: 52, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 52: Hình hộp chữ nhật. Hình lập phương", desc: "Nhận biết đỉnh, cạnh, mặt của hình hộp chữ nhật và hình lập phương." },
-      { id: 53, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 53: Diện tích xung quanh & toàn phần hình hộp chữ nhật", desc: "$S_{xq} = (a+b) \\times 2 \\times c$; $S_{tp} = S_{xq} + 2 \\times (a \\times b)$." },
-      { id: 54, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 54: Diện tích xung quanh & toàn phần hình lập phương", desc: "$S_{xq} = a \\times a \\times 4$; $S_{tp} = a \\times a \\times 6$." },
-      { id: 55, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 55: Thể tích của một hình", desc: "Biểu tượng ban đầu về thể tích; so sánh thể tích hai hình." },
-      { id: 56, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 56: Xăng-ti-mét khối (cm³). Đề-xi-mét khối (dm³)", desc: "$1\\text{ dm}^3 = 1000\\text{ cm}^3 = 1\\text{ lít}$." },
-      { id: 57, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 57: Mét khối (m³)", desc: "$1\\text{ m}^3 = 1000\\text{ dm}^3 = 1 000 000\\text{ cm}^3$." },
-      { id: 58, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 58: Thể tích hình hộp chữ nhật", desc: "Công thức: $V = a \\times b \\times c$ (cùng đơn vị đo)." },
-      { id: 59, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 59: Thể tích hình lập phương", desc: "Công thức: $V = a \\times a \\times a$." },
-
-      { id: 60, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 60: Bảng đơn vị đo thời gian", desc: "Thế kỉ, năm, tháng, ngày, giờ, phút, giây." },
-      { id: 61, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 61: Cộng, trừ số đo thời gian", desc: "Đặt tính và đổi đơn vị đo khi cộng trừ thời gian." },
-      { id: 62, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 62: Nhân, chia số đo thời gian với một số", desc: "Thực hiện phép nhân và chia từng đơn vị đo thời gian." },
-      { id: 63, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 63: Vận tốc", desc: "Khái niệm vận tốc: $v = s : t$ (đơn vị: km/h, m/giây)." },
-      { id: 64, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 64: Quãng đường", desc: "Công thức: $s = v \\times t$." },
-      { id: 65, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 65: Thời gian", desc: "Công thức: $t = s : v$." },
-      { id: 66, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau $t = s : (v_1 + v_2)$." },
-      { id: 67, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 67: Hai chuyển động cùng chiều đuổi nhau", desc: "Hiệu vận tốc $v_1 - v_2$; Thời gian đuổi kịp $t = s_{cách} : (v_1 - v_2)$." },
-      { id: 68, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 68: Luyện tập chung toán chuyển động", desc: "Chuyển động dòng nước (xuôi dòng, ngược dòng), đoàn tàu qua hầm." },
-
-      { id: 69, sem: 2, topic: "Chủ đề 11: Thống kê và xác suất", title: "Bài 69: Thu thập, phân loại, sắp xếp số liệu", desc: "Bảng số liệu thống kê." },
-      { id: 70, sem: 2, topic: "Chủ đề 11: Thống kê và xác suất", title: "Bài 70: Biểu đồ hình quạt tròn", desc: "Đọc và xử lý số liệu trên biểu đồ hình quạt tròn." },
-
-      { id: 71, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 71: Ôn tập số tự nhiên, phân số, số thập phân", desc: "Củng cố toàn bộ hệ thống số trong chương trình Tiểu học." },
-      { id: 72, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 72: Ôn tập các phép tính với số tự nhiên, phân số, số thập phân", desc: "Kỹ năng tính toán và tính bằng cách thuận tiện nhất." },
-      { id: 73, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 73: Ôn tập hình học và đo lường", desc: "Tổng hợp công thức chu vi, diện tích, thể tích các hình đã học." },
-      { id: 74, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 74: Ôn tập giải toán", desc: "Các dạng toán điển hình: Tổng - Tỉ, Hiệu - Tỉ, Tỉ số phần trăm, Toán chuyển động." },
-      { id: 75, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 75: Thực hành và trải nghiệm", desc: "Ứng dụng toán học vào các hoạt động thực tế đời sống." }
-    ];
-
-    // --- 2. QUẢN LÝ HIỂN THỊ VÀ BỘ LỌC 75 BÀI ---
-    let currentLessonIdx = 0;
-    let semesterFilter = 'all';
+    let currentSub = 'toan';
+    let currentMultiIdx = 0;
     let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
 
     document.addEventListener("DOMContentLoaded", () => {
-      renderLessonList();
-      selectLesson(0);
+      setSubject('toan');
       updateApiKeyUI();
+      initTriangleLab();
       initTrapezoidLab();
+      initCircleLab();
+      initBox3DLab();
       initWhiteboard();
       drawTapeDiagram();
       updateMotionMath();
     });
 
-    function setSemesterFilter(sem) {
-      semesterFilter = sem;
-      document.getElementById('filter-all').className = sem === 'all' ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
-      document.getElementById('filter-1').className = sem === 1 ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
-      document.getElementById('filter-2').className = sem === 2 ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
-      renderLessonList();
-    }
-
-    function renderLessonList() {
-      const scroll = document.getElementById('lessonListScroll');
-      scroll.innerHTML = '';
-      const searchKey = document.getElementById('lessonSearchInput').value.toLowerCase().trim();
-
-      all75Lessons.forEach((l, idx) => {
-        if (semesterFilter !== 'all' && l.sem !== semesterFilter) return;
-        if (searchKey && !l.title.toLowerCase().includes(searchKey) && !l.desc.toLowerCase().includes(searchKey)) return;
-
-        const btn = document.createElement('button');
-        const isActive = idx === currentLessonIdx;
-        btn.className = `w-full text-left p-2.5 rounded-xl text-xs transition border flex items-center justify-between ${
-          isActive ? 'bg-blue-600 text-white border-blue-600 font-bold shadow' : 'bg-slate-50 hover:bg-blue-50 text-slate-700 border-slate-200'
-        }`;
-        btn.onclick = () => selectLesson(idx);
-
-        btn.innerHTML = `
-          <div class="truncate pr-2">
-            <span class="text-[10px] opacity-75 block">Tập ${l.sem} • ${l.topic.split(':')[0]}</span>
-            <span class="truncate block">${l.title}</span>
-          </div>
-          <i class="fa-solid fa-chevron-right text-[10px] ${isActive ? 'text-white' : 'text-slate-400'}"></i>
-        `;
-        scroll.appendChild(btn);
-      });
-    }
-
-    function filterLessons() {
-      renderLessonList();
-    }
-
-    function selectLesson(idx) {
-      currentLessonIdx = idx;
-      const lesson = all75Lessons[idx];
-
-      document.getElementById('activeLessonBadge').textContent = `Tập ${lesson.sem} • ${lesson.topic}`;
-      document.getElementById('activeLessonTitle').textContent = lesson.title;
-      document.getElementById('activeLessonBook').textContent = `Nội dung cốt lõi: ${lesson.desc}`;
-      document.getElementById('currentLessonIndexText').textContent = `Bài ${lesson.id} / 75`;
-
-      const detail = document.getElementById('lessonDetailBody');
-      detail.innerHTML = `
-        <div class="bg-blue-50/70 border border-blue-100 p-4 rounded-xl space-y-2">
-          <h4 class="font-bold text-blue-900 text-sm flex items-center gap-2">
-            <i class="fa-solid fa-lightbulb text-amber-500"></i> Trọng tâm kiến thức bài học:
-          </h4>
-          <p class="text-xs text-blue-950 leading-relaxed">${lesson.desc}</p>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-            <i class="fa-solid fa-list-check text-indigo-600"></i> Hướng dẫn phương pháp giải các bài tập SGK tiết này:
-          </h4>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
-            <div class="font-semibold text-slate-800">📌 Bài 1, Bài 2: Rèn luyện kỹ năng cơ bản</div>
-            <p class="text-slate-600">Đọc kĩ yêu cầu, đặt tính thẳng hàng (đối với phép tính số thập phân) hoặc áp dụng trực tiếp công thức thuận.</p>
-            <div class="font-semibold text-slate-800 pt-1">📌 Bài 3, Bài 4: Giải toán có lời văn / Thực tế</div>
-            <p class="text-slate-600">Xác định các đại lượng đã cho, đại lượng cần tìm; đổi về cùng một đơn vị đo trước khi tính toán.</p>
-          </div>
-        </div>
-
-        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center justify-between gap-3">
-          <div class="text-xs text-amber-900">
-            <b>Thầy cô hoặc học sinh muốn xem giải chi tiết từng bài 1, 2, 3, 4 của tiết này?</b><br>
-            Bấm nút màu cam phía trên để hệ thống tự động xuất bài giải trọn vẹn!
-          </div>
-        </div>
-      `;
-
-      renderLessonList();
-    }
-
-    function prevLesson() {
-      if (currentLessonIdx > 0) selectLesson(currentLessonIdx - 1);
-    }
-
-    function nextLesson() {
-      if (currentLessonIdx < all75Lessons.length - 1) selectLesson(currentLessonIdx + 1);
-    }
-
-    function triggerSolveCurrentLesson() {
-      const l = all75Lessons[currentLessonIdx];
-      const query = `Hãy giải chi tiết toàn bộ các bài tập trong SGK Toán 5 bộ Kết Nối Tri Thức bài: ${l.title}. Yêu cầu trình bày chuẩn sư phạm từng bài: Bài 1, Bài 2, Bài 3, Bài 4 có câu lời giải, phép tính và đáp số.`;
-      document.getElementById('aiInput').value = query;
-      switchTab('solve-tab');
-      executeSolve();
-    }
-
-    // --- 3. ĐIỀU HƯỚNG TAB & API KEY ---
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-white', 'text-blue-800', 'shadow');
-        btn.classList.add('text-white');
-      });
-      document.getElementById(tabId).classList.remove('hidden');
-      const activeBtn = document.getElementById('btn-' + tabId);
-      activeBtn.classList.remove('text-white');
-      activeBtn.classList.add('bg-white', 'text-blue-800', 'shadow');
-    }
-
-    function toggleApiKeyModal() { document.getElementById('apiModal').classList.toggle('hidden'); }
-    function saveApiKey() {
-      const val = document.getElementById('apiKeyInput').value.trim();
-      if (val) {
-        localStorage.setItem('GEMINI_API_KEY', val);
-        currentApiKey = val;
-        alert("Đã lưu API Key! Bạn có thể giải trọn vẹn mọi bài tập SGK bằng AI.");
-      }
-      updateApiKeyUI();
-      toggleApiKeyModal();
-    }
-    function clearApiKey() {
-      localStorage.removeItem('GEMINI_API_KEY');
-      currentApiKey = '';
-      updateApiKeyUI();
-      toggleApiKeyModal();
-    }
-    function updateApiKeyUI() {
-      document.getElementById('apiKeyStatusText').textContent = currentApiKey ? "API Key: Bật" : "Cài API Key";
-    }
-
-    // --- 4. GIẢI BÀI TOÁN BẰNG GEMINI & BỘ GIẢI TÍCH HỢP ---
-    async function executeSolve() {
-      const query = document.getElementById('aiInput').value.trim();
-      if (!query) return alert("Vui lòng nhập đề bài!");
-
-      document.getElementById('aiEmpty').classList.add('hidden');
-      document.getElementById('aiResult').classList.add('hidden');
-      document.getElementById('aiLoading').classList.remove('hidden');
-
-      try {
-        let md = "";
-        if (currentApiKey) {
-          md = await requestGemini(query, currentApiKey);
-        } else {
-          md = solveLocally(query);
-        }
-        renderAnswer(md);
-      } catch (err) {
-        renderAnswer(solveLocally(query));
-      } finally {
-        document.getElementById('aiLoading').classList.add('hidden');
-        document.getElementById('aiResult').classList.remove('hidden');
-      }
-    }
-
-    async function requestGemini(prompt, key) {
-      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy môn Toán 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
-Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách), luôn trình bày chuẩn mực 3 phần:
-1. 💡 Phương pháp giải: Nêu dạng toán (không dùng ẩn số x, y của cấp 2; ưu tiên sơ đồ đoạn thẳng, rút về đơn vị, tính ngược).
-2. ✅ Lời giải chi tiết: Trình bày từng bài (Bài 1, Bài 2, Bài 3...) có câu lời giải, phép tính rõ ràng, danh số và đáp số. Dùng KaTeX ($...$).
-3. 🌟 Mẹo ghi nhớ & Cách thử lại.`;
-
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ role: "user", parts: [{ text: prompt }] }],
-          systemInstruction: { parts: [{ text: systemPrompt }] }
-        })
-      });
-      if (!res.ok) throw new Error("API Key chưa hợp lệ");
-      const data = await res.json();
-      return data.candidates[0].content.parts[0].text;
-    }
-
-    function solveLocally(query) {
-      const l = all75Lessons[currentLessonIdx];
-      return `### 💡 Hướng dẫn giải chi tiết (${l.title})
-- **Thuộc chủ đề:** ${l.topic}
-- **Quy tắc cốt lõi:** ${l.desc}
-
-### ✅ Lời giải mẫu các bài tập điển hình:
-**Bài 1:**
-- Áp dụng trực tiếp quy tắc đã học ở phần kiến thức trọng tâm.
-- Thực hiện tính toán cẩn thận từng bước và đổi đơn vị đo nếu cần thiết.
-
-**Bài 2 (Toán có lời văn):**
-- Tóm tắt đề bài bằng sơ đồ hoặc bảng đối chiếu.
-- Đặt câu lời giải rõ ràng, viết phép tính kèm đơn vị trong dấu ngoặc đơn và ghi đầy đủ Đáp số.
-
-*(Thầy cô hãy bấm nút "Cài API Key" ở góc trên để AI tự động mở khóa lời giải chi tiết cho tất cả các bài tập cụ thể trong trang sách nhé!)*`;
-    }
-
-    function renderAnswer(md) {
-      const box = document.getElementById('aiOutputText');
-      box.innerHTML = marked.parse(md);
-      box.innerHTML = box.innerHTML.replace(/\$([^\$]+)\$/g, (m, expr) => {
-        try { return katex.renderToString(expr, { throwOnError: false }); } catch (e) { return m; }
-      });
-    }
-
-    function copySolution() {
-      navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => alert("Đã chép lời giải!"));
-    }
-
-    // --- 5. CÁC MÔ PHÒNG TRỰC QUAN & TIỆN ÍCH LỚP HỌC ---
-    let isDoubled = false;
+    // ==========================================
+    // 2. MÔ HÌNH HÌNH HỌC TRỰC QUAN ĐẦY ĐỦ
+    // ==========================================
     function switchLab(name) {
-      document.getElementById('lab-trapezoid').classList.add('hidden');
-      document.getElementById('lab-motion').classList.add('hidden');
-      document.getElementById('lab-tape').classList.add('hidden');
+      ['triangle', 'trapezoid', 'circle', 'box3d', 'motion', 'tape'].forEach(id => {
+        document.getElementById('lab-' + id).classList.add('hidden');
+      });
       document.querySelectorAll('.lab-sub-btn').forEach(b => {
         b.classList.remove('bg-blue-600', 'text-white', 'shadow');
         b.classList.add('bg-white', 'text-slate-700');
       });
+
       document.getElementById('lab-' + name).classList.remove('hidden');
       const activeBtn = document.getElementById('lab-btn-' + name);
       activeBtn.classList.remove('bg-white', 'text-slate-700');
       activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
+
+      if (name === 'triangle') drawTriangleLab();
       if (name === 'trapezoid') drawTrapezoidLab();
+      if (name === 'circle') drawCircleLab();
+      if (name === 'box3d') drawBox3DLab();
       if (name === 'tape') drawTapeDiagram();
     }
 
-    function toggleTrapezoidDouble() {
-      isDoubled = !isDoubled;
-      document.getElementById('doubleBtnText').textContent = isDoubled ? "Thu về 1 hình thang ban đầu" : "Ghép thêm 1 hình (Tạo hình bình hành)";
-      drawTrapezoidLab();
+    // --- 2.1 HÌNH TAM GIÁC ---
+    let triDoubled = false;
+    function toggleTriangleDouble() {
+      triDoubled = !triDoubled;
+      document.getElementById('triDoubleText').textContent = triDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng";
+      drawTriangleLab();
+    }
+    function initTriangleLab() { drawTriangleLab(); }
+    function drawTriangleLab() {
+      const a = parseInt(document.getElementById('tri-slider-a').value);
+      const h = parseInt(document.getElementById('tri-slider-h').value);
+      document.getElementById('tri-val-a').textContent = a + ' cm';
+      document.getElementById('tri-val-h').textContent = h + ' cm';
+
+      const canvas = document.getElementById('triangleCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const scale = 16, startX = 100, startY = 240;
+      const pA = { x: startX + 50, y: startY - h * scale };
+      const pB = { x: startX + a * scale, y: startY };
+      const pC = { x: startX, y: startY };
+
+      // Tam giác chính
+      ctx.fillStyle = "rgba(59, 130, 246, 0.4)";
+      ctx.strokeStyle = "#2563eb";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+
+      // Đường cao h
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
+      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, startY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+      ctx.fillText(`Đáy a = ${a} cm`, (pC.x + pB.x)/2 - 30, startY + 20);
+      ctx.fillStyle = "#dc2626";
+      ctx.fillText(`h = ${h} cm`, pA.x + 8, (pA.y + startY)/2);
+
+      // Ghép đối xứng
+      if (triDoubled) {
+        const pTop = { x: pB.x + (pC.x - pA.x) + 50, y: pA.y };
+        ctx.fillStyle = "rgba(245, 158, 11, 0.3)"; ctx.strokeStyle = "#d97706";
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x - (pC.x - pA.x), pA.y); ctx.closePath();
+        ctx.fill(); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = "#d97706";
+        ctx.fillText("Ghép thành hình bình hành có S = a x h", pA.x + 40, pA.y - 15);
+      }
+
+      const S = (a * h) / 2;
+      document.getElementById('triangleResult').innerHTML = `
+        <b>Diện tích hình tam giác:</b> $S = \\frac{${a} \\times ${h}}{2} = ${S}\\text{ cm}^2$<br>
+        ${triDoubled ? `<span class="text-amber-800 font-bold">Hình bình hành ghép lại có diện tích: $S_{hbh} = ${a} \\times${h} = ${a * h}\\text{ cm}^2$</span>` : ''}
+      `;
     }
 
+    // --- 2.2 HÌNH THANG ---
+    let isDoubled = false;
+    function toggleTrapezoidDouble() {
+      isDoubled = !isDoubled;
+      document.getElementById('doubleBtnText').textContent = isDoubled ? "Thu về 1 hình thang" : "Ghép thêm 1 hình (Tạo hình bình hành)";
+      drawTrapezoidLab();
+    }
     function initTrapezoidLab() { drawTrapezoidLab(); }
     function drawTrapezoidLab() {
       const a = parseInt(document.getElementById('slider-a').value);
@@ -683,7 +589,8 @@ Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách)
       const pD = { x: startX, y: startY };
 
       ctx.fillStyle = "rgba(251, 191, 36, 0.4)"; ctx.strokeStyle = "#d97706"; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
+      ctx.fill(); ctx.stroke();
 
       ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
       ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke(); ctx.setLineDash([]);
@@ -706,7 +613,153 @@ Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách)
       document.getElementById('trapezoidResult').innerHTML = `<b>Diện tích hình thang:</b> $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$`;
     }
 
-    // Chuyển động 2 xe
+    // --- 2.3 HÌNH TRÒN & NAN QUẠT ---
+    let cirSliced = false;
+    function toggleCircleSlices() {
+      cirSliced = !cirSliced;
+      document.getElementById('cirSliceText').textContent = cirSliced ? "Xem hình tròn nguyên bản" : "Cắt nan quạt ghép hình chữ nhật";
+      drawCircleLab();
+    }
+    function initCircleLab() { drawCircleLab(); }
+    function drawCircleLab() {
+      const r = parseInt(document.getElementById('cir-slider-r').value);
+      document.getElementById('cir-val-r').textContent = r + ' cm';
+      const canvas = document.getElementById('circleCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const C = (2 * r * 3.14).toFixed(2);
+      const S = (r * r * 3.14).toFixed(2);
+
+      if (!cirSliced) {
+        // Vẽ hình tròn nguyên vẹn
+        const centerX = 200, centerY = 160, radiusPx = r * 14;
+        ctx.fillStyle = "rgba(244, 63, 94, 0.25)"; ctx.strokeStyle = "#e11d48"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(centerX, centerY, radiusPx, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        // Tâm và Bán kính r
+        ctx.fillStyle = "#e11d48"; ctx.beginPath(); ctx.arc(centerX, centerY, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + radiusPx, centerY); ctx.stroke(); ctx.setLineDash([]);
+
+        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+        ctx.fillText(`r = ${r} cm`, centerX + radiusPx/2 - 15, centerY - 8);
+        ctx.fillText(`Đường kính d = 2r = ${2 * r} cm`, centerX - 60, centerY + radiusPx + 25);
+      } else {
+        // Vẽ nan quạt duỗi thẳng thành hình chữ nhật xấp xỉ
+        const numSlices = 16;
+        const rectW = 280, rectH = r * 12;
+        const sliceW = rectW / numSlices;
+        const startX = 60, startY = 160;
+
+        for (let i = 0; i < numSlices; i++) {
+          ctx.fillStyle = i % 2 === 0 ? "rgba(244, 63, 94, 0.4)" : "rgba(59, 130, 246, 0.4)";
+          ctx.strokeStyle = "#475569"; ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          if (i % 2 === 0) {
+            ctx.moveTo(startX + i * sliceW, startY + rectH);
+            ctx.lineTo(startX + (i + 1) * sliceW, startY + rectH);
+            ctx.lineTo(startX + (i + 0.5) * sliceW, startY);
+          } else {
+            ctx.moveTo(startX + i * sliceW, startY);
+            ctx.lineTo(startX + (i + 1) * sliceW, startY);
+            ctx.lineTo(startX + (i + 0.5) * sliceW, startY + rectH);
+          }
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+        }
+
+        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
+        ctx.fillText(`Chiều dài = Nửa chu vi = r x 3,14`, startX + 50, startY - 15);
+        ctx.fillText(`Chiều rộng = r`, startX + rectW + 15, startY + rectH/2);
+      }
+
+      document.getElementById('circleResult').innerHTML = `
+        <b>Chu vi hình tròn:</b> $C = ${r} \\times 2 \\times 3,14 = ${C}\\text{ cm}$<br>
+        <b>Diện tích hình tròn:</b> $S = ${r} \\times ${r} \\times 3,14 = ${S}\\text{ cm}^2$
+      `;
+    }
+
+    // --- 2.4 HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D ---
+    function setCubePreset() {
+      document.getElementById('box-slider-a').value = 4;
+      document.getElementById('box-slider-b').value = 4;
+      document.getElementById('box-slider-c').value = 4;
+      drawBox3DLab();
+    }
+    function initBox3DLab() { drawBox3DLab(); }
+    function drawBox3DLab() {
+      const a = parseInt(document.getElementById('box-slider-a').value);
+      const b = parseInt(document.getElementById('box-slider-b').value);
+      const c = parseInt(document.getElementById('box-slider-c').value);
+
+      document.getElementById('box-val-a').textContent = a + ' cm';
+      document.getElementById('box-val-b').textContent = b + ' cm';
+      document.getElementById('box-val-c').textContent = c + ' cm';
+
+      const canvas = document.getElementById('box3DCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Phép chiếu trục đo Isometric 3D
+      const originX = 260, originY = 220;
+      const uX = 22, uY = 13, uZ = 24; // vector trục
+
+      const toIso = (x, y, z) => ({
+        px: originX + (x * uX) - (y * uX),
+        py: originY + (x * uY) + (y * uY) - (z * uZ)
+      });
+
+      // Vẽ mặt đáy dưới
+      // Vẽ các khối lập phương con 1cm3 xếp tầng
+      for (let z = 0; z < c; z++) {
+        for (let y = b - 1; y >= 0; y--) {
+          for (let x = 0; x < a; x++) {
+            drawUnitCube(ctx, toIso, x, y, z);
+          }
+        }
+      }
+
+      // Tính diện tích và thể tích
+      const S_xq = (a + b) * 2 * c;
+      const S_tp = S_xq + 2 * (a * b);
+      const V = a * b * c;
+      const isCube = (a === b && b === c);
+
+      document.getElementById('box3DResult').innerHTML = `
+        <div class="font-bold text-teal-950">${isCube ? 'Khối Lập Phương (a = ' + a + ' cm):' : 'Khối Hộp Chữ Nhật:'}</div>
+        <div>1. $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
+        <div>2. $S_{tp} = ${S_xq} + 2 \\times (${a} \\times ${b}) = ${S_tp}\\text{ cm}^2$</div>
+        <div class="text-teal-800 font-bold">3. Thể tích: $V = ${a} \\times ${b} \\times ${c} = ${V}\\text{ cm}^3$ (${V} khối $1\\text{ cm}^3$)</div>
+      `;
+    }
+
+    function drawUnitCube(ctx, toIso, x, y, z) {
+      const p0 = toIso(x, y, z);
+      const pX = toIso(x + 1, y, z);
+      const pXY = toIso(x + 1, y + 1, z);
+      const pY = toIso(x, y + 1, z);
+
+      const p0_top = toIso(x, y, z + 1);
+      const pX_top = toIso(x + 1, y, z + 1);
+      const pXY_top = toIso(x + 1, y + 1, z + 1);
+      const pY_top = toIso(x, y + 1, z + 1);
+
+      // Mặt trên (Top)
+      ctx.fillStyle = "#38bdf8"; ctx.strokeStyle = "#0284c7"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(p0_top.px, p0_top.py); ctx.lineTo(pX_top.px, pX_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pY_top.px, pY_top.py); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+
+      // Mặt phải (Right)
+      ctx.fillStyle = "#0284c7";
+      ctx.beginPath(); ctx.moveTo(pX_top.px, pX_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pXY.px, pXY.py); ctx.lineTo(pX.px, pX.py); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+
+      // Mặt trước (Left)
+      ctx.fillStyle = "#0369a1";
+      ctx.beginPath(); ctx.moveTo(pY_top.px, pY_top.py); ctx.lineTo(pXY_top.px, pXY_top.py); ctx.lineTo(pXY.px, pXY.py); ctx.lineTo(pY.px, pY.py); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+    }
+
+    // --- 2.5 TOÁN CHUYỂN ĐỘNG & SƠ ĐỒ ĐOẠN THẲNG ---
     let motionTimer = null, motionProgress = 0;
     function updateMotionMath() {
       const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
@@ -748,7 +801,6 @@ Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách)
       }, 30);
     }
 
-    // Sơ đồ đoạn thẳng
     function drawTapeDiagram() {
       const sum = parseFloat(document.getElementById('tape-sum').value) || 45;
       const p1 = parseInt(document.getElementById('tape-p1').value) || 2;
@@ -776,7 +828,187 @@ Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách)
       }
     }
 
-    // Tiện ích lớp học
+    // ==========================================
+    // 3. QUẢN LÝ THƯ VIỆN SGK ĐA MÔN HỌC
+    // ==========================================
+    function setSubject(sub) {
+      currentSub = sub;
+      currentMultiIdx = 0;
+      ['toan', 'tiengviet', 'khoahoc', 'sudia'].forEach(s => {
+        const btn = document.getElementById('sub-btn-' + s);
+        if (s === sub) {
+          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow";
+        } else {
+          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5";
+        }
+      });
+      renderMultiLessons();
+      selectMultiLesson(0);
+    }
+
+    function renderMultiLessons() {
+      const scroll = document.getElementById('multiLessonScroll');
+      scroll.innerHTML = '';
+      const list = multiSubjectData[currentSub];
+      const search = document.getElementById('multiLessonSearch').value.toLowerCase().trim();
+
+      list.forEach((item, idx) => {
+        if (search && !item.title.toLowerCase().includes(search) && !item.desc.toLowerCase().includes(search)) return;
+        const btn = document.createElement('button');
+        const isActive = idx === currentMultiIdx;
+        btn.className = `w-full text-left p-2.5 rounded-xl text-xs transition border flex items-center justify-between ${
+          isActive ? 'bg-blue-600 text-white border-blue-600 font-bold shadow' : 'bg-slate-50 hover:bg-blue-50 text-slate-700 border-slate-200'
+        }`;
+        btn.onclick = () => selectMultiLesson(idx);
+        btn.innerHTML = `<span class="truncate pr-2">${item.title}</span><i class="fa-solid fa-chevron-right text-[10px]"></i>`;
+        scroll.appendChild(btn);
+      });
+    }
+
+    function selectMultiLesson(idx) {
+      currentMultiIdx = idx;
+      const item = multiSubjectData[currentSub][idx];
+      const subNames = { toan: 'Toán 5 (KNTT)', tiengviet: 'Tiếng Việt 5 (KNTT)', khoahoc: 'Khoa Học 5 (KNTT)', sudia: 'Lịch Sử & Địa Lí 5 (KNTT)' };
+
+      document.getElementById('multiSubjectBadge').textContent = subNames[currentSub];
+      document.getElementById('multiLessonTitle').textContent = item.title;
+      document.getElementById('multiLessonDesc').textContent = `Mô tả nội dung: ${item.desc}`;
+      document.getElementById('multiLessonIndexText').textContent = `Bài ${idx + 1} / ${multiSubjectData[currentSub].length}`;
+
+      document.getElementById('multiLessonDetailBody').innerHTML = `
+        <div class="bg-blue-50/70 border border-blue-100 p-4 rounded-xl space-y-2">
+          <h4 class="font-bold text-blue-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i> Mục tiêu trọng tâm của bài học:
+          </h4>
+          <p class="text-xs text-blue-950 leading-relaxed">${item.desc}</p>
+        </div>
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+          <div class="font-bold text-slate-800">📌 Hướng dẫn tổ chức hoạt động học trên lớp:</div>
+          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình trực quan hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
+          <p class="text-slate-600">• Luyện tập thực hành từng bước, giải thích rõ lý do và cách tư duy logic.</p>
+        </div>
+      `;
+      renderMultiLessons();
+    }
+
+    function prevMultiLesson() {
+      if (currentMultiIdx > 0) selectMultiLesson(currentMultiIdx - 1);
+    }
+    function nextMultiLesson() {
+      if (currentMultiIdx < multiSubjectData[currentSub].length - 1) selectMultiLesson(currentMultiIdx + 1);
+    }
+
+    function triggerSolveMultiLesson() {
+      const item = multiSubjectData[currentSub][currentMultiIdx];
+      const subNames = { toan: 'Toán 5', tiengviet: 'Tiếng Việt 5', khoahoc: 'Khoa Học 5', sudia: 'Lịch Sử và Địa Lí 5' };
+      const q = `Hãy hướng dẫn soạn bài và giải chi tiết các câu hỏi trong SGK môn ${subNames[currentSub]} bộ Kết Nối Tri Thức bài: ${item.title}. Trình bày chuẩn sư phạm tiểu học.`;
+      document.getElementById('aiInput').value = q;
+      switchTab('solve-tab');
+      executeSolve();
+    }
+
+    // ==========================================
+    // 4. TRỢ LÝ GIẢI BÀI AI & DỰ PHÒNG MỌI MÔN
+    // ==========================================
+    async function executeSolve() {
+      const q = document.getElementById('aiInput').value.trim();
+      if (!q) return alert("Vui lòng nhập câu hỏi hoặc đề bài!");
+
+      document.getElementById('aiEmpty').classList.add('hidden');
+      document.getElementById('aiResult').classList.add('hidden');
+      document.getElementById('aiLoading').classList.remove('hidden');
+
+      try {
+        let md = "";
+        if (currentApiKey) {
+          md = await requestGemini(q, currentApiKey);
+        } else {
+          md = solveLocally(q);
+        }
+        renderAnswer(md);
+      } catch (e) {
+        renderAnswer(solveLocally(q));
+      } finally {
+        document.getElementById('aiLoading').classList.add('hidden');
+        document.getElementById('aiResult').classList.remove('hidden');
+      }
+    }
+
+    async function requestGemini(prompt, key) {
+      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 (Toán, Tiếng Việt, Khoa học, Lịch sử và Địa lí) theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
+Luôn trả lời theo chuẩn sư phạm 3 phần:
+1. 💡 Tóm tắt kiến thức / Phương pháp tư duy.
+2. ✅ Hướng dẫn giải chi tiết (các bước tính toán hoặc đoạn văn mẫu, phân tích khoa học/lịch sử).
+3. 🌟 Mẹo ghi nhớ và bài học rút ra.`;
+
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          systemInstruction: { parts: [{ text: systemPrompt }] }
+        })
+      });
+      if (!res.ok) throw new Error("API Key chưa hợp lệ");
+      const data = await res.json();
+      return data.candidates[0].content.parts[0].text;
+    }
+
+    function solveLocally(q) {
+      return `### 💡 Hướng dẫn phương pháp sư phạm:
+1. **Phân tích yêu cầu:** Đọc kỹ đề bài để nhận diện môn học và kiến thức trọng tâm (Toán học, Tập làm văn, Khoa học hoặc Lịch sử - Địa lí).
+2. **Các bước tiến hành:**
+   - Đối với Toán: Áp dụng các công thức hình học hoặc vẽ sơ đồ đoạn thẳng trực quan.
+   - Đối với Tiếng Việt: Lập dàn ý 3 phần (Mở bài - Thân bài - Kết bài), dùng biện pháp so sánh và từ ngữ gợi cảm.
+   - Đối với Khoa học / Lịch sử - Địa lí: Nêu rõ nguyên nhân, diễn biến và ý nghĩa thực tiễn.
+*(Thầy cô hãy cài đặt mã Gemini API Key ở góc trên để AI giải chi tiết ngay lập tức cho bất kỳ đề bài nào)*`;
+    }
+
+    function renderAnswer(md) {
+      const box = document.getElementById('aiOutputText');
+      box.innerHTML = marked.parse(md);
+    }
+    function copySolution() {
+      navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => alert("Đã chép nội dung bài giải!"));
+    }
+
+    // ==========================================
+    // 5. TIỆN ÍCH LỚP HỌC & BẢNG NHÁP Ô LI
+    // ==========================================
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-blue-800', 'shadow');
+        btn.classList.add('text-white');
+      });
+      document.getElementById(tabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.classList.remove('text-white');
+      activeBtn.classList.add('bg-white', 'text-blue-800', 'shadow');
+    }
+
+    function toggleApiKeyModal() { document.getElementById('apiModal').classList.toggle('hidden'); }
+    function saveApiKey() {
+      const val = document.getElementById('apiKeyInput').value.trim();
+      if (val) {
+        localStorage.setItem('GEMINI_API_KEY', val);
+        currentApiKey = val;
+        alert("Đã lưu API Key thành công!");
+      }
+      updateApiKeyUI();
+      toggleApiKeyModal();
+    }
+    function clearApiKey() {
+      localStorage.removeItem('GEMINI_API_KEY');
+      currentApiKey = '';
+      document.getElementById('apiKeyInput').value = '';
+      updateApiKeyUI();
+      toggleApiKeyModal();
+    }
+    function updateApiKeyUI() {
+      document.getElementById('apiKeyStatusText').textContent = currentApiKey ? "API Key: Bật" : "Cài API Key";
+    }
+
     function pickRandomStudent() {
       const list = document.getElementById('studentListText').value.split(',').map(s=>s.trim()).filter(s=>s);
       if(!list.length) return;
@@ -805,7 +1037,6 @@ Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách)
     }
     function resetTimer() { if(timerIv) clearInterval(timerIv); tSec = 120; updateTimer(); }
 
-    // Bảng nháp
     let wbCanvas, wbCtx, wbDraw = false, wbClr = '#1e293b';
     function initWhiteboard() {
       wbCanvas = document.getElementById('whiteboardCanvas');
