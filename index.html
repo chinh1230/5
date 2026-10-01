@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trợ Giảng Trực Quan 3D Toàn Diện & Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
+  <title>Hệ Thống Trợ Giảng Trực Quan 3D & Kho Bài Học Lớp 5 - Kết Nối Tri Thức</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
   <!-- Marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- Three.js & OrbitControls (Đồ họa 3D xoay đa góc 360 độ) -->
+  <!-- Three.js & OrbitControls (3D WebGL xoay đa góc 360 độ) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
@@ -37,13 +37,13 @@
   <header class="bg-gradient-to-r from-blue-700 via-indigo-700 to-teal-600 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-white/20 p-2 rounded-xl">🎲</span>
+        <span class="text-3xl bg-white/20 p-2 rounded-xl">🎒</span>
         <div>
           <h1 class="text-lg md:text-xl font-black tracking-wide flex items-center gap-2">
-            STUDIO TRỰC QUAN 3D TOÀN DIỆN LỚP 5
-            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Mọi Hình 3D Đa Góc</span>
+            TRỢ GIẢNG TRỰC QUAN & KHO BÀI HỌC LỚP 5
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">KNTT Đầy Đủ Kiến Thức</span>
           </h1>
-          <p class="text-xs text-blue-100">Xoay 360° mọi hình học (Hộp, Lập phương, Thang, Tam giác, Trụ, Cầu) • Đa môn Toán, Văn, Khoa, Sử-Địa</p>
+          <p class="text-xs text-blue-100">Toán 5 • Tiếng Việt 5 • Khoa Học 5 • Lịch Sử & Địa Lí 5 | Studio 3D xoay 360° mọi góc</p>
         </div>
       </div>
 
@@ -55,17 +55,17 @@
       </div>
     </div>
 
-    <!-- Menu Chức Năng (Tabs) -->
+    <!-- Thanh Menu Tabs -->
     <div class="bg-black/15 border-t border-white/10 px-4">
       <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto py-2">
-        <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
-          <i class="fa-solid fa-cube text-teal-600"></i> 1. Studio 3D Xoay Đa Góc (Toàn Bộ Hình)
+        <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
+          <i class="fa-solid fa-book-open text-blue-600"></i> 1. Kho Bài Học 4 Môn (Lý Thuyết & Lời Giải)
         </button>
-        <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-book-open text-blue-300"></i> 2. Thư Viện SGK 4 Môn (KNTT)
+        <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
+          <i class="fa-solid fa-cube text-teal-300"></i> 2. Studio Hình Học 3D Xoay Đa Góc
         </button>
         <button onclick="switchTab('solve-tab')" id="btn-solve-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý AI Giải Đề Mở Rộng
+          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý AI Giải Bài Mở Rộng
         </button>
         <button onclick="switchTab('class-tab')" id="btn-class-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học
@@ -80,10 +80,80 @@
   <!-- Thân trang -->
   <main class="max-w-7xl mx-auto p-3 md:p-6 w-full flex-1">
 
-    <!-- ================= TAB 1: STUDIO 3D TOÀN BỘ CÁC HÌNH HỌC ================= -->
-    <section id="lab-tab" class="tab-content space-y-5">
+    <!-- ================= TAB 1: KHO BÀI HỌC 4 MÔN (ĐẦY ĐỦ NỘI DUNG & BÀI TẬP) ================= -->
+    <section id="sgk-tab" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-6">
       
-      <!-- Thanh chuyển đổi giữa TẤT CẢ các hình học trong không gian 3D -->
+      <!-- Cột trái: Chọn Môn & Danh sách bài học (4/12 cột) -->
+      <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[760px]">
+        
+        <!-- 4 Nút chọn môn -->
+        <div class="grid grid-cols-2 gap-1.5 mb-3">
+          <button onclick="changeSubject('toan')" id="sub-btn-toan" class="py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow">
+            📐 Toán 5
+          </button>
+          <button onclick="changeSubject('tiengviet')" id="sub-btn-tiengviet" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            📖 Tiếng Việt 5
+          </button>
+          <button onclick="changeSubject('khoahoc')" id="sub-btn-khoahoc" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            🔬 Khoa Học 5
+          </button>
+          <button onclick="changeSubject('sudia')" id="sub-btn-sudia" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">
+            🌏 Lịch Sử & Địa Lí 5
+          </button>
+        </div>
+
+        <!-- Ô tìm kiếm bài học -->
+        <div class="relative mb-3">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+          <input type="text" id="subjectLessonSearch" oninput="renderSubjectLessons()" placeholder="Tìm nhanh: hình thang, tả cảnh, năng lượng, 1911..." class="w-full pl-8 pr-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Danh sách bài học cuộn -->
+        <div id="subjectLessonScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1">
+          <!-- Render tự động các bài học của môn -->
+        </div>
+      </div>
+
+      <!-- Cột phải: Nội dung bài giảng chi tiết (8/12 cột) -->
+      <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[760px] flex flex-col justify-between">
+        <div>
+          <!-- Header bài học -->
+          <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <span id="activeSubjectBadge" class="text-xs font-black text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md uppercase">Môn học</span>
+              <h2 id="activeLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học từ danh mục bên trái</h2>
+              <p id="activeLessonSubtitle" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Kết Nối Tri Thức Với Cuộc Sống</p>
+            </div>
+            
+            <button onclick="triggerSolveCurrentSubjectLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>AI Soạn Đề & Mở Rộng Bài Này</span>
+            </button>
+          </div>
+
+          <!-- Chi tiết bài học phong phú -->
+          <div id="activeLessonDetailBody" class="space-y-4 text-xs md:text-sm text-slate-700 leading-relaxed overflow-y-auto max-h-[550px] custom-scrollbar pr-2">
+            <!-- Render nội dung lý thuyết + bài tập có lời giải -->
+          </div>
+        </div>
+
+        <!-- Thanh chuyển bài chân trang -->
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+          <button onclick="prevSubjectLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            <i class="fa-solid fa-chevron-left"></i> Bài trước
+          </button>
+          <span id="activeLessonPagination" class="font-bold text-blue-700">Bài 1</span>
+          <button onclick="nextSubjectLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            Bài sau <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 2: STUDIO HÌNH HỌC 3D XOAY ĐA GÓC ================= -->
+    <section id="lab-tab" class="tab-content hidden space-y-5">
+      
       <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-200">
         <button onclick="select3DShape('box')" id="shape-btn-box" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
           📦 Hình Hộp CN & Lập Phương 3D
@@ -105,12 +175,8 @@
         </button>
       </div>
 
-      <!-- KHÔNG GIAN STUDIO 3D CHÍNH -->
       <div id="studio3DWrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        
-        <!-- Cột điều khiển tham số (4/12 cột) -->
         <div class="lg:col-span-4 space-y-4 text-xs">
-          
           <div class="border-b border-slate-100 pb-2 flex justify-between items-center">
             <div>
               <h3 id="panelShapeTitle" class="text-sm font-bold text-teal-900 flex items-center gap-1.5">
@@ -118,12 +184,12 @@
               </h3>
               <p class="text-slate-500 mt-0.5">Xoay tự do 360° bằng chuột/ngón tay. Cuộn chuột để zoom.</p>
             </div>
-            <button onclick="toggleAutoRotate()" id="autoRotateBtn" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700" title="Tự động xoay tròn">
+            <button onclick="toggleAutoRotate()" id="autoRotateBtn" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700">
               <i class="fa-solid fa-arrows-rotate mr-1"></i> Tự xoay: Tắt
             </button>
           </div>
 
-          <!-- Các bộ điều khiển riêng biệt cho từng hình -->
+          <!-- Controls Box -->
           <div id="controls-box" class="space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Chiều dài ($a$):</span><span id="box-val-a" class="text-teal-600 font-bold">4 cm</span></div>
@@ -144,6 +210,7 @@
             <button onclick="setCubePreset()" class="w-full py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-bold">Chuyển thành Hình Lập Phương ($a=b=c=3$)</button>
           </div>
 
+          <!-- Controls Trapezoid -->
           <div id="controls-trapezoid" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Đáy bé ($a$):</span><span id="trap-val-a" class="text-amber-600 font-bold">3 cm</span></div>
@@ -166,6 +233,7 @@
             </button>
           </div>
 
+          <!-- Controls Triangle -->
           <div id="controls-triangle" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Đáy ($a$):</span><span id="tri-val-a" class="text-blue-600 font-bold">5 cm</span></div>
@@ -184,30 +252,32 @@
             </button>
           </div>
 
+          <!-- Controls Cylinder -->
           <div id="controls-cylinder" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
               <div class="flex justify-between font-semibold"><span>Bán kính đáy ($r$):</span><span id="cyl-val-r" class="text-rose-600 font-bold">3 cm</span></div>
               <input type="range" id="cyl-slider-r" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold"><span>Chiều cao hình trụ ($h$):</span><span id="cyl-val-h" class="text-rose-600 font-bold">5 cm</span></div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="cyl-val-h" class="text-rose-600 font-bold">5 cm</span></div>
               <input type="range" id="cyl-slider-h" min="0.5" max="8" step="0.5" value="5" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
           </div>
 
+          <!-- Controls Sphere -->
           <div id="controls-sphere" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
-              <div class="flex justify-between font-semibold"><span>Bán kính hình cầu ($r$):</span><span id="sph-val-r" class="text-indigo-600 font-bold">3 cm</span></div>
+              <div class="flex justify-between font-semibold"><span>Bán kính cầu ($r$):</span><span id="sph-val-r" class="text-indigo-600 font-bold">3 cm</span></div>
               <input type="range" id="sph-slider-r" min="1.5" max="5" step="0.5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
           </div>
 
-          <!-- Các nút đổi góc nhìn chuẩn mực -->
+          <!-- Nút đổi góc nhìn nhanh -->
           <div class="space-y-2">
-            <span class="font-bold text-slate-700 block">Đổi góc nhìn chuẩn:</span>
+            <span class="font-bold text-slate-700 block">Đổi góc nhìn nhanh:</span>
             <div class="grid grid-cols-3 gap-1.5">
               <button onclick="setCameraView('front')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Trực diện</button>
-              <button onclick="setCameraView('top')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Từ trên (Top)</button>
+              <button onclick="setCameraView('top')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Từ trên</button>
               <button onclick="setCameraView('iso')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Phối cảnh 3D</button>
             </div>
             <button onclick="toggleWireframe()" id="wireframeBtn" class="w-full py-1.5 bg-slate-200 hover:bg-slate-300 rounded-lg font-semibold text-slate-700">
@@ -215,32 +285,25 @@
             </button>
           </div>
 
-          <!-- Khung công thức động -->
-          <div id="shapeResultFormula" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900">
-            <!-- Render công thức thời gian thực -->
-          </div>
-
+          <div id="shapeResultFormula" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900"></div>
         </div>
 
-        <!-- Màn hình 3D Three.js (8/12 cột) -->
-        <div class="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-2 relative overflow-hidden h-[520px]">
+        <!-- Màn hình Three.js 3D -->
+        <div class="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-2 relative overflow-hidden h-[540px]">
           <div id="threeContainer" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
-          
           <div class="absolute bottom-3 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-[11px] flex items-center gap-2 pointer-events-none">
             <i class="fa-solid fa-hand-pointer text-amber-300 animate-pulse"></i>
             <span>Giữ chuột / ngón tay để <b>xoay tự do 360° mọi góc</b></span>
           </div>
-
           <div class="absolute top-3 right-4 flex gap-2">
             <span id="shapeBadgeInfo" class="bg-teal-500 text-slate-900 text-xs font-black px-2.5 py-1 rounded-md shadow">
               Mô hình 3D tương tác
             </span>
           </div>
         </div>
-
       </div>
 
-      <!-- Lab Chuyển Động (2 Xe) -->
+      <!-- Lab Chuyển Động -->
       <div id="motionWrapper" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-teal-900">Toán Chuyển Động: Hai Xe Ngược Chiều</h3>
@@ -273,44 +336,6 @@
         </div>
       </div>
 
-    </section>
-
-    <!-- ================= TAB 2: THƯ VIỆN SGK 4 MÔN ================= -->
-    <section id="sgk-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
-        <div class="grid grid-cols-2 gap-1.5 mb-3">
-          <button onclick="setSubject('toan')" id="sub-btn-toan" class="py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow">📐 Toán 5</button>
-          <button onclick="setSubject('tiengviet')" id="sub-btn-tiengviet" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">📖 Tiếng Việt 5</button>
-          <button onclick="setSubject('khoahoc')" id="sub-btn-khoahoc" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">🔬 Khoa Học 5</button>
-          <button onclick="setSubject('sudia')" id="sub-btn-sudia" class="py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5">🌏 Lịch Sử & Địa Lí 5</button>
-        </div>
-        <div class="relative mb-3">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
-          <input type="text" id="multiLessonSearch" oninput="renderMultiLessons()" placeholder="Tìm nhanh bài học..." class="w-full pl-8 pr-3 py-2 text-xs border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-        <div id="multiLessonScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1"></div>
-      </div>
-
-      <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[750px] flex flex-col justify-between">
-        <div>
-          <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
-            <div>
-              <span id="multiSubjectBadge" class="text-xs font-black text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md uppercase">Môn học</span>
-              <h2 id="multiLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học từ danh mục</h2>
-              <p id="multiLessonDesc" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Kết Nối Tri Thức Với Cuộc Sống Lớp 5</p>
-            </div>
-            <button onclick="triggerSolveMultiLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
-              <i class="fa-solid fa-wand-magic-sparkles"></i> AI Soạn & Giải Tiết Này
-            </button>
-          </div>
-          <div id="multiLessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4"></div>
-        </div>
-        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
-          <button onclick="prevMultiLesson()" class="hover:text-blue-600 font-semibold"><i class="fa-solid fa-chevron-left mr-1"></i> Bài trước</button>
-          <span id="multiLessonIndexText" class="font-bold text-blue-700">Bài 1</span>
-          <button onclick="nextMultiLesson()" class="hover:text-blue-600 font-semibold">Bài sau <i class="fa-solid fa-chevron-right ml-1"></i></button>
-        </div>
-      </div>
     </section>
 
     <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI MỞ RỘNG & AI ================= -->
@@ -409,18 +434,376 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: STUDIO 3D THREE.JS TOÀN BỘ CÁC HÌNH -->
   <script>
     // ========================================================
-    // 1. ENGINE 3D THREE.JS TẬP TRUNG CHO TOÀN BỘ CÁC HÌNH
+    // 1. CƠ SỞ DỮ LIỆU ĐẦY ĐỦ KIẾN THỨC VÀ BÀI TẬP 4 MÔN
+    // ========================================================
+    const fullCurriculum = {
+      toan: [
+        {
+          id: 1,
+          title: "Bài 44: Diện tích hình tam giác",
+          target: "Biết công thức tính diện tích hình tam giác; tính diện tích khi biết đáy và chiều cao cùng đơn vị đo; vận dụng tính ngược độ dài đáy hoặc chiều cao.",
+          theory: `### 💡 Khám phá & Quy tắc cốt lõi:
+- **Quy tắc:** Muốn tính diện tích hình tam giác, ta lấy độ dài đáy nhân với chiều cao (cùng đơn vị đo) rồi chia cho 2.
+- **Công thức thuận:**
+  $$S = \\frac{a \\times h}{2}$$
+  *(Trong đó: $S$ là diện tích, $a$ là độ dài đáy, $h$ là chiều cao tương ứng)*
+- **Công thức tính ngược:**
+  - Biết diện tích và chiều cao, tìm đáy: $a = \\frac{2 \\times S}{h}$
+  - Biết diện tích và đáy, tìm chiều cao: $h = \\frac{2 \\times S}{a}$`,
+          practice: `### 📝 Bài tập SGK & Lời giải mẫu chi tiết:
+**Bài 1 (SGK trang 93):** Tính diện tích hình tam giác có độ dài đáy $a = 8\\text{ cm}$ và chiều cao $h = 6\\text{ cm}$.
+- *Bài giải:*
+  Diện tích hình tam giác là:
+  $$\\frac{8 \\times 6}{2} = 24\\text{ (cm}^2)$$
+  *Đáp số:* $24\\text{ cm}^2$.
+
+**Bài 2 (SGK trang 94):** Tính diện tích hình tam giác có độ dài đáy $a = 2,5\\text{ m}$ và chiều cao $h = 16\\text{ dm}$.
+- *Phương pháp:* Đổi về cùng đơn vị đo đề-xi-mét hoặc mét.
+- *Bài giải:*
+  Đổi: $2,5\\text{ m} = 25\\text{ dm}$.
+  Diện tích hình tam giác là:
+  $$\\frac{25 \\times 16}{2} = 200\\text{ (dm}^2) = 2\\text{ m}^2$$
+  *Đáp số:* $200\\text{ dm}^2$ (hoặc $2\\text{ m}^2$).`,
+          tips: "🌟 **Mẹo ghi nhớ:** Đáy và chiều cao phải **cùng một đơn vị đo**. Khi tính ngược, bước quan trọng nhất là phải **nhân đôi diện tích trước** rồi mới chia!"
+        },
+        {
+          id: 2,
+          title: "Bài 46: Diện tích hình thang",
+          target: "Nắm vững công thức tính diện tích hình thang; hiểu bản chất ghép 2 hình thang thành hình bình hành; giải bài toán tính ngược tổng hai đáy.",
+          theory: `### 💡 Khám phá & Quy tắc cốt lõi:
+- **Quy tắc:** Diện tích hình thang bằng tổng độ dài hai đáy nhân với chiều cao (cùng một đơn vị đo) rồi chia cho 2.
+- **Công thức thuận:**
+  $$S = \\frac{(a + b) \\times h}{2}$$
+  *(Trong đó: $a$ là đáy bé, $b$ là đáy lớn, $h$ là chiều cao)*
+- **Công thức tính ngược:**
+  - Tổng hai đáy: $a + b = \\frac{2 \\times S}{h}$
+  - Chiều cao: $h = \\frac{2 \\times S}{a + b}$`,
+          practice: `### 📝 Bài tập SGK & Lời giải mẫu chi tiết:
+**Bài 1 (SGK trang 99):** Tính diện tích hình thang có đáy lớn $12\\text{ cm}$, đáy bé $8\\text{ cm}$ và chiều cao $5\\text{ cm}$.
+- *Bài giải:*
+  Diện tích hình thang đó là:
+  $$\\frac{(12 + 8) \\times 5}{2} = 50\\text{ (cm}^2)$$
+  *Đáp số:* $50\\text{ cm}^2$.
+
+**Bài 2 (Thực tế):** Một thửa ruộng hình thang có diện tích $360\\text{ m}^2$, chiều cao $18\\text{ m}$. Tính tổng độ dài hai đáy của thửa ruộng?
+- *Bài giải:*
+  Tổng độ dài hai đáy của thửa ruộng là:
+  $$\\frac{2 \\times 360}{18} = 40\\text{ (m)}$$
+  *Đáp số:* $40\\text{ m}$.`,
+          tips: "🌟 **Câu ca ghi nhớ:** *Đáy lớn đáy bé ta mang cộng vào. Thế rồi nhân với chiều cao. Chia đôi lấy nửa thế nào cũng ra!*"
+        },
+        {
+          id: 3,
+          title: "Bài 50: Chu vi và Diện tích hình tròn",
+          target: "Biết công thức tính chu vi $C = d \\times 3,14 = r \\times 2 \\times 3,14$ và diện tích $S = r \\times r \\times 3,14$; giải toán diện tích phần tô đậm, hình vành khăn.",
+          theory: `### 💡 Khám phá & Quy tắc cốt lõi:
+- **Chu vi hình tròn:**
+  $$C = d \\times 3,14 = r \\times 2 \\times 3,14$$
+- **Diện tích hình tròn:**
+  $$S = r \\times r \\times 3,14$$
+- **Tính ngược bán kính:**
+  - Khi biết diện tích $S$, ta có: $r \\times r = S : 3,14$. Sau đó tìm số tự nhiên hoặc số thập phân giống nhau nhân với nhau ra tích đó.`,
+          practice: `### 📝 Bài tập SGK & Lời giải mẫu chi tiết:
+**Bài 1:** Tính chu vi và diện tích hình tròn có bán kính $r = 4\\text{ cm}$.
+- *Bài giải:*
+  Chu vi hình tròn là:
+  $$4 \\times 2 \\times 3,14 = 25,12\\text{ (cm)}$$
+  Diện tích hình tròn là:
+  $$4 \\times 4 \\times 3,14 = 50,24\\text{ (cm}^2)$$
+  *Đáp số:* Chu vi: $25,12\\text{ cm}$; Diện tích: $50,24\\text{ cm}^2$.`,
+          tips: "🌟 **Phân biệt:** Chu vi thì nhân với 2 ($r \\times 2 \\times 3,14$), diện tích thì nhân bán kính với chính nó ($r \\times r \\times 3,14$)."
+        },
+        {
+          id: 4,
+          title: "Bài 53 & 58: Hình hộp chữ nhật & Hình lập phương",
+          target: "Biết tính diện tích xung quanh, diện tích toàn phần và thể tích của hình hộp chữ nhật và hình lập phương; hiểu đơn vị thể tích xăng-ti-mét khối ($1\\text{ cm}^3$).",
+          theory: `### 💡 Khám phá & Công thức cốt lõi:
+- **Hình hộp chữ nhật ($a$: dài, $b$: rộng, $c$: cao):**
+  - $S_{xq} = (a + b) \\times 2 \\times c$ (Chu vi đáy nhân chiều cao)
+  - $S_{tp} = S_{xq} + 2 \\times (a \\times b)$ (Diện tích xung quanh cộng 2 đáy)
+  - Thể tích: $V = a \\times b \\times c$
+- **Hình lập phương (Cạnh $a$):**
+  - $S_{xq} = a \\times a \\times 4$
+  - $S_{tp} = a \\times a \\times 6$
+  - Thể tích: $V = a \\times a \\times a$`,
+          practice: `### 📝 Bài tập SGK & Lời giải mẫu chi tiết:
+**Bài 1:** Một bể nước hình hộp chữ nhật có chiều dài $2\\text{ m}$, chiều rộng $1,5\\text{ m}$ và chiều cao $1,2\\text{ m}$. Tính thể tích của bể nước đó?
+- *Bài giải:*
+  Thể tích của bể nước là:
+  $$2 \\times 1,5 \\times 1,2 = 3,6\\text{ (m}^3)$$
+  Đổi: $3,6\\text{ m}^3 = 3600\\text{ dm}^3 = 3600\\text{ lít}$.
+  *Đáp số:* $3,6\\text{ m}^3$ ($3600\\text{ lít}$).`,
+          tips: "🌟 **Ghi nhớ:** $1\\text{ m}^3 = 1000\\text{ dm}^3 = 1\\ 000\\ 000\\text{ cm}^3$. Mỗi đơn vị thể tích liền kề gấp hoặc kém nhau **1000 lần**."
+        },
+        {
+          id: 5,
+          title: "Bài 66: Hai chuyển động ngược chiều gặp nhau",
+          target: "Nhận biết bài toán hai vật chuyển động ngược chiều khởi hành cùng lúc; hiểu khái niệm tổng vận tốc; công thức tính thời gian gặp nhau.",
+          theory: `### 💡 Khám phá & Quy tắc cốt lõi:
+- Sau mỗi giờ, hai xe đi được quãng đường bằng **Tổng hai vận tốc**: $V = v_1 + v_2$.
+- **Thời gian để hai xe gặp nhau:**
+  $$t = \\frac{s}{v_1 + v_2}$$
+  *(Quãng đường chia cho Tổng vận tốc)*
+- **Khoảng cách điểm gặp nhau cách A:** $s_A = v_1 \\times t$.`,
+          practice: `### 📝 Bài tập SGK & Lời giải mẫu chi tiết:
+**Bài 1 (SGK trang 143):** Quãng đường AB dài $180\\text{ km}$. Một ô tô đi từ A với vận tốc $54\\text{ km/h}$, cùng lúc đó một xe máy đi từ B với vận tốc $36\\text{ km/h}$. Hỏi sau bao lâu hai xe gặp nhau?
+- *Bài giải:*
+  Sau mỗi giờ, cả ô tô và xe máy đi được là:
+  $$54 + 36 = 90\\text{ (km)}$$
+  Thời gian để hai xe gặp nhau là:
+  $$180 : 90 = 2\\text{ (giờ)}$$
+  *Đáp số:* $2\\text{ giờ}$.`,
+          tips: "🌟 **Quy tắc vàng:** Ngược chiều nhau thì **cộng vận tốc** ($v_1 + v_2$); Đuổi nhau cùng chiều thì **trừ vận tốc** ($v_1 - v_2$)."
+        }
+      ],
+      tiengviet: [
+        {
+          id: 1,
+          title: "Luyện từ và câu: Từ đồng nghĩa & Từ nhiều nghĩa",
+          target: "Phân biệt từ đồng nghĩa hoàn toàn và không hoàn toàn; nhận biết nghĩa gốc và nghĩa chuyển của từ nhiều nghĩa trong ngữ cảnh cụ thể.",
+          theory: `### 💡 Khái niệm & Quy tắc ngữ pháp:
+1. **Từ đồng nghĩa:** Là những từ có nghĩa giống nhau hoặc gần giống nhau.
+   - *Đồng nghĩa hoàn toàn:* Thay thế được cho nhau (ví dụ: *xe lửa - tàu hỏa*, *mẹ - má*).
+   - *Đồng nghĩa không hoàn toàn:* Có sắc thái biểu cảm hoặc hành động khác nhau (ví dụ: *chết - hi sinh - quy tiên*; *vác - khiêng - xách*).
+2. **Từ nhiều nghĩa:** Là từ có một **nghĩa gốc** và một hay một số **nghĩa chuyển**. Các nghĩa luôn có mối liên hệ với nhau.
+   - Ví dụ từ *mắt*:
+     + Nghĩa gốc: *Đôi mắt em bé sáng ngời* (cơ quan thị giác).
+     + Nghĩa chuyển: *Mắt na, mắt dứa, mắt mía* (hình dạng tròn nhỏ lồi ra giống con mắt).`,
+          practice: `### 📝 Bài tập thực hành & Hướng dẫn làm bài:
+**Bài 1:** Phân biệt nghĩa của từ "chân" trong các câu sau:
+a) *Bé bị đau chân.* $\\rightarrow$ **Nghĩa gốc** (bộ phận dưới cùng của cơ thể người để đi lại).
+b) *Chân bàn học bị lung lay.* $\\rightarrow$ **Nghĩa chuyển** (bộ phận dưới cùng nâng đỡ cái bàn).
+c) *Chúng em đứng dưới chân núi.* $\\rightarrow$ **Nghĩa chuyển** (phần dưới cùng tiếp giáp mặt đất của ngọn núi).`,
+          tips: "🌟 **Cách nhận diện:** Từ đồng âm thì các nghĩa **hoàn toàn không liên quan gì nhau** (ví dụ: *con ruồi đậu - hạt đậu*); còn từ nhiều nghĩa thì luôn có **nét tương đồng** (về hình dáng, vị trí hoặc chức năng)."
+        },
+        {
+          id: 2,
+          title: "Tập làm văn: Tả cảnh đẹp quê hương (Đêm trăng rằm)",
+          target: "Nắm vững bố cục 3 phần của bài văn miêu tả cảnh vật; biết quan sát theo trình tự thời gian và không gian; sử dụng biện pháp so sánh và nhân hóa gợi cảm.",
+          theory: `### 💡 Dàn ý chi tiết 3 phần:
+1. **Mở bài:** Giới thiệu thời gian, không gian ngắm cảnh đêm trăng (Một buổi tối mùa thu mát mẻ, khi em cùng ông ngồi uống trà trước sân nhà).
+2. **Thân bài:**
+   - *Khi hoàng hôn buông xuống:* Mặt trời lặn sau dãy núi, ráng chiều tắt dần, vạn vật bắt đầu chìm vào bóng tối tĩnh lặng.
+   - *Khi trăng lên:* Vầng trăng tròn vành vạnh như một chiếc đĩa bạc khổng lồ từ từ nhô lên khỏi ngọn tre làng, tỏa ánh sáng dịu mát chan hòa.
+   - *Cảnh vật dưới ánh trăng:*
+     + Mái nhà, cành cây như được phủ một lớp bột phấn vàng óng ánh.
+     + Mặt ao phẳng lặng lấp lánh như dát bạc mỗi khi có làn gió thoảng qua.
+     + Tiếng côn trùng rả rích trong bụi cỏ; hương hoa cau, hoa bưởi thoang thoảng bay.
+   - *Hoạt động con người:* Người lớn ngồi thưởng trà hàn huyên; lũ trẻ con ríu rít rủ nhau chơi trốn tìm, phá cỗ dưới ánh trăng.
+3. **Kết bài:** Nêu tình cảm yêu mến, gắn bó với vẻ đẹp thanh bình của đêm trăng quê hương.`,
+          practice: `### 📝 Đoạn văn mẫu gợi ý:
+> *"Đêm trăng rằm quê em thật huyền ảo. Trăng tròn vành vạnh như chiếc mâm bạc treo lơ lửng trên nền trời nhung thẫm. Ánh trăng trong vắt tuôn chảy xuống vạn vật, biến dòng sông quê thành một dải lụa dát vàng lấp lánh. Gió thu mơn man mang theo hương lúa non ngào ngạt, làm cho cảnh đêm thêm êm đềm và thơ mộng."*`,
+          tips: "🌟 **Mẹo hành văn:** Hãy kết hợp nhiều giác quan khi miêu tả: **Thị giác** (màu sắc ánh trăng), **Thính giác** (tiếng gió, tiếng côn trùng), và **Khứu giác** (hương hoa, mùi rơm rạ)."
+        },
+        {
+          id: 3,
+          title: "Tập làm văn: Tả người (Tả thầy cô giáo kính yêu)",
+          target: "Biết kết hợp tả ngoại hình với hoạt động, tính tình và kỷ niệm đáng nhớ của người được miêu tả.",
+          theory: `### 💡 Cấu trúc bài văn tả người:
+1. **Mở bài:** Giới thiệu thầy/cô giáo dạy em năm lớp mấy, để lại ấn tượng gì sâu đậm.
+2. **Thân bài:**
+   - *Ngoại hình:* Vóc dáng, mái tóc, trang phục giản dị, đặc biệt là ánh mắt trìu mến và nụ cười hiền hậu.
+   - *Giọng nói & Cử chỉ:* Giọng giảng bài ấm áp truyền cảm; đôi bàn tay nhẹ nhàng uốn nắn từng nét chữ cho học sinh.
+   - *Kỷ niệm sâu sắc:* Một lần em bị điểm kém hoặc mắc lỗi được cô động viên, ân cần chỉ bảo.
+3. **Kết bài:** Tình cảm trân trọng, lòng biết ơn sâu sắc và lời hứa chăm ngoan, học giỏi.`,
+          practice: `### 📝 Câu văn rèn luyện nét chữ & hình ảnh:
+> *"Mỗi khi cô bước vào lớp với tà áo dài thướt tha, nụ cười rạng rỡ của cô như xua tan đi mọi căng thẳng. Giọng nói cô trong trẻo, trầm ấm như rót vào lòng chúng em từng lời giảng thân thương."*`,
+          tips: "🌟 **Tránh lỗi:** Không nên liệt kê ngoại hình như làm biên bản kiểm kê; hãy gắn ngoại hình với cảm xúc và hành động cụ thể."
+        }
+      ],
+      khoahoc: [
+        {
+          id: 1,
+          title: "Sự biến đổi của chất: Biến đổi vật lí và Biến đổi hóa học",
+          target: "Phân biệt được hiện tượng biến đổi vật lí và biến đổi hóa học qua các ví dụ thực nghiệm trong đời sống hằng ngày.",
+          theory: `### 💡 Kiến thức cốt lõi:
+1. **Biến đổi vật lí:** Là sự biến đổi về hình dạng, kích thước, trạng thái của chất nhưng **vẫn giữ nguyên là chất ban đầu, không tạo thành chất mới**.
+   - *Ví dụ:* Nước đá tan thành nước lỏng; xé một tờ giấy thành nhiều mảnh nhỏ; đun sôi nước bốc hơi.
+2. **Biến đổi hóa học:** Là sự biến đổi từ chất này **thành chất khác (có chất mới tạo thành)**.
+   - *Ví dụ:* Đốt cháy mẩu giấy thành than và tro; đinh sắt để ngoài không khí ẩm bị gỉ sét; nướng chín mẩu bánh mì.`,
+          practice: `### 📝 Câu hỏi SGK & Lời giải:
+**Câu hỏi:** Các hiện tượng sau đây thuộc loại biến đổi nào? Giải thích vì sao:
+1) *Hòa tan đường vào cốc nước:* $\\rightarrow$ **Biến đổi vật lí** (vì khi nếm nước vẫn có vị ngọt của đường, đun cạn nước ta lại thu được đường).
+2) *Cho một thìa đường lên chảo đun đến khi đường khét đen:* $\\rightarrow$ **Biến đổi hóa học** (vì đường bị cháy biến thành than đen và có mùi khét, không còn vị ngọt).
+3) *Xé vụn một mẩu lá khô:* $\\rightarrow$ **Biến đổi vật lí** (lá chỉ đổi kích thước, không sinh ra chất mới).`,
+          tips: "🌟 **Quy tắc nhớ nhanh:** Có sinh ra chất mới không? Nếu **CÓ** $\\rightarrow$ Hóa học; Nếu **KHÔNG** $\\rightarrow$ Vật lí."
+        },
+        {
+          id: 2,
+          title: "Năng lượng: Năng lượng Mặt Trời, Gió và Nước chảy",
+          target: "Hiểu vai trò của các nguồn năng lượng tái tạo sạch; ứng dụng pin mặt trời, nhà máy thủy điện và cối xay gió trong đời sống.",
+          theory: `### 💡 Nguồn năng lượng sạch & Ứng dụng:
+1. **Năng lượng Mặt Trời:** Cung cấp ánh sáng và nhiệt cho sự sống trên Trái Đất; sấy khô nông sản; làm muối; tạo điện năng qua pin mặt trời.
+2. **Năng lượng gió:** Làm quay tuabin phát điện; chạy thuyền buồm; rê thóc; cối xay gió.
+3. **Năng lượng nước chảy:** Làm quay tuabin nhà máy thủy điện (như Thủy điện Sơn La, Hòa Bình); bè mảng trôi xuôi dòng.`,
+          practice: `### 📝 Câu hỏi thảo luận:
+- *Vì sao con người cần tăng cường sử dụng năng lượng mặt trời và gió thay cho than đá, dầu mỏ?*
+- **Trả lời:** Vì than đá và dầu mỏ là nguồn tài nguyên hóa thạch hữu hạn, khi đốt cháy gây ô nhiễm không khí và biến đổi khí hậu; trong khi năng lượng mặt trời và gió là nguồn năng lượng vô tận, sạch và thân thiện với môi trường.`,
+          tips: "🌟 **Hành động nhỏ:** Luôn tắt đèn, quạt khi rời khỏi phòng để tiết kiệm điện năng cho gia đình và đất nước."
+        }
+      ],
+      sudia: [
+        {
+          id: 1,
+          title: "Địa lí: Vị trí địa lí, địa hình và khoáng sản Việt Nam",
+          target: "Chỉ được vị trí địa lí của nước ta trên bản đồ; nắm được đặc điểm địa hình đồi núi chiếm 3/4 diện tích và các tài nguyên khoáng sản lớn.",
+          theory: `### 💡 Đặc điểm tự nhiên của nước ta:
+1. **Vị trí địa lí:**
+   - Nằm trên bán đảo Đông Dương, thuộc khu vực Đông Nam Á.
+   - Có đường bờ biển hình chữ S dài **3260 km**.
+   - Tiếp giáp trên đất liền với: Trung Quốc, Lào, Cam-pu-chia.
+   - Phía đông và nam giáp với Biển Đông rộng lớn.
+2. **Địa hình:**
+   - Đồi núi chiếm **3/4 diện tích**, đồng bằng chiếm **1/4 diện tích**.
+   - Hai đồng bằng lớn nhất là Đồng bằng Bắc Bộ (sông Hồng) và Đồng bằng Nam Bộ (sông Cửu Long).
+3. **Khoáng sản chủ yếu:**
+   - Than đá (nhiều nhất ở Quảng Ninh), A-pa-tít (Lào Cai), Dầu mỏ và khí đốt (thềm lục địa phía nam).`,
+          practice: `### 📝 Câu hỏi củng cố:
+- *Đường bờ biển dài mang lại những thuận lợi gì cho kinh tế nước ta?*
+- **Trả lời:** Thuận lợi phát triển ngành thủy hải sản đánh bắt và nuôi trồng; xây dựng cảng biển giao thương quốc tế; phát triển du lịch biển (vịnh Hạ Long, Nha Trang, Phú Quốc).`,
+          tips: "🌟 **Ghi nhớ:** Việt Nam có hình chữ S; 3/4 diện tích là đồi núi, 1/4 là đồng bằng màu mỡ."
+        },
+        {
+          id: 2,
+          title: "Lịch sử: Bác Hồ ra đi tìm đường cứu nước (5/6/1911)",
+          target: "Hiểu được bối cảnh đất nước, mục đích và ý nghĩa ngày người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng.",
+          theory: `### 💡 Mốc son lịch sử hào hùng:
+1. **Bối cảnh:** Đầu thế kỉ XX, các phong trào cứu nước của các bậc tiền bối (Phan Bội Châu, Phan Châu Trinh) đều lần lượt thất bại. Đất nước chìm trong ách nô lệ của thực dân Pháp.
+2. **Sự kiện:** Ngày **5 tháng 6 năm 1911**, từ **Bến cảng Nhà Rồng (Sài Gòn)**, người thanh niên yêu nước **Nguyễn Tất Thành** lấy tên là Văn Ba, xin làm phụ bếp trên con tàu Đô đốc La-tu-sơ Tơ-rê-vin sang phương Tây.
+3. **Mục đích & Ý nghĩa:** Người muốn sang các nước phương Tây xem họ làm thế nào rồi trở về giúp đồng bào ta; mở ra con đường cứu nước đúng đắn giải phóng dân tộc Việt Nam.`,
+          practice: `### 📝 Câu hỏi SGK & Lời giải:
+- *Vì sao Nguyễn Tất Thành quyết định đi sang các nước phương Tây?*
+- **Trả lời:** Vì Người khâm phục lòng yêu nước của các sĩ phu tiền bối nhưng không tán thành con đường của họ. Người muốn tận mắt chứng kiến xã hội phương Tây để tìm ra con đường cứu nước mới mang lại độc lập thực sự cho dân tộc.`,
+          tips: "🌟 **Mốc nhớ son:** Ngày **5 - 6 - 1911**, Bến cảng Nhà Rồng, tàu La-tu-sơ Tơ-rê-vin, phụ bếp Văn Ba."
+        }
+      ]
+    };
+
+    // ========================================================
+    // 2. LOGIC ĐIỀU HƯỚNG BÀI HỌC VÀ HIỂN THỊ
+    // ========================================================
+    let currentSubjectKey = 'toan';
+    let currentSubjectLessonIdx = 0;
+    let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initStudio3D();
+      changeSubject('toan');
+      updateApiKeyUI();
+      initWhiteboard();
+    });
+
+    function changeSubject(subKey) {
+      currentSubjectKey = subKey;
+      currentSubjectLessonIdx = 0;
+
+      ['toan', 'tiengviet', 'khoahoc', 'sudia'].forEach(k => {
+        const btn = document.getElementById('sub-btn-' + k);
+        if (k === subKey) {
+          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow";
+        } else {
+          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5";
+        }
+      });
+
+      renderSubjectLessons();
+      displaySubjectLessonDetail(0);
+    }
+
+    function renderSubjectLessons() {
+      const scroll = document.getElementById('subjectLessonScroll');
+      scroll.innerHTML = '';
+      const list = fullCurriculum[currentSubjectKey] || [];
+      const search = document.getElementById('subjectLessonSearch').value.toLowerCase().trim();
+
+      list.forEach((item, idx) => {
+        if (search && !item.title.toLowerCase().includes(search) && !item.target.toLowerCase().includes(search)) return;
+        const btn = document.createElement('button');
+        const isActive = idx === currentSubjectLessonIdx;
+        btn.className = `w-full text-left p-2.5 rounded-xl text-xs transition border flex items-center justify-between ${
+          isActive ? 'bg-blue-600 text-white border-blue-600 font-bold shadow' : 'bg-slate-50 hover:bg-blue-50 text-slate-700 border-slate-200'
+        }`;
+        btn.onclick = () => displaySubjectLessonDetail(idx);
+        btn.innerHTML = `<span class="truncate pr-2">${item.title}</span><i class="fa-solid fa-chevron-right text-[10px]"></i>`;
+        scroll.appendChild(btn);
+      });
+    }
+
+    function displaySubjectLessonDetail(idx) {
+      currentSubjectLessonIdx = idx;
+      const list = fullCurriculum[currentSubjectKey];
+      if (!list || !list[idx]) return;
+      const lesson = list[idx];
+
+      const subNames = {
+        toan: 'Môn Toán 5 (KNTT)',
+        tiengviet: 'Môn Tiếng Việt 5 (KNTT)',
+        khoahoc: 'Môn Khoa Học 5 (KNTT)',
+        sudia: 'Môn Lịch Sử & Địa Lí 5 (KNTT)'
+      };
+
+      document.getElementById('activeSubjectBadge').textContent = subNames[currentSubjectKey];
+      document.getElementById('activeLessonTitle').textContent = lesson.title;
+      document.getElementById('activeLessonSubtitle').textContent = `Mục tiêu: ${lesson.target}`;
+      document.getElementById('activeLessonPagination').textContent = `Bài ${idx + 1} / ${list.length}`;
+
+      const body = document.getElementById('activeLessonDetailBody');
+      const rawHtml = `
+        <div class="bg-blue-50/80 border border-blue-200 p-3.5 rounded-xl text-xs text-blue-950">
+          <b class="text-blue-900 block mb-1">🎯 Mục tiêu & Yêu cầu cần đạt:</b>
+          ${lesson.target}
+        </div>
+
+        <div class="p-4 bg-amber-50/50 border border-amber-200 rounded-xl space-y-2">
+          ${marked.parse(lesson.theory)}
+        </div>
+
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+          ${marked.parse(lesson.practice)}
+        </div>
+
+        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 font-medium">
+          ${lesson.tips}
+        </div>
+      `;
+
+      body.innerHTML = rawHtml;
+
+      // Render KaTeX công thức
+      body.innerHTML = body.innerHTML.replace(/\$([^\$]+)\$/g, (m, expr) => {
+        try { return katex.renderToString(expr, { throwOnError: false }); } catch (e) { return m; }
+      });
+
+      renderSubjectLessons();
+    }
+
+    function prevSubjectLesson() {
+      if (currentSubjectLessonIdx > 0) displaySubjectLessonDetail(currentSubjectLessonIdx - 1);
+    }
+    function nextSubjectLesson() {
+      const list = fullCurriculum[currentSubjectKey];
+      if (currentSubjectLessonIdx < list.length - 1) displaySubjectLessonDetail(currentSubjectLessonIdx + 1);
+    }
+
+    function triggerSolveCurrentSubjectLesson() {
+      const lesson = fullCurriculum[currentSubjectKey][currentSubjectLessonIdx];
+      const subNames = { toan: 'Toán 5', tiengviet: 'Tiếng Việt 5', khoahoc: 'Khoa Học 5', sudia: 'Lịch Sử và Địa Lí 5' };
+      const q = `Hãy hướng dẫn soạn bài, giải thêm các dạng bài tập nâng cao và câu hỏi trắc nghiệm ôn tập cho bài: ${lesson.title} môn ${subNames[currentSubjectKey]} SGK Kết Nối Tri Thức.`;
+      document.getElementById('aiInput').value = q;
+      switchTab('solve-tab');
+      executeSolve();
+    }
+
+    // ========================================================
+    // 3. ENGINE 3D THREE.JS TOÀN BỘ CÁC HÌNH HỌC (XOAY 360°)
     // ========================================================
     let scene, camera, renderer, controls;
     let currentShape = 'box';
     let currentMeshGroup = null;
     let isWireframe = false;
     let isAutoRotating = false;
-
-    // Trạng thái ghép đôi 3D
     let isTrap3DDoubled = false;
     let isTri3DDoubled = false;
 
@@ -429,7 +812,7 @@
       if (!container) return;
 
       scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0f172a); // Slate-900
+      scene.background = new THREE.Color(0x0f172a);
 
       camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
       camera.position.set(12, 10, 14);
@@ -439,14 +822,12 @@
       renderer.setPixelRatio(window.devicePixelRatio);
       container.appendChild(renderer.domElement);
 
-      // Controls xoay 360 độ tự do
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
       controls.maxDistance = 45;
       controls.minDistance = 3;
 
-      // Ánh sáng chiếu đa hướng
       const ambLight = new THREE.AmbientLight(0xffffff, 0.7);
       scene.add(ambLight);
 
@@ -458,12 +839,10 @@
       dirLight2.position.set(-15, -10, -15);
       scene.add(dirLight2);
 
-      // Lưới mặt phẳng tọa độ (Grid)
       const grid = new THREE.GridHelper(20, 20, 0x38bdf8, 0x334155);
       grid.position.y = -0.01;
       scene.add(grid);
 
-      // Dựng hình ban đầu
       buildActive3DShape();
 
       function animate() {
@@ -487,11 +866,8 @@
       renderer.setSize(container.clientWidth, container.clientHeight);
     }
 
-    // Chuyển đổi giữa các hình 3D
     function select3DShape(shapeName) {
       currentShape = shapeName;
-
-      // Cập nhật tab active
       document.querySelectorAll('.shape-tab-btn').forEach(btn => {
         btn.classList.remove('bg-blue-600', 'text-white', 'shadow');
         btn.classList.add('bg-white', 'text-slate-700');
@@ -502,7 +878,6 @@
         activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
       }
 
-      // Ẩn hiện panel tương ứng
       if (shapeName === 'motion') {
         document.getElementById('studio3DWrapper').classList.add('hidden');
         document.getElementById('motionWrapper').classList.remove('hidden');
@@ -518,7 +893,6 @@
       });
       document.getElementById('controls-' + shapeName).classList.remove('hidden');
 
-      // Tiêu đề
       const titles = {
         box: 'Hình Hộp Chữ Nhật & Lập Phương 3D',
         trapezoid: 'Hình Thang Không Gian 3D (Extrude)',
@@ -532,36 +906,26 @@
       setTimeout(onStudioResize, 50);
     }
 
-    // Dựng mesh 3D theo hình đang chọn
     function buildActive3DShape() {
       if (currentMeshGroup) scene.remove(currentMeshGroup);
       currentMeshGroup = new THREE.Group();
 
       const matOpts = {
-        roughness: 0.25,
-        metalness: 0.1,
-        wireframe: isWireframe,
-        transparent: isWireframe,
+        roughness: 0.25, metalness: 0.1,
+        wireframe: isWireframe, transparent: isWireframe,
         opacity: isWireframe ? 0.35 : 0.92
       };
 
-      if (currentShape === 'box') {
-        buildBox3D(matOpts);
-      } else if (currentShape === 'trapezoid') {
-        buildTrapezoid3D(matOpts);
-      } else if (currentShape === 'triangle') {
-        buildTriangle3D(matOpts);
-      } else if (currentShape === 'cylinder') {
-        buildCylinder3D(matOpts);
-      } else if (currentShape === 'sphere') {
-        buildSphere3D(matOpts);
-      }
+      if (currentShape === 'box') buildBox3D(matOpts);
+      else if (currentShape === 'trapezoid') buildTrapezoid3D(matOpts);
+      else if (currentShape === 'triangle') buildTriangle3D(matOpts);
+      else if (currentShape === 'cylinder') buildCylinder3D(matOpts);
+      else if (currentShape === 'sphere') buildSphere3D(matOpts);
 
       scene.add(currentMeshGroup);
       updateShapeFormulaUI();
     }
 
-    // 1. Hình Hộp CN & Lập Phương 3D (Gồm các khối con 1cm3 tách rời)
     function buildBox3D(matOpts) {
       const a = parseInt(document.getElementById('box-slider-a').value);
       const b = parseInt(document.getElementById('box-slider-b').value);
@@ -590,8 +954,7 @@
               z * (unitSize + gap) - offsetZ
             );
             const edges = new THREE.EdgesGeometry(geom);
-            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
-            m.add(line);
+            m.add(new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 })));
             currentMeshGroup.add(m);
           }
         }
@@ -599,7 +962,6 @@
       document.getElementById('shapeBadgeInfo').textContent = `Tổng: ${a * b * c} khối 1 cm³`;
     }
 
-    // 2. Hình Thang 3D (ExtrudeGeometry xoay 360 độ & Ghép đôi động)
     function buildTrapezoid3D(matOpts) {
       const a = parseFloat(document.getElementById('trap-slider-a').value);
       const b = parseFloat(document.getElementById('trap-slider-b').value);
@@ -613,37 +975,27 @@
 
       const shape1 = new THREE.Shape();
       const leftShift = (b - a) / 2;
-      shape1.moveTo(-b / 2, 0);
-      shape1.lineTo(b / 2, 0);
-      shape1.lineTo(b / 2 - leftShift, h);
-      shape1.lineTo(-b / 2 + leftShift, h);
+      shape1.moveTo(-b / 2, 0); shape1.lineTo(b / 2, 0);
+      shape1.lineTo(b / 2 - leftShift, h); shape1.lineTo(-b / 2 + leftShift, h);
       shape1.closePath();
 
-      const extrudeSettings = { depth: depth, bevelEnabled: false };
-      const geom1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+      const geom1 = new THREE.ExtrudeGeometry(shape1, { depth: depth, bevelEnabled: false });
       const mat1 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf59e0b });
       const mesh1 = new THREE.Mesh(geom1, mat1);
       mesh1.position.set(0, 0, -depth / 2);
-
-      const edges1 = new THREE.EdgesGeometry(geom1);
-      mesh1.add(new THREE.LineSegments(edges1, new THREE.LineBasicMaterial({ color: 0xffffff })));
+      mesh1.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
       currentMeshGroup.add(mesh1);
 
-      // Nếu bấm Ghép Đôi Hình Thang 3D
       if (isTrap3DDoubled) {
         const mat2 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x3b82f6 });
         const mesh2 = new THREE.Mesh(geom1, mat2);
-        // Xoay 180 độ ghép khít thành hình lăng trụ bình hành
-        mesh2.rotation.z = Math.PI;
-        mesh2.position.set(0, h, depth / 2);
-        mesh2.rotation.y = Math.PI;
-        mesh2.add(new THREE.LineSegments(edges1, new THREE.LineBasicMaterial({ color: 0xffffff })));
+        mesh2.rotation.z = Math.PI; mesh2.position.set(0, h, depth / 2); mesh2.rotation.y = Math.PI;
+        mesh2.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
         currentMeshGroup.add(mesh2);
       }
       document.getElementById('shapeBadgeInfo').textContent = isTrap3DDoubled ? "Ghép đôi tạo hình bình hành 3D" : "Hình thang 3D";
     }
 
-    // 3. Hình Tam Giác 3D (ExtrudeGeometry xoay 360 độ & Ghép đôi động)
     function buildTriangle3D(matOpts) {
       const a = parseFloat(document.getElementById('tri-slider-a').value);
       const h = parseFloat(document.getElementById('tri-slider-h').value);
@@ -654,37 +1006,28 @@
       document.getElementById('tri-val-d').textContent = depth + ' cm';
 
       const shape1 = new THREE.Shape();
-      shape1.moveTo(-a / 2, 0);
-      shape1.lineTo(a / 2, 0);
-      shape1.lineTo(0, h);
-      shape1.closePath();
+      shape1.moveTo(-a / 2, 0); shape1.lineTo(a / 2, 0); shape1.lineTo(0, h); shape1.closePath();
 
-      const extrudeSettings = { depth: depth, bevelEnabled: false };
-      const geom1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+      const geom1 = new THREE.ExtrudeGeometry(shape1, { depth: depth, bevelEnabled: false });
       const mat1 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x3b82f6 });
       const mesh1 = new THREE.Mesh(geom1, mat1);
       mesh1.position.set(0, 0, -depth / 2);
-
       mesh1.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
       currentMeshGroup.add(mesh1);
 
       if (isTri3DDoubled) {
         const mat2 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf59e0b });
         const mesh2 = new THREE.Mesh(geom1, mat2);
-        mesh2.rotation.z = Math.PI;
-        mesh2.position.set(0, h, depth / 2);
-        mesh2.rotation.y = Math.PI;
+        mesh2.rotation.z = Math.PI; mesh2.position.set(0, h, depth / 2); mesh2.rotation.y = Math.PI;
         mesh2.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
         currentMeshGroup.add(mesh2);
       }
       document.getElementById('shapeBadgeInfo').textContent = isTri3DDoubled ? "Ghép 2 tam giác thành hình bình hành 3D" : "Hình tam giác 3D";
     }
 
-    // 4. Hình Tròn & Khối Trụ 3D (CylinderGeometry)
     function buildCylinder3D(matOpts) {
       const r = parseFloat(document.getElementById('cyl-slider-r').value);
       const h = parseFloat(document.getElementById('cyl-slider-h').value);
-
       document.getElementById('cyl-val-r').textContent = r + ' cm';
       document.getElementById('cyl-val-h').textContent = h + ' cm';
 
@@ -692,13 +1035,11 @@
       const mat = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf43f5e });
       const mesh = new THREE.Mesh(geom, mat);
       mesh.position.y = h / 2;
-
       mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom), new THREE.LineBasicMaterial({ color: 0xffffff })));
       currentMeshGroup.add(mesh);
       document.getElementById('shapeBadgeInfo').textContent = h <= 1 ? "Đĩa hình tròn 3D" : "Khối Trụ 3D";
     }
 
-    // 5. Hình Cầu 3D (SphereGeometry)
     function buildSphere3D(matOpts) {
       const r = parseFloat(document.getElementById('sph-slider-r').value);
       document.getElementById('sph-val-r').textContent = r + ' cm';
@@ -707,69 +1048,53 @@
       const mat = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x8b5cf6 });
       const mesh = new THREE.Mesh(geom, mat);
       mesh.position.y = r;
-
       mesh.add(new THREE.LineSegments(new THREE.WireframeGeometry(geom), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 })));
       currentMeshGroup.add(mesh);
       document.getElementById('shapeBadgeInfo').textContent = "Hình Cầu 3D";
     }
 
-    function updateShapeParams() {
-      buildActive3DShape();
-    }
-
+    function updateShapeParams() { buildActive3DShape(); }
     function toggleTrap3DDouble() {
       isTrap3DDoubled = !isTrap3DDoubled;
       document.getElementById('trapDoubleBtn').textContent = isTrap3DDoubled ? "Thu về 1 hình thang ban đầu" : "Ghép thêm 1 hình thang đảo ngược (3D)";
       buildActive3DShape();
     }
-
     function toggleTri3DDouble() {
       isTri3DDoubled = !isTri3DDoubled;
       document.getElementById('triDoubleBtn').textContent = isTri3DDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng (3D)";
       buildActive3DShape();
     }
-
     function toggleAutoRotate() {
       isAutoRotating = !isAutoRotating;
       document.getElementById('autoRotateBtn').textContent = isAutoRotating ? "Tự xoay: BẬT" : "Tự xoay: Tắt";
     }
-
     function toggleWireframe() {
       isWireframe = !isWireframe;
       document.getElementById('wireframeBtn').classList.toggle('bg-teal-200');
       buildActive3DShape();
     }
-
     function setCubePreset() {
       document.getElementById('box-slider-a').value = 3;
       document.getElementById('box-slider-b').value = 3;
       document.getElementById('box-slider-c').value = 3;
       buildActive3DShape();
     }
-
     function setCameraView(view) {
       if (!camera || !controls) return;
-      if (view === 'front') {
-        camera.position.set(0, 3, 16);
-      } else if (view === 'top') {
-        camera.position.set(0, 18, 0.01);
-      } else if (view === 'iso') {
-        camera.position.set(12, 10, 14);
-      }
+      if (view === 'front') camera.position.set(0, 3, 16);
+      else if (view === 'top') camera.position.set(0, 18, 0.01);
+      else if (view === 'iso') camera.position.set(12, 10, 14);
       controls.target.set(0, 2, 0);
       controls.update();
     }
 
-    // Cập nhật công thức toán học KaTeX động
     function updateShapeFormulaUI() {
       const box = document.getElementById('shapeResultFormula');
       if (currentShape === 'box') {
         const a = parseInt(document.getElementById('box-slider-a').value);
         const b = parseInt(document.getElementById('box-slider-b').value);
         const c = parseInt(document.getElementById('box-slider-c').value);
-        const S_xq = (a + b) * 2 * c;
-        const S_tp = S_xq + 2 * (a * b);
-        const V = a * b * c;
+        const S_xq = (a + b) * 2 * c, S_tp = S_xq + 2 * (a * b), V = a * b * c;
         box.innerHTML = `
           <div class="font-bold text-teal-950">${a === b && b === c ? `Hình Lập Phương (Cạnh ${a} cm):` : `Hình Hộp Chữ Nhật (${a} x ${b} x${c} cm):`}</div>
           <div>• $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
@@ -798,25 +1123,23 @@
       } else if (currentShape === 'cylinder') {
         const r = parseFloat(document.getElementById('cyl-slider-r').value);
         const h = parseFloat(document.getElementById('cyl-slider-h').value);
-        const C = (2 * r * 3.14).toFixed(2);
-        const S_day = (r * r * 3.14).toFixed(2);
         box.innerHTML = `
           <div class="font-bold text-rose-950">Hình Tròn & Khối Trụ ($r = ${r}\\text{ cm}, h = ${h}\\text{ cm}$):</div>
-          <div>• Chu vi đáy: $C = 2 \\times ${r} \\times 3,14 = ${C}\\text{ cm}$</div>
-          <div>• Diện tích mặt đáy: $S_{đáy} = ${r} \\times ${r} \\times 3,14 = ${S_day}\\text{ cm}^2$</div>
+          <div>• Chu vi đáy: $C = 2 \\times ${r} \\times 3,14 = ${(2 * r * 3.14).toFixed(2)}\\text{ cm}$</div>
+          <div>• Diện tích đáy: $S_{đáy} = ${r} \\times ${r} \\times 3,14 = ${(r * r * 3.14).toFixed(2)}\\text{ cm}^2$</div>
         `;
       } else if (currentShape === 'sphere') {
         const r = parseFloat(document.getElementById('sph-slider-r').value);
         box.innerHTML = `
           <div class="font-bold text-indigo-950">Hình Cầu ($r = ${r}\\text{ cm}$):</div>
           <div>• Đường kính hình cầu: $d = 2 \\times r = ${2 * r}\\text{ cm}$</div>
-          <div>• Tiết diện cắt qua tâm là một hình tròn có bán kính $r = ${r}\\text{ cm}$.</div>
+          <div>• Mặt cắt qua tâm là hình tròn có bán kính $r = ${r}\\text{ cm}$.</div>
         `;
       }
     }
 
     // ========================================================
-    // 2. TOÁN CHUYỂN ĐỘNG (LAB MOTION)
+    // 4. TOÁN CHUYỂN ĐỘNG (LAB MOTION)
     // ========================================================
     let motionTimer = null, motionProgress = 0;
     function updateMotionMath() {
@@ -860,125 +1183,11 @@
     }
 
     // ========================================================
-    // 3. THƯ VIỆN ĐA MÔN HỌC & TRỢ LÝ GIẢI BÀI
+    // 5. TRỢ LÝ AI & ĐIỀU HƯỚNG TỔNG THỂ
     // ========================================================
-    const multiSubjectData = {
-      toan: [
-        { id: 1, title: "Bài 44: Diện tích hình tam giác", desc: "Công thức: $S = \\frac{a \\times h}{2}$. Tính ngược: $a = \\frac{2S}{h}, h = \\frac{2S}{a}$." },
-        { id: 2, title: "Bài 46: Diện tích hình thang", desc: "Công thức: $S = \\frac{(a + b) \\times h}{2}$. Tính ngược: $(a + b) = \\frac{2S}{h}$." },
-        { id: 3, title: "Bài 49: Chu vi hình tròn", desc: "Công thức: $C = d \\times 3,14 = r \\times 2 \\times 3,14$." },
-        { id: 4, title: "Bài 50: Diện tích hình tròn", desc: "Công thức: $S = r \\times r \\times 3,14$." },
-        { id: 5, title: "Bài 53: Diện tích hình hộp chữ nhật", desc: "$S_{xq} = (a+b) \\times 2 \\times c$; $S_{tp} = S_{xq} + 2(a \\times b)$." },
-        { id: 6, title: "Bài 54: Diện tích hình lập phương", desc: "$S_{xq} = a \\times a \\times 4$; $S_{tp} = a \\times a \\times 6$." },
-        { id: 7, title: "Bài 58: Thể tích hình hộp chữ nhật", desc: "Công thức: $V = a \\times b \\times c$ (cùng đơn vị đo)." },
-        { id: 8, title: "Bài 59: Thể tích hình lập phương", desc: "Công thức: $V = a \\times a \\times a$." },
-        { id: 9, title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau: $t = s : (v_1 + v_2)$." }
-      ],
-      tiengviet: [
-        { id: 1, title: "Chủ điểm: Khám phá thế giới - Tả cảnh đẹp quê hương", desc: "Luyện viết đoạn văn miêu tả cảnh sông nước, cánh đồng, đêm trăng rằm sử dụng biện pháp so sánh, nhân hóa." },
-        { id: 2, title: "Luyện từ và câu: Từ đồng nghĩa & Từ nhiều nghĩa", desc: "Phân biệt nghĩa gốc, nghĩa chuyển của từ nhiều nghĩa (mắt, chân, đầu) và cách dùng từ đồng nghĩa chuẩn xác." },
-        { id: 3, title: "Tập làm văn: Tả người (Tả thầy cô giáo / người thân)", desc: "Dàn ý 3 phần: Ngoại hình (mái tóc, nụ cười, ánh mắt) kết hợp hoạt động, tính tình và kỷ niệm sâu sắc." }
-      ],
-      khoahoc: [
-        { id: 1, title: "Chủ đề Chất: Sự biến đổi của chất", desc: "Phân biệt biến đổi vật lí (nước đá tan, xé giấy) và biến đổi hóa học (đốt nến, đinh sắt gỉ)." },
-        { id: 2, title: "Chủ đề Năng lượng: Năng lượng Mặt Trời, Gió và Nước chảy", desc: "Ứng dụng năng lượng sạch trong đời sống và cách sử dụng tiết kiệm, hiệu quả điện năng." }
-      ],
-      sudia: [
-        { id: 1, title: "Địa lí: Vị trí địa lí, địa hình và khoáng sản Việt Nam", desc: "Hình chữ S, bờ biển dài 3260 km, đồi núi chiếm 3/4 diện tích, vùng biển giàu tiềm năng dầu khí và thủy sản." },
-        { id: 2, title: "Lịch sử: Bác Hồ ra đi tìm đường cứu nước (1911)", desc: "Người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng ngày 5/6/1911 tìm con đường giải phóng dân tộc." }
-      ]
-    };
-
-    let currentSub = 'toan';
-    let currentMultiIdx = 0;
-    let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
-
-    document.addEventListener("DOMContentLoaded", () => {
-      initStudio3D();
-      setSubject('toan');
-      updateApiKeyUI();
-      initWhiteboard();
-    });
-
-    function setSubject(sub) {
-      currentSub = sub;
-      currentMultiIdx = 0;
-      ['toan', 'tiengviet', 'khoahoc', 'sudia'].forEach(s => {
-        const btn = document.getElementById('sub-btn-' + s);
-        if (s === sub) {
-          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-blue-600 text-white flex items-center justify-center gap-1.5 shadow";
-        } else {
-          btn.className = "py-2 px-2 text-xs font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center gap-1.5";
-        }
-      });
-      renderMultiLessons();
-      selectMultiLesson(0);
-    }
-
-    function renderMultiLessons() {
-      const scroll = document.getElementById('multiLessonScroll');
-      scroll.innerHTML = '';
-      const list = multiSubjectData[currentSub];
-      const search = document.getElementById('multiLessonSearch').value.toLowerCase().trim();
-
-      list.forEach((item, idx) => {
-        if (search && !item.title.toLowerCase().includes(search) && !item.desc.toLowerCase().includes(search)) return;
-        const btn = document.createElement('button');
-        const isActive = idx === currentMultiIdx;
-        btn.className = `w-full text-left p-2.5 rounded-xl text-xs transition border flex items-center justify-between ${
-          isActive ? 'bg-blue-600 text-white border-blue-600 font-bold shadow' : 'bg-slate-50 hover:bg-blue-50 text-slate-700 border-slate-200'
-        }`;
-        btn.onclick = () => selectMultiLesson(idx);
-        btn.innerHTML = `<span class="truncate pr-2">${item.title}</span><i class="fa-solid fa-chevron-right text-[10px]"></i>`;
-        scroll.appendChild(btn);
-      });
-    }
-
-    function selectMultiLesson(idx) {
-      currentMultiIdx = idx;
-      const item = multiSubjectData[currentSub][idx];
-      const subNames = { toan: 'Toán 5 (KNTT)', tiengviet: 'Tiếng Việt 5 (KNTT)', khoahoc: 'Khoa Học 5 (KNTT)', sudia: 'Lịch Sử & Địa Lí 5 (KNTT)' };
-
-      document.getElementById('multiSubjectBadge').textContent = subNames[currentSub];
-      document.getElementById('multiLessonTitle').textContent = item.title;
-      document.getElementById('multiLessonDesc').textContent = `Mô tả nội dung: ${item.desc}`;
-      document.getElementById('multiLessonIndexText').textContent = `Bài ${idx + 1} / ${multiSubjectData[currentSub].length}`;
-
-      document.getElementById('multiLessonDetailBody').innerHTML = `
-        <div class="bg-blue-50/70 border border-blue-100 p-4 rounded-xl space-y-2">
-          <h4 class="font-bold text-blue-900 text-sm flex items-center gap-2">
-            <i class="fa-solid fa-lightbulb text-amber-500"></i> Mục tiêu trọng tâm của bài học:
-          </h4>
-          <p class="text-xs text-blue-950 leading-relaxed">${item.desc}</p>
-        </div>
-        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
-          <div class="font-bold text-slate-800">📌 Hướng dẫn tổ chức hoạt động học trên lớp:</div>
-          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình 3D xoay đa góc hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
-          <p class="text-slate-600">• Luyện tập thực hành từng bước, giải thích rõ lý do và cách tư duy logic.</p>
-        </div>
-      `;
-      renderMultiLessons();
-    }
-
-    function prevMultiLesson() {
-      if (currentMultiIdx > 0) selectMultiLesson(currentMultiIdx - 1);
-    }
-    function nextMultiLesson() {
-      if (currentMultiIdx < multiSubjectData[currentSub].length - 1) selectMultiLesson(currentMultiIdx + 1);
-    }
-
-    function triggerSolveMultiLesson() {
-      const item = multiSubjectData[currentSub][currentMultiIdx];
-      const subNames = { toan: 'Toán 5', tiengviet: 'Tiếng Việt 5', khoahoc: 'Khoa Học 5', sudia: 'Lịch Sử và Địa Lí 5' };
-      const q = `Hãy hướng dẫn soạn bài và giải chi tiết các câu hỏi trong SGK môn ${subNames[currentSub]} bộ Kết Nối Tri Thức bài: ${item.title}. Trình bày chuẩn sư phạm tiểu học.`;
-      document.getElementById('aiInput').value = q;
-      switchTab('solve-tab');
-      executeSolve();
-    }
-
     async function executeSolve() {
       const q = document.getElementById('aiInput').value.trim();
-      if (!q) return alert("Vui lòng nhập câu hỏi hoặc đề bài!");
+      if (!q) return alert("Vui lòng nhập câu hỏi!");
 
       document.getElementById('aiEmpty').classList.add('hidden');
       document.getElementById('aiResult').classList.add('hidden');
@@ -1001,8 +1210,8 @@
     }
 
     async function requestGemini(prompt, key) {
-      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống. Luôn trả lời theo chuẩn sư phạm 3 phần:
-1. 💡 Phương pháp tư duy & Tóm tắt trực quan.
+      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống. Luôn trình bày 3 phần chuẩn sư phạm:
+1. 💡 Phương pháp giải & Tóm tắt kiến thức.
 2. ✅ Lời giải chi tiết từng bước.
 3. 🌟 Mẹo ghi nhớ và bài học rút ra.`;
 
@@ -1037,9 +1246,6 @@
       navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => alert("Đã chép nội dung bài giải!"));
     }
 
-    // ========================================================
-    // 4. TIỆN ÍCH LỚP HỌC & BẢNG NHÁP Ô LI
-    // ========================================================
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
