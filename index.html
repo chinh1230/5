@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trợ Giảng Trực Quan 3D Đa Góc & Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
+  <title>Trợ Giảng Trực Quan 3D Toàn Diện & Đa Môn Lớp 5 - Kết Nối Tri Thức</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
   <!-- Marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- Thư viện Đồ họa 3D Three.js & Bộ điều khiển xoay đa góc OrbitControls -->
+  <!-- Three.js & OrbitControls (Đồ họa 3D xoay đa góc 360 độ) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
@@ -40,10 +40,10 @@
         <span class="text-3xl bg-white/20 p-2 rounded-xl">🎲</span>
         <div>
           <h1 class="text-lg md:text-xl font-black tracking-wide flex items-center gap-2">
-            HỆ THỐNG TRỰC QUAN 3D ĐA GÓC & ĐA MÔN LỚP 5
-            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">3D WebGL</span>
+            STUDIO TRỰC QUAN 3D TOÀN DIỆN LỚP 5
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Mọi Hình 3D Đa Góc</span>
           </h1>
-          <p class="text-xs text-blue-100">Xoay 360° đa góc nhìn • Tách khối cm³ • Toán 5, Văn 5, Khoa học 5, Lịch sử & Địa lí 5</p>
+          <p class="text-xs text-blue-100">Xoay 360° mọi hình học (Hộp, Lập phương, Thang, Tam giác, Trụ, Cầu) • Đa môn Toán, Văn, Khoa, Sử-Địa</p>
         </div>
       </div>
 
@@ -55,17 +55,17 @@
       </div>
     </div>
 
-    <!-- Thanh Menu Chức Năng (Tabs) -->
+    <!-- Menu Chức Năng (Tabs) -->
     <div class="bg-black/15 border-t border-white/10 px-4">
       <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto py-2">
         <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
-          <i class="fa-solid fa-cube text-teal-600"></i> 1. Mô Hình 3D Xoay Đa Góc (Toán 5)
+          <i class="fa-solid fa-cube text-teal-600"></i> 1. Studio 3D Xoay Đa Góc (Toàn Bộ Hình)
         </button>
         <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-book-open text-blue-300"></i> 2. Thư Viện SGK 4 Môn (KNTT)
         </button>
         <button onclick="switchTab('solve-tab')" id="btn-solve-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý AI Giải Bài Mọi Môn
+          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý AI Giải Đề Mở Rộng
         </button>
         <button onclick="switchTab('class-tab')" id="btn-class-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học
@@ -80,99 +80,151 @@
   <!-- Thân trang -->
   <main class="max-w-7xl mx-auto p-3 md:p-6 w-full flex-1">
 
-    <!-- ================= TAB 1: PHÒNG THÍ NGHIỆM 3D XOAY ĐA GÓC & HÌNH HỌC ================= -->
-    <section id="lab-tab" class="tab-content space-y-6">
+    <!-- ================= TAB 1: STUDIO 3D TOÀN BỘ CÁC HÌNH HỌC ================= -->
+    <section id="lab-tab" class="tab-content space-y-5">
       
-      <!-- Nút chọn các thí nghiệm -->
+      <!-- Thanh chuyển đổi giữa TẤT CẢ các hình học trong không gian 3D -->
       <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-200">
-        <button onclick="switchLab('box3d')" id="lab-btn-box3d" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
-          🎲 Hình Hộp CN & Lập Phương 3D (Xoay 360°)
+        <button onclick="select3DShape('box')" id="shape-btn-box" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
+          📦 Hình Hộp CN & Lập Phương 3D
         </button>
-        <button onclick="switchLab('triangle')" id="lab-btn-triangle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          🔺 Hình Tam Giác (Ghép Đôi Động)
+        <button onclick="select3DShape('trapezoid')" id="shape-btn-trapezoid" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          📐 Hình Thang 3D (Ghép Đôi Động)
         </button>
-        <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          📐 Hình Thang (Ghép Hình Bình Hành)
+        <button onclick="select3DShape('triangle')" id="shape-btn-triangle" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          🔺 Hình Tam Giác 3D (Ghép Đôi Động)
         </button>
-        <button onclick="switchLab('circle')" id="lab-btn-circle" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          ⭕ Hình Tròn & Cắt Nan Quạt
+        <button onclick="select3DShape('cylinder')" id="shape-btn-cylinder" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          ⭕ Hình Tròn & Khối Trụ 3D
         </button>
-        <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+        <button onclick="select3DShape('sphere')" id="shape-btn-sphere" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
+          ⚽ Hình Cầu 3D
+        </button>
+        <button onclick="select3DShape('motion')" id="shape-btn-motion" class="shape-tab-btn px-3 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
           🚗 Toán Chuyển Động (2 Xe Gặp Nhau)
         </button>
       </div>
 
-      <!-- 1. HÌNH HỘP CHỮ NHẬT & HÌNH LẬP PHƯƠNG 3D XOAY ĐA GÓC -->
-      <div id="lab-box3d" class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+      <!-- KHÔNG GIAN STUDIO 3D CHÍNH -->
+      <div id="studio3DWrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         
-        <!-- Cột điều khiển kích thước & chế độ hiển thị (4/12 cột) -->
+        <!-- Cột điều khiển tham số (4/12 cột) -->
         <div class="lg:col-span-4 space-y-4 text-xs">
-          <div class="border-b border-slate-100 pb-2">
-            <h3 class="text-sm font-bold text-teal-900 flex items-center gap-1.5">
-              <i class="fa-solid fa-cube text-teal-600"></i> Khám Phá Khối Không Gian 3D
-            </h3>
-            <p class="text-slate-500 mt-0.5">Dùng chuột hoặc ngón tay giữ để <b>xoay 360° mọi góc</b>. Cuộn chuột để phóng to/thu nhỏ.</p>
+          
+          <div class="border-b border-slate-100 pb-2 flex justify-between items-center">
+            <div>
+              <h3 id="panelShapeTitle" class="text-sm font-bold text-teal-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-cube text-teal-600"></i> Điều Khiển Hình Học 3D
+              </h3>
+              <p class="text-slate-500 mt-0.5">Xoay tự do 360° bằng chuột/ngón tay. Cuộn chuột để zoom.</p>
+            </div>
+            <button onclick="toggleAutoRotate()" id="autoRotateBtn" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700" title="Tự động xoay tròn">
+              <i class="fa-solid fa-arrows-rotate mr-1"></i> Tự xoay: Tắt
+            </button>
           </div>
 
-          <!-- Thanh kéo kích thước chiều dài, rộng, cao -->
-          <div class="space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <!-- Các bộ điều khiển riêng biệt cho từng hình -->
+          <div id="controls-box" class="space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
             <div>
-              <div class="flex justify-between font-semibold">
-                <span>Chiều dài ($a$):</span>
-                <span id="box3d-val-a" class="text-teal-600 font-bold">4 cm</span>
-              </div>
-              <input type="range" id="box3d-slider-a" min="1" max="6" value="4" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+              <div class="flex justify-between font-semibold"><span>Chiều dài ($a$):</span><span id="box-val-a" class="text-teal-600 font-bold">4 cm</span></div>
+              <input type="range" id="box-slider-a" min="1" max="6" value="4" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold">
-                <span>Chiều rộng ($b$):</span>
-                <span id="box3d-val-b" class="text-teal-600 font-bold">3 cm</span>
-              </div>
-              <input type="range" id="box3d-slider-b" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+              <div class="flex justify-between font-semibold"><span>Chiều rộng ($b$):</span><span id="box-val-b" class="text-teal-600 font-bold">3 cm</span></div>
+              <input type="range" id="box-slider-b" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold">
-                <span>Chiều cao ($c$):</span>
-                <span id="box3d-val-c" class="text-teal-600 font-bold">3 cm</span>
-              </div>
-              <input type="range" id="box3d-slider-c" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="update3DBoxDimensions()">
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($c$):</span><span id="box-val-c" class="text-teal-600 font-bold">3 cm</span></div>
+              <input type="range" id="box-slider-c" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold">
-                <span class="text-amber-700">Tách rời các khối $1\text{ cm}^3$:</span>
-                <span id="box3d-val-explode" class="text-amber-700 font-bold">0.0</span>
-              </div>
-              <input type="range" id="box3d-slider-explode" min="0" max="0.5" step="0.05" value="0.0" class="w-full cursor-pointer" oninput="update3DExplode()">
+              <div class="flex justify-between font-semibold"><span class="text-amber-700">Tách rời các khối $1\text{ cm}^3$:</span><span id="box-val-gap" class="text-amber-700 font-bold">0.0</span></div>
+              <input type="range" id="box-slider-gap" min="0" max="0.5" step="0.05" value="0.0" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <button onclick="setCubePreset()" class="w-full py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-bold">Chuyển thành Hình Lập Phương ($a=b=c=3$)</button>
+          </div>
+
+          <div id="controls-trapezoid" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Đáy bé ($a$):</span><span id="trap-val-a" class="text-amber-600 font-bold">3 cm</span></div>
+              <input type="range" id="trap-slider-a" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Đáy lớn ($b$):</span><span id="trap-val-b" class="text-amber-600 font-bold">6 cm</span></div>
+              <input type="range" id="trap-slider-b" min="4" max="8" value="6" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="trap-val-h" class="text-amber-600 font-bold">4 cm</span></div>
+              <input type="range" id="trap-slider-h" min="2" max="6" value="4" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Độ dày 3D:</span><span id="trap-val-d" class="text-slate-600 font-bold">2 cm</span></div>
+              <input type="range" id="trap-slider-d" min="0.5" max="4" step="0.5" value="2" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <button onclick="toggleTrap3DDouble()" id="trapDoubleBtn" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow">
+              Ghép thêm 1 hình thang đảo ngược (3D)
+            </button>
+          </div>
+
+          <div id="controls-triangle" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Đáy ($a$):</span><span id="tri-val-a" class="text-blue-600 font-bold">5 cm</span></div>
+              <input type="range" id="tri-slider-a" min="2" max="8" value="5" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="tri-val-h" class="text-blue-600 font-bold">4 cm</span></div>
+              <input type="range" id="tri-slider-h" min="2" max="6" value="4" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Độ dày 3D:</span><span id="tri-val-d" class="text-slate-600 font-bold">2 cm</span></div>
+              <input type="range" id="tri-slider-d" min="0.5" max="4" step="0.5" value="2" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <button onclick="toggleTri3DDouble()" id="triDoubleBtn" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow">
+              Ghép thêm 1 tam giác đối xứng (3D)
+            </button>
+          </div>
+
+          <div id="controls-cylinder" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Bán kính đáy ($r$):</span><span id="cyl-val-r" class="text-rose-600 font-bold">3 cm</span></div>
+              <input type="range" id="cyl-slider-r" min="1" max="5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+            <div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao hình trụ ($h$):</span><span id="cyl-val-h" class="text-rose-600 font-bold">5 cm</span></div>
+              <input type="range" id="cyl-slider-h" min="0.5" max="8" step="0.5" value="5" class="w-full cursor-pointer" oninput="updateShapeParams()">
             </div>
           </div>
 
-          <!-- Các nút chế độ nhìn nhanh -->
+          <div id="controls-sphere" class="hidden space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between font-semibold"><span>Bán kính hình cầu ($r$):</span><span id="sph-val-r" class="text-indigo-600 font-bold">3 cm</span></div>
+              <input type="range" id="sph-slider-r" min="1.5" max="5" step="0.5" value="3" class="w-full cursor-pointer" oninput="updateShapeParams()">
+            </div>
+          </div>
+
+          <!-- Các nút đổi góc nhìn chuẩn mực -->
           <div class="space-y-2">
-            <span class="font-bold text-slate-700 block">Đổi góc nhìn nhanh:</span>
+            <span class="font-bold text-slate-700 block">Đổi góc nhìn chuẩn:</span>
             <div class="grid grid-cols-3 gap-1.5">
-              <button onclick="set3DCameraView('front')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Trực diện</button>
-              <button onclick="set3DCameraView('top')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Từ trên (Top)</button>
-              <button onclick="set3DCameraView('iso')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Phối cảnh 3D</button>
+              <button onclick="setCameraView('front')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Trực diện</button>
+              <button onclick="setCameraView('top')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Từ trên (Top)</button>
+              <button onclick="setCameraView('iso')" class="py-1.5 px-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700 text-center">Phối cảnh 3D</button>
             </div>
-            <div class="flex gap-2 pt-1">
-              <button onclick="toggleWireframe()" id="wireframeBtn" class="flex-1 py-2 bg-slate-200 hover:bg-slate-300 rounded-lg font-semibold text-slate-700">
-                <i class="fa-solid fa-border-none mr-1"></i> Nhìn xuyên thấu
-              </button>
-              <button onclick="setCubePreset()" class="flex-1 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold">
-                Hình lập phương ($a=b=c=3$)
-              </button>
-            </div>
+            <button onclick="toggleWireframe()" id="wireframeBtn" class="w-full py-1.5 bg-slate-200 hover:bg-slate-300 rounded-lg font-semibold text-slate-700">
+              <i class="fa-solid fa-border-none mr-1"></i> Bật/Tắt chế độ Xuyên thấu (Wireframe)
+            </button>
           </div>
 
-          <!-- Kết quả tính toán sư phạm -->
-          <div id="box3DResultBox" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900">
-            <!-- Render công thức diện tích xung quanh, toàn phần và thể tích -->
+          <!-- Khung công thức động -->
+          <div id="shapeResultFormula" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900">
+            <!-- Render công thức thời gian thực -->
           </div>
+
         </div>
 
-        <!-- Màn hình 3D Three.js tương tác đa góc (8/12 cột) -->
-        <div class="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-2 relative overflow-hidden h-[480px]">
-          <div id="threejsContainer" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+        <!-- Màn hình 3D Three.js (8/12 cột) -->
+        <div class="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-2 relative overflow-hidden h-[520px]">
+          <div id="threeContainer" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
           
           <div class="absolute bottom-3 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-[11px] flex items-center gap-2 pointer-events-none">
             <i class="fa-solid fa-hand-pointer text-amber-300 animate-pulse"></i>
@@ -180,91 +232,16 @@
           </div>
 
           <div class="absolute top-3 right-4 flex gap-2">
-            <span id="cubeCounterBadge" class="bg-teal-500 text-slate-900 text-xs font-black px-2.5 py-1 rounded-md shadow">
-              Tổng số khối: 36 cm³
+            <span id="shapeBadgeInfo" class="bg-teal-500 text-slate-900 text-xs font-black px-2.5 py-1 rounded-md shadow">
+              Mô hình 3D tương tác
             </span>
           </div>
         </div>
 
       </div>
 
-      <!-- 2. HÌNH TAM GIÁC (GHÉP ĐÔI) -->
-      <div id="lab-triangle" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-blue-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-blue-600"></i> Diện Tích Hình Tam Giác</h3>
-          <p class="text-slate-500">Kéo đáy $a$ và chiều cao $h$. Bấm ghép đôi để học sinh nhìn thấy hai tam giác bằng nhau ghép thành hình bình hành có diện tích $a \times h$.</p>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div>
-              <div class="flex justify-between font-semibold"><span>Độ dài đáy ($a$):</span><span id="tri-val-a" class="text-blue-600 font-bold">12 cm</span></div>
-              <input type="range" id="tri-slider-a" min="6" max="20" value="12" class="w-full cursor-pointer" oninput="drawTriangleLab()">
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="tri-val-h" class="text-blue-600 font-bold">8 cm</span></div>
-              <input type="range" id="tri-slider-h" min="4" max="14" value="8" class="w-full cursor-pointer" oninput="drawTriangleLab()">
-            </div>
-          </div>
-          <button onclick="toggleTriangleDouble()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition shadow">
-            <span id="triDoubleText">Ghép thêm 1 tam giác đối xứng</span>
-          </button>
-          <div id="triangleResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-blue-900"></div>
-        </div>
-        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
-          <canvas id="triangleCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
-        </div>
-      </div>
-
-      <!-- 3. HÌNH THANG (GHÉP ĐÔI) -->
-      <div id="lab-trapezoid" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-amber-900 flex items-center gap-1.5"><i class="fa-solid fa-shapes text-amber-600"></i> Diện Tích Hình Thang</h3>
-          <p class="text-slate-500">Ghép 2 hình thang bằng nhau tạo thành hình bình hành có đáy là $(a + b)$ và chiều cao $h$.</p>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div>
-              <div class="flex justify-between font-semibold"><span>Đáy bé ($a$):</span><span id="val-a" class="text-blue-600 font-bold">8 cm</span></div>
-              <input type="range" id="slider-a" min="4" max="14" value="8" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><span>Đáy lớn ($b$):</span><span id="val-b" class="text-blue-600 font-bold">14 cm</span></div>
-              <input type="range" id="slider-b" min="10" max="22" value="14" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><span>Chiều cao ($h$):</span><span id="val-h" class="text-blue-600 font-bold">7 cm</span></div>
-              <input type="range" id="slider-h" min="4" max="12" value="7" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
-            </div>
-          </div>
-          <button onclick="toggleTrapezoidDouble()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition shadow">
-            <span id="doubleBtnText">Ghép thêm 1 hình (Tạo hình bình hành)</span>
-          </button>
-          <div id="trapezoidResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-blue-900"></div>
-        </div>
-        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
-          <canvas id="trapezoidCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
-        </div>
-      </div>
-
-      <!-- 4. HÌNH TRÒN & CẮT NAN QUẠT -->
-      <div id="lab-circle" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4 text-xs">
-          <h3 class="text-sm font-bold text-rose-900 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch text-rose-600"></i> Chu Vi & Diện Tích Hình Tròn</h3>
-          <p class="text-slate-500">Cắt hình tròn thành 16 nan quạt rồi ghép so le tạo thành hình chữ nhật xấp xỉ có chiều rộng $r$ và chiều dài $r \times 3,14$.</p>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div>
-              <div class="flex justify-between font-semibold"><span>Bán kính ($r$):</span><span id="cir-val-r" class="text-rose-600 font-bold">5 cm</span></div>
-              <input type="range" id="cir-slider-r" min="3" max="10" value="5" class="w-full cursor-pointer" oninput="drawCircleLab()">
-            </div>
-          </div>
-          <button onclick="toggleCircleSlices()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition shadow">
-            <span id="cirSliceText">Cắt nan quạt ghép hình chữ nhật</span>
-          </button>
-          <div id="circleResult" class="p-3 bg-rose-50 border border-rose-200 rounded-xl space-y-1 text-rose-900"></div>
-        </div>
-        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
-          <canvas id="circleCanvas" width="600" height="320" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
-        </div>
-      </div>
-
-      <!-- 5. TOÁN CHUYỂN ĐỘNG -->
-      <div id="lab-motion" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+      <!-- Lab Chuyển Động (2 Xe) -->
+      <div id="motionWrapper" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="space-y-4 text-xs">
           <h3 class="text-sm font-bold text-teal-900">Toán Chuyển Động: Hai Xe Ngược Chiều</h3>
           <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
@@ -298,7 +275,7 @@
 
     </section>
 
-    <!-- ================= TAB 2: THƯ VIỆN SGK ĐA MÔN ================= -->
+    <!-- ================= TAB 2: THƯ VIỆN SGK 4 MÔN ================= -->
     <section id="sgk-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
       <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
         <div class="grid grid-cols-2 gap-1.5 mb-3">
@@ -336,7 +313,7 @@
       </div>
     </section>
 
-    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI TẬP MỌI MÔN & AI ================= -->
+    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI MỞ RỘNG & AI ================= -->
     <section id="solve-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div class="space-y-4">
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
@@ -432,197 +409,458 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: THREE.JS 3D XOAY ĐA GÓC & ĐA MÔN HỌC -->
+  <!-- JAVASCRIPT: STUDIO 3D THREE.JS TOÀN BỘ CÁC HÌNH -->
   <script>
     // ========================================================
-    // 1. MÔ PHỎNG 3D THREE.JS ĐA GÓC NHÌN (360 ORBIT CONTROLS)
+    // 1. ENGINE 3D THREE.JS TẬP TRUNG CHO TOÀN BỘ CÁC HÌNH
     // ========================================================
     let scene, camera, renderer, controls;
-    let cubeGroup = null;
+    let currentShape = 'box';
+    let currentMeshGroup = null;
     let isWireframe = false;
-    let currentDim = { a: 4, b: 3, c: 3 };
-    let explodeDistance = 0.0;
+    let isAutoRotating = false;
 
-    function initThreeJS() {
-      const container = document.getElementById('threejsContainer');
+    // Trạng thái ghép đôi 3D
+    let isTrap3DDoubled = false;
+    let isTri3DDoubled = false;
+
+    function initStudio3D() {
+      const container = document.getElementById('threeContainer');
       if (!container) return;
 
-      // 1. Scene
       scene = new THREE.Scene();
       scene.background = new THREE.Color(0x0f172a); // Slate-900
 
-      // 2. Camera
       camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-      camera.position.set(10, 8, 12);
+      camera.position.set(12, 10, 14);
 
-      // 3. Renderer
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setSize(container.clientWidth, container.clientHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.shadowMap.enabled = true;
       container.appendChild(renderer.domElement);
 
-      // 4. OrbitControls: Cho phép học sinh kéo chuột/ngón tay xoay 360 độ tự do
+      // Controls xoay 360 độ tự do
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
-      controls.maxDistance = 35;
+      controls.maxDistance = 45;
       controls.minDistance = 3;
 
-      // 5. Ánh sáng chiếu đa góc (Lighting)
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
-      scene.add(ambientLight);
+      // Ánh sáng chiếu đa hướng
+      const ambLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambLight);
 
-      const dirLight = new THREE.DirectionalLight(0xffffff, 0.85);
-      dirLight.position.set(15, 20, 15);
-      scene.add(dirLight);
+      const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+      dirLight1.position.set(15, 25, 15);
+      scene.add(dirLight1);
 
-      const backLight = new THREE.DirectionalLight(0x38bdf8, 0.4);
-      backLight.position.set(-15, -10, -15);
-      scene.add(backLight);
+      const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.5);
+      dirLight2.position.set(-15, -10, -15);
+      scene.add(dirLight2);
 
-      // Lưới mặt phẳng tọa độ bên dưới (Grid)
-      const gridHelper = new THREE.GridHelper(16, 16, 0x38bdf8, 0x1e293b);
-      gridHelper.position.y = -0.01;
-      scene.add(gridHelper);
+      // Lưới mặt phẳng tọa độ (Grid)
+      const grid = new THREE.GridHelper(20, 20, 0x38bdf8, 0x334155);
+      grid.position.y = -0.01;
+      scene.add(grid);
 
-      // Xây dựng hình khối lập phương con ban đầu
-      build3DModularBox();
+      // Dựng hình ban đầu
+      buildActive3DShape();
 
-      // Render Loop
       function animate() {
         requestAnimationFrame(animate);
+        if (isAutoRotating && currentMeshGroup) {
+          currentMeshGroup.rotation.y += 0.01;
+        }
         controls.update();
         renderer.render(scene, camera);
       }
       animate();
 
-      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('resize', onStudioResize);
     }
 
-    function onWindowResize() {
-      const container = document.getElementById('threejsContainer');
+    function onStudioResize() {
+      const container = document.getElementById('threeContainer');
       if (!container || !renderer || !camera) return;
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
     }
 
-    // Xây dựng khối chữ nhật từ từng khối lập phương 1 cm3 có thể tách rời
-    function build3DModularBox() {
-      if (cubeGroup) scene.remove(cubeGroup);
-      cubeGroup = new THREE.Group();
+    // Chuyển đổi giữa các hình 3D
+    function select3DShape(shapeName) {
+      currentShape = shapeName;
 
-      const { a, b, c } = currentDim;
+      // Cập nhật tab active
+      document.querySelectorAll('.shape-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('shape-btn-' + shapeName);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-slate-700');
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
+      }
+
+      // Ẩn hiện panel tương ứng
+      if (shapeName === 'motion') {
+        document.getElementById('studio3DWrapper').classList.add('hidden');
+        document.getElementById('motionWrapper').classList.remove('hidden');
+        updateMotionMath();
+        return;
+      } else {
+        document.getElementById('studio3DWrapper').classList.remove('hidden');
+        document.getElementById('motionWrapper').classList.add('hidden');
+      }
+
+      ['box', 'trapezoid', 'triangle', 'cylinder', 'sphere'].forEach(s => {
+        document.getElementById('controls-' + s).classList.add('hidden');
+      });
+      document.getElementById('controls-' + shapeName).classList.remove('hidden');
+
+      // Tiêu đề
+      const titles = {
+        box: 'Hình Hộp Chữ Nhật & Lập Phương 3D',
+        trapezoid: 'Hình Thang Không Gian 3D (Extrude)',
+        triangle: 'Hình Tam Giác Không Gian 3D (Extrude)',
+        cylinder: 'Hình Tròn & Khối Trụ 3D',
+        sphere: 'Hình Cầu 3D'
+      };
+      document.getElementById('panelShapeTitle').innerHTML = `<i class="fa-solid fa-shapes text-teal-600"></i> ${titles[shapeName]}`;
+
+      buildActive3DShape();
+      setTimeout(onStudioResize, 50);
+    }
+
+    // Dựng mesh 3D theo hình đang chọn
+    function buildActive3DShape() {
+      if (currentMeshGroup) scene.remove(currentMeshGroup);
+      currentMeshGroup = new THREE.Group();
+
+      const matOpts = {
+        roughness: 0.25,
+        metalness: 0.1,
+        wireframe: isWireframe,
+        transparent: isWireframe,
+        opacity: isWireframe ? 0.35 : 0.92
+      };
+
+      if (currentShape === 'box') {
+        buildBox3D(matOpts);
+      } else if (currentShape === 'trapezoid') {
+        buildTrapezoid3D(matOpts);
+      } else if (currentShape === 'triangle') {
+        buildTriangle3D(matOpts);
+      } else if (currentShape === 'cylinder') {
+        buildCylinder3D(matOpts);
+      } else if (currentShape === 'sphere') {
+        buildSphere3D(matOpts);
+      }
+
+      scene.add(currentMeshGroup);
+      updateShapeFormulaUI();
+    }
+
+    // 1. Hình Hộp CN & Lập Phương 3D (Gồm các khối con 1cm3 tách rời)
+    function buildBox3D(matOpts) {
+      const a = parseInt(document.getElementById('box-slider-a').value);
+      const b = parseInt(document.getElementById('box-slider-b').value);
+      const c = parseInt(document.getElementById('box-slider-c').value);
+      const gap = parseFloat(document.getElementById('box-slider-gap').value);
+
+      document.getElementById('box-val-a').textContent = a + ' cm';
+      document.getElementById('box-val-b').textContent = b + ' cm';
+      document.getElementById('box-val-c').textContent = c + ' cm';
+      document.getElementById('box-val-gap').textContent = gap.toFixed(2);
+
       const unitSize = 1.0;
-      const gap = explodeDistance;
-
-      // Căn giữa hình học
       const offsetX = ((a - 1) * (unitSize + gap)) / 2;
       const offsetY = ((c - 1) * (unitSize + gap)) / 2;
       const offsetZ = ((b - 1) * (unitSize + gap)) / 2;
-
-      // Tạo các khối nhỏ 1 cm3
       const geom = new THREE.BoxGeometry(unitSize, unitSize, unitSize);
 
       for (let x = 0; x < a; x++) {
         for (let y = 0; y < c; y++) {
           for (let z = 0; z < b; z++) {
-            // Đổi màu nhẹ giữa các mặt để phân biệt rõ từng khối
-            const mat = new THREE.MeshStandardMaterial({
-              color: isWireframe ? 0x38bdf8 : 0x0ea5e9,
-              roughness: 0.2,
-              metalness: 0.1,
-              wireframe: isWireframe,
-              transparent: isWireframe,
-              opacity: isWireframe ? 0.35 : 0.92
-            });
-
-            const mesh = new THREE.Mesh(geom, mat);
-            mesh.position.set(
+            const mat = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x0ea5e9 });
+            const m = new THREE.Mesh(geom, mat);
+            m.position.set(
               x * (unitSize + gap) - offsetX,
               y * (unitSize + gap) - offsetY + (c * (unitSize + gap)) / 2,
               z * (unitSize + gap) - offsetZ
             );
-
-            // Viền cạnh nổi bật cho từng khối
             const edges = new THREE.EdgesGeometry(geom);
             const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
-            mesh.add(line);
-
-            cubeGroup.add(mesh);
+            m.add(line);
+            currentMeshGroup.add(m);
           }
         }
       }
-
-      scene.add(cubeGroup);
-      updateMathResultBox();
+      document.getElementById('shapeBadgeInfo').textContent = `Tổng: ${a * b * c} khối 1 cm³`;
     }
 
-    function update3DBoxDimensions() {
-      currentDim.a = parseInt(document.getElementById('box3d-slider-a').value);
-      currentDim.b = parseInt(document.getElementById('box3d-slider-b').value);
-      currentDim.c = parseInt(document.getElementById('box3d-slider-c').value);
+    // 2. Hình Thang 3D (ExtrudeGeometry xoay 360 độ & Ghép đôi động)
+    function buildTrapezoid3D(matOpts) {
+      const a = parseFloat(document.getElementById('trap-slider-a').value);
+      const b = parseFloat(document.getElementById('trap-slider-b').value);
+      const h = parseFloat(document.getElementById('trap-slider-h').value);
+      const depth = parseFloat(document.getElementById('trap-slider-d').value);
 
-      document.getElementById('box3d-val-a').textContent = currentDim.a + ' cm';
-      document.getElementById('box3d-val-b').textContent = currentDim.b + ' cm';
-      document.getElementById('box3d-val-c').textContent = currentDim.c + ' cm';
+      document.getElementById('trap-val-a').textContent = a + ' cm';
+      document.getElementById('trap-val-b').textContent = b + ' cm';
+      document.getElementById('trap-val-h').textContent = h + ' cm';
+      document.getElementById('trap-val-d').textContent = depth + ' cm';
 
-      build3DModularBox();
+      const shape1 = new THREE.Shape();
+      const leftShift = (b - a) / 2;
+      shape1.moveTo(-b / 2, 0);
+      shape1.lineTo(b / 2, 0);
+      shape1.lineTo(b / 2 - leftShift, h);
+      shape1.lineTo(-b / 2 + leftShift, h);
+      shape1.closePath();
+
+      const extrudeSettings = { depth: depth, bevelEnabled: false };
+      const geom1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+      const mat1 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf59e0b });
+      const mesh1 = new THREE.Mesh(geom1, mat1);
+      mesh1.position.set(0, 0, -depth / 2);
+
+      const edges1 = new THREE.EdgesGeometry(geom1);
+      mesh1.add(new THREE.LineSegments(edges1, new THREE.LineBasicMaterial({ color: 0xffffff })));
+      currentMeshGroup.add(mesh1);
+
+      // Nếu bấm Ghép Đôi Hình Thang 3D
+      if (isTrap3DDoubled) {
+        const mat2 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x3b82f6 });
+        const mesh2 = new THREE.Mesh(geom1, mat2);
+        // Xoay 180 độ ghép khít thành hình lăng trụ bình hành
+        mesh2.rotation.z = Math.PI;
+        mesh2.position.set(0, h, depth / 2);
+        mesh2.rotation.y = Math.PI;
+        mesh2.add(new THREE.LineSegments(edges1, new THREE.LineBasicMaterial({ color: 0xffffff })));
+        currentMeshGroup.add(mesh2);
+      }
+      document.getElementById('shapeBadgeInfo').textContent = isTrap3DDoubled ? "Ghép đôi tạo hình bình hành 3D" : "Hình thang 3D";
     }
 
-    function update3DExplode() {
-      explodeDistance = parseFloat(document.getElementById('box3d-slider-explode').value);
-      document.getElementById('box3d-val-explode').textContent = explodeDistance.toFixed(2);
-      build3DModularBox();
+    // 3. Hình Tam Giác 3D (ExtrudeGeometry xoay 360 độ & Ghép đôi động)
+    function buildTriangle3D(matOpts) {
+      const a = parseFloat(document.getElementById('tri-slider-a').value);
+      const h = parseFloat(document.getElementById('tri-slider-h').value);
+      const depth = parseFloat(document.getElementById('tri-slider-d').value);
+
+      document.getElementById('tri-val-a').textContent = a + ' cm';
+      document.getElementById('tri-val-h').textContent = h + ' cm';
+      document.getElementById('tri-val-d').textContent = depth + ' cm';
+
+      const shape1 = new THREE.Shape();
+      shape1.moveTo(-a / 2, 0);
+      shape1.lineTo(a / 2, 0);
+      shape1.lineTo(0, h);
+      shape1.closePath();
+
+      const extrudeSettings = { depth: depth, bevelEnabled: false };
+      const geom1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+      const mat1 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x3b82f6 });
+      const mesh1 = new THREE.Mesh(geom1, mat1);
+      mesh1.position.set(0, 0, -depth / 2);
+
+      mesh1.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
+      currentMeshGroup.add(mesh1);
+
+      if (isTri3DDoubled) {
+        const mat2 = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf59e0b });
+        const mesh2 = new THREE.Mesh(geom1, mat2);
+        mesh2.rotation.z = Math.PI;
+        mesh2.position.set(0, h, depth / 2);
+        mesh2.rotation.y = Math.PI;
+        mesh2.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom1), new THREE.LineBasicMaterial({ color: 0xffffff })));
+        currentMeshGroup.add(mesh2);
+      }
+      document.getElementById('shapeBadgeInfo').textContent = isTri3DDoubled ? "Ghép 2 tam giác thành hình bình hành 3D" : "Hình tam giác 3D";
+    }
+
+    // 4. Hình Tròn & Khối Trụ 3D (CylinderGeometry)
+    function buildCylinder3D(matOpts) {
+      const r = parseFloat(document.getElementById('cyl-slider-r').value);
+      const h = parseFloat(document.getElementById('cyl-slider-h').value);
+
+      document.getElementById('cyl-val-r').textContent = r + ' cm';
+      document.getElementById('cyl-val-h').textContent = h + ' cm';
+
+      const geom = new THREE.CylinderGeometry(r, r, h, 36);
+      const mat = new THREE.MeshStandardMaterial({ ...matOpts, color: 0xf43f5e });
+      const mesh = new THREE.Mesh(geom, mat);
+      mesh.position.y = h / 2;
+
+      mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom), new THREE.LineBasicMaterial({ color: 0xffffff })));
+      currentMeshGroup.add(mesh);
+      document.getElementById('shapeBadgeInfo').textContent = h <= 1 ? "Đĩa hình tròn 3D" : "Khối Trụ 3D";
+    }
+
+    // 5. Hình Cầu 3D (SphereGeometry)
+    function buildSphere3D(matOpts) {
+      const r = parseFloat(document.getElementById('sph-slider-r').value);
+      document.getElementById('sph-val-r').textContent = r + ' cm';
+
+      const geom = new THREE.SphereGeometry(r, 32, 24);
+      const mat = new THREE.MeshStandardMaterial({ ...matOpts, color: 0x8b5cf6 });
+      const mesh = new THREE.Mesh(geom, mat);
+      mesh.position.y = r;
+
+      mesh.add(new THREE.LineSegments(new THREE.WireframeGeometry(geom), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 })));
+      currentMeshGroup.add(mesh);
+      document.getElementById('shapeBadgeInfo').textContent = "Hình Cầu 3D";
+    }
+
+    function updateShapeParams() {
+      buildActive3DShape();
+    }
+
+    function toggleTrap3DDouble() {
+      isTrap3DDoubled = !isTrap3DDoubled;
+      document.getElementById('trapDoubleBtn').textContent = isTrap3DDoubled ? "Thu về 1 hình thang ban đầu" : "Ghép thêm 1 hình thang đảo ngược (3D)";
+      buildActive3DShape();
+    }
+
+    function toggleTri3DDouble() {
+      isTri3DDoubled = !isTri3DDoubled;
+      document.getElementById('triDoubleBtn').textContent = isTri3DDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng (3D)";
+      buildActive3DShape();
+    }
+
+    function toggleAutoRotate() {
+      isAutoRotating = !isAutoRotating;
+      document.getElementById('autoRotateBtn').textContent = isAutoRotating ? "Tự xoay: BẬT" : "Tự xoay: Tắt";
     }
 
     function toggleWireframe() {
       isWireframe = !isWireframe;
       document.getElementById('wireframeBtn').classList.toggle('bg-teal-200');
-      build3DModularBox();
+      buildActive3DShape();
     }
 
     function setCubePreset() {
-      document.getElementById('box3d-slider-a').value = 3;
-      document.getElementById('box3d-slider-b').value = 3;
-      document.getElementById('box3d-slider-c').value = 3;
-      update3DBoxDimensions();
+      document.getElementById('box-slider-a').value = 3;
+      document.getElementById('box-slider-b').value = 3;
+      document.getElementById('box-slider-c').value = 3;
+      buildActive3DShape();
     }
 
-    // Các góc nhìn camera định sẵn
-    function set3DCameraView(view) {
+    function setCameraView(view) {
       if (!camera || !controls) return;
       if (view === 'front') {
-        camera.position.set(0, currentDim.c / 2 + 1, 14);
+        camera.position.set(0, 3, 16);
       } else if (view === 'top') {
-        camera.position.set(0, 16, 0.01);
+        camera.position.set(0, 18, 0.01);
       } else if (view === 'iso') {
-        camera.position.set(10, 8, 12);
+        camera.position.set(12, 10, 14);
       }
-      controls.target.set(0, currentDim.c / 2, 0);
+      controls.target.set(0, 2, 0);
       controls.update();
     }
 
-    function updateMathResultBox() {
-      const { a, b, c } = currentDim;
-      const S_xq = (a + b) * 2 * c;
-      const S_tp = S_xq + 2 * (a * b);
-      const V = a * b * c;
-      const isCube = (a === b && b === c);
-
-      document.getElementById('cubeCounterBadge').textContent = `Tổng số khối: ${V} cm³`;
-
-      document.getElementById('box3DResultBox').innerHTML = `
-        <div class="font-bold text-teal-950">${isCube ? `Khối Lập Phương (Cạnh a = ${a} cm):` : `Khối Hộp Chữ Nhật (${a} x ${b} x ${c} cm):`}</div>
-        <div>1. Diện tích xung quanh: $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
-        <div>2. Diện tích toàn phần: $S_{tp} = ${S_xq} + 2 \\times (${a} \\times ${b}) = ${S_tp}\\text{ cm}^2$</div>
-        <div class="text-teal-800 font-bold">3. Thể tích: $V = ${a} \\times ${b} \\times ${c} = ${V}\\text{ cm}^3$ (Gồm đúng ${V} khối $1\\text{ cm}^3$)</div>
-      `;
+    // Cập nhật công thức toán học KaTeX động
+    function updateShapeFormulaUI() {
+      const box = document.getElementById('shapeResultFormula');
+      if (currentShape === 'box') {
+        const a = parseInt(document.getElementById('box-slider-a').value);
+        const b = parseInt(document.getElementById('box-slider-b').value);
+        const c = parseInt(document.getElementById('box-slider-c').value);
+        const S_xq = (a + b) * 2 * c;
+        const S_tp = S_xq + 2 * (a * b);
+        const V = a * b * c;
+        box.innerHTML = `
+          <div class="font-bold text-teal-950">${a === b && b === c ? `Hình Lập Phương (Cạnh ${a} cm):` : `Hình Hộp Chữ Nhật (${a} x ${b} x${c} cm):`}</div>
+          <div>• $S_{xq} = (${a} + ${b}) \\times 2 \\times ${c} = ${S_xq}\\text{ cm}^2$</div>
+          <div>• $S_{tp} = ${S_xq} + 2 \\times (${a} \\times ${b}) = ${S_tp}\\text{ cm}^2$</div>
+          <div class="font-bold text-teal-800">• Thể tích: $V = ${a} \\times ${b} \\times ${c} = ${V}\\text{ cm}^3$ (${V} khối $1\\text{ cm}^3$)</div>
+        `;
+      } else if (currentShape === 'trapezoid') {
+        const a = parseFloat(document.getElementById('trap-slider-a').value);
+        const b = parseFloat(document.getElementById('trap-slider-b').value);
+        const h = parseFloat(document.getElementById('trap-slider-h').value);
+        const S = ((a + b) * h) / 2;
+        box.innerHTML = `
+          <div class="font-bold text-amber-950">Diện Tích Hình Thang:</div>
+          <div>• Công thức: $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$</div>
+          ${isTrap3DDoubled ? `<div class="font-bold text-indigo-800">• Hình bình hành ghép lại: $S_{hbh} = (${a} + ${b}) \\times${h} = ${(a + b) * h}\\text{ cm}^2$</div>` : ''}
+        `;
+      } else if (currentShape === 'triangle') {
+        const a = parseFloat(document.getElementById('tri-slider-a').value);
+        const h = parseFloat(document.getElementById('tri-slider-h').value);
+        const S = (a * h) / 2;
+        box.innerHTML = `
+          <div class="font-bold text-blue-950">Diện Tích Hình Tam Giác:</div>
+          <div>• Công thức: $S = \\frac{${a} \\times ${h}}{2} = ${S}\\text{ cm}^2$</div>
+          ${isTri3DDoubled ? `<div class="font-bold text-amber-800">• Hình bình hành ghép lại: $S_{hbh} = ${a} \\times${h} = ${a * h}\\text{ cm}^2$</div>` : ''}
+        `;
+      } else if (currentShape === 'cylinder') {
+        const r = parseFloat(document.getElementById('cyl-slider-r').value);
+        const h = parseFloat(document.getElementById('cyl-slider-h').value);
+        const C = (2 * r * 3.14).toFixed(2);
+        const S_day = (r * r * 3.14).toFixed(2);
+        box.innerHTML = `
+          <div class="font-bold text-rose-950">Hình Tròn & Khối Trụ ($r = ${r}\\text{ cm}, h = ${h}\\text{ cm}$):</div>
+          <div>• Chu vi đáy: $C = 2 \\times ${r} \\times 3,14 = ${C}\\text{ cm}$</div>
+          <div>• Diện tích mặt đáy: $S_{đáy} = ${r} \\times ${r} \\times 3,14 = ${S_day}\\text{ cm}^2$</div>
+        `;
+      } else if (currentShape === 'sphere') {
+        const r = parseFloat(document.getElementById('sph-slider-r').value);
+        box.innerHTML = `
+          <div class="font-bold text-indigo-950">Hình Cầu ($r = ${r}\\text{ cm}$):</div>
+          <div>• Đường kính hình cầu: $d = 2 \\times r = ${2 * r}\\text{ cm}$</div>
+          <div>• Tiết diện cắt qua tâm là một hình tròn có bán kính $r = ${r}\\text{ cm}$.</div>
+        `;
+      }
     }
 
     // ========================================================
-    // 2. CƠ SỞ DỮ LIỆU ĐA MÔN HỌC & LOGIC CHUYỂN MÔN
+    // 2. TOÁN CHUYỂN ĐỘNG (LAB MOTION)
+    // ========================================================
+    let motionTimer = null, motionProgress = 0;
+    function updateMotionMath() {
+      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
+      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
+      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
+      const sumV = v1 + v2;
+      const t = (dist / sumV).toFixed(2);
+      document.getElementById('motionMathBox').innerHTML = `Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$<br>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$`;
+    }
+    function resetMotion() {
+      if (motionTimer) clearInterval(motionTimer);
+      motionTimer = null; motionProgress = 0;
+      document.getElementById('carA').style.transform = `translateX(0px)`;
+      document.getElementById('carB').style.transform = `translateX(0px)`;
+      document.getElementById('meetFlag').classList.add('hidden');
+      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng";
+      updateMotionMath();
+    }
+    function startMotion() {
+      resetMotion();
+      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
+      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
+      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
+      const trackWidth = 500;
+      const meetX = (v1 / (v1 + v2)) * trackWidth;
+      const flag = document.getElementById('meetFlag');
+      flag.style.left = meetX + 'px';
+      document.getElementById('motionStatusBadge').textContent = "Đang chạy...";
+
+      motionTimer = setInterval(() => {
+        motionProgress += 0.01;
+        if (motionProgress >= 1) {
+          motionProgress = 1; clearInterval(motionTimer);
+          document.getElementById('motionStatusBadge').textContent = "Đã gặp nhau!";
+          flag.classList.remove('hidden');
+        }
+        document.getElementById('carA').style.transform = `translateX(${motionProgress * meetX}px)`;
+        document.getElementById('carB').style.transform = `translateX(-${motionProgress * (trackWidth - meetX)}px)`;
+      }, 30);
+    }
+
+    // ========================================================
+    // 3. THƯ VIỆN ĐA MÔN HỌC & TRỢ LÝ GIẢI BÀI
     // ========================================================
     const multiSubjectData = {
       toan: [
@@ -634,27 +872,20 @@
         { id: 6, title: "Bài 54: Diện tích hình lập phương", desc: "$S_{xq} = a \\times a \\times 4$; $S_{tp} = a \\times a \\times 6$." },
         { id: 7, title: "Bài 58: Thể tích hình hộp chữ nhật", desc: "Công thức: $V = a \\times b \\times c$ (cùng đơn vị đo)." },
         { id: 8, title: "Bài 59: Thể tích hình lập phương", desc: "Công thức: $V = a \\times a \\times a$." },
-        { id: 9, title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau: $t = s : (v_1 + v_2)$." },
-        { id: 10, title: "Bài 67: Hai chuyển động cùng chiều", desc: "Hiệu vận tốc $v_1 - v_2$; Thời gian đuổi kịp: $t = s_{cách} : (v_1 - v_2)$." }
+        { id: 9, title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau: $t = s : (v_1 + v_2)$." }
       ],
       tiengviet: [
         { id: 1, title: "Chủ điểm: Khám phá thế giới - Tả cảnh đẹp quê hương", desc: "Luyện viết đoạn văn miêu tả cảnh sông nước, cánh đồng, đêm trăng rằm sử dụng biện pháp so sánh, nhân hóa." },
         { id: 2, title: "Luyện từ và câu: Từ đồng nghĩa & Từ nhiều nghĩa", desc: "Phân biệt nghĩa gốc, nghĩa chuyển của từ nhiều nghĩa (mắt, chân, đầu) và cách dùng từ đồng nghĩa chuẩn xác." },
-        { id: 3, title: "Tập làm văn: Tả người (Tả thầy cô giáo / người thân)", desc: "Dàn ý 3 phần: Ngoại hình (mái tóc, nụ cười, ánh mắt) kết hợp hoạt động, tính tình và kỷ niệm sâu sắc." },
-        { id: 4, title: "Luyện từ và câu: Kết từ & Cặp từ hô ứng", desc: "Sử dụng các cặp kết từ chỉ nguyên nhân - kết quả (Vì... nên...), điều kiện (Nếu... thì...), tương phản (Tuy... nhưng...)." },
-        { id: 5, title: "Đọc mở rộng: Tình yêu biển đảo và quê hương đất nước", desc: "Cảm thụ bài đọc về Trường Sa, Hoàng Sa và lòng tự hào dân tộc qua từng trang viết." }
+        { id: 3, title: "Tập làm văn: Tả người (Tả thầy cô giáo / người thân)", desc: "Dàn ý 3 phần: Ngoại hình (mái tóc, nụ cười, ánh mắt) kết hợp hoạt động, tính tình và kỷ niệm sâu sắc." }
       ],
       khoahoc: [
         { id: 1, title: "Chủ đề Chất: Sự biến đổi của chất", desc: "Phân biệt biến đổi vật lí (nước đá tan, xé giấy) và biến đổi hóa học (đốt nến, đinh sắt gỉ)." },
-        { id: 2, title: "Chủ đề Năng lượng: Năng lượng Mặt Trời, Gió và Nước chảy", desc: "Ứng dụng năng lượng sạch trong đời sống và cách sử dụng tiết kiệm, hiệu quả điện năng." },
-        { id: 3, title: "Chủ đề Sinh vật: Sự sinh sản của thực vật có hoa", desc: "Cơ quan sinh sản của hoa (nhị và nhụy), quá trình thụ phấn, thụ tinh, hình thành quả và hạt." },
-        { id: 4, title: "Chủ đề Con người: Sự lớn lên và phát triển của cơ thể", desc: "Giai đoạn dậy thì ở nam và nữ, cách vệ sinh thân thể và bảo vệ bản thân an toàn." }
+        { id: 2, title: "Chủ đề Năng lượng: Năng lượng Mặt Trời, Gió và Nước chảy", desc: "Ứng dụng năng lượng sạch trong đời sống và cách sử dụng tiết kiệm, hiệu quả điện năng." }
       ],
       sudia: [
         { id: 1, title: "Địa lí: Vị trí địa lí, địa hình và khoáng sản Việt Nam", desc: "Hình chữ S, bờ biển dài 3260 km, đồi núi chiếm 3/4 diện tích, vùng biển giàu tiềm năng dầu khí và thủy sản." },
-        { id: 2, title: "Lịch sử: Phong trào Cần vương và cuộc khởi nghĩa Yên Thế", desc: "Tinh thần bất khuất của nghĩa quân Đề Thám chống thực dân Pháp cuối thế kỉ XIX - đầu thế kỉ XX." },
-        { id: 3, title: "Lịch sử: Bác Hồ ra đi tìm đường cứu nước (1911)", desc: "Người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng ngày 5/6/1911 tìm con đường giải phóng dân tộc." },
-        { id: 4, title: "Lịch sử: Chiến thắng Điện Biên Phủ 'Lừng lẫy năm châu' (1954)", desc: "56 ngày đêm khoét núi ngủ hầm, đập tan tập đoàn cứ điểm Điện Biên Phủ của thực dân Pháp." }
+        { id: 2, title: "Lịch sử: Bác Hồ ra đi tìm đường cứu nước (1911)", desc: "Người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng ngày 5/6/1911 tìm con đường giải phóng dân tộc." }
       ]
     };
 
@@ -663,14 +894,10 @@
     let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
 
     document.addEventListener("DOMContentLoaded", () => {
-      initThreeJS();
+      initStudio3D();
       setSubject('toan');
       updateApiKeyUI();
-      initTriangleLab();
-      initTrapezoidLab();
-      initCircleLab();
       initWhiteboard();
-      updateMotionMath();
     });
 
     function setSubject(sub) {
@@ -726,7 +953,7 @@
         </div>
         <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
           <div class="font-bold text-slate-800">📌 Hướng dẫn tổ chức hoạt động học trên lớp:</div>
-          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình 3D trực quan hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
+          <p class="text-slate-600">• Giáo viên cho học sinh quan sát mô hình 3D xoay đa góc hoặc thảo luận nhóm để rút ra quy tắc/nội dung bài.</p>
           <p class="text-slate-600">• Luyện tập thực hành từng bước, giải thích rõ lý do và cách tư duy logic.</p>
         </div>
       `;
@@ -749,234 +976,6 @@
       executeSolve();
     }
 
-    // ========================================================
-    // 3. CÁC HÌNH 2D KHÁC (TAM GIÁC, HÌNH THANG, HÌNH TRÒN)
-    // ========================================================
-    function switchLab(name) {
-      ['box3d', 'triangle', 'trapezoid', 'circle', 'motion'].forEach(id => {
-        document.getElementById('lab-' + id).classList.add('hidden');
-      });
-      document.querySelectorAll('.lab-sub-btn').forEach(b => {
-        b.classList.remove('bg-blue-600', 'text-white', 'shadow');
-        b.classList.add('bg-white', 'text-slate-700');
-      });
-
-      document.getElementById('lab-' + name).classList.remove('hidden');
-      const activeBtn = document.getElementById('lab-btn-' + name);
-      activeBtn.classList.remove('bg-white', 'text-slate-700');
-      activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
-
-      if (name === 'box3d') onWindowResize();
-      if (name === 'triangle') drawTriangleLab();
-      if (name === 'trapezoid') drawTrapezoidLab();
-      if (name === 'circle') drawCircleLab();
-    }
-
-    // Tam giác
-    let triDoubled = false;
-    function toggleTriangleDouble() {
-      triDoubled = !triDoubled;
-      document.getElementById('triDoubleText').textContent = triDoubled ? "Thu về 1 tam giác ban đầu" : "Ghép thêm 1 tam giác đối xứng";
-      drawTriangleLab();
-    }
-    function initTriangleLab() { drawTriangleLab(); }
-    function drawTriangleLab() {
-      const a = parseInt(document.getElementById('tri-slider-a').value);
-      const h = parseInt(document.getElementById('tri-slider-h').value);
-      document.getElementById('tri-val-a').textContent = a + ' cm';
-      document.getElementById('tri-val-h').textContent = h + ' cm';
-
-      const canvas = document.getElementById('triangleCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const scale = 16, startX = 100, startY = 240;
-      const pA = { x: startX + 50, y: startY - h * scale };
-      const pB = { x: startX + a * scale, y: startY };
-      const pC = { x: startX, y: startY };
-
-      ctx.fillStyle = "rgba(59, 130, 246, 0.4)"; ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
-      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, startY); ctx.stroke(); ctx.setLineDash([]);
-
-      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText(`Đáy a = ${a} cm`, (pC.x + pB.x)/2 - 30, startY + 20);
-      ctx.fillStyle = "#dc2626";
-      ctx.fillText(`h = ${h} cm`, pA.x + 8, (pA.y + startY)/2);
-
-      if (triDoubled) {
-        ctx.fillStyle = "rgba(245, 158, 11, 0.3)"; ctx.strokeStyle = "#d97706";
-        ctx.setLineDash([6, 4]);
-        ctx.beginPath(); ctx.moveTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.lineTo(pB.x - (pC.x - pA.x), pA.y); ctx.closePath();
-        ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
-      }
-
-      const S = (a * h) / 2;
-      document.getElementById('triangleResult').innerHTML = `
-        <b>Diện tích hình tam giác:</b> $S = \\frac{${a} \\times ${h}}{2} = ${S}\\text{ cm}^2$<br>
-        ${triDoubled ? `<span class="text-amber-800 font-bold">Hình bình hành ghép lại có diện tích: $S_{hbh} = ${a} \\times${h} = ${a * h}\\text{ cm}^2$</span>` : ''}
-      `;
-    }
-
-    // Hình thang
-    let isDoubled = false;
-    function toggleTrapezoidDouble() {
-      isDoubled = !isDoubled;
-      document.getElementById('doubleBtnText').textContent = isDoubled ? "Thu về 1 hình thang" : "Ghép thêm 1 hình (Tạo hình bình hành)";
-      drawTrapezoidLab();
-    }
-    function initTrapezoidLab() { drawTrapezoidLab(); }
-    function drawTrapezoidLab() {
-      const a = parseInt(document.getElementById('slider-a').value);
-      const b = parseInt(document.getElementById('slider-b').value);
-      const h = parseInt(document.getElementById('slider-h').value);
-
-      document.getElementById('val-a').textContent = a + ' cm';
-      document.getElementById('val-b').textContent = b + ' cm';
-      document.getElementById('val-h').textContent = h + ' cm';
-
-      const canvas = document.getElementById('trapezoidCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const scale = 14, startX = 60, startY = 240;
-      const pA = { x: startX + 30, y: startY - h * scale };
-      const pB = { x: startX + 30 + a * scale, y: startY - h * scale };
-      const pC = { x: startX + b * scale, y: startY };
-      const pD = { x: startX, y: startY };
-
-      ctx.fillStyle = "rgba(251, 191, 36, 0.4)"; ctx.strokeStyle = "#d97706"; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-
-      ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
-      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke(); ctx.setLineDash([]);
-
-      ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText(`a = ${a} cm`, (pA.x + pB.x)/2 - 25, pA.y - 8);
-      ctx.fillText(`b = ${b} cm`, (pD.x + pC.x)/2 - 25, pD.y + 20);
-
-      if (isDoubled) {
-        const pC2 = { x: pC.x + a * scale, y: pD.y };
-        const pB2 = { x: pB.x + b * scale, y: pA.y };
-        ctx.fillStyle = "rgba(59, 130, 246, 0.25)"; ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 2.5;
-        ctx.setLineDash([6, 4]);
-        ctx.beginPath(); ctx.moveTo(pC.x, pC.y); ctx.lineTo(pC2.x, pC2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(pC2.x, pC2.y); ctx.lineTo(pB2.x, pB2.y); ctx.lineTo(pB.x, pB.y); ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.setLineDash([]);
-      }
-
-      const S = ((a + b) * h) / 2;
-      document.getElementById('trapezoidResult').innerHTML = `<b>Diện tích hình thang:</b> $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$`;
-    }
-
-    // Hình tròn
-    let cirSliced = false;
-    function toggleCircleSlices() {
-      cirSliced = !cirSliced;
-      document.getElementById('cirSliceText').textContent = cirSliced ? "Xem hình tròn nguyên bản" : "Cắt nan quạt ghép hình chữ nhật";
-      drawCircleLab();
-    }
-    function initCircleLab() { drawCircleLab(); }
-    function drawCircleLab() {
-      const r = parseInt(document.getElementById('cir-slider-r').value);
-      document.getElementById('cir-val-r').textContent = r + ' cm';
-      const canvas = document.getElementById('circleCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const C = (2 * r * 3.14).toFixed(2);
-      const S = (r * r * 3.14).toFixed(2);
-
-      if (!cirSliced) {
-        const centerX = 200, centerY = 160, radiusPx = r * 14;
-        ctx.fillStyle = "rgba(244, 63, 94, 0.25)"; ctx.strokeStyle = "#e11d48"; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.arc(centerX, centerY, radiusPx, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-        ctx.fillStyle = "#e11d48"; ctx.beginPath(); ctx.arc(centerX, centerY, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + radiusPx, centerY); ctx.stroke(); ctx.setLineDash([]);
-
-        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-        ctx.fillText(`r = ${r} cm`, centerX + radiusPx/2 - 15, centerY - 8);
-        ctx.fillText(`Đường kính d = 2r = ${2 * r} cm`, centerX - 60, centerY + radiusPx + 25);
-      } else {
-        const numSlices = 16, rectW = 280, rectH = r * 12;
-        const sliceW = rectW / numSlices, startX = 60, startY = 160;
-
-        for (let i = 0; i < numSlices; i++) {
-          ctx.fillStyle = i % 2 === 0 ? "rgba(244, 63, 94, 0.4)" : "rgba(59, 130, 246, 0.4)";
-          ctx.strokeStyle = "#475569"; ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          if (i % 2 === 0) {
-            ctx.moveTo(startX + i * sliceW, startY + rectH);
-            ctx.lineTo(startX + (i + 1) * sliceW, startY + rectH);
-            ctx.lineTo(startX + (i + 0.5) * sliceW, startY);
-          } else {
-            ctx.moveTo(startX + i * sliceW, startY);
-            ctx.lineTo(startX + (i + 1) * sliceW, startY);
-            ctx.lineTo(startX + (i + 0.5) * sliceW, startY + rectH);
-          }
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-        }
-        ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-        ctx.fillText(`Chiều dài = Nửa chu vi = r x 3,14`, startX + 50, startY - 15);
-        ctx.fillText(`Chiều rộng = r`, startX + rectW + 15, startY + rectH/2);
-      }
-
-      document.getElementById('circleResult').innerHTML = `
-        <b>Chu vi hình tròn:</b> $C = ${r} \\times 2 \\times 3,14 = ${C}\\text{ cm}$<br>
-        <b>Diện tích hình tròn:</b> $S = ${r} \\times ${r} \\times 3,14 = ${S}\\text{ cm}^2$
-      `;
-    }
-
-    // Chuyển động
-    let motionTimer = null, motionProgress = 0;
-    function updateMotionMath() {
-      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
-      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
-      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
-      const sumV = v1 + v2;
-      const t = (dist / sumV).toFixed(2);
-      document.getElementById('motionMathBox').innerHTML = `Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$<br>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$`;
-    }
-    function resetMotion() {
-      if (motionTimer) clearInterval(motionTimer);
-      motionTimer = null; motionProgress = 0;
-      document.getElementById('carA').style.transform = `translateX(0px)`;
-      document.getElementById('carB').style.transform = `translateX(0px)`;
-      document.getElementById('meetFlag').classList.add('hidden');
-      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng";
-      updateMotionMath();
-    }
-    function startMotion() {
-      resetMotion();
-      const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
-      const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
-      const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
-      const trackWidth = 500;
-      const meetX = (v1 / (v1 + v2)) * trackWidth;
-      const flag = document.getElementById('meetFlag');
-      flag.style.left = meetX + 'px';
-      document.getElementById('motionStatusBadge').textContent = "Đang chạy...";
-
-      motionTimer = setInterval(() => {
-        motionProgress += 0.01;
-        if (motionProgress >= 1) {
-          motionProgress = 1; clearInterval(motionTimer);
-          document.getElementById('motionStatusBadge').textContent = "Đã gặp nhau!";
-          flag.classList.remove('hidden');
-        }
-        document.getElementById('carA').style.transform = `translateX(${motionProgress * meetX}px)`;
-        document.getElementById('carB').style.transform = `translateX(-${motionProgress * (trackWidth - meetX)}px)`;
-      }, 30);
-    }
-
-    // ========================================================
-    // 4. TRỢ LÝ AI & DỰ PHÒNG OFFLINE
-    // ========================================================
     async function executeSolve() {
       const q = document.getElementById('aiInput').value.trim();
       if (!q) return alert("Vui lòng nhập câu hỏi hoặc đề bài!");
@@ -1002,10 +1001,9 @@
     }
 
     async function requestGemini(prompt, key) {
-      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 (Toán, Tiếng Việt, Khoa học, Lịch sử và Địa lí) theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
-Luôn trả lời theo chuẩn sư phạm 3 phần:
-1. 💡 Tóm tắt kiến thức / Phương pháp tư duy trực quan.
-2. ✅ Hướng dẫn giải chi tiết (các bước tính toán hoặc đoạn văn mẫu, phân tích khoa học/lịch sử).
+      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy các môn lớp 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống. Luôn trả lời theo chuẩn sư phạm 3 phần:
+1. 💡 Phương pháp tư duy & Tóm tắt trực quan.
+2. ✅ Lời giải chi tiết từng bước.
 3. 🌟 Mẹo ghi nhớ và bài học rút ra.`;
 
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`, {
@@ -1023,12 +1021,12 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
 
     function solveLocally(q) {
       return `### 💡 Hướng dẫn phương pháp sư phạm:
-1. **Phân tích yêu cầu:** Đọc kỹ đề bài để nhận diện môn học và kiến thức trọng tâm (Toán học, Tập làm văn, Khoa học hoặc Lịch sử - Địa lí).
+1. **Phân tích yêu cầu:** Đọc kỹ đề bài để nhận diện môn học và kiến thức trọng tâm.
 2. **Các bước tiến hành:**
    - Đối với Toán: Áp dụng các công thức hình học hoặc quan sát mô hình 3D trực quan.
    - Đối với Tiếng Việt: Lập dàn ý 3 phần, dùng biện pháp so sánh và từ ngữ gợi cảm.
    - Đối với Khoa học / Lịch sử - Địa lí: Nêu rõ nguyên nhân, hiện tượng và ý nghĩa thực tiễn.
-*(Cài đặt mã Gemini API Key ở góc trên để AI giải chi tiết ngay lập tức)*`;
+*(Thầy cô hãy cài đặt mã Gemini API Key ở góc trên để AI giải chi tiết ngay lập tức)*`;
     }
 
     function renderAnswer(md) {
@@ -1040,7 +1038,7 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
     }
 
     // ========================================================
-    // 5. TIỆN ÍCH LỚP HỌC & BẢNG NHÁP Ô LI
+    // 4. TIỆN ÍCH LỚP HỌC & BẢNG NHÁP Ô LI
     // ========================================================
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -1054,7 +1052,7 @@ Luôn trả lời theo chuẩn sư phạm 3 phần:
       activeBtn.classList.add('bg-white', 'text-blue-800', 'shadow');
 
       if (tabId === 'lab-tab') {
-        setTimeout(onWindowResize, 50);
+        setTimeout(onStudioResize, 50);
       }
     }
 
