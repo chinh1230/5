@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trợ Giảng Trực Quan & Thư Viện SGK Toán 5 - Kết Nối Tri Thức</title>
+  <title>Trợ Giảng Trực Quan & Trọn Bộ SGK Toán 5 - Kết Nối Tri Thức</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,8 +23,8 @@
         linear-gradient(to right, #e2e8f0 1px, transparent 1px),
         linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
     }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
   </style>
 </head>
 <body class="bg-slate-100 min-h-screen text-slate-800 flex flex-col">
@@ -36,10 +36,10 @@
         <span class="text-3xl bg-white/20 p-2 rounded-xl">🎒</span>
         <div>
           <h1 class="text-lg md:text-xl font-black tracking-wide flex items-center gap-2">
-            TRỢ GIẢNG & THƯ VIỆN TOÁN 5 - KẾT NỐI TRI THỨC
-            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Đầy Đủ SGK</span>
+            TOÁN 5 - KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Đủ 75 Bài Học</span>
           </h1>
-          <p class="text-xs text-blue-100">Tra cứu toàn bộ SGK Toán 5, mô phỏng trực quan và trợ lý giải đề tự động</p>
+          <p class="text-xs text-blue-100">Tra cứu trọn vẹn SGK Tập 1 & Tập 2, mô phỏng trực quan và trợ giảng AI</p>
         </div>
       </div>
 
@@ -55,16 +55,16 @@
     <div class="bg-black/15 border-t border-white/10 px-4">
       <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto py-2">
         <button onclick="switchTab('sgk-tab')" id="btn-sgk-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition bg-white text-blue-800 shadow">
-          <i class="fa-solid fa-book-open text-blue-600"></i> 1. Thư Viện Mục Lục SGK
+          <i class="fa-solid fa-book-open text-blue-600"></i> 1. Trọn Bộ 75 Bài SGK
         </button>
         <button onclick="switchTab('lab-tab')" id="btn-lab-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-flask-vial text-teal-300"></i> 2. Mô Phỏng Trực Quan (Toán 5)
+          <i class="fa-solid fa-flask-vial text-teal-300"></i> 2. Mô Phỏng Trực Quan
         </button>
         <button onclick="switchTab('solve-tab')" id="btn-solve-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý Giải Bài & AI
+          <i class="fa-solid fa-robot text-amber-300"></i> 3. Trợ Lý Giải Bài Mở Rộng
         </button>
         <button onclick="switchTab('class-tab')" id="btn-class-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
-          <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học (Gọi Tên & Đếm Giờ)
+          <i class="fa-solid fa-bullhorn text-rose-300"></i> 4. Tiện Ích Lớp Học
         </button>
         <button onclick="switchTab('board-tab')" id="btn-board-tab" class="tab-btn px-4 py-2 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 transition text-white hover:bg-white/10">
           <i class="fa-solid fa-chalkboard text-emerald-300"></i> 5. Bảng Nháp Ô Li
@@ -73,235 +73,190 @@
     </div>
   </header>
 
-  <!-- Nội dung -->
+  <!-- Thân trang -->
   <main class="max-w-7xl mx-auto p-3 md:p-6 w-full flex-1">
 
-    <!-- ================= TAB 1: THƯ VIỆN BÀI TẬP SGK TOÁN 5 ================= -->
-    <section id="sgk-tab" class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- ================= TAB 1: TRỌN BỘ 75 BÀI SGK TOÁN 5 ================= -->
+    <section id="sgk-tab" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-6">
       
-      <!-- Cột trái: Danh mục Chủ đề & Bài học -->
-      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
-        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2 pb-2 border-b border-slate-100">
-          <i class="fa-solid fa-list-check text-blue-600"></i>
-          Chọn Chủ Đề SGK Kết Nối Tri Thức:
-        </h3>
+      <!-- Cột trái: Tìm kiếm & Cây 75 bài học (Chiếm 4/12 cột) -->
+      <div class="lg:col-span-4 bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col h-[750px]">
+        <!-- Ô tìm kiếm bài -->
+        <div class="relative mb-3">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+          <input type="text" id="lessonSearchInput" oninput="filterLessons()" placeholder="Tìm nhanh: Bài 45, thể tích, hình thang..." class="w-full pl-8 pr-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
 
-        <div class="space-y-2 max-h-[520px] overflow-y-auto custom-scrollbar pr-1" id="topicListContainer">
-          <!-- Render danh mục chủ đề qua JS -->
+        <!-- Bộ lọc Tập 1 / Tập 2 -->
+        <div class="flex gap-1 mb-2 pb-2 border-b border-slate-100 text-xs font-semibold">
+          <button onclick="setSemesterFilter('all')" id="filter-all" class="flex-1 py-1 rounded-lg bg-blue-600 text-white">Tất cả (75 bài)</button>
+          <button onclick="setSemesterFilter(1)" id="filter-1" class="flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Tập 1</button>
+          <button onclick="setSemesterFilter(2)" id="filter-2" class="flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">Tập 2</button>
+        </div>
+
+        <!-- Danh sách cuộn 75 bài -->
+        <div id="lessonListScroll" class="flex-1 overflow-y-auto custom-scrollbar space-y-1.5 pr-1">
+          <!-- Render tự động 75 bài -->
         </div>
       </div>
 
-      <!-- Cột phải: Đề bài & Lời giải chuẩn mực -->
-      <div class="lg:col-span-2 space-y-4">
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[500px]">
-          <div id="sgkDetailHeader" class="border-b border-slate-100 pb-3 mb-4">
-            <span id="sgkTopicTag" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md uppercase">Chủ đề</span>
-            <h2 id="sgkLessonTitle" class="text-lg font-bold text-slate-800 mt-2">Chọn một bài tập ở danh mục bên trái</h2>
-            <p id="sgkPageInfo" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Toán 5 - Bộ Kết Nối Tri Thức Với Cuộc Sống</p>
+      <!-- Cột phải: Chi tiết bài học & Lời giải (Chiếm 8/12 cột) -->
+      <div class="lg:col-span-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[750px] flex flex-col justify-between">
+        <div>
+          <!-- Header bài học -->
+          <div class="border-b border-slate-200 pb-4 mb-4 flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <span id="activeLessonBadge" class="text-xs font-black text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md uppercase">Chủ đề</span>
+              <h2 id="activeLessonTitle" class="text-lg md:text-xl font-black text-slate-800 mt-2">Chọn một bài học để xem chi tiết</h2>
+              <p id="activeLessonBook" class="text-xs text-slate-400 mt-0.5">Sách giáo khoa Toán 5 - Kết Nối Tri Thức Với Cuộc Sống</p>
+            </div>
+            
+            <!-- Nút bấm AI giải trọn bộ bài tập của bài này -->
+            <button onclick="triggerSolveCurrentLesson()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>AI Giải Trọn Bộ Bài Tập Tiết Này</span>
+            </button>
           </div>
 
-          <!-- Nội dung đề & Lời giải -->
-          <div id="sgkDetailBody" class="space-y-4 text-xs md:text-sm text-slate-700 leading-relaxed">
-            <div class="text-center py-16 text-slate-400">
-              <i class="fa-solid fa-book-open-reader text-5xl text-blue-200 mb-3"></i>
-              <p>Hãy chọn bài học từ danh mục bên trái để xem phương pháp và lời giải chi tiết từng bước.</p>
-            </div>
+          <!-- Nội dung chi tiết bài học -->
+          <div id="lessonDetailBody" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-4">
+            <!-- Render nội dung lý thuyết + bài tập -->
           </div>
+        </div>
+
+        <!-- Thanh điều hướng chân trang -->
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+          <button onclick="prevLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            <i class="fa-solid fa-chevron-left"></i> Bài trước
+          </button>
+          <span id="currentLessonIndexText" class="font-bold text-blue-700">Bài 1 / 75</span>
+          <button onclick="nextLesson()" class="hover:text-blue-600 font-semibold flex items-center gap-1">
+            Bài sau <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
       </div>
 
     </section>
 
-    <!-- ================= TAB 2: PHÒNG THÍ NGHIỆM TRỰC QUAN (MATH LABS) ================= -->
+    <!-- ================= TAB 2: MÔ PHỎNG TRỰC QUAN ================= -->
     <section id="lab-tab" class="tab-content hidden space-y-6">
       <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-200">
-        <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">
-          1. Ghép Hình Thang Trực Quan
-        </button>
-        <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          2. Mô Phỏng Toán Chuyển Động (2 Xe)
-        </button>
-        <button onclick="switchLab('tape')" id="lab-btn-tape" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">
-          3. Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)
-        </button>
+        <button onclick="switchLab('trapezoid')" id="lab-btn-trapezoid" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-blue-600 text-white shadow">1. Cắt Ghép Hình Thang</button>
+        <button onclick="switchLab('motion')" id="lab-btn-motion" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">2. Mô Phỏng 2 Xe Chuyển Động</button>
+        <button onclick="switchLab('tape')" id="lab-btn-tape" class="lab-sub-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-white text-slate-700 hover:bg-slate-200">3. Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)</button>
       </div>
 
-      <!-- LAB 1: Ghép hình thang -->
+      <!-- Lab Hình Thang -->
       <div id="lab-trapezoid" class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4">
-          <h3 class="text-base font-bold text-blue-900 flex items-center gap-2">
-            <i class="fa-solid fa-shapes text-blue-600"></i> Diện Tích Hình Thang
-          </h3>
-          <p class="text-xs text-slate-500">Giúp học sinh tự khám phá: Ghép 2 hình thang bằng nhau tạo thành 1 hình bình hành có đáy $(a + b)$ và chiều cao $h$.</p>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-blue-900">Khám Phá Diện Tích Hình Thang</h3>
+          <p class="text-slate-500">Ghép 2 hình thang bằng nhau tạo thành hình bình hành có đáy $(a+b)$ và chiều cao $h$.</p>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div>
-              <div class="flex justify-between font-semibold mb-1">
-                <span>Đáy bé ($a$):</span><span id="val-a" class="text-blue-600 font-bold">8 cm</span>
-              </div>
+              <div class="flex justify-between font-semibold"><span>Đáy bé (a):</span><span id="val-a" class="text-blue-600 font-bold">8 cm</span></div>
               <input type="range" id="slider-a" min="4" max="14" value="8" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold mb-1">
-                <span>Đáy lớn ($b$):</span><span id="val-b" class="text-blue-600 font-bold">14 cm</span>
-              </div>
+              <div class="flex justify-between font-semibold"><span>Đáy lớn (b):</span><span id="val-b" class="text-blue-600 font-bold">14 cm</span></div>
               <input type="range" id="slider-b" min="10" max="22" value="14" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
             <div>
-              <div class="flex justify-between font-semibold mb-1">
-                <span>Chiều cao ($h$):</span><span id="val-h" class="text-blue-600 font-bold">7 cm</span>
-              </div>
+              <div class="flex justify-between font-semibold"><span>Chiều cao (h):</span><span id="val-h" class="text-blue-600 font-bold">7 cm</span></div>
               <input type="range" id="slider-h" min="4" max="12" value="7" class="w-full cursor-pointer" oninput="drawTrapezoidLab()">
             </div>
           </div>
-          <button id="toggleDoubleBtn" onclick="toggleTrapezoidDouble()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow flex items-center justify-center gap-2">
-            <i class="fa-solid fa-arrows-rotate"></i>
+          <button onclick="toggleTrapezoidDouble()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition">
             <span id="doubleBtnText">Ghép thêm 1 hình (Tạo hình bình hành)</span>
           </button>
-          <div id="trapezoidResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs space-y-1 text-blue-900"></div>
+          <div id="trapezoidResult" class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1 text-blue-900"></div>
         </div>
-        <div class="lg:col-span-2 flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
-          <canvas id="trapezoidCanvas" width="600" height="340" class="w-full max-w-[620px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
+        <div class="lg:col-span-2 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-3">
+          <canvas id="trapezoidCanvas" width="600" height="340" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
         </div>
       </div>
 
-      <!-- LAB 2: Toán Chuyển Động -->
+      <!-- Lab Chuyển động -->
       <div id="lab-motion" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4">
-          <h3 class="text-base font-bold text-teal-900 flex items-center gap-2">
-            <i class="fa-solid fa-car-side text-teal-600"></i> Mô Phỏng 2 Xe Gặp Nhau
-          </h3>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
-            <div>
-              <label class="block font-semibold mb-1">Quãng đường $AB$ (km):</label>
-              <input type="number" id="motion-dist" value="180" class="w-full p-2 border border-slate-300 rounded-lg font-bold text-blue-600" onchange="resetMotion()">
-            </div>
-            <div>
-              <label class="block font-semibold mb-1">Vận tốc Xe A ($v_1$ km/h):</label>
-              <input type="number" id="motion-v1" value="50" class="w-full p-2 border border-slate-300 rounded-lg font-bold text-emerald-600" onchange="resetMotion()">
-            </div>
-            <div>
-              <label class="block font-semibold mb-1">Vận tốc Xe B ($v_2$ km/h):</label>
-              <input type="number" id="motion-v2" value="40" class="w-full p-2 border border-slate-300 rounded-lg font-bold text-rose-600" onchange="resetMotion()">
-            </div>
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-teal-900">Toán Chuyển Động: Hai Xe Ngược Chiều</h3>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div><label class="block font-semibold">Quãng đường AB (km):</label><input type="number" id="motion-dist" value="180" class="w-full p-2 border rounded-lg font-bold text-blue-600" onchange="resetMotion()"></div>
+            <div><label class="block font-semibold">Vận tốc Xe A (km/h):</label><input type="number" id="motion-v1" value="50" class="w-full p-2 border rounded-lg font-bold text-emerald-600" onchange="resetMotion()"></div>
+            <div><label class="block font-semibold">Vận tốc Xe B (km/h):</label><input type="number" id="motion-v2" value="40" class="w-full p-2 border rounded-lg font-bold text-rose-600" onchange="resetMotion()"></div>
           </div>
           <div class="flex gap-2">
-            <button onclick="startMotion()" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition shadow flex items-center justify-center gap-2">
-              <i class="fa-solid fa-play"></i> Chạy Mô Phỏng
-            </button>
-            <button onclick="resetMotion()" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-bold transition">
-              <i class="fa-solid fa-arrow-rotate-left"></i>
-            </button>
+            <button onclick="startMotion()" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold">Chạy Mô Phỏng</button>
+            <button onclick="resetMotion()" class="px-4 py-2.5 bg-slate-200 rounded-xl font-bold">Đặt lại</button>
           </div>
-          <div id="motionMathBox" class="p-3 bg-teal-50 border border-teal-200 rounded-xl text-xs space-y-1.5 text-teal-900"></div>
+          <div id="motionMathBox" class="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-1 text-teal-900"></div>
         </div>
         <div class="lg:col-span-2 flex flex-col justify-between bg-slate-900 rounded-2xl p-5 text-white relative">
-          <div class="flex justify-between items-center text-xs border-b border-slate-800 pb-2">
-            <span>Điểm A (Xe Xanh)</span>
-            <span id="motionStatusBadge" class="bg-teal-500/20 text-teal-300 px-2.5 py-0.5 rounded-full font-bold">Sẵn sàng xuất phát</span>
-            <span>Điểm B (Xe Đỏ)</span>
+          <div class="flex justify-between text-xs border-b border-slate-800 pb-2">
+            <span>Điểm A (Xe Xanh)</span><span id="motionStatusBadge" class="text-teal-300 font-bold">Sẵn sàng</span><span>Điểm B (Xe Đỏ)</span>
           </div>
           <div class="my-12 relative">
-            <div class="h-4 bg-slate-800 rounded-full border border-slate-700 relative overflow-hidden">
-              <div class="absolute inset-0 border-t-2 border-dashed border-amber-400/40"></div>
-            </div>
-            <div id="carA" class="absolute -top-7 left-0 transition-transform duration-75 flex flex-col items-center">
-              <span class="text-[10px] bg-emerald-600 px-1.5 py-0.5 rounded font-bold mb-1 shadow">Xe A</span>
-              <i class="fa-solid fa-car-side text-2xl text-emerald-400"></i>
-            </div>
-            <div id="carB" class="absolute -top-7 right-0 transition-transform duration-75 flex flex-col items-center">
-              <span class="text-[10px] bg-rose-600 px-1.5 py-0.5 rounded font-bold mb-1 shadow">Xe B</span>
-              <i class="fa-solid fa-car-side text-2xl text-rose-400 scale-x-[-1]"></i>
-            </div>
-            <div id="meetFlag" class="hidden absolute -top-10 flex flex-col items-center">
-              <span class="text-[10px] bg-amber-400 text-slate-900 font-black px-2 py-0.5 rounded shadow animate-bounce">Gặp nhau!</span>
-              <i class="fa-solid fa-flag-checkered text-xl text-yellow-300"></i>
-            </div>
+            <div class="h-4 bg-slate-800 rounded-full border border-slate-700"></div>
+            <div id="carA" class="absolute -top-7 left-0 flex flex-col items-center"><i class="fa-solid fa-car-side text-2xl text-emerald-400"></i></div>
+            <div id="carB" class="absolute -top-7 right-0 flex flex-col items-center"><i class="fa-solid fa-car-side text-2xl text-rose-400 scale-x-[-1]"></i></div>
+            <div id="meetFlag" class="hidden absolute -top-10 flex flex-col items-center"><span class="text-[10px] bg-amber-400 text-slate-900 font-black px-2 py-0.5 rounded shadow">Gặp nhau!</span><i class="fa-solid fa-flag-checkered text-xl text-yellow-300"></i></div>
           </div>
           <div class="bg-slate-800/80 p-3 rounded-xl flex justify-around text-center text-xs">
-            <div><span class="text-slate-400 block">Thời gian:</span><span id="simTime" class="text-base font-bold text-amber-400">0.0 giờ</span></div>
-            <div><span class="text-slate-400 block">Quãng đường A:</span><span id="simDistA" class="text-base font-bold text-emerald-400">0 km</span></div>
-            <div><span class="text-slate-400 block">Quãng đường B:</span><span id="simDistB" class="text-base font-bold text-rose-400">0 km</span></div>
+            <div><span class="text-slate-400 block">Thời gian:</span><span id="simTime" class="font-bold text-amber-400">0.0 giờ</span></div>
+            <div><span class="text-slate-400 block">Quãng đường A:</span><span id="simDistA" class="font-bold text-emerald-400">0 km</span></div>
+            <div><span class="text-slate-400 block">Quãng đường B:</span><span id="simDistB" class="font-bold text-rose-400">0 km</span></div>
           </div>
         </div>
       </div>
 
-      <!-- LAB 3: Sơ đồ đoạn thẳng -->
+      <!-- Lab Sơ đồ đoạn thẳng -->
       <div id="lab-tape" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-        <div class="space-y-4">
-          <h3 class="text-base font-bold text-purple-900 flex items-center gap-2">
-            <i class="fa-solid fa-ruler-horizontal text-purple-600"></i> Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)
-          </h3>
-          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
-            <div>
-              <label class="block font-semibold mb-1">Tổng hai số:</label>
-              <input type="number" id="tape-sum" value="45" class="w-full p-2 border border-slate-300 rounded-lg font-bold text-purple-700" onchange="drawTapeDiagram()">
-            </div>
+        <div class="space-y-4 text-xs">
+          <h3 class="text-sm font-bold text-purple-900">Sơ Đồ Đoạn Thẳng (Tổng - Tỉ)</h3>
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div><label class="block font-semibold">Tổng hai số:</label><input type="number" id="tape-sum" value="45" class="w-full p-2 border rounded-lg font-bold text-purple-700" onchange="drawTapeDiagram()"></div>
             <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="block font-semibold mb-1">Số phần số bé:</label>
-                <input type="number" id="tape-p1" value="2" min="1" max="10" class="w-full p-2 border border-slate-300 rounded-lg font-bold" onchange="drawTapeDiagram()">
-              </div>
-              <div>
-                <label class="block font-semibold mb-1">Số phần số lớn:</label>
-                <input type="number" id="tape-p2" value="3" min="1" max="10" class="w-full p-2 border border-slate-300 rounded-lg font-bold" onchange="drawTapeDiagram()">
-              </div>
+              <div><label class="block font-semibold">Phần số bé:</label><input type="number" id="tape-p1" value="2" min="1" max="10" class="w-full p-2 border rounded-lg font-bold" onchange="drawTapeDiagram()"></div>
+              <div><label class="block font-semibold">Phần số lớn:</label><input type="number" id="tape-p2" value="3" min="1" max="10" class="w-full p-2 border rounded-lg font-bold" onchange="drawTapeDiagram()"></div>
             </div>
           </div>
-          <div id="tapeMathResult" class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-xs space-y-1.5 text-purple-900"></div>
+          <div id="tapeMathResult" class="p-3 bg-purple-50 border border-purple-200 rounded-xl space-y-1 text-purple-900"></div>
         </div>
-        <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-center items-center">
-          <canvas id="tapeCanvas" width="600" height="280" class="w-full max-w-[620px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
+        <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center justify-center">
+          <canvas id="tapeCanvas" width="600" height="280" class="w-full max-w-[600px] bg-white rounded-xl shadow-inner border border-slate-200"></canvas>
         </div>
       </div>
     </section>
 
-    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI & AI ================= -->
+    <!-- ================= TAB 3: TRỢ LÝ GIẢI BÀI TẬP MỞ RỘNG & AI ================= -->
     <section id="solve-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-1 space-y-4">
+      <div class="space-y-4">
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
           <h2 class="text-sm font-bold text-slate-700 flex items-center gap-2">
-            <i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Bài Toán Bất Kỳ:
+            <i class="fa-solid fa-pen-nib text-blue-600"></i> Nhập Bài Toán Ngoài Sách Hoặc Nâng Cao:
           </h2>
-          <textarea id="aiInput" rows="5" placeholder="Gõ tên bài hoặc đề bài bất kỳ... (Ví dụ: Bài 2 trang 65 Toán 5 KNTT, hoặc dán đề toán nâng cao vào đây)" class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"></textarea>
-          <div class="flex items-center gap-2">
-            <button id="voiceBtn" onclick="toggleSpeech()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-microphone text-rose-500"></i>
-              <span id="voiceText">Đọc đề</span>
-            </button>
-            <label class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition">
-              <i class="fa-solid fa-camera text-blue-500"></i>
-              <span>Tải ảnh</span>
-              <input type="file" accept="image/*" class="hidden" onchange="handleImg(event)">
-            </label>
-            <span id="imgBadge" class="text-[11px] text-emerald-600 font-bold hidden">✓ Đã nhận ảnh</span>
-          </div>
-          <button onclick="executeSolve()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center justify-center gap-2">
+          <textarea id="aiInput" rows="5" placeholder="Gõ đề bài hoặc số bài bất kỳ (Ví dụ: Một thửa ruộng hình thang có diện tích 300 m2, chiều cao 15 m. Đáy lớn hơn đáy bé 4 m. Tính mỗi đáy?)" class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"></textarea>
+          <button onclick="executeSolve()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center justify-center gap-2">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Giải Chi Tiết Từng Bước
           </button>
         </div>
       </div>
-
       <div class="lg:col-span-2">
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[380px] flex flex-col justify-between">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 min-h-[400px]">
           <div id="aiEmpty" class="text-center py-16 text-slate-400">
             <i class="fa-solid fa-chalkboard-user text-5xl text-blue-200 mb-3"></i>
-            <h4 class="font-bold text-slate-600 text-sm">Trợ Lý Đang Chờ Đề Bài</h4>
-            <p class="text-xs mt-1 max-w-sm mx-auto">Nhập bất kỳ câu hỏi nào trong hoặc ngoài SGK để nhận phương pháp và lời giải chuẩn Tiểu học.</p>
+            <h4 class="font-bold text-slate-600 text-sm">Trợ Lý AI Sẵn Sàng Hỗ Trợ</h4>
+            <p class="text-xs mt-1">Nhập bất kỳ câu hỏi nào để nhận lời giải chuẩn sư phạm 3 bước.</p>
           </div>
           <div id="aiLoading" class="hidden text-center py-16">
             <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-blue-600 border-t-transparent mb-3"></div>
-            <p class="text-sm font-bold text-blue-600">Đang phân tích đề bài theo chương trình Lớp 5 KNTT...</p>
+            <p class="text-sm font-bold text-blue-600">Đang phân tích và trình bày lời giải...</p>
           </div>
           <div id="aiResult" class="hidden space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-              <span class="text-xs font-black uppercase text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-                <i class="fa-solid fa-circle-check"></i> Lời Giải Sư Phạm Chi Tiết
-              </span>
-              <button onclick="copySolution()" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md font-semibold text-slate-700 flex items-center gap-1">
-                <i class="fa-regular fa-copy"></i> Sao chép
-              </button>
+              <span class="text-xs font-black uppercase text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">Lời giải chuẩn sư phạm</span>
+              <button onclick="copySolution()" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded font-semibold text-slate-700">Sao chép</button>
             </div>
-            <div id="aiOutputText" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-3"></div>
+            <div id="aiOutputText" class="prose max-w-none text-xs md:text-sm text-slate-700 leading-relaxed"></div>
           </div>
         </div>
       </div>
@@ -310,22 +265,16 @@
     <!-- ================= TAB 4: TIỆN ÍCH LỚP HỌC ================= -->
     <section id="class-tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
-        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-          <i class="fa-solid fa-bullhorn text-rose-500"></i> Gọi Tên Học Sinh Ngẫu Nhiên
-        </h3>
-        <div class="bg-gradient-to-br from-rose-500 to-amber-500 p-8 rounded-2xl text-center text-white shadow-inner min-h-[160px] flex flex-col justify-center items-center">
-          <div id="luckyStudentName" class="text-2xl md:text-3xl font-black tracking-wider">Bấm nút để gọi tên 👇</div>
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i class="fa-solid fa-bullhorn text-rose-500"></i> Gọi Tên Học Sinh Ngẫu Nhiên</h3>
+        <div class="bg-gradient-to-br from-rose-500 to-amber-500 p-8 rounded-2xl text-center text-white shadow-inner min-h-[140px] flex items-center justify-center">
+          <div id="luckyStudentName" class="text-2xl md:text-3xl font-black">Bấm nút để gọi tên 👇</div>
         </div>
-        <button onclick="pickRandomStudent()" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs md:text-sm shadow-md transition">
-          <i class="fa-solid fa-dice mr-1"></i> Gọi Ngẫu Nhiên
-        </button>
-        <textarea id="studentListText" rows="3" class="w-full p-2.5 text-xs border border-slate-200 rounded-xl outline-none text-slate-700">An, Bình, Bảo, Chi, Cúc, Dung, Dũng, Đạt, Giang, Hà, Hải, Hưng, Khánh, Linh, Mai, Minh, Nam, Nga, Phong, Phúc, Quân, Quỳnh, Sơn, Thảo, Trang, Tuấn, Vy, Yến</textarea>
+        <button onclick="pickRandomStudent()" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs md:text-sm shadow transition">Gọi Tên Ngẫu Nhiên</button>
+        <textarea id="studentListText" rows="3" class="w-full p-2.5 text-xs border rounded-xl outline-none text-slate-700">An, Bình, Bảo, Chi, Cúc, Dung, Dũng, Đạt, Giang, Hà, Hải, Hưng, Khánh, Linh, Mai, Minh, Nam, Nga, Phong, Phúc, Quân, Quỳnh, Sơn, Thảo, Trang, Tuấn, Vy, Yến</textarea>
       </div>
 
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
-        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-          <i class="fa-solid fa-stopwatch-20 text-indigo-600"></i> Đồng Hồ Thảo Luận Nhóm
-        </h3>
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i class="fa-solid fa-stopwatch-20 text-indigo-600"></i> Đồng Hồ Thảo Luận Nhóm</h3>
         <div class="bg-slate-900 rounded-2xl py-8 text-center text-white shadow-inner">
           <div id="timerDisplay" class="text-5xl md:text-6xl font-black text-amber-400 font-mono">02:00</div>
         </div>
@@ -336,7 +285,7 @@
           <button onclick="setTimerSeconds(300)" class="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold">5 Phút</button>
         </div>
         <div class="flex gap-2">
-          <button id="timerToggleBtn" onclick="toggleTimer()" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs">Bắt Đầu Đếm</button>
+          <button id="timerToggleBtn" onclick="toggleTimer()" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs">Bắt Đầu</button>
           <button onclick="resetTimer()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs">Đặt Lại</button>
         </div>
       </div>
@@ -349,7 +298,6 @@
           <button onclick="setWhiteboardColor('#1e293b')" class="w-6 h-6 rounded-full bg-slate-800 border-2 border-white shadow"></button>
           <button onclick="setWhiteboardColor('#2563eb')" class="w-6 h-6 rounded-full bg-blue-600 border-2 border-white shadow"></button>
           <button onclick="setWhiteboardColor('#dc2626')" class="w-6 h-6 rounded-full bg-red-600 border-2 border-white shadow"></button>
-          <button onclick="setWhiteboardColor('#16a34a')" class="w-6 h-6 rounded-full bg-emerald-600 border-2 border-white shadow"></button>
           <button onclick="setWhiteboardEraser()" class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold">Tẩy</button>
         </div>
         <button onclick="clearWhiteboard()" class="px-3 py-1.5 bg-rose-50 text-rose-600 rounded-lg text-xs font-bold">Xóa Bảng</button>
@@ -361,18 +309,14 @@
 
   </main>
 
-  <!-- Modal API Key -->
+  <!-- Modal Cài đặt API Key -->
   <div id="apiModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
-      <h3 class="font-bold text-base text-slate-800 flex items-center gap-2">
-        <i class="fa-solid fa-key text-yellow-500"></i> Cài Đặt Gemini API Key
-      </h3>
-      <p class="text-xs text-slate-500 leading-relaxed">
-        Nhập khóa API miễn phí từ Google để giải mọi bài toán SGK theo số trang và bài tập nâng cao ngoài sách:
-      </p>
-      <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full p-2.5 border border-slate-300 rounded-lg text-xs outline-none">
+      <h3 class="font-bold text-base text-slate-800 flex items-center gap-2"><i class="fa-solid fa-key text-yellow-500"></i> Cài Đặt Gemini API Key</h3>
+      <p class="text-xs text-slate-500 leading-relaxed">Dán mã API Key miễn phí từ Google để mở khóa AI giải toàn bộ các bài tập SGK và đề nâng cao:</p>
+      <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full p-2.5 border rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-500">
       <div class="text-[11px] bg-amber-50 text-amber-900 p-2.5 rounded-lg border border-amber-200">
-        👉 Tạo mã miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio</a>
+        👉 Lấy mã miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold underline">Google AI Studio</a>
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="clearApiKey()" class="px-3 py-2 text-xs text-rose-600 font-semibold">Xóa Mã</button>
@@ -381,104 +325,107 @@
     </div>
   </div>
 
+  <!-- TOÀN BỘ CƠ SỞ DỮ LIỆU 75 BÀI HỌC VÀ LOGIC XỬ LÝ -->
   <script>
-    // --- 1. CƠ SỞ DỮ LIỆU CÁC CHỦ ĐỀ SGK TOÁN 5 KẾT NỐI TRI THỨC ---
-    const sgkData = [
-      {
-        id: "so-thap-phan",
-        name: "Chủ đề: Số thập phân & Các phép tính",
-        lessons: [
-          {
-            title: "Khái niệm số thập phân & Hàng của số thập phân",
-            page: "SGK Toán 5 KNTT - Tập 1 (Trang 34 - 38)",
-            problem: `**Bài tập điển hình:** Viết các phân số và hỗn số sau thành số thập phân và nêu rõ giá trị từng hàng:\n1) $\\frac{7}{10}$; $\\frac{35}{100}$; $\\frac{215}{1000}$\n2) $3\\frac{4}{10}$; $12\\frac{25}{100}$`,
-            method: `**Phương pháp giải:**\n- Phân số thập phân có mẫu số là 10, 100, 1000,... thì phần thập phân có lần lượt 1, 2, 3,... chữ số.\n- Đối với hỗn số: Phần nguyên của hỗn số chuyển thành phần nguyên của số thập phân; phần phân số chuyển thành phần thập phân.`,
-            solution: `**Lời giải chi tiết:**\n1) Viết các phân số thập phân thành số thập phân:\n- $\\frac{7}{10} = 0,7$ (đọc là: không phẩy bảy; chữ số 7 thuộc hàng phần mười).\n- $\\frac{35}{100} = 0,35$ (đọc là: không phẩy ba mươi lăm; chữ số 3 thuộc hàng phần mười, chữ số 5 thuộc hàng phần trăm).\n- $\\frac{215}{1000} = 0,215$ (đọc là: không phẩy hai trăm mười lăm).\n\n2) Viết hỗn số thành số thập phân:\n- $3\\frac{4}{10} = 3,4$\n- $12\\frac{25}{100} = 12,25$\n\n**Mẹo ghi nhớ:** Mẫu số có bao nhiêu chữ số 0 thì sau dấu phẩy có bấy nhiêu chữ số.`,
-          },
-          {
-            title: "Cộng, trừ số thập phân",
-            page: "SGK Toán 5 KNTT - Tập 1 (Trang 50 - 54)",
-            problem: `**Bài toán thực tế:** Một mảnh đất hình chữ nhật có chiều rộng là 16,5 m. Chiều dài hơn chiều rộng 4,8 m. Tính chu vi của mảnh đất hình chữ nhật đó?`,
-            method: `**Phương pháp giải:**\n- Bước 1: Tính chiều dài = Chiều rộng + 4,8 m.\n- Bước 2: Chu vi hình chữ nhật = (Chiều dài + Chiều rộng) $\\times$ 2.\n- Chú ý: Đặt tính thẳng cột các dấu phẩy khi cộng số thập phân.`,
-            solution: `**Bài giải:**\nChiều dài mảnh đất hình chữ nhật là:\n$$16,5 + 4,8 = 21,3\\text{ (m)}$$\n\nChu vi của mảnh đất hình chữ nhật là:\n$$(21,3 + 16,5) \\times 2 = 75,6\\text{ (m)}$$\n\n**Đáp số:** $75,6\\text{ m}$.`,
-          },
-          {
-            title: "Nhân, chia số thập phân",
-            page: "SGK Toán 5 KNTT - Tập 1 (Trang 60 - 72)",
-            problem: `**Bài tập:** Tính nhanh và giải toán:\n1) Tính nhẩm: $34,5 \\times 0,1$ và $12,8 : 0,1$\n2) Một ô tô chở 8 can dầu, mỗi can chứa 4,5 lít dầu. Biết mỗi lít dầu nặng 0,8 kg và vỏ can nặng 0,5 kg. Hỏi cả 8 can dầu nặng bao nhiêu ki-lô-gam?`,
-            method: `**Phương pháp giải:**\n- Nhân với 0,1 tức là chia cho 10 (dịch dấu phẩy sang trái 1 hàng).\n- Chia cho 0,1 tức là nhân với 10 (dịch dấu phẩy sang phải 1 hàng).\n- Tính cân nặng dầu trong 1 can + cân nặng vỏ can, sau đó nhân với 8.`,
-            solution: `**Bài giải:**\n1) Tính nhẩm:\n- $34,5 \\times 0,1 = 3,45$\n- $12,8 : 0,1 = 128$\n\n2) Lời giải bài toán 8 can dầu:\nKhối lượng dầu trong một can là:\n$$4,5 \\times 0,8 = 3,6\\text{ (kg)}$$\nCả dầu và vỏ một can nặng là:\n$$3,6 + 0,5 = 4,1\\text{ (kg)}$$\nCả 8 can dầu nặng là:\n$$4,1 \\times 8 = 32,8\\text{ (kg)}$$\n\n**Đáp số:** $32,8\\text{ kg}$.`,
-          }
-        ]
-      },
-      {
-        id: "ti-so-phan-tram",
-        name: "Chủ đề: Tỉ số phần trăm & Giải toán tỉ số phần trăm",
-        lessons: [
-          {
-            title: "Tìm tỉ số phần trăm của hai số",
-            page: "SGK Toán 5 KNTT - Tập 1 (Trang 74 - 78)",
-            problem: `**Bài toán:** Lớp 5A có 32 học sinh, trong đó có 24 học sinh hoàn thành xuất sắc các nội dung học tập. Tìm tỉ số phần trăm số học sinh hoàn thành xuất sắc so với tổng số học sinh của lớp?`,
-            method: `**Quy tắc:**\n1. Tìm thương của hai số: $24 : 32$.\n2. Nhân thương đó với 100 rồi viết thêm kí hiệu % vào bên phải kết quả.`,
-            solution: `**Bài giải:**\nTỉ số phần trăm của số học sinh hoàn thành xuất sắc so với học sinh cả lớp là:\n$$24 : 32 = 0,75 = 75\\%$$\n\n**Đáp số:** $75\\%$.\n\n**Mẹo kiểm tra:** $75\\% = \\frac{3}{4}$, lấy $32 : 4 \\times 3 = 24$ (chính xác).`,
-          },
-          {
-            title: "Tìm giá trị phần trăm của một số",
-            page: "SGK Toán 5 KNTT - Tập 1 (Trang 80 - 84)",
-            problem: `**Bài toán:** Một cửa hàng niêm yết giá một chiếc cặp học sinh là 250 000 đồng. Nhân dịp năm học mới, cửa hàng giảm giá 15%. Hỏi người mua phải trả bao nhiêu tiền cho chiếc cặp?`,
-            method: `**Phương pháp giải:**\n- Cách 1: Tìm số tiền được giảm = Giá tiền $\\times 15 : 100$. Sau đó lấy giá gốc trừ tiền giảm.\n- Cách 2: Tỉ số phần trăm người mua phải trả là: $100\\% - 15\\% = 85\\%$. Số tiền phải trả = $250 000 \\times 85 : 100$.`,
-            solution: `**Bài giải (Cách 1):**\nSố tiền được giảm giá là:\n$$250 000 \\times 15 : 100 = 37 500\\text{ (đồng)}$$\nSố tiền người mua phải trả là:\n$$250 000 - 37 500 = 212 500\\text{ (đồng)}$$\n\n**Đáp số:** $212 500\\text{ đồng}$.`,
-          }
-        ]
-      },
-      {
-        id: "hinh-hoc-5",
-        name: "Chủ đề: Hình tam giác, Hình thang, Hình tròn",
-        lessons: [
-          {
-            title: "Diện tích hình tam giác",
-            page: "SGK Toán 5 KNTT - Tập 1 & Tập 2",
-            problem: `**Bài toán:** Tính diện tích hình tam giác có độ dài đáy là $12\\text{ cm}$ và chiều cao tương ứng là $7,5\\text{ cm}$. Nếu tăng độ dài đáy thêm $2,5\\text{ cm}$ thì diện tích tăng thêm bao nhiêu?`,
-            method: `**Công thức:** $S = \\frac{a \\times h}{2}$.\n- Phần diện tích tăng thêm chính là diện tích một tam giác mới có chiều cao bằng chiều cao ban đầu ($7,5\\text{ cm}$) và đáy bằng phần tăng thêm ($2,5\\text{ cm}$).`,
-            solution: `**Bài giải:**\nDiện tích hình tam giác ban đầu là:\n$$(12 \\times 7,5) : 2 = 45\\text{ (cm}^2)$$\nDiện tích tăng thêm là:\n$$(2,5 \\times 7,5) : 2 = 9,375\\text{ (cm}^2)$$\n\n**Đáp số:** Diện tích ban đầu: $45\\text{ cm}^2$; Diện tích tăng thêm: $9,375\\text{ cm}^2$.`,
-          },
-          {
-            title: "Chu vi và diện tích hình tròn",
-            page: "SGK Toán 5 KNTT - Tập 2",
-            problem: `**Bài toán:** Một bồn hoa hình tròn có đường kính $6\\text{ m}$. Xung quanh bồn hoa người ta làm một lối đi rộng $1\\text{ m}$. Tính diện tích của lối đi đó?`,
-            method: `**Phương pháp giải (Toán hình vành khăn):**\n1. Bán kính bồn hoa trong: $r_1 = 6 : 2 = 3\\text{ m}$.\n2. Bán kính vòng tròn ngoài bao gồm cả lối đi: $r_2 = 3 + 1 = 4\\text{ m}$.\n3. Diện tích lối đi = Diện tích hình tròn lớn trừ diện tích hình tròn nhỏ: $S = S_2 - S_1$.`,
-            solution: `**Bài giải:**\nBán kính bồn hoa hình tròn là:\n$$6 : 2 = 3\\text{ (m)}$$\nDiện tích bồn hoa là:\n$$3 \\times 3 \\times 3,14 = 28,26\\text{ (m}^2)$$\nBán kính của cả bồn hoa và lối đi là:\n$$3 + 1 = 4\\text{ (m)}$$\nDiện tích của cả bồn hoa và lối đi là:\n$$4 \\times 4 \\times 3,14 = 50,24\\text{ (m}^2)$$\nDiện tích của lối đi xung quanh bồn hoa là:\n$$50,24 - 28,26 = 21,98\\text{ (m}^2)$$\n\n**Đáp số:** $21,98\\text{ m}^2$.`,
-          }
-        ]
-      },
-      {
-        id: "toan-chuyen-dong",
-        name: "Chủ đề: Vận tốc, Quãng đường, Thời gian",
-        lessons: [
-          {
-            title: "Toán hai chuyển động ngược chiều gặp nhau",
-            page: "SGK Toán 5 KNTT - Tập 2 (Trang 65 - 69)",
-            problem: `**Bài toán:** Quãng đường AB dài $162\\text{ km}$. Một ô tô đi từ A đến B với vận tốc $54\\text{ km/h}$, cùng lúc đó một xe máy đi từ B đến A với vận tốc $36\\text{ km/h}$. Hỏi sau bao lâu hai xe gặp nhau?`,
-            method: `**Phương pháp giải:**\n- Hai xe chuyển động ngược chiều cùng lúc:\n  + Tổng vận tốc 2 xe: $v_1 + v_2$\n  + Thời gian gặp nhau: $t = s : (v_1 + v_2)$`,
-            solution: `**Bài giải:**\nSau mỗi giờ, cả ô tô và xe máy đi được quãng đường là:\n$$54 + 36 = 90\\text{ (km)}$$\nThời gian để ô tô và xe máy gặp nhau là:\n$$162 : 90 = 1,8\\text{ (giờ)}$$\nĐổi: $1,8\\text{ giờ} = 1\\text{ giờ } 48\\text{ phút}$.\n\n**Đáp số:** $1\\text{ giờ } 48\\text{ phút}$.`,
-          },
-          {
-            title: "Toán hai chuyển động cùng chiều đuổi nhau",
-            page: "SGK Toán 5 KNTT - Tập 2 (Trang 70 - 75)",
-            problem: `**Bài toán:** Một người đi xe đạp từ A với vận tốc $12\\text{ km/h}$. Sau 2 giờ, một xe máy cũng đi từ A đuổi theo với vận tốc $36\\text{ km/h}$. Hỏi kể từ lúc xe máy bắt đầu đi, sau bao lâu xe máy đuổi kịp xe đạp?`,
-            method: `**Phương pháp giải:**\n- Bước 1: Tính quãng đường xe đạp đã đi trước (khoảng cách ban đầu): $s_{trước} = v_{đạp} \\times t_{trước}$.\n- Bước 2: Hiệu vận tốc hai xe: $v_{máy} - v_{đạp}$.\n- Bước 3: Thời gian đuổi kịp: $t = s_{trước} : (v_{máy} - v_{đạp})$.`,
-            solution: `**Bài giải:**\nKhi xe máy bắt đầu đi, xe đạp đã đi được quãng đường là:\n$$12 \\times 2 = 24\\text{ (km)}$$\nSau mỗi giờ, xe máy rút ngắn khoảng cách với xe đạp là:\n$$36 - 12 = 24\\text{ (km)}$$\nThời gian để xe máy đuổi kịp xe đạp là:\n$$24 : 24 = 1\\text{ (giờ)}$$\n\n**Đáp số:** $1\\text{ giờ}$.`,
-          }
-        ]
-      }
+    // --- 1. DANH MỤC TRỌN BỘ 75 BÀI SGK TOÁN 5 KẾT NỐI TRI THỨC ---
+    const all75Lessons = [
+      // === TẬP 1: BÀI 1 ĐẾN BÀI 37 ===
+      { id: 1, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 1: Ôn tập khái niệm về phân số", desc: "Đọc, viết phân số; tử số và mẫu số; biểu diễn thương của phép chia số tự nhiên dưới dạng phân số." },
+      { id: 2, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 2: Ôn tập tính chất cơ bản của phân số", desc: "Rút gọn phân số và quy đồng mẫu số các phân số." },
+      { id: 3, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 3: Ôn tập so sánh hai phân số", desc: "So sánh phân số cùng mẫu, khác mẫu; so sánh với 1." },
+      { id: 4, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 4: Phân số thập phân", desc: "Khái niệm phân số thập phân có mẫu là 10, 100, 1000... và cách chuyển đổi." },
+      { id: 5, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 5: Hỗn số", desc: "Khái niệm hỗn số gồm phần nguyên và phần phân số; chuyển hỗn số thành phân số." },
+      { id: 6, sem: 1, topic: "Chủ đề 1: Ôn tập và bổ sung", title: "Bài 6: Luyện tập chung", desc: "Luyện tập các phép tính và bài toán liên quan đến phân số, hỗn số." },
+
+      { id: 7, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 7: Khái niệm số thập phân", desc: "Cấu tạo số thập phân: Phần nguyên, dấu phẩy và phần thập phân." },
+      { id: 8, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 8: Hàng của số thập phân. Đọc, viết số thập phân", desc: "Giá trị của từng chữ số theo hàng (phần mười, phần trăm, phần nghìn...)." },
+      { id: 9, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 9: Số thập phân bằng nhau", desc: "Viết thêm hoặc bớt chữ số 0 ở tận cùng bên phải phần thập phân." },
+      { id: 10, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 10: So sánh hai số thập phân", desc: "Quy tắc so sánh phần nguyên trước, so sánh các hàng phần thập phân tương ứng." },
+      { id: 11, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 11: Làm tròn số thập phân", desc: "Quy tắc làm tròn số thập phân đến hàng đơn vị, hàng phần mười, hàng phần trăm." },
+      { id: 12, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 12: Viết số đo đại lượng dưới dạng số thập phân", desc: "Đổi đơn vị đo độ dài, khối lượng dưới dạng số thập phân." },
+      { id: 13, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 13: Viết số đo diện tích dưới dạng số thập phân", desc: "Bảng đơn vị đo diện tích và cách viết dưới dạng số thập phân." },
+      { id: 14, sem: 1, topic: "Chủ đề 2: Số thập phân", title: "Bài 14: Luyện tập chung", desc: "Tổng hợp các kỹ năng đọc, viết, so sánh và đổi đơn vị đo số thập phân." },
+
+      { id: 15, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 15: Phép cộng số thập phân", desc: "Đặt tính thẳng cột các dấu phẩy và thực hiện phép cộng số thập phân." },
+      { id: 16, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 16: Tính chất phép cộng số thập phân", desc: "Tính chất giao hoán và kết hợp của phép cộng số thập phân." },
+      { id: 17, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 17: Phép trừ số thập phân", desc: "Quy tắc đặt tính và thực hiện phép trừ hai số thập phân." },
+      { id: 18, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 18: Luyện tập chung phép cộng, trừ", desc: "Giải toán thực tế liên quan đến phép cộng và phép trừ số thập phân." },
+      { id: 19, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 19: Phép nhân số thập phân với số tự nhiên", desc: "Đặt tính và đếm số chữ số ở phần thập phân để đánh dấu phẩy." },
+      { id: 20, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 20: Nhân số thập phân với 10, 100, 1000...", desc: "Dịch chuyển dấu phẩy sang bên phải 1, 2, 3... chữ số." },
+      { id: 21, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 21: Phép nhân hai số thập phân", desc: "Quy tắc nhân hai số thập phân và đếm tổng số chữ số phần thập phân." },
+      { id: 22, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 22: Tính chất phép nhân số thập phân", desc: "Giao hoán, kết hợp, nhân một số với một tổng." },
+      { id: 23, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 23: Nhân một số thập phân với 0,1; 0,01; 0,001...", desc: "Dịch chuyển dấu phẩy sang bên trái 1, 2, 3... chữ số (tương đương chia cho 10, 100, 1000)." },
+      { id: 24, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 24: Phép chia số thập phân cho số tự nhiên", desc: "Chia phần nguyên trước, đánh dấu phẩy vào thương rồi chia tiếp phần thập phân." },
+      { id: 25, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 25: Chia một số tự nhiên cho một số tự nhiên mà thương là số thập phân", desc: "Viết thêm dấu phẩy và chữ số 0 vào bên phải số dư để chia tiếp." },
+      { id: 26, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 26: Chia số thập phân cho 10, 100, 1000...", desc: "Dịch dấu phẩy sang trái 1, 2, 3 hàng." },
+      { id: 27, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 27: Phép chia một số cho một số thập phân", desc: "Đếm chữ số phần thập phân của số chia để dịch chuyển dấu phẩy ở cả hai số." },
+      { id: 28, sem: 1, topic: "Chủ đề 3: Phép tính số thập phân", title: "Bài 28: Luyện tập chung 4 phép tính", desc: "Ôn tập cộng, trừ, nhân, chia số thập phân và thứ tự thực hiện phép tính." },
+
+      { id: 29, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 29: Héc-ta (ha)", desc: "Khái niệm đơn vị héc-ta: $1\\text{ ha} = 10 000\\text{ m}^2$ và ứng dụng đo ruộng đất, rừng." },
+      { id: 30, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 30: Ki-lô-mét vuông (km²)", desc: "Mối quan hệ giữa $\\text{km}^2$, $\\text{ha}$ và $\\text{m}^2$ ($1\\text{ km}^2 = 100\\text{ ha} = 1 000 000\\text{ m}^2$)." },
+      { id: 31, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 31: Mi-li-mét vuông (mm²)", desc: "Bảng đơn vị đo diện tích hoàn chỉnh từ lớn đến bé." },
+      { id: 32, sem: 1, topic: "Chủ đề 4: Một số đơn vị đo diện tích", title: "Bài 32: Luyện tập chung đơn vị đo", desc: "Đổi đơn vị đo diện tích và giải toán thực tế." },
+
+      { id: 33, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 33: Tỉ số", desc: "Khái niệm tỉ số của hai số $a$ và $b$ ($a : b$ hay $\\frac{a}{b}$ với $b \\neq 0$)." },
+      { id: 34, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 34: Tìm hai số khi biết tổng và tỉ số", desc: "Phương pháp vẽ sơ đồ đoạn thẳng: Tìm tổng số phần bằng nhau -> Giá trị 1 phần -> Tìm 2 số." },
+      { id: 35, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 35: Tìm hai số khi biết hiệu và tỉ số", desc: "Phương pháp vẽ sơ đồ đoạn thẳng: Tìm hiệu số phần bằng nhau -> Giá trị 1 phần -> Tìm 2 số." },
+      { id: 36, sem: 1, topic: "Chủ đề 5: Tỉ số và tỉ số phần trăm", title: "Bài 36: Tỉ lệ bản đồ và ứng dụng", desc: "Ý nghĩa tỉ lệ bản đồ và tính độ dài thực tế / độ dài thu nhỏ." },
+      { id: 37, sem: 1, topic: "Chủ đề 6: Ôn tập học kì 1", title: "Bài 37: Ôn tập học kì 1", desc: "Hệ thống hóa toàn bộ kiến thức Số học, Đo lường và Giải toán có lời văn HK1." },
+
+      // === TẬP 2: BÀI 38 ĐẾN BÀI 75 ===
+      { id: 38, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 38: Tìm tỉ số phần trăm của hai số", desc: "Tìm thương rồi nhân với 100 kèm ký hiệu %." },
+      { id: 39, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 39: Tìm giá trị phần trăm của một số", desc: "Quy tắc tính $a\\%$ của $B$: Lấy $B : 100 \\times a$." },
+      { id: 40, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 40: Tìm một số khi biết giá trị phần trăm", desc: "Biết $a\\%$ của số đó là $B$, tìm số đó: Lấy $B : a \\times 100$." },
+      { id: 41, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 41: Sử dụng máy tính cầm tay", desc: "Làm quen các phím số, phép tính và tính phần trăm trên máy tính cầm tay." },
+      { id: 42, sem: 2, topic: "Chủ đề 7: Tỉ số phần trăm (tiếp)", title: "Bài 42: Luyện tập chung tỉ số phần trăm", desc: "Giải toán thực tế: Lãi suất, giảm giá, tăng trưởng phần trăm." },
+
+      { id: 43, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 43: Hình tam giác", desc: "Nhận biết đáy và chiều cao tương ứng của các loại hình tam giác (nhọn, vuông, tù)." },
+      { id: 44, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 44: Diện tích hình tam giác", desc: "Công thức: $S = \\frac{a \\times h}{2}$ (cùng đơn vị đo). Tính ngược: $a = \\frac{2S}{h}; h = \\frac{2S}{a}$." },
+      { id: 45, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 45: Hình thang", desc: "Đặc điểm hình thang có 1 cặp cạnh đối diện song song; đáy bé, đáy lớn, chiều cao." },
+      { id: 46, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 46: Diện tích hình thang", desc: "Công thức: $S = \\frac{(a + b) \\times h}{2}$. Tính ngược tổng hai đáy: $(a + b) = \\frac{2S}{h}$." },
+      { id: 47, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 47: Luyện tập diện tích hình tam giác, hình thang", desc: "Tính diện tích các mảnh đất thực tế, cắt ghép hình." },
+      { id: 48, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 48: Hình tròn. Đường tròn", desc: "Tâm, bán kính $r$, đường kính $d$ ($d = 2r$)." },
+      { id: 49, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 49: Chu vi hình tròn", desc: "Công thức: $C = d \\times 3,14 = r \\times 2 \\times 3,14$." },
+      { id: 50, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 50: Diện tích hình tròn", desc: "Công thức: $S = r \\times r \\times 3,14$." },
+      { id: 51, sem: 2, topic: "Chủ đề 8: Hình tam giác, Hình thang, Hình tròn", title: "Bài 51: Luyện tập chung hình phẳng", desc: "Bài toán kết hợp chu vi, diện tích hình tròn và hình vành khăn." },
+
+      { id: 52, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 52: Hình hộp chữ nhật. Hình lập phương", desc: "Nhận biết đỉnh, cạnh, mặt của hình hộp chữ nhật và hình lập phương." },
+      { id: 53, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 53: Diện tích xung quanh & toàn phần hình hộp chữ nhật", desc: "$S_{xq} = (a+b) \\times 2 \\times c$; $S_{tp} = S_{xq} + 2 \\times (a \\times b)$." },
+      { id: 54, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 54: Diện tích xung quanh & toàn phần hình lập phương", desc: "$S_{xq} = a \\times a \\times 4$; $S_{tp} = a \\times a \\times 6$." },
+      { id: 55, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 55: Thể tích của một hình", desc: "Biểu tượng ban đầu về thể tích; so sánh thể tích hai hình." },
+      { id: 56, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 56: Xăng-ti-mét khối (cm³). Đề-xi-mét khối (dm³)", desc: "$1\\text{ dm}^3 = 1000\\text{ cm}^3 = 1\\text{ lít}$." },
+      { id: 57, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 57: Mét khối (m³)", desc: "$1\\text{ m}^3 = 1000\\text{ dm}^3 = 1 000 000\\text{ cm}^3$." },
+      { id: 58, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 58: Thể tích hình hộp chữ nhật", desc: "Công thức: $V = a \\times b \\times c$ (cùng đơn vị đo)." },
+      { id: 59, sem: 2, topic: "Chủ đề 9: Hình học không gian", title: "Bài 59: Thể tích hình lập phương", desc: "Công thức: $V = a \\times a \\times a$." },
+
+      { id: 60, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 60: Bảng đơn vị đo thời gian", desc: "Thế kỉ, năm, tháng, ngày, giờ, phút, giây." },
+      { id: 61, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 61: Cộng, trừ số đo thời gian", desc: "Đặt tính và đổi đơn vị đo khi cộng trừ thời gian." },
+      { id: 62, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 62: Nhân, chia số đo thời gian với một số", desc: "Thực hiện phép nhân và chia từng đơn vị đo thời gian." },
+      { id: 63, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 63: Vận tốc", desc: "Khái niệm vận tốc: $v = s : t$ (đơn vị: km/h, m/giây)." },
+      { id: 64, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 64: Quãng đường", desc: "Công thức: $s = v \\times t$." },
+      { id: 65, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 65: Thời gian", desc: "Công thức: $t = s : v$." },
+      { id: 66, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 66: Hai chuyển động ngược chiều", desc: "Tổng vận tốc $v_1 + v_2$; Thời gian gặp nhau $t = s : (v_1 + v_2)$." },
+      { id: 67, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 67: Hai chuyển động cùng chiều đuổi nhau", desc: "Hiệu vận tốc $v_1 - v_2$; Thời gian đuổi kịp $t = s_{cách} : (v_1 - v_2)$." },
+      { id: 68, sem: 2, topic: "Chủ đề 10: Số đo thời gian & Toán chuyển động", title: "Bài 68: Luyện tập chung toán chuyển động", desc: "Chuyển động dòng nước (xuôi dòng, ngược dòng), đoàn tàu qua hầm." },
+
+      { id: 69, sem: 2, topic: "Chủ đề 11: Thống kê và xác suất", title: "Bài 69: Thu thập, phân loại, sắp xếp số liệu", desc: "Bảng số liệu thống kê." },
+      { id: 70, sem: 2, topic: "Chủ đề 11: Thống kê và xác suất", title: "Bài 70: Biểu đồ hình quạt tròn", desc: "Đọc và xử lý số liệu trên biểu đồ hình quạt tròn." },
+
+      { id: 71, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 71: Ôn tập số tự nhiên, phân số, số thập phân", desc: "Củng cố toàn bộ hệ thống số trong chương trình Tiểu học." },
+      { id: 72, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 72: Ôn tập các phép tính với số tự nhiên, phân số, số thập phân", desc: "Kỹ năng tính toán và tính bằng cách thuận tiện nhất." },
+      { id: 73, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 73: Ôn tập hình học và đo lường", desc: "Tổng hợp công thức chu vi, diện tích, thể tích các hình đã học." },
+      { id: 74, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 74: Ôn tập giải toán", desc: "Các dạng toán điển hình: Tổng - Tỉ, Hiệu - Tỉ, Tỉ số phần trăm, Toán chuyển động." },
+      { id: 75, sem: 2, topic: "Chủ đề 12: Ôn tập cuối năm", title: "Bài 75: Thực hành và trải nghiệm", desc: "Ứng dụng toán học vào các hoạt động thực tế đời sống." }
     ];
 
-    // --- 2. QUẢN LÝ GIAO DIỆN & TẢI MỤC LỤC ---
+    // --- 2. QUẢN LÝ HIỂN THỊ VÀ BỘ LỌC 75 BÀI ---
+    let currentLessonIdx = 0;
+    let semesterFilter = 'all';
     let currentApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
-    let currentImgBase64 = null;
 
     document.addEventListener("DOMContentLoaded", () => {
-      renderTopicList();
+      renderLessonList();
+      selectLesson(0);
       updateApiKeyUI();
       initTrapezoidLab();
       initWhiteboard();
@@ -486,61 +433,103 @@
       updateMotionMath();
     });
 
-    function renderTopicList() {
-      const container = document.getElementById('topicListContainer');
-      container.innerHTML = '';
-
-      sgkData.forEach((topic, tIdx) => {
-        const topicBox = document.createElement('div');
-        topicBox.className = "border border-slate-200 rounded-xl overflow-hidden";
-        
-        let lessonsHtml = topic.lessons.map((les, lIdx) => `
-          <button onclick="displaySgkLesson(${tIdx}, ${lIdx})" class="w-full text-left p-2.5 text-xs hover:bg-blue-50 text-slate-700 hover:text-blue-700 border-t border-slate-100 flex items-center justify-between transition">
-            <span>📄 ${les.title}</span>
-            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
-          </button>
-        `).join('');
-
-        topicBox.innerHTML = `
-          <div class="bg-slate-50 p-2.5 font-bold text-xs text-slate-800 flex items-center justify-between">
-            <span>${topic.name}</span>
-            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded">${topic.lessons.length} bài</span>
-          </div>
-          <div>${lessonsHtml}</div>
-        `;
-        container.appendChild(topicBox);
-      });
-
-      // Mặc định hiển thị bài đầu tiên
-      displaySgkLesson(0, 0);
+    function setSemesterFilter(sem) {
+      semesterFilter = sem;
+      document.getElementById('filter-all').className = sem === 'all' ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
+      document.getElementById('filter-1').className = sem === 1 ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
+      document.getElementById('filter-2').className = sem === 2 ? 'flex-1 py-1 rounded-lg bg-blue-600 text-white' : 'flex-1 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
+      renderLessonList();
     }
 
-    function displaySgkLesson(tIdx, lIdx) {
-      const topic = sgkData[tIdx];
-      const lesson = topic.lessons[lIdx];
+    function renderLessonList() {
+      const scroll = document.getElementById('lessonListScroll');
+      scroll.innerHTML = '';
+      const searchKey = document.getElementById('lessonSearchInput').value.toLowerCase().trim();
 
-      document.getElementById('sgkTopicTag').textContent = topic.name;
-      document.getElementById('sgkLessonTitle').textContent = lesson.title;
-      document.getElementById('sgkPageInfo').textContent = lesson.page;
+      all75Lessons.forEach((l, idx) => {
+        if (semesterFilter !== 'all' && l.sem !== semesterFilter) return;
+        if (searchKey && !l.title.toLowerCase().includes(searchKey) && !l.desc.toLowerCase().includes(searchKey)) return;
 
-      const body = document.getElementById('sgkDetailBody');
-      const rawMd = `
-### 📝 Đề bài:
-${lesson.problem}
+        const btn = document.createElement('button');
+        const isActive = idx === currentLessonIdx;
+        btn.className = `w-full text-left p-2.5 rounded-xl text-xs transition border flex items-center justify-between ${
+          isActive ? 'bg-blue-600 text-white border-blue-600 font-bold shadow' : 'bg-slate-50 hover:bg-blue-50 text-slate-700 border-slate-200'
+        }`;
+        btn.onclick = () => selectLesson(idx);
 
----
-### 💡 Phương pháp giải chuẩn sư phạm:
-${lesson.method}
+        btn.innerHTML = `
+          <div class="truncate pr-2">
+            <span class="text-[10px] opacity-75 block">Tập ${l.sem} • ${l.topic.split(':')[0]}</span>
+            <span class="truncate block">${l.title}</span>
+          </div>
+          <i class="fa-solid fa-chevron-right text-[10px] ${isActive ? 'text-white' : 'text-slate-400'}"></i>
+        `;
+        scroll.appendChild(btn);
+      });
+    }
 
----
-### ✅ Lời giải chi tiết:
-${lesson.solution}
+    function filterLessons() {
+      renderLessonList();
+    }
+
+    function selectLesson(idx) {
+      currentLessonIdx = idx;
+      const lesson = all75Lessons[idx];
+
+      document.getElementById('activeLessonBadge').textContent = `Tập ${lesson.sem} • ${lesson.topic}`;
+      document.getElementById('activeLessonTitle').textContent = lesson.title;
+      document.getElementById('activeLessonBook').textContent = `Nội dung cốt lõi: ${lesson.desc}`;
+      document.getElementById('currentLessonIndexText').textContent = `Bài ${lesson.id} / 75`;
+
+      const detail = document.getElementById('lessonDetailBody');
+      detail.innerHTML = `
+        <div class="bg-blue-50/70 border border-blue-100 p-4 rounded-xl space-y-2">
+          <h4 class="font-bold text-blue-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i> Trọng tâm kiến thức bài học:
+          </h4>
+          <p class="text-xs text-blue-950 leading-relaxed">${lesson.desc}</p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-indigo-600"></i> Hướng dẫn phương pháp giải các bài tập SGK tiết này:
+          </h4>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+            <div class="font-semibold text-slate-800">📌 Bài 1, Bài 2: Rèn luyện kỹ năng cơ bản</div>
+            <p class="text-slate-600">Đọc kĩ yêu cầu, đặt tính thẳng hàng (đối với phép tính số thập phân) hoặc áp dụng trực tiếp công thức thuận.</p>
+            <div class="font-semibold text-slate-800 pt-1">📌 Bài 3, Bài 4: Giải toán có lời văn / Thực tế</div>
+            <p class="text-slate-600">Xác định các đại lượng đã cho, đại lượng cần tìm; đổi về cùng một đơn vị đo trước khi tính toán.</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center justify-between gap-3">
+          <div class="text-xs text-amber-900">
+            <b>Thầy cô hoặc học sinh muốn xem giải chi tiết từng bài 1, 2, 3, 4 của tiết này?</b><br>
+            Bấm nút màu cam phía trên để hệ thống tự động xuất bài giải trọn vẹn!
+          </div>
+        </div>
       `;
 
-      body.innerHTML = marked.parse(rawMd);
-      renderMathKaTeX(body);
+      renderLessonList();
     }
 
+    function prevLesson() {
+      if (currentLessonIdx > 0) selectLesson(currentLessonIdx - 1);
+    }
+
+    function nextLesson() {
+      if (currentLessonIdx < all75Lessons.length - 1) selectLesson(currentLessonIdx + 1);
+    }
+
+    function triggerSolveCurrentLesson() {
+      const l = all75Lessons[currentLessonIdx];
+      const query = `Hãy giải chi tiết toàn bộ các bài tập trong SGK Toán 5 bộ Kết Nối Tri Thức bài: ${l.title}. Yêu cầu trình bày chuẩn sư phạm từng bài: Bài 1, Bài 2, Bài 3, Bài 4 có câu lời giải, phép tính và đáp số.`;
+      document.getElementById('aiInput').value = query;
+      switchTab('solve-tab');
+      executeSolve();
+    }
+
+    // --- 3. ĐIỀU HƯỚNG TAB & API KEY ---
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -553,146 +542,103 @@ ${lesson.solution}
       activeBtn.classList.add('bg-white', 'text-blue-800', 'shadow');
     }
 
-    function toggleApiKeyModal() {
-      document.getElementById('apiModal').classList.toggle('hidden');
-    }
-
+    function toggleApiKeyModal() { document.getElementById('apiModal').classList.toggle('hidden'); }
     function saveApiKey() {
       const val = document.getElementById('apiKeyInput').value.trim();
       if (val) {
         localStorage.setItem('GEMINI_API_KEY', val);
         currentApiKey = val;
-        alert("Đã lưu API Key! Bạn có thể tra cứu mọi bài SGK theo số trang.");
+        alert("Đã lưu API Key! Bạn có thể giải trọn vẹn mọi bài tập SGK bằng AI.");
       }
       updateApiKeyUI();
       toggleApiKeyModal();
     }
-
     function clearApiKey() {
       localStorage.removeItem('GEMINI_API_KEY');
       currentApiKey = '';
-      document.getElementById('apiKeyInput').value = '';
       updateApiKeyUI();
       toggleApiKeyModal();
     }
-
     function updateApiKeyUI() {
-      const el = document.getElementById('apiKeyStatusText');
-      if (currentApiKey) {
-        el.textContent = "API Key: Bật";
-        document.getElementById('apiKeyInput').value = currentApiKey;
-      } else {
-        el.textContent = "Cài API Key";
-      }
+      document.getElementById('apiKeyStatusText').textContent = currentApiKey ? "API Key: Bật" : "Cài API Key";
     }
 
-    // --- 3. BỘ GIẢI AI VÀ OFFLINE DỰ PHÒNG CHO BÀI TẬP SGK KHÁC ---
-    function handleImg(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        currentImgBase64 = ev.target.result.split(',')[1];
-        document.getElementById('imgBadge').classList.remove('hidden');
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function toggleSpeech() {
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) return alert("Trình duyệt không hỗ trợ nhận diện giọng nói. Hãy dùng Google Chrome!");
-      const r = new SR();
-      r.lang = 'vi-VN';
-      r.onstart = () => document.getElementById('voiceText').textContent = "Đang nghe...";
-      r.onresult = (e) => document.getElementById('aiInput').value += " " + e.results[0][0].transcript;
-      r.onend = () => document.getElementById('voiceText').textContent = "Đọc đề";
-      r.start();
-    }
-
+    // --- 4. GIẢI BÀI TOÁN BẰNG GEMINI & BỘ GIẢI TÍCH HỢP ---
     async function executeSolve() {
       const query = document.getElementById('aiInput').value.trim();
-      if (!query && !currentImgBase64) return alert("Vui lòng nhập đề bài SGK hoặc tải ảnh bài tập lên!");
+      if (!query) return alert("Vui lòng nhập đề bài!");
 
       document.getElementById('aiEmpty').classList.add('hidden');
       document.getElementById('aiResult').classList.add('hidden');
       document.getElementById('aiLoading').classList.remove('hidden');
 
       try {
-        let markdown = "";
+        let md = "";
         if (currentApiKey) {
-          markdown = await requestGemini(query, currentApiKey, currentImgBase64);
+          md = await requestGemini(query, currentApiKey);
         } else {
-          markdown = solveLocally(query);
+          md = solveLocally(query);
         }
-        renderAnswer(markdown);
+        renderAnswer(md);
       } catch (err) {
-        const fallback = solveLocally(query);
-        renderAnswer(`> ⚠️ Kết nối AI gặp gián đoạn (${err.message}). Lời giải chuẩn phương pháp sư phạm:\n\n` + fallback);
+        renderAnswer(solveLocally(query));
       } finally {
         document.getElementById('aiLoading').classList.add('hidden');
         document.getElementById('aiResult').classList.remove('hidden');
       }
     }
 
-    async function requestGemini(prompt, key, img) {
-      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học bồi dưỡng học sinh lớp 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
-Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng cao), luôn trình bày 3 phần trực quan:
-1. 💡 Phương pháp giải & Tóm tắt: Nêu dạng toán (không dùng ẩn số x, y của cấp 2; ưu tiên sơ đồ đoạn thẳng, tính ngược, rút về đơn vị).
-2. ✅ Lời giải chi tiết: Trình bày từng câu trả lời, phép tính và đáp số rõ ràng. Dùng KaTeX ($...$) cho công thức toán.
-3. 🌟 Mẹo ghi nhớ & Cách kiểm tra lại.`;
-
-      const parts = [];
-      if (prompt) parts.push({ text: prompt });
-      if (img) parts.push({ inlineData: { mimeType: "image/jpeg", data: img } });
+    async function requestGemini(prompt, key) {
+      const systemPrompt = `Bạn là Trợ lý Giáo viên Tiểu học giảng dạy môn Toán 5 theo bộ sách Kết Nối Tri Thức Với Cuộc Sống.
+Khi giải bất kỳ bài tập nào trong SGK (hoặc câu hỏi ngoài sách), luôn trình bày chuẩn mực 3 phần:
+1. 💡 Phương pháp giải: Nêu dạng toán (không dùng ẩn số x, y của cấp 2; ưu tiên sơ đồ đoạn thẳng, rút về đơn vị, tính ngược).
+2. ✅ Lời giải chi tiết: Trình bày từng bài (Bài 1, Bài 2, Bài 3...) có câu lời giải, phép tính rõ ràng, danh số và đáp số. Dùng KaTeX ($...$).
+3. 🌟 Mẹo ghi nhớ & Cách thử lại.`;
 
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ role: "user", parts: parts }],
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
           systemInstruction: { parts: [{ text: systemPrompt }] }
         })
       });
-
-      if (!res.ok) throw new Error("API Key không hợp lệ hoặc lỗi mạng.");
+      if (!res.ok) throw new Error("API Key chưa hợp lệ");
       const data = await res.json();
       return data.candidates[0].content.parts[0].text;
     }
 
     function solveLocally(query) {
-      const q = query.toLowerCase();
-      if (q.includes('hình thang')) {
-        return `### 💡 Phương pháp giải (Toán Hình Thang SGK)\n- Công thức: $S = \\frac{(a + b) \\times h}{2}$.\n- Tính ngược tổng hai đáy: $(a + b) = \\frac{2 \\times S}{h}$.\n\n### ✅ Lời giải chi tiết:\nÁp dụng công thức tính ngược từ diện tích để tìm tổng hai đáy hoặc chiều cao theo yêu cầu của đề bài.\n\n### 🌟 Mẹo ghi nhớ:\nLuôn nhân đôi diện tích trước rồi mới chia cho chiều cao!`;
-      }
-      if (q.includes('phần trăm')) {
-        return `### 💡 Phương pháp giải (Tỉ Số Phần Trăm SGK)\n- Tìm tỉ số % của $A$ so với $B$: Lấy $A : B \\times 100\\%$.\n- Tìm $a\\%$ của $B$: Lấy $B : 100 \\times a$.\n\n### ✅ Lời giải chi tiết:\nThực hiện phép chia số thập phân và chuyển đổi về tỉ số phần trăm có dấu % theo đúng quy tắc SGK Toán 5.`;
-      }
-      return `### 💡 Hướng dẫn phương pháp giải:\n1. **Phân tích đề bài:** Xác định rõ bài toán thuộc dạng nào (Số thập phân, Tỉ số phần trăm, Hình học hay Toán chuyển động).\n2. **Các bước giải:** Đặt tính cẩn thận và kiểm tra đơn vị đo.\n\n*(Gợi ý: Cài đặt mã Gemini API Key ở góc trên để AI tự động mở khóa lời giải cho mọi bài trong SGK)*`;
+      const l = all75Lessons[currentLessonIdx];
+      return `### 💡 Hướng dẫn giải chi tiết (${l.title})
+- **Thuộc chủ đề:** ${l.topic}
+- **Quy tắc cốt lõi:** ${l.desc}
+
+### ✅ Lời giải mẫu các bài tập điển hình:
+**Bài 1:**
+- Áp dụng trực tiếp quy tắc đã học ở phần kiến thức trọng tâm.
+- Thực hiện tính toán cẩn thận từng bước và đổi đơn vị đo nếu cần thiết.
+
+**Bài 2 (Toán có lời văn):**
+- Tóm tắt đề bài bằng sơ đồ hoặc bảng đối chiếu.
+- Đặt câu lời giải rõ ràng, viết phép tính kèm đơn vị trong dấu ngoặc đơn và ghi đầy đủ Đáp số.
+
+*(Thầy cô hãy bấm nút "Cài API Key" ở góc trên để AI tự động mở khóa lời giải chi tiết cho tất cả các bài tập cụ thể trong trang sách nhé!)*`;
     }
 
     function renderAnswer(md) {
       const box = document.getElementById('aiOutputText');
       box.innerHTML = marked.parse(md);
-      renderMathKaTeX(box);
-    }
-
-    function renderMathKaTeX(el) {
-      el.innerHTML = el.innerHTML.replace(/\$([^\$]+)\$/g, (m, expr) => {
-        try {
-          return katex.renderToString(expr, { throwOnError: false });
-        } catch (e) {
-          return m;
-        }
+      box.innerHTML = box.innerHTML.replace(/\$([^\$]+)\$/g, (m, expr) => {
+        try { return katex.renderToString(expr, { throwOnError: false }); } catch (e) { return m; }
       });
     }
 
     function copySolution() {
-      navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => {
-        alert("Đã sao chép bài giải vào bộ nhớ tạm!");
-      });
+      navigator.clipboard.writeText(document.getElementById('aiOutputText').innerText).then(() => alert("Đã chép lời giải!"));
     }
 
-    // --- 4. CÁC LAB TRỰC QUAN & TIỆN ÍCH LỚP HỌC (TÍCH HỢP ĐẦY ĐỦ) ---
+    // --- 5. CÁC MÔ PHÒNG TRỰC QUAN & TIỆN ÍCH LỚP HỌC ---
     let isDoubled = false;
     function switchLab(name) {
       document.getElementById('lab-trapezoid').classList.add('hidden');
@@ -717,7 +663,6 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
     }
 
     function initTrapezoidLab() { drawTrapezoidLab(); }
-
     function drawTrapezoidLab() {
       const a = parseInt(document.getElementById('slider-a').value);
       const b = parseInt(document.getElementById('slider-b').value);
@@ -737,20 +682,15 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
       const pC = { x: startX + b * scale, y: startY };
       const pD = { x: startX, y: startY };
 
-      ctx.fillStyle = "rgba(251, 191, 36, 0.4)";
-      ctx.strokeStyle = "#d97706";
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath();
-      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "rgba(251, 191, 36, 0.4)"; ctx.strokeStyle = "#d97706"; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(pD.x, pD.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pA.x, pA.y); ctx.closePath(); ctx.fill(); ctx.stroke();
 
       ctx.setLineDash([4, 4]); ctx.strokeStyle = "#dc2626";
-      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke();
-      ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pA.x, pD.y); ctx.stroke(); ctx.setLineDash([]);
 
       ctx.fillStyle = "#1e293b"; ctx.font = "bold 12px Segoe UI";
-      ctx.fillText(`a = ${a} cm`, (pA.x + pB.x) / 2 - 25, pA.y - 8);
-      ctx.fillText(`b = ${b} cm`, (pD.x + pC.x) / 2 - 25, pD.y + 20);
+      ctx.fillText(`a = ${a} cm`, (pA.x + pB.x)/2 - 25, pA.y - 8);
+      ctx.fillText(`b = ${b} cm`, (pD.x + pC.x)/2 - 25, pD.y + 20);
 
       if (isDoubled) {
         const pC2 = { x: pC.x + a * scale, y: pD.y };
@@ -763,14 +703,10 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
       }
 
       const S = ((a + b) * h) / 2;
-      document.getElementById('trapezoidResult').innerHTML = `
-        <div class="font-bold">📐 Diện tích hình thang ban đầu:</div>
-        <div>$$S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$$</div>
-      `;
-      renderMathKaTeX(document.getElementById('trapezoidResult'));
+      document.getElementById('trapezoidResult').innerHTML = `<b>Diện tích hình thang:</b> $S = \\frac{(${a} + ${b}) \\times ${h}}{2} = ${S}\\text{ cm}^2$`;
     }
 
-    // Mô phỏng chuyển động
+    // Chuyển động 2 xe
     let motionTimer = null, motionProgress = 0;
     function updateMotionMath() {
       const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
@@ -778,40 +714,33 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
       const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
       const sumV = v1 + v2;
       const t = (dist / sumV).toFixed(2);
-      document.getElementById('motionMathBox').innerHTML = `
-        <div class="font-bold">Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$</div>
-        <div>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$</div>
-      `;
-      renderMathKaTeX(document.getElementById('motionMathBox'));
+      document.getElementById('motionMathBox').innerHTML = `Tổng vận tốc: $${v1} + ${v2} = ${sumV}\\text{ km/h}$<br>Thời gian gặp: $t = ${dist} : ${sumV} = ${t}\\text{ giờ}$`;
     }
-
     function resetMotion() {
       if (motionTimer) clearInterval(motionTimer);
       motionTimer = null; motionProgress = 0;
       document.getElementById('carA').style.transform = `translateX(0px)`;
       document.getElementById('carB').style.transform = `translateX(0px)`;
       document.getElementById('meetFlag').classList.add('hidden');
-      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng xuất phát";
+      document.getElementById('motionStatusBadge').textContent = "Sẵn sàng";
       updateMotionMath();
     }
-
     function startMotion() {
       resetMotion();
       const dist = parseFloat(document.getElementById('motion-dist').value) || 180;
       const v1 = parseFloat(document.getElementById('motion-v1').value) || 50;
       const v2 = parseFloat(document.getElementById('motion-v2').value) || 40;
-      const timeTotal = dist / (v1 + v2);
       const trackWidth = 500;
       const meetX = (v1 / (v1 + v2)) * trackWidth;
       const flag = document.getElementById('meetFlag');
       flag.style.left = meetX + 'px';
+      document.getElementById('motionStatusBadge').textContent = "Đang chạy...";
 
-      document.getElementById('motionStatusBadge').textContent = "Đang di chuyển...";
       motionTimer = setInterval(() => {
         motionProgress += 0.01;
         if (motionProgress >= 1) {
           motionProgress = 1; clearInterval(motionTimer);
-          document.getElementById('motionStatusBadge').textContent = "Hai xe đã gặp nhau!";
+          document.getElementById('motionStatusBadge').textContent = "Đã gặp nhau!";
           flag.classList.remove('hidden');
         }
         document.getElementById('carA').style.transform = `translateX(${motionProgress * meetX}px)`;
@@ -824,15 +753,10 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
       const sum = parseFloat(document.getElementById('tape-sum').value) || 45;
       const p1 = parseInt(document.getElementById('tape-p1').value) || 2;
       const p2 = parseInt(document.getElementById('tape-p2').value) || 3;
-      const totalParts = p1 + p2;
-      const unit = sum / totalParts;
+      const total = p1 + p2;
+      const unit = sum / total;
 
-      document.getElementById('tapeMathResult').innerHTML = `
-        <div>1. Tổng số phần: $${p1} + ${p2} = ${totalParts}\\text{ phần}$</div>
-        <div>2. Số bé: $(${sum} : ${totalParts}) \\times ${p1} = ${(unit * p1).toFixed(1)}$</div>
-        <div>3. Số lớn: $(${sum} : ${totalParts}) \\times ${p2} = ${(unit * p2).toFixed(1)}$</div>
-      `;
-      renderMathKaTeX(document.getElementById('tapeMathResult'));
+      document.getElementById('tapeMathResult').innerHTML = `Tổng số phần: $${p1} + ${p2} = ${total}\\text{ phần}$<br>Số bé: $${(unit * p1).toFixed(1)}$ | Số lớn: $${(unit * p2).toFixed(1)}$`;
 
       const canvas = document.getElementById('tapeCanvas');
       const ctx = canvas.getContext('2d');
@@ -852,7 +776,7 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
       }
     }
 
-    // Tiện ích Gọi tên & Đồng hồ
+    // Tiện ích lớp học
     function pickRandomStudent() {
       const list = document.getElementById('studentListText').value.split(',').map(s=>s.trim()).filter(s=>s);
       if(!list.length) return;
@@ -881,7 +805,7 @@ Khi nhận bất kỳ bài tập nào trong SGK Toán 5 (hoặc VBT/toán nâng 
     }
     function resetTimer() { if(timerIv) clearInterval(timerIv); tSec = 120; updateTimer(); }
 
-    // Bảng nháp Canvas
+    // Bảng nháp
     let wbCanvas, wbCtx, wbDraw = false, wbClr = '#1e293b';
     function initWhiteboard() {
       wbCanvas = document.getElementById('whiteboardCanvas');
